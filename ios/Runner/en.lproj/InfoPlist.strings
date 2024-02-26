@@ -1,0 +1,3 @@
+NSCameraUsageDescription = "This is necessary to add a photo to your profile.";
+NSPhotoLibraryUsageDescription = "This is necessary to add a photo to your profile.";
+PermissionGroupNotification = "Allow to send you notifications about new events and meditations in the application.";

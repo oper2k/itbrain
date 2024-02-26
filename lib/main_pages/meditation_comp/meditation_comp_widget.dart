@@ -1,0 +1,153 @@
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'meditation_comp_model.dart';
+export 'meditation_comp_model.dart';
+
+class MeditationCompWidget extends StatefulWidget {
+  const MeditationCompWidget({
+    super.key,
+    required this.meditationCategories,
+  });
+
+  final MeditationCategoriesRecord? meditationCategories;
+
+  @override
+  State<MeditationCompWidget> createState() => _MeditationCompWidgetState();
+}
+
+class _MeditationCompWidgetState extends State<MeditationCompWidget> {
+  late MeditationCompModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => MeditationCompModel());
+  }
+
+  @override
+  void dispose() {
+    _model.maybeDispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
+    return Align(
+      alignment: AlignmentDirectional(0.0, -1.0),
+      child: Container(
+        width: double.infinity,
+        height: 160.0,
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Stack(
+          children: [
+            Align(
+              alignment: AlignmentDirectional(0.0, 1.0),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
+                child: Container(
+                  width: double.infinity,
+                  height: 140.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).buttonColor,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Align(
+                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 0.527,
+                        decoration: BoxDecoration(),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              valueOrDefault<String>(
+                                FFLocalizations.of(context).getVariableText(
+                                  ruText:
+                                      widget.meditationCategories?.nameCategory,
+                                  enText: widget
+                                      .meditationCategories?.nameCategoryEng,
+                                ),
+                                'audioMeditation',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Evolventa',
+                                    fontSize: 17.0,
+                                    fontWeight: FontWeight.bold,
+                                    useGoogleFonts: false,
+                                    lineHeight: 1.29,
+                                  ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 4.0, 0.0, 0.0),
+                              child: Text(
+                                '${valueOrDefault<String>(
+                                  widget.meditationCategories?.count
+                                      ?.toString(),
+                                  '0',
+                                )}${valueOrDefault<String>(
+                                  FFLocalizations.of(context).getVariableText(
+                                    ruText: ' Аудиозаписей',
+                                    enText: ' audios',
+                                  ),
+                                  ' 0',
+                                )}',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Evolventa',
+                                      fontSize: 15.0,
+                                      useGoogleFonts: false,
+                                      lineHeight: 1.2,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: AlignmentDirectional(1.0, 0.0),
+              child: CachedNetworkImage(
+                fadeInDuration: Duration(milliseconds: 500),
+                fadeOutDuration: Duration(milliseconds: 500),
+                imageUrl: widget.meditationCategories!.categoryPhoto,
+                width: 184.0,
+                height: 160.0,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
