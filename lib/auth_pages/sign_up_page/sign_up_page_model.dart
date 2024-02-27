@@ -7,8 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/profile/doc_exists/doc_exists_widget.dart';
-import '/profile/match_pass/match_pass_widget.dart';
-import '/profile/pass_check/pass_check_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -22,7 +20,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
@@ -42,6 +39,8 @@ class SignUpPageModel extends FlutterFlowModel<SignUpPageWidget> {
   bool showPhoneError = false;
 
   bool showMatchError = false;
+
+  bool showDocExistsError = false;
 
   ///  State fields for stateful widgets in this page.
 

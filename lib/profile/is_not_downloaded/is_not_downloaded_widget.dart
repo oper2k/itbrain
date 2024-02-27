@@ -135,7 +135,7 @@ class _IsNotDownloadedWidgetState extends State<IsNotDownloadedWidget> {
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
-                                'alkqv996' /* Хорошо */,
+                                'oje46arq' /* Хорошо */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium

@@ -482,92 +482,149 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                         return Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 3.0, 0.0, 0.0),
-                          child: AuthUserStreamWidget(
-                            builder: (context) => Builder(
-                              builder: (context) {
-                                final results = _model.simpleSearchResults
-                                    .where((e) => (currentUserDocument
-                                                ?.purchasedMeditationsPacks
-                                                ?.toList() ??
-                                            [])
-                                        .contains(e.meditationCategory))
-                                    .toList();
-                                return ListView.separated(
-                                  padding: EdgeInsets.zero,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: results.length,
-                                  separatorBuilder: (_, __) =>
-                                      SizedBox(height: 32.0),
-                                  itemBuilder: (context, resultsIndex) {
-                                    final resultsItem = results[resultsIndex];
-                                    return Container(
-                                      decoration: BoxDecoration(
+                          child: Builder(
+                            builder: (context) {
+                              final results =
+                                  _model.simpleSearchResults.toList();
+                              return ListView.separated(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: results.length,
+                                separatorBuilder: (_, __) =>
+                                    SizedBox(height: 32.0),
+                                itemBuilder: (context, resultsIndex) {
+                                  final resultsItem = results[resultsIndex];
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                      border: Border.all(
                                         color: Colors.transparent,
-                                        border: Border.all(
-                                          color: Colors.transparent,
-                                        ),
                                       ),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          await currentUserReference!.update({
-                                            ...mapToFirestore(
-                                              {
-                                                'searchHistory':
-                                                    FieldValue.arrayUnion([
-                                                  resultsItem.reference
-                                                ]),
-                                              },
+                                    ),
+                                    child: StreamBuilder<
+                                        MeditationCategoriesRecord>(
+                                      stream: MeditationCategoriesRecord
+                                          .getDocument(
+                                              resultsItem.meditationCategory!),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                                ),
+                                              ),
                                             ),
-                                          });
-
-                                          context.pushNamed(
-                                            'playerPage',
-                                            queryParameters: {
-                                              'audio': serializeParam(
-                                                _model.simpleSearchResults,
-                                                ParamType.Document,
-                                                true,
-                                              ),
-                                              'index': serializeParam(
-                                                resultsIndex,
-                                                ParamType.int,
-                                              ),
-                                              'medCategory': serializeParam(
-                                                resultsItem.meditationCategory,
-                                                ParamType.DocumentReference,
-                                              ),
-                                            }.withoutNulls,
-                                            extra: <String, dynamic>{
-                                              'audio':
-                                                  _model.simpleSearchResults,
-                                            },
                                           );
-                                        },
-                                        child: wrapWithModel(
-                                          model: _model.meditationsModels2
-                                              .getModel(
-                                            resultsIndex.toString(),
-                                            resultsIndex,
-                                          ),
-                                          updateCallback: () => setState(() {}),
-                                          child: MeditationsWidget(
-                                            key: Key(
-                                              'Keyphs_${resultsIndex.toString()}',
+                                        }
+                                        final meditationsMeditationCategoriesRecord =
+                                            snapshot.data!;
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            if (resultsItem.isPaid) {
+                                              if ((currentUserDocument
+                                                          ?.purchasedMeditationsPacks
+                                                          ?.toList() ??
+                                                      [])
+                                                  .contains(resultsItem
+                                                      .meditationCategory)) {
+                                                await currentUserReference!
+                                                    .update({
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'searchHistory':
+                                                          FieldValue
+                                                              .arrayUnion([
+                                                        resultsItem.reference
+                                                      ]),
+                                                    },
+                                                  ),
+                                                });
+
+                                                context.pushNamed(
+                                                  'playerPage',
+                                                  queryParameters: {
+                                                    'audio': serializeParam(
+                                                      _model
+                                                          .simpleSearchResults,
+                                                      ParamType.Document,
+                                                      true,
+                                                    ),
+                                                    'index': serializeParam(
+                                                      resultsIndex,
+                                                      ParamType.int,
+                                                    ),
+                                                    'medCategory':
+                                                        serializeParam(
+                                                      resultsItem
+                                                          .meditationCategory,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'audio': _model
+                                                        .simpleSearchResults,
+                                                  },
+                                                );
+
+                                                return;
+                                              } else {
+                                                return;
+                                              }
+                                            } else {
+                                              context.pushNamed(
+                                                'meditationInfo',
+                                                queryParameters: {
+                                                  'meditationCategory':
+                                                      serializeParam(
+                                                    meditationsMeditationCategoriesRecord,
+                                                    ParamType.Document,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'meditationCategory':
+                                                      meditationsMeditationCategoriesRecord,
+                                                },
+                                              );
+
+                                              return;
+                                            }
+                                          },
+                                          child: wrapWithModel(
+                                            model: _model.meditationsModels2
+                                                .getModel(
+                                              resultsIndex.toString(),
+                                              resultsIndex,
                                             ),
-                                            meditation: resultsItem,
+                                            updateCallback: () =>
+                                                setState(() {}),
+                                            child: MeditationsWidget(
+                                              key: Key(
+                                                'Keyphs_${resultsIndex.toString()}',
+                                              ),
+                                              meditation: resultsItem,
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                            ),
+                                        );
+                                      },
+                                    ),
+                                  );
+                                },
+                              );
+                            },
                           ),
                         );
                       }

@@ -50,7 +50,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
       alignment: AlignmentDirectional(0.0, -1.0),
       child: Container(
         width: double.infinity,
-        height: 160.0,
+        height: 152.0,
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(20.0),
@@ -63,7 +63,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
                 child: Container(
                   width: double.infinity,
-                  height: 140.0,
+                  height: 120.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).buttonColor,
                     borderRadius: BorderRadius.circular(20.0),
@@ -135,14 +135,17 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(1.0, 0.0),
-              child: CachedNetworkImage(
-                fadeInDuration: Duration(milliseconds: 500),
-                fadeOutDuration: Duration(milliseconds: 500),
-                imageUrl: widget.meditationCategories!.categoryPhoto,
-                width: 184.0,
-                height: 160.0,
-                fit: BoxFit.cover,
+              alignment: AlignmentDirectional(1.0, 1.0),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
+                child: CachedNetworkImage(
+                  fadeInDuration: Duration(milliseconds: 500),
+                  fadeOutDuration: Duration(milliseconds: 500),
+                  imageUrl: widget.meditationCategories!.categoryPhoto,
+                  width: 147.0,
+                  height: 148.0,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ],

@@ -135,7 +135,7 @@ class _MatchPassWidgetState extends State<MatchPassWidget> {
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
-                                'mg682744' /* Хорошо */,
+                                'fgl6lqiy' /* Хорошо */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium

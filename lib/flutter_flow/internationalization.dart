@@ -222,8 +222,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Create password',
     },
     'npgm2tfr': {
-      'ru': 'Минимум 6 символов и специальные символы: !@#\$%^&*(),.?\":{}|<>',
-      'en': '',
+      'ru': 'Минимум 6 символов ',
+      'en': 'Minimum 6 characters',
     },
     'dw40rg6m': {
       'ru': 'Подтвердите пароль',
@@ -231,7 +231,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'cb64r48o': {
       'ru': 'Минимум 6 символов',
-      'en': '',
+      'en': 'Minimum 6 characters',
     },
     'dxdipov4': {
       'ru': 'Пароли не совпадают',
@@ -391,10 +391,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Изменить профиль',
       'en': 'Edit profile',
     },
-    'ee8kyglx': {
-      'ru': 'Послание дня',
-      'en': 'Message of the Day',
-    },
     '57j7skci': {
       'ru': 'Сменить язык',
       'en': 'Change Language',
@@ -517,7 +513,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'frx0mzd2': {
       'ru': 'Послание дня',
-      'en': '',
+      'en': 'Message of the day',
     },
     'bl74ak1h': {
       'ru': 'Home',
@@ -974,11 +970,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'n3uhrxfw': {
       'ru': 'Ошибка!',
-      'en': '',
+      'en': 'Error!',
     },
     'wtr7kc8i': {
       'ru': 'Пароли не совпадают',
-      'en': '',
+      'en': 'Password mismatch',
     },
     'fgl6lqiy': {
       'ru': 'Хорошо',
@@ -989,12 +985,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'pp07sxaa': {
       'ru': 'Внимание!',
-      'en': '',
+      'en': 'Attention!',
     },
     'uf4d6gjr': {
       'ru':
           'Длина не менее 8 символов, одна заглавная буква, одна строчная буква, одна цифра и специальный символ.',
-      'en': '',
+      'en':
+          'At least 8 characters long, one uppercase letter, one lowercase letter, one number and a special character.',
     },
     '7qfk66t3': {
       'ru': 'Хорошо',

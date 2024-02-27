@@ -7,8 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/profile/doc_exists/doc_exists_widget.dart';
-import '/profile/match_pass/match_pass_widget.dart';
-import '/profile/pass_check/pass_check_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -21,7 +19,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'sign_up_page_model.dart';
@@ -452,36 +449,6 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            if (_model.passwordController.text != null &&
-                                _model.passwordController.text != '')
-                              Expanded(
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, -1.0),
-                                  child: LinearPercentIndicator(
-                                    percent: functions.passCheckupProgress(
-                                        _model.passwordController.text)!,
-                                    lineHeight: 4.0,
-                                    animation: true,
-                                    animateFromLastPercent: true,
-                                    progressColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    barRadius: Radius.circular(50.0),
-                                    padding: EdgeInsets.zero,
-                                  ),
-                                ),
-                              ),
-                          ],
-                        ),
-                      ),
                       if (_model.showPassError)
                         Align(
                           alignment: AlignmentDirectional(-1.0, 0.0),
@@ -490,7 +457,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 0.0, 6.0, 0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
-                                'npgm2tfr' /* Минимум 6 символов и специальн... */,
+                                'npgm2tfr' /* Минимум 6 символов  */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -701,6 +668,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     );
                                     _shouldSetState = true;
                                     if (_model.users! > 0) {
+                                      setState(() {
+                                        _model.showDocExistsError = true;
+                                      });
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,
@@ -730,118 +700,50 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
-                                      if (functions.checkPassword(
-                                          _model.passwordController.text)) {
-                                        if (_model.passwordController.text ==
-                                            _model.confirmPassController.text) {
-                                          GoRouter.of(context)
-                                              .prepareAuthEvent();
-                                          if (_model.passwordController.text !=
-                                              _model
-                                                  .confirmPassController.text) {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'a9ptdanj' /* Пароли не совпадают */,
-                                                  ),
-                                                ),
+                                      setState(() {
+                                        _model.showDocExistsError = false;
+                                      });
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      if (_model.passwordController.text !=
+                                          _model.confirmPassController.text) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'a9ptdanj' /* Пароли не совпадают */,
                                               ),
-                                            );
-                                            return;
-                                          }
-
-                                          final user = await authManager
-                                              .createAccountWithEmail(
-                                            context,
-                                            _model.emailController.text,
-                                            _model.passwordController.text,
-                                          );
-                                          if (user == null) {
-                                            return;
-                                          }
-
-                                          await UsersRecord.collection
-                                              .doc(user.uid)
-                                              .update(createUsersRecordData(
-                                                email:
-                                                    _model.emailController.text,
-                                                surname: _model
-                                                    .surnameController.text,
-                                              ));
-
-                                          await _model.pageViewController
-                                              ?.nextPage(
-                                            duration:
-                                                Duration(milliseconds: 300),
-                                            curve: Curves.ease,
-                                          );
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        } else {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            enableDrag: false,
-                                            context: context,
-                                            builder: (context) {
-                                              return WebViewAware(
-                                                child: GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child: Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child: MatchPassWidget(),
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
-
-                                          if (_shouldSetState) setState(() {});
-                                          return;
-                                        }
-                                      } else {
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          backgroundColor: Colors.transparent,
-                                          enableDrag: false,
-                                          context: context,
-                                          builder: (context) {
-                                            return WebViewAware(
-                                              child: GestureDetector(
-                                                onTap: () => _model.unfocusNode
-                                                        .canRequestFocus
-                                                    ? FocusScope.of(context)
-                                                        .requestFocus(
-                                                            _model.unfocusNode)
-                                                    : FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: PassCheckWidget(),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ).then((value) => safeSetState(() {}));
-
-                                        if (_shouldSetState) setState(() {});
+                                            ),
+                                          ),
+                                        );
                                         return;
                                       }
+
+                                      final user = await authManager
+                                          .createAccountWithEmail(
+                                        context,
+                                        _model.emailController.text,
+                                        _model.passwordController.text,
+                                      );
+                                      if (user == null) {
+                                        return;
+                                      }
+
+                                      await UsersRecord.collection
+                                          .doc(user.uid)
+                                          .update(createUsersRecordData(
+                                            email: _model.emailController.text,
+                                            surname:
+                                                _model.surnameController.text,
+                                          ));
+
+                                      await _model.pageViewController?.nextPage(
+                                        duration: Duration(milliseconds: 300),
+                                        curve: Curves.ease,
+                                      );
+                                      if (_shouldSetState) setState(() {});
+                                      return;
                                     }
                                   } else {
                                     setState(() {

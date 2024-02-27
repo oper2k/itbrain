@@ -3,7 +3,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/profile/affirmation_comp/affirmation_comp_widget.dart';
 import '/profile/check_purchases/check_purchases_widget.dart';
 import '/profile/log_out_confirm/log_out_confirm_widget.dart';
 import '/profile/rate_the_app/rate_the_app_widget.dart';

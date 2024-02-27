@@ -3,7 +3,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/profile/affirmation_comp/affirmation_comp_widget.dart';
 import '/profile/check_purchases/check_purchases_widget.dart';
 import '/profile/log_out_confirm/log_out_confirm_widget.dart';
 import '/profile/rate_the_app/rate_the_app_widget.dart';
@@ -284,119 +283,6 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                 ].divide(SizedBox(width: 8.0)),
                               ),
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 32.0, 0.0, 0.0),
-                          child: StreamBuilder<List<AffirmationRecord>>(
-                            stream: queryAffirmationRecord(
-                              singleRecord: true,
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).tertiary,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }
-                              List<AffirmationRecord>
-                                  containerAffirmationRecordList =
-                                  snapshot.data!;
-                              // Return an empty Container when the item does not exist.
-                              if (snapshot.data!.isEmpty) {
-                                return Container();
-                              }
-                              final containerAffirmationRecord =
-                                  containerAffirmationRecordList.isNotEmpty
-                                      ? containerAffirmationRecordList.first
-                                      : null;
-                              return InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    context: context,
-                                    builder: (context) {
-                                      return WebViewAware(
-                                        child: GestureDetector(
-                                          onTap: () => _model
-                                                  .unfocusNode.canRequestFocus
-                                              ? FocusScope.of(context)
-                                                  .requestFocus(
-                                                      _model.unfocusNode)
-                                              : FocusScope.of(context)
-                                                  .unfocus(),
-                                          child: Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: AffirmationCompWidget(),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => safeSetState(() {}));
-                                },
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .buttonColor2,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsets.all(16.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          FFIcons.kyoga,
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent1,
-                                          size: 24.0,
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'ee8kyglx' /* Послание дня */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Evolventa',
-                                                  fontSize: 16.0,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
-                                        ),
-                                        Icon(
-                                          Icons.chevron_right,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
-                                        ),
-                                      ].divide(SizedBox(width: 8.0)),
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
                           ),
                         ),
                         Padding(
