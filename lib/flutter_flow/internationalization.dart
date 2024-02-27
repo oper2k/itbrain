@@ -643,7 +643,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'nqnztqtf': {
       'ru': 'Что бы вы хотели послушать?',
-      'en': '',
+      'en': 'What do you want to listen to?',
     },
     'fajpr0yk': {
       'ru': 'История поиска',

@@ -136,18 +136,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.goNamed(
-                                      'meditationInfo',
-                                      queryParameters: {
-                                        'meditationCategory': serializeParam(
-                                          widget.meditation,
-                                          ParamType.Document,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        'meditationCategory': widget.meditation,
-                                      },
-                                    );
+                                    context.pop();
                                   },
                                   child: Container(
                                     width: 40.0,

@@ -199,6 +199,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                                         () => setState(() {}));
                                               },
                                             ),
+                                            autofocus: true,
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               alignLabelWithHint: false,
@@ -600,6 +601,17 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                                 },
                                               );
 
+                                              await currentUserReference!
+                                                  .update({
+                                                ...mapToFirestore(
+                                                  {
+                                                    'searchHistory':
+                                                        FieldValue.arrayUnion([
+                                                      resultsItem.reference
+                                                    ]),
+                                                  },
+                                                ),
+                                              });
                                               return;
                                             }
                                           },
