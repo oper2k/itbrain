@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'meditations_offline_model.dart';
@@ -64,10 +65,14 @@ class _MeditationsOfflineWidgetState extends State<MeditationsOfflineWidget> {
                     ),
                     child: Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Icon(
-                        FFIcons.kpolygon5,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 18.0,
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                        child: FaIcon(
+                          FontAwesomeIcons.play,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 18.0,
+                        ),
                       ),
                     ),
                   );
@@ -81,10 +86,14 @@ class _MeditationsOfflineWidgetState extends State<MeditationsOfflineWidget> {
                     ),
                     child: Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Icon(
-                        FFIcons.kpolygon5,
-                        color: FlutterFlowTheme.of(context).accent1,
-                        size: 20.0,
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                        child: FaIcon(
+                          FontAwesomeIcons.play,
+                          color: FlutterFlowTheme.of(context).accent1,
+                          size: 20.0,
+                        ),
                       ),
                     ),
                   );
@@ -99,19 +108,14 @@ class _MeditationsOfflineWidgetState extends State<MeditationsOfflineWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                FFLocalizations.of(context)
-                    .getVariableText(
-                      ruText: FFAppState()
-                          .downloadedTracks[widget.indexInList!]
-                          .name,
-                      enText: FFAppState()
-                          .downloadedTracks[widget.indexInList!]
-                          .nameEng,
-                    )
-                    .maybeHandleOverflow(
-                      maxChars: 27,
-                      replacement: '…',
-                    ),
+                FFLocalizations.of(context).getVariableText(
+                  ruText:
+                      FFAppState().downloadedTracks[widget.indexInList!].name,
+                  enText: FFAppState()
+                      .downloadedTracks[widget.indexInList!]
+                      .nameEng,
+                ),
+                maxLines: 2,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Evolventa',
                       fontSize: 17.0,

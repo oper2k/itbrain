@@ -64,10 +64,14 @@ class _MeditationsWidgetState extends State<MeditationsWidget> {
                     ),
                     child: Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
-                      child: FaIcon(
-                        FontAwesomeIcons.play,
-                        color: FlutterFlowTheme.of(context).tertiary,
-                        size: 18.0,
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                        child: FaIcon(
+                          FontAwesomeIcons.play,
+                          color: FlutterFlowTheme.of(context).tertiary,
+                          size: 20.0,
+                        ),
                       ),
                     ),
                   );
@@ -81,10 +85,14 @@ class _MeditationsWidgetState extends State<MeditationsWidget> {
                     ),
                     child: Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
-                      child: FaIcon(
-                        FontAwesomeIcons.play,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 20.0,
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                        child: FaIcon(
+                          FontAwesomeIcons.play,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 20.0,
+                        ),
                       ),
                     ),
                   );
@@ -99,15 +107,11 @@ class _MeditationsWidgetState extends State<MeditationsWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                FFLocalizations.of(context)
-                    .getVariableText(
-                      ruText: widget.meditation?.title,
-                      enText: widget.meditation?.titleEng,
-                    )
-                    .maybeHandleOverflow(
-                      maxChars: 27,
-                      replacement: '…',
-                    ),
+                FFLocalizations.of(context).getVariableText(
+                  ruText: widget.meditation?.title,
+                  enText: widget.meditation?.titleEng,
+                ),
+                maxLines: 2,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Evolventa',
                       fontSize: 17.0,
