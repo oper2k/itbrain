@@ -388,9 +388,9 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                               await launchURL(
                                   FFLocalizations.of(context).getVariableText(
                                 ruText:
-                                    'https://gold-platform.ru/cms/system/contact ',
+                                    'https://gold-platform.ru/cms/system/contact',
                                 enText:
-                                    'https://kamallaya-academy.com/cms/system/contact ',
+                                    'https://kamallaya-academy.com/cms/system/contact',
                               ));
                             },
                             child: Container(
