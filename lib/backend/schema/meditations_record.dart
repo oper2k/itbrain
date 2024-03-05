@@ -86,6 +86,36 @@ class MeditationsRecord extends FirestoreRecord {
   String get descriptionEng => _descriptionEng ?? '';
   bool hasDescriptionEng() => _descriptionEng != null;
 
+  // "playerTitle" field.
+  String? _playerTitle;
+  String get playerTitle => _playerTitle ?? '';
+  bool hasPlayerTitle() => _playerTitle != null;
+
+  // "playerTitleEng" field.
+  String? _playerTitleEng;
+  String get playerTitleEng => _playerTitleEng ?? '';
+  bool hasPlayerTitleEng() => _playerTitleEng != null;
+
+  // "PlayerSubTitle" field.
+  String? _playerSubTitle;
+  String get playerSubTitle => _playerSubTitle ?? '';
+  bool hasPlayerSubTitle() => _playerSubTitle != null;
+
+  // "playerSubTitleEng" field.
+  String? _playerSubTitleEng;
+  String get playerSubTitleEng => _playerSubTitleEng ?? '';
+  bool hasPlayerSubTitleEng() => _playerSubTitleEng != null;
+
+  // "playerText" field.
+  String? _playerText;
+  String get playerText => _playerText ?? '';
+  bool hasPlayerText() => _playerText != null;
+
+  // "playerTextEng" field.
+  String? _playerTextEng;
+  String get playerTextEng => _playerTextEng ?? '';
+  bool hasPlayerTextEng() => _playerTextEng != null;
+
   void _initializeFields() {
     _meditationCategory =
         snapshotData['meditationCategory'] as DocumentReference?;
@@ -102,6 +132,12 @@ class MeditationsRecord extends FirestoreRecord {
     _titleEng = snapshotData['title_eng'] as String?;
     _durationEng = snapshotData['duration_eng'] as String?;
     _descriptionEng = snapshotData['description_eng'] as String?;
+    _playerTitle = snapshotData['playerTitle'] as String?;
+    _playerTitleEng = snapshotData['playerTitleEng'] as String?;
+    _playerSubTitle = snapshotData['PlayerSubTitle'] as String?;
+    _playerSubTitleEng = snapshotData['playerSubTitleEng'] as String?;
+    _playerText = snapshotData['playerText'] as String?;
+    _playerTextEng = snapshotData['playerTextEng'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -153,6 +189,12 @@ Map<String, dynamic> createMeditationsRecordData({
   String? titleEng,
   String? durationEng,
   String? descriptionEng,
+  String? playerTitle,
+  String? playerTitleEng,
+  String? playerSubTitle,
+  String? playerSubTitleEng,
+  String? playerText,
+  String? playerTextEng,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -170,6 +212,12 @@ Map<String, dynamic> createMeditationsRecordData({
       'title_eng': titleEng,
       'duration_eng': durationEng,
       'description_eng': descriptionEng,
+      'playerTitle': playerTitle,
+      'playerTitleEng': playerTitleEng,
+      'PlayerSubTitle': playerSubTitle,
+      'playerSubTitleEng': playerSubTitleEng,
+      'playerText': playerText,
+      'playerTextEng': playerTextEng,
     }.withoutNulls,
   );
 
@@ -194,7 +242,13 @@ class MeditationsRecordDocumentEquality implements Equality<MeditationsRecord> {
         e1?.image == e2?.image &&
         e1?.titleEng == e2?.titleEng &&
         e1?.durationEng == e2?.durationEng &&
-        e1?.descriptionEng == e2?.descriptionEng;
+        e1?.descriptionEng == e2?.descriptionEng &&
+        e1?.playerTitle == e2?.playerTitle &&
+        e1?.playerTitleEng == e2?.playerTitleEng &&
+        e1?.playerSubTitle == e2?.playerSubTitle &&
+        e1?.playerSubTitleEng == e2?.playerSubTitleEng &&
+        e1?.playerText == e2?.playerText &&
+        e1?.playerTextEng == e2?.playerTextEng;
   }
 
   @override
@@ -212,7 +266,13 @@ class MeditationsRecordDocumentEquality implements Equality<MeditationsRecord> {
         e?.image,
         e?.titleEng,
         e?.durationEng,
-        e?.descriptionEng
+        e?.descriptionEng,
+        e?.playerTitle,
+        e?.playerTitleEng,
+        e?.playerSubTitle,
+        e?.playerSubTitleEng,
+        e?.playerText,
+        e?.playerTextEng
       ]);
 
   @override

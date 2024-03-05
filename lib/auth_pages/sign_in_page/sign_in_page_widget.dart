@@ -236,7 +236,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                             .secondaryText,
                                     fontSize: 17.0,
                                     useGoogleFonts: false,
-                                    lineHeight: 1.17,
+                                    lineHeight: 1.6,
                                   ),
                               alignLabelWithHint: false,
                               hintStyle:
@@ -388,7 +388,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                     fontFamily: 'Evolventa',
                                     fontSize: 17.0,
                                     useGoogleFonts: false,
-                                    lineHeight: 1.6,
+                                    lineHeight: 1.17,
                                   ),
                           textAlign: TextAlign.start,
                           cursorColor: FlutterFlowTheme.of(context).accent1,

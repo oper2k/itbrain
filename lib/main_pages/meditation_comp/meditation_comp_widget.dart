@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -61,72 +62,127 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
               alignment: AlignmentDirectional(0.0, 1.0),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 120.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).buttonColor,
+                child: Material(
+                  color: Colors.transparent,
+                  elevation: 0.0,
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
-                  child: Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 0.527,
-                        decoration: BoxDecoration(),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              valueOrDefault<String>(
-                                FFLocalizations.of(context).getVariableText(
-                                  ruText:
-                                      widget.meditationCategories?.nameCategory,
-                                  enText: widget
-                                      .meditationCategories?.nameCategoryEng,
-                                ),
-                                'audioMeditation',
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Evolventa',
-                                    fontSize: 17.0,
-                                    fontWeight: FontWeight.bold,
-                                    useGoogleFonts: false,
-                                    lineHeight: 1.29,
-                                  ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 4.0, 0.0, 0.0),
-                              child: Text(
-                                '${valueOrDefault<String>(
-                                  widget.meditationCategories?.count
-                                      ?.toString(),
-                                  '0',
-                                )}${valueOrDefault<String>(
-                                  FFLocalizations.of(context).getVariableText(
-                                    ruText: ' Аудиозаписей',
-                                    enText: ' audios',
-                                  ),
-                                  ' 0',
-                                )}',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Evolventa',
-                                      fontSize: 15.0,
-                                      useGoogleFonts: false,
-                                      lineHeight: 1.2,
-                                    ),
-                              ),
-                            ),
+                  child: Container(
+                    height: 120.0,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 6.0,
+                          color: FlutterFlowTheme.of(context).accent1,
+                          offset: Offset(0.0, 0.0),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(20.0),
+                      border: Border.all(
+                        color: Colors.transparent,
+                      ),
+                    ),
+                    child: AuthUserStreamWidget(
+                      builder: (context) => Container(
+                        width: double.infinity,
+                        height: 120.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).buttonColor,
+                          boxShadow: [
+                            BoxShadow(
+                              color: (currentUserDocument
+                                              ?.purchasedMeditationsPacks
+                                              ?.toList() ??
+                                          [])
+                                      .contains(widget
+                                          .meditationCategories?.reference)
+                                  ? FlutterFlowTheme.of(context).accent1
+                                  : Colors.transparent,
+                            )
                           ],
+                          borderRadius: BorderRadius.circular(20.0),
+                          border: Border.all(
+                            color: FlutterFlowTheme.of(context).accent1,
+                            width: 2.0,
+                          ),
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 0.0, 0.0),
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 0.527,
+                              decoration: BoxDecoration(),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    valueOrDefault<String>(
+                                      FFLocalizations.of(context)
+                                          .getVariableText(
+                                        ruText: widget
+                                            .meditationCategories?.nameCategory,
+                                        enText: widget.meditationCategories
+                                            ?.nameCategoryEng,
+                                      ),
+                                      'audioMeditation',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Evolventa',
+                                          color:
+                                              widget.meditationCategories!.soon
+                                                  ? FlutterFlowTheme.of(context)
+                                                      .secondaryText
+                                                  : FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                          fontSize: 17.0,
+                                          fontWeight: FontWeight.bold,
+                                          useGoogleFonts: false,
+                                          lineHeight: 1.29,
+                                        ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 4.0, 0.0, 0.0),
+                                    child: Text(
+                                      '${valueOrDefault<String>(
+                                        widget.meditationCategories?.count
+                                            ?.toString(),
+                                        '0',
+                                      )}${valueOrDefault<String>(
+                                        FFLocalizations.of(context)
+                                            .getVariableText(
+                                          ruText: ' Аудиозаписей',
+                                          enText: ' audios',
+                                        ),
+                                        ' 0',
+                                      )}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Evolventa',
+                                            color: widget
+                                                    .meditationCategories!.soon
+                                                ? FlutterFlowTheme.of(context)
+                                                    .secondaryText
+                                                : FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                            fontSize: 15.0,
+                                            useGoogleFonts: false,
+                                            lineHeight: 1.2,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -147,6 +203,88 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                   fit: BoxFit.cover,
                 ),
               ),
+            ),
+            Stack(
+              children: [
+                if ((currentUserDocument?.purchasedMeditationsPacks?.toList() ??
+                        [])
+                    .contains(widget.meditationCategories?.reference))
+                  Align(
+                    alignment: AlignmentDirectional(-1.0, -1.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 0.0, 0.0),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => Container(
+                          width: 83.0,
+                          height: 24.0,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Color(0xFF9747FF),
+                                Color(0xFFF1618E),
+                                Color(0xFFFE710B)
+                              ],
+                              stops: [0.0, 0.4, 1.0],
+                              begin: AlignmentDirectional(1.0, 0.34),
+                              end: AlignmentDirectional(-1.0, -0.34),
+                            ),
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          child: Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'c0orjo43' /* КУПЛЕНО */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Evolventa',
+                                    fontSize: 13.0,
+                                    fontWeight: FontWeight.bold,
+                                    useGoogleFonts: false,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                if (widget.meditationCategories?.soon ?? true)
+                  Align(
+                    alignment: AlignmentDirectional(-1.0, -1.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 0.0, 0.0),
+                      child: Container(
+                        width: 70.0,
+                        height: 24.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).alternate,
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              '0ko1m2ax' /* СКОРО */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Evolventa',
+                                  color: Color(0xB2FFFFFF),
+                                  fontSize: 13.0,
+                                  fontWeight: FontWeight.bold,
+                                  useGoogleFonts: false,
+                                ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ],
         ),

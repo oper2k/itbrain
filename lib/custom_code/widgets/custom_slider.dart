@@ -75,6 +75,7 @@ class _CustomSliderState extends State<CustomSlider> {
   @override
   void dispose() {
     print("dispose");
+    _audioPlayer.dispose();
     _positionSubscription?.cancel();
     _playingSubsciption?.cancel();
     super.dispose();

@@ -107,7 +107,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'signUpPage',
           path: '/signUpPage',
-          builder: (context, params) => SignUpPageWidget(),
+          builder: (context, params) => SignUpPageWidget(
+            pageParameter: params.getParam('pageParameter', ParamType.int),
+          ),
         ),
         FFRoute(
           name: 'signInPage',
@@ -255,6 +257,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'testQueryCache',
           path: '/testQueryCache',
           builder: (context, params) => TestQueryCacheWidget(),
+        ),
+        FFRoute(
+          name: 'confirmEmail',
+          path: '/confirmEmail',
+          builder: (context, params) => ConfirmEmailWidget(),
+        ),
+        FFRoute(
+          name: 'confirmEmailProfile',
+          path: '/confirmEmailProfile',
+          builder: (context, params) => ConfirmEmailProfileWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -436,10 +448,10 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).thirdBackground,
+                  color: Color(0xFF1A0830),
                   child: Center(
                     child: Image.asset(
-                      'assets/images/telegram-cloud-photo-size-2-5298662704984216227-y_2.png',
+                      'assets/images/IT_BRAIN_icon_app_store.png',
                       width: 150.0,
                       height: 150.0,
                       fit: BoxFit.contain,

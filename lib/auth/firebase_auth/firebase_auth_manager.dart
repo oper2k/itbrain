@@ -120,11 +120,9 @@ class FirebaseAuthManager extends AuthManager
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text(FFLocalizations.of(context)
-                .getText(
-                  'gehtb41l' /* Ошибка: [error] */,
-                )
-                .replaceAll('[error]', e.message!))),
+            content: Text(FFLocalizations.of(context).getText(
+          'gehtb41l' /* Ошибка: [ошибка] */,
+        ))),
       );
       return null;
     }
@@ -198,11 +196,9 @@ class FirebaseAuthManager extends AuthManager
       } else if (phoneAuthManager.phoneAuthError != null) {
         final e = phoneAuthManager.phoneAuthError!;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(FFLocalizations.of(context)
-              .getText(
-                'gehtb41l' /* Ошибка: [error] */,
-              )
-              .replaceAll('[error]', e.message!)),
+          content: Text(FFLocalizations.of(context).getText(
+            'gehtb41l' /* Ошибка: [ошибка] */,
+          )),
         ));
         phoneAuthManager.update(() => phoneAuthManager.phoneAuthError = null);
       }
@@ -311,13 +307,12 @@ class FirebaseAuthManager extends AuthManager
         'email-already-in-use' => FFLocalizations.of(context).getText(
             '45b0pzp0' /* Эта почта уже использовалась п... */,
           ),
-        'INVALID_LOGIN_CREDENTIALS' =>
-          'Error: The supplied auth credential is incorrect, malformed or has expired',
-        _ => FFLocalizations.of(context)
-            .getText(
-              'gehtb41l' /* Ошибка: [error] */,
-            )
-            .replaceAll('[error]', e.message!),
+        'INVALID_LOGIN_CREDENTIALS' => FFLocalizations.of(context).getText(
+            'zplip8a9' /* Предоставленные учетные данные... */,
+          ),
+        _ => FFLocalizations.of(context).getText(
+            'gehtb41l' /* Ошибка: [ошибка] */,
+          ),
       };
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(

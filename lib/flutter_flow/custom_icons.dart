@@ -7,6 +7,8 @@ class FFIcons {
   static const String _dMTIcons2Family = 'DMTIcons2';
   static const String _playerFamily = 'Player';
   static const String _player29Family = 'Player29';
+  static const String _player293434Family = 'Player293434';
+  static const String _isensorydop1Family = 'Isensorydop1';
 
   // DMTIcons
   static const IconData kedit1 = IconData(0xe900, fontFamily: _dMTIconsFamily);
@@ -52,4 +54,16 @@ class FFIcons {
 
   // player29
   static const IconData k332 = IconData(0xe900, fontFamily: _player29Family);
+
+  // player293434
+  static const IconData kcloudUpload =
+      IconData(0xe900, fontFamily: _player293434Family);
+  static const IconData kheart2 =
+      IconData(0xe902, fontFamily: _player293434Family);
+  static const IconData kheart45 =
+      IconData(0xe903, fontFamily: _player293434Family);
+
+  // isensorydop1
+  static const IconData kattentionTriangle =
+      IconData(0xe901, fontFamily: _isensorydop1Family);
 }

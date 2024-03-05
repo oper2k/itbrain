@@ -34,3 +34,7 @@ export '/main_pages/payment_page/payment_page_widget.dart'
     show PaymentPageWidget;
 export '/main_pages/test_query_cache/test_query_cache_widget.dart'
     show TestQueryCacheWidget;
+export '/auth_pages/confirm_email/confirm_email_widget.dart'
+    show ConfirmEmailWidget;
+export '/auth_pages/confirm_email_profile/confirm_email_profile_widget.dart'
+    show ConfirmEmailProfileWidget;

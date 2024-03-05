@@ -1,14 +1,14 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'meditation_comp_widget.dart' show MeditationCompWidget;
-import 'package:cached_network_image/cached_network_image.dart';
+import 'meditation_player_info_widget.dart' show MeditationPlayerInfoWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class MeditationCompModel extends FlutterFlowModel<MeditationCompWidget> {
+class MeditationPlayerInfoModel
+    extends FlutterFlowModel<MeditationPlayerInfoWidget> {
   /// Initialization and disposal methods.
 
   @override

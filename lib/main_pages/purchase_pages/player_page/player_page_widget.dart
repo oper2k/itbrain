@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/profile/is_deleted_once/is_deleted_once_widget.dart';
 import '/profile/is_downloaded_once/is_downloaded_once_widget.dart';
 import '/profile/is_not_downloaded/is_not_downloaded_widget.dart';
+import '/profile/meditation_player_info/meditation_player_info_widget.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -154,441 +155,66 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                     ),
                                   ),
                                 ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Builder(
-                                          builder: (context) => InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              _model.currentPageLink =
-                                                  await generateCurrentPageLink(
-                                                context,
-                                                title: valueOrDefault<String>(
-                                                  widget.audio?[widget.index!]
-                                                      ?.title,
-                                                  'Медитация',
-                                                ),
-                                                imageUrl:
-                                                    valueOrDefault<String>(
-                                                  widget.audio?[widget.index!]
-                                                      ?.image,
-                                                  'Медитация',
-                                                ),
-                                                description:
-                                                    valueOrDefault<String>(
-                                                  widget.audio?[widget.index!]
-                                                      ?.description,
-                                                  'Медитация',
-                                                ),
-                                              );
-
-                                              await Share.share(
-                                                _model.currentPageLink,
-                                                sharePositionOrigin:
-                                                    getWidgetBoundingBox(
-                                                        context),
-                                              );
-                                            },
-                                            child: Container(
-                                              width: 32.0,
-                                              height: 32.0,
-                                              decoration: BoxDecoration(),
-                                              child: Icon(
-                                                FFIcons.kshare2,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 32.0,
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    await showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      enableDrag: false,
+                                      context: context,
+                                      builder: (context) {
+                                        return WebViewAware(
+                                          child: GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child: Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: MeditationPlayerInfoWidget(
+                                                playerInfo: widget.audio!,
+                                                index: widget.index!,
                                               ),
                                             ),
                                           ),
+                                        );
+                                      },
+                                    ).then((value) => safeSetState(() {}));
+                                  },
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'rj969l7a' /* Описание */,
                                         ),
-                                        Stack(
-                                          children: [
-                                            if (functions.findTrackById(
-                                                    widget.audio![widget.index!]
-                                                        .reference.id,
-                                                    FFAppState()
-                                                        .downloadingTracks
-                                                        .toList()) !=
-                                                null)
-                                              Container(
-                                                width: 32.0,
-                                                height: 32.0,
-                                                child: custom_widgets
-                                                    .CustomProgressBar(
-                                                  width: 32.0,
-                                                  height: 32.0,
-                                                  track:
-                                                      functions.findTrackById(
-                                                          widget
-                                                              .audio![
-                                                                  widget.index!]
-                                                              .reference
-                                                              .id,
-                                                          FFAppState()
-                                                              .downloadingTracks
-                                                              .toList()),
-                                                ),
-                                              ),
-                                            Builder(
-                                              builder: (context) {
-                                                if (functions.findTrackById(
-                                                        widget
-                                                            .audio![
-                                                                widget.index!]
-                                                            .reference
-                                                            .id,
-                                                        FFAppState()
-                                                            .downloadedTracks
-                                                            .toList()) !=
-                                                    null) {
-                                                  return InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      _model.isDeleted =
-                                                          await actions
-                                                              .deleteFiles(
-                                                        functions.findTrackById(
-                                                            widget
-                                                                .audio![widget
-                                                                    .index!]
-                                                                .reference
-                                                                .id,
-                                                            FFAppState()
-                                                                .downloadedTracks
-                                                                .toList()),
-                                                      );
-                                                      if (_model.isDeleted!) {
-                                                        await showModalBottomSheet(
-                                                          isScrollControlled:
-                                                              true,
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          enableDrag: false,
-                                                          context: context,
-                                                          builder: (context) {
-                                                            return WebViewAware(
-                                                              child:
-                                                                  GestureDetector(
-                                                                onTap: () => _model
-                                                                        .unfocusNode
-                                                                        .canRequestFocus
-                                                                    ? FocusScope.of(
-                                                                            context)
-                                                                        .requestFocus(_model
-                                                                            .unfocusNode)
-                                                                    : FocusScope.of(
-                                                                            context)
-                                                                        .unfocus(),
-                                                                child: Padding(
-                                                                  padding: MediaQuery
-                                                                      .viewInsetsOf(
-                                                                          context),
-                                                                  child:
-                                                                      IsDeletedOnceWidget(),
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ).then((value) =>
-                                                            safeSetState(
-                                                                () {}));
-                                                      }
-
-                                                      setState(() {});
-                                                    },
-                                                    child: FaIcon(
-                                                      FontAwesomeIcons
-                                                          .arrowCircleDown,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .tertiary,
-                                                      size: 30.0,
-                                                    ),
-                                                  );
-                                                } else {
-                                                  return InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      if (!(functions.findTrackById(
-                                                              widget
-                                                                  .audio![widget
-                                                                      .index!]
-                                                                  .reference
-                                                                  .id,
-                                                              FFAppState()
-                                                                  .downloadingTracks
-                                                                  .toList()) !=
-                                                          null)) {
-                                                        _model.isDownload =
-                                                            await actions
-                                                                .downloadUrl(
-                                                          widget
-                                                              .audio?[
-                                                                  widget.index!]
-                                                              ?.reference
-                                                              .id,
-                                                          widget
-                                                              .audio?[
-                                                                  widget.index!]
-                                                              ?.audioPath,
-                                                          widget
-                                                              .audio?[
-                                                                  widget.index!]
-                                                              ?.image,
-                                                        );
-                                                      }
-                                                      if (_model.isDownload!) {
-                                                        setState(() {
-                                                          FFAppState()
-                                                              .updateDownloadedTracksAtIndex(
-                                                            valueOrDefault<int>(
-                                                                  FFAppState()
-                                                                      .downloadedTracks
-                                                                      .length,
-                                                                  1,
-                                                                ) -
-                                                                1,
-                                                            (e) => e
-                                                              ..name = widget
-                                                                  .audio?[widget
-                                                                      .index!]
-                                                                  ?.title
-                                                              ..description = widget
-                                                                  .audio?[widget
-                                                                      .index!]
-                                                                  ?.description
-                                                              ..audioPath = widget
-                                                                  .audio?[widget
-                                                                      .index!]
-                                                                  ?.audioPath
-                                                              ..isPaid = widget
-                                                                  .audio?[widget
-                                                                      .index!]
-                                                                  ?.isPaid
-                                                              ..duration = widget
-                                                                  .audio?[widget
-                                                                      .index!]
-                                                                  ?.duration
-                                                              ..type = widget
-                                                                  .audio?[widget
-                                                                      .index!]
-                                                                  ?.type
-                                                              ..nameEng = widget
-                                                                  .audio?[widget
-                                                                      .index!]
-                                                                  ?.titleEng
-                                                              ..descriptionName = widget
-                                                                  .audio?[widget
-                                                                      .index!]
-                                                                  ?.descriptionEng
-                                                              ..durationEng = widget
-                                                                  .audio?[widget
-                                                                      .index!]
-                                                                  ?.durationEng,
-                                                          );
-                                                        });
-                                                        await showModalBottomSheet(
-                                                          isScrollControlled:
-                                                              true,
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          enableDrag: false,
-                                                          context: context,
-                                                          builder: (context) {
-                                                            return WebViewAware(
-                                                              child:
-                                                                  GestureDetector(
-                                                                onTap: () => _model
-                                                                        .unfocusNode
-                                                                        .canRequestFocus
-                                                                    ? FocusScope.of(
-                                                                            context)
-                                                                        .requestFocus(_model
-                                                                            .unfocusNode)
-                                                                    : FocusScope.of(
-                                                                            context)
-                                                                        .unfocus(),
-                                                                child: Padding(
-                                                                  padding: MediaQuery
-                                                                      .viewInsetsOf(
-                                                                          context),
-                                                                  child:
-                                                                      IsDownloadedOnceWidget(),
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ).then((value) =>
-                                                            safeSetState(
-                                                                () {}));
-                                                      } else {
-                                                        await showModalBottomSheet(
-                                                          isScrollControlled:
-                                                              true,
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          enableDrag: false,
-                                                          context: context,
-                                                          builder: (context) {
-                                                            return WebViewAware(
-                                                              child:
-                                                                  GestureDetector(
-                                                                onTap: () => _model
-                                                                        .unfocusNode
-                                                                        .canRequestFocus
-                                                                    ? FocusScope.of(
-                                                                            context)
-                                                                        .requestFocus(_model
-                                                                            .unfocusNode)
-                                                                    : FocusScope.of(
-                                                                            context)
-                                                                        .unfocus(),
-                                                                child: Padding(
-                                                                  padding: MediaQuery
-                                                                      .viewInsetsOf(
-                                                                          context),
-                                                                  child:
-                                                                      IsNotDownloadedWidget(),
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ).then((value) =>
-                                                            safeSetState(
-                                                                () {}));
-                                                      }
-
-                                                      setState(() {});
-                                                    },
-                                                    child: Icon(
-                                                      FFIcons.kshare3,
-                                                      color: Colors.white,
-                                                      size: 32.0,
-                                                    ),
-                                                  );
-                                                }
-                                              },
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent1,
+                                              fontSize: 15.0,
+                                              useGoogleFonts: false,
                                             ),
-                                          ],
-                                        ),
-                                        Builder(
-                                          builder: (context) {
-                                            if ((currentUserDocument
-                                                            ?.meditationsWishList
-                                                            ?.toList() ??
-                                                        [])
-                                                    .contains(widget
-                                                        .audio?[widget.index!]
-                                                        ?.reference) ||
-                                                _model.isAudioLiked) {
-                                              return InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  await currentUserReference!
-                                                      .update({
-                                                    ...mapToFirestore(
-                                                      {
-                                                        'meditationsWishList':
-                                                            FieldValue
-                                                                .arrayRemove([
-                                                          widget
-                                                              .audio?[
-                                                                  widget.index!]
-                                                              ?.reference
-                                                        ]),
-                                                      },
-                                                    ),
-                                                  });
-                                                  setState(() {
-                                                    _model.isAudioLiked = false;
-                                                  });
-                                                },
-                                                child: Container(
-                                                  width: 32.0,
-                                                  height: 32.0,
-                                                  decoration: BoxDecoration(),
-                                                  child: Icon(
-                                                    Icons.favorite,
-                                                    color: Colors.white,
-                                                    size: 32.0,
-                                                  ),
-                                                ),
-                                              );
-                                            } else {
-                                              return InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  await currentUserReference!
-                                                      .update({
-                                                    ...mapToFirestore(
-                                                      {
-                                                        'meditationsWishList':
-                                                            FieldValue
-                                                                .arrayUnion([
-                                                          widget
-                                                              .audio?[
-                                                                  widget.index!]
-                                                              ?.reference
-                                                        ]),
-                                                      },
-                                                    ),
-                                                  });
-                                                  setState(() {
-                                                    _model.isAudioLiked = true;
-                                                  });
-                                                },
-                                                child: Container(
-                                                  width: 32.0,
-                                                  height: 32.0,
-                                                  decoration: BoxDecoration(),
-                                                  child: Icon(
-                                                    FFIcons.kheart,
-                                                    color: Colors.white,
-                                                    size: 32.0,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                          },
-                                        ),
-                                      ].divide(SizedBox(width: 16.0)),
-                                    ),
-                                  ],
+                                      ),
+                                      Icon(
+                                        FFIcons.k9,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent1,
+                                        size: 24.0,
+                                      ),
+                                    ].divide(SizedBox(width: 4.0)),
+                                  ),
                                 ),
                               ].divide(SizedBox(width: 16.0)),
                             ),
@@ -712,7 +338,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 38.0, 0.0, 92.0),
+                                0.0, 38.0, 0.0, 64.0),
                             child: Container(
                               decoration: BoxDecoration(),
                               child: Row(
@@ -978,6 +604,469 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                   ),
                                 ].divide(SizedBox(width: 24.0)),
                               ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 44.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Builder(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          _model.currentPageLink =
+                                              await generateCurrentPageLink(
+                                            context,
+                                            title: valueOrDefault<String>(
+                                              widget
+                                                  .audio?[widget.index!]?.title,
+                                              'Медитация',
+                                            ),
+                                            imageUrl: valueOrDefault<String>(
+                                              widget
+                                                  .audio?[widget.index!]?.image,
+                                              'Медитация',
+                                            ),
+                                            description: valueOrDefault<String>(
+                                              widget.audio?[widget.index!]
+                                                  ?.description,
+                                              'Медитация',
+                                            ),
+                                          );
+
+                                          await Share.share(
+                                            _model.currentPageLink,
+                                            sharePositionOrigin:
+                                                getWidgetBoundingBox(context),
+                                          );
+                                        },
+                                        child: Container(
+                                          width: 32.0,
+                                          height: 32.0,
+                                          decoration: BoxDecoration(),
+                                          child: Icon(
+                                            FFIcons.kshare2,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 32.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Stack(
+                                      children: [
+                                        if (functions.findTrackById(
+                                                widget.audio![widget.index!]
+                                                    .reference.id,
+                                                FFAppState()
+                                                    .downloadingTracks
+                                                    .toList()) !=
+                                            null)
+                                          Container(
+                                            width: 32.0,
+                                            height: 32.0,
+                                            child: custom_widgets
+                                                .CustomProgressBar(
+                                              width: 32.0,
+                                              height: 32.0,
+                                              track: functions.findTrackById(
+                                                  widget.audio![widget.index!]
+                                                      .reference.id,
+                                                  FFAppState()
+                                                      .downloadingTracks
+                                                      .toList()),
+                                            ),
+                                          ),
+                                        Builder(
+                                          builder: (context) {
+                                            if (functions.findTrackById(
+                                                    widget.audio![widget.index!]
+                                                        .reference.id,
+                                                    FFAppState()
+                                                        .downloadedTracks
+                                                        .toList()) !=
+                                                null) {
+                                              return InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  _model.isDeleted =
+                                                      await actions.deleteFiles(
+                                                    functions.findTrackById(
+                                                        widget
+                                                            .audio![
+                                                                widget.index!]
+                                                            .reference
+                                                            .id,
+                                                        FFAppState()
+                                                            .downloadedTracks
+                                                            .toList()),
+                                                  );
+                                                  if (_model.isDeleted!) {
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      enableDrag: false,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return WebViewAware(
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  IsDeletedOnceWidget(),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
+                                                  }
+
+                                                  setState(() {});
+                                                },
+                                                child: Icon(
+                                                  FFIcons.kcloudUpload,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 30.0,
+                                                ),
+                                              );
+                                            } else {
+                                              return InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  if (!(functions.findTrackById(
+                                                          widget
+                                                              .audio![
+                                                                  widget.index!]
+                                                              .reference
+                                                              .id,
+                                                          FFAppState()
+                                                              .downloadingTracks
+                                                              .toList()) !=
+                                                      null)) {
+                                                    _model.isDownload =
+                                                        await actions
+                                                            .downloadUrl(
+                                                      widget
+                                                          .audio?[widget.index!]
+                                                          ?.reference
+                                                          .id,
+                                                      widget
+                                                          .audio?[widget.index!]
+                                                          ?.audioPath,
+                                                      widget
+                                                          .audio?[widget.index!]
+                                                          ?.image,
+                                                    );
+                                                  }
+                                                  if (_model.isDownload!) {
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .updateDownloadedTracksAtIndex(
+                                                        valueOrDefault<int>(
+                                                              FFAppState()
+                                                                  .downloadedTracks
+                                                                  .length,
+                                                              1,
+                                                            ) -
+                                                            1,
+                                                        (e) => e
+                                                          ..name = widget
+                                                              .audio?[
+                                                                  widget.index!]
+                                                              ?.title
+                                                          ..description = widget
+                                                              .audio?[
+                                                                  widget.index!]
+                                                              ?.description
+                                                          ..audioPath = widget
+                                                              .audio?[
+                                                                  widget.index!]
+                                                              ?.audioPath
+                                                          ..isPaid = widget
+                                                              .audio?[
+                                                                  widget.index!]
+                                                              ?.isPaid
+                                                          ..duration = widget
+                                                              .audio?[
+                                                                  widget.index!]
+                                                              ?.duration
+                                                          ..type = widget
+                                                              .audio?[
+                                                                  widget.index!]
+                                                              ?.type
+                                                          ..nameEng = widget
+                                                              .audio?[
+                                                                  widget.index!]
+                                                              ?.titleEng
+                                                          ..descriptionName =
+                                                              widget
+                                                                  .audio?[widget
+                                                                      .index!]
+                                                                  ?.descriptionEng
+                                                          ..durationEng = widget
+                                                              .audio?[
+                                                                  widget.index!]
+                                                              ?.durationEng,
+                                                      );
+                                                    });
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      enableDrag: false,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return WebViewAware(
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  IsDownloadedOnceWidget(),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
+                                                  } else {
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      enableDrag: false,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return WebViewAware(
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  IsNotDownloadedWidget(),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
+                                                  }
+
+                                                  setState(() {});
+                                                },
+                                                child: Icon(
+                                                  FFIcons.kshare3,
+                                                  color: Colors.white,
+                                                  size: 32.0,
+                                                ),
+                                              );
+                                            }
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                    Builder(
+                                      builder: (context) {
+                                        if ((currentUserDocument
+                                                        ?.meditationsWishList
+                                                        ?.toList() ??
+                                                    [])
+                                                .contains(widget
+                                                    .audio?[widget.index!]
+                                                    ?.reference) ||
+                                            _model.isAudioLiked) {
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await currentUserReference!
+                                                  .update({
+                                                ...mapToFirestore(
+                                                  {
+                                                    'meditationsWishList':
+                                                        FieldValue.arrayRemove([
+                                                      widget
+                                                          .audio?[widget.index!]
+                                                          ?.reference
+                                                    ]),
+                                                  },
+                                                ),
+                                              });
+                                              setState(() {
+                                                _model.isAudioLiked = false;
+                                              });
+                                            },
+                                            child: Container(
+                                              width: 32.0,
+                                              height: 32.0,
+                                              decoration: BoxDecoration(),
+                                              child: Icon(
+                                                Icons.favorite,
+                                                color: Colors.white,
+                                                size: 32.0,
+                                              ),
+                                            ),
+                                          );
+                                        } else {
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await currentUserReference!
+                                                  .update({
+                                                ...mapToFirestore(
+                                                  {
+                                                    'meditationsWishList':
+                                                        FieldValue.arrayUnion([
+                                                      widget
+                                                          .audio?[widget.index!]
+                                                          ?.reference
+                                                    ]),
+                                                  },
+                                                ),
+                                              });
+                                              setState(() {
+                                                _model.isAudioLiked = true;
+                                              });
+                                            },
+                                            child: Container(
+                                              width: 32.0,
+                                              height: 32.0,
+                                              decoration: BoxDecoration(),
+                                              child: Icon(
+                                                FFIcons.kheart,
+                                                color: Colors.white,
+                                                size: 32.0,
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                    ),
+                                    Stack(
+                                      children: [
+                                        if (FFAppState().repeatMode)
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              setState(() {
+                                                FFAppState().repeatMode = true;
+                                              });
+                                              await actions.setLoopMode(
+                                                'p1',
+                                              );
+                                            },
+                                            child: Container(
+                                              width: 32.0,
+                                              height: 32.0,
+                                              decoration: BoxDecoration(),
+                                              child: Icon(
+                                                FFIcons.kheart45,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 32.0,
+                                              ),
+                                            ),
+                                          ),
+                                        if (!FFAppState().repeatMode)
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              setState(() {
+                                                FFAppState().repeatMode = false;
+                                              });
+                                              await actions.setLoopMode(
+                                                'p1',
+                                              );
+                                            },
+                                            child: Container(
+                                              width: 32.0,
+                                              height: 32.0,
+                                              decoration: BoxDecoration(),
+                                              child: Icon(
+                                                FFIcons.kheart,
+                                                color: Color(0xFFD9D9D9),
+                                                size: 32.0,
+                                              ),
+                                            ),
+                                          ),
+                                      ],
+                                    ),
+                                  ].divide(SizedBox(width: 48.0)),
+                                ),
+                              ],
                             ),
                           ),
                         ],

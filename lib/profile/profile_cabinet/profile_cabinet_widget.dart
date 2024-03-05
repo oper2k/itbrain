@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -9,9 +10,9 @@ import '/profile/rate_the_app/rate_the_app_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
@@ -27,10 +28,27 @@ class ProfileCabinetWidget extends StatefulWidget {
   State<ProfileCabinetWidget> createState() => _ProfileCabinetWidgetState();
 }
 
-class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
+class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
+    with TickerProviderStateMixin {
   late ProfileCabinetModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = {
+    'imageOnPageLoadAnimation': AnimationInfo(
+      loop: true,
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        BlurEffect(
+          curve: Curves.easeIn,
+          delay: 0.ms,
+          duration: 20000.ms,
+          begin: Offset(10.0, 10.0),
+          end: Offset(10.0, 10.0),
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
@@ -154,66 +172,251 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
-                          child: Builder(
-                            builder: (context) {
-                              if (currentUserPhoto != null &&
-                                  currentUserPhoto != '') {
-                                return Stack(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius:
-                                          BorderRadius.circular(100.0),
-                                      child: OctoImage(
-                                        placeholderBuilder:
-                                            OctoPlaceholder.blurHash(
-                                          FFAppState().imageProfileBlurHash,
-                                        ),
-                                        image: CachedNetworkImageProvider(
-                                          currentUserPhoto,
-                                        ),
-                                        width: 164.0,
-                                        height: 164.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              } else {
-                                return Container(
-                                  width: 164.0,
-                                  height: 164.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .buttonColor,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: AuthUserStreamWidget(
-                                      builder: (context) => Text(
-                                        functions.nameSurnameFirstLetters(
-                                            currentUserDisplayName,
-                                            valueOrDefault(
-                                                currentUserDocument?.surname,
-                                                ''))!,
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Evolventa',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent1,
-                                              fontSize: 40.0,
-                                              fontWeight: FontWeight.bold,
-                                              useGoogleFonts: false,
+                          child: Container(
+                            width: 160.0,
+                            height: 170.0,
+                            child: Stack(
+                              alignment: AlignmentDirectional(0.0, 1.0),
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, -1.0),
+                                  child: Builder(
+                                    builder: (context) {
+                                      if (currentUserPhoto != null &&
+                                          currentUserPhoto != '') {
+                                        return Stack(
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(100.0),
+                                              child: OctoImage(
+                                                placeholderBuilder:
+                                                    OctoPlaceholder.blurHash(
+                                                  FFAppState()
+                                                      .imageProfileBlurHash,
+                                                ),
+                                                image: NetworkImage(
+                                                  currentUserPhoto,
+                                                ),
+                                                width: 164.0,
+                                                height: 164.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ).animateOnPageLoad(animationsMap[
+                                                'imageOnPageLoadAnimation']!),
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(100.0),
+                                              child: OctoImage(
+                                                placeholderBuilder:
+                                                    OctoPlaceholder.blurHash(
+                                                  FFAppState()
+                                                      .imageProfileBlurHash,
+                                                ),
+                                                image: NetworkImage(
+                                                  currentUserPhoto,
+                                                ),
+                                                width: 164.0,
+                                                height: 164.0,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
-                                      ),
-                                    ),
+                                          ],
+                                        );
+                                      } else {
+                                        return Container(
+                                          width: 164.0,
+                                          height: 164.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .buttonColor,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: AuthUserStreamWidget(
+                                              builder: (context) => Text(
+                                                functions
+                                                    .nameSurnameFirstLetters(
+                                                        currentUserDisplayName,
+                                                        valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.surname,
+                                                            ''))!,
+                                                textAlign: TextAlign.center,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Evolventa',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent1,
+                                                      fontSize: 40.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      useGoogleFonts: false,
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                    },
                                   ),
-                                );
-                              }
-                            },
+                                ),
+                                Builder(
+                                  builder: (context) {
+                                    if (!currentUserEmailVerified) {
+                                      return Visibility(
+                                        visible: !currentUserEmailVerified,
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 1.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed('editProfile');
+                                            },
+                                            child: Container(
+                                              height: 24.0,
+                                              decoration: BoxDecoration(
+                                                color: Color(0xFFFF3F3F),
+                                                borderRadius:
+                                                    BorderRadius.circular(30.0),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 10.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Icon(
+                                                      FFIcons
+                                                          .kattentionTriangle,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      size: 16.0,
+                                                    ),
+                                                    Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        '87r6bjyr' /* Подтвердите email */,
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Evolventa',
+                                                            fontSize: 13.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            useGoogleFonts:
+                                                                false,
+                                                          ),
+                                                    ),
+                                                  ].divide(
+                                                      SizedBox(width: 4.0)),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    } else {
+                                      return Visibility(
+                                        visible: !currentUserEmailVerified,
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 1.0),
+                                          child: AuthUserStreamWidget(
+                                            builder: (context) => InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context
+                                                    .pushNamed('editProfile');
+                                              },
+                                              child: Container(
+                                                width: 126.0,
+                                                height: 24.0,
+                                                decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Color(0xFF9747FF),
+                                                      Color(0xFFF1618E),
+                                                      Color(0xFFFE710B)
+                                                    ],
+                                                    stops: [0.0, 0.4, 1.0],
+                                                    begin: AlignmentDirectional(
+                                                        1.0, 0.34),
+                                                    end: AlignmentDirectional(
+                                                        -1.0, -0.34),
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          30.0),
+                                                ),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Icon(
+                                                      Icons.done,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      size: 16.0,
+                                                    ),
+                                                    Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'zn198xg4' /* Подтвержден */,
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Evolventa',
+                                                            fontSize: 13.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            useGoogleFonts:
+                                                                false,
+                                                          ),
+                                                    ),
+                                                  ].divide(
+                                                      SizedBox(width: 4.0)),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         Padding(

@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/profile/is_deleted_once/is_deleted_once_widget.dart';
 import '/profile/is_downloaded_once/is_downloaded_once_widget.dart';
 import '/profile/is_not_downloaded/is_not_downloaded_widget.dart';
+import '/profile/meditation_player_info/meditation_player_info_widget.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;

@@ -68,6 +68,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
             : '+7');
     _model.phoneFocusNode ??= FocusNode();
     _model.phoneFocusNode!.addListener(() => setState(() {}));
+    _model.emailController ??= TextEditingController(text: currentUserEmail);
+    _model.emailFocusNode ??= FocusNode();
+    _model.emailFocusNode!.addListener(() => setState(() {}));
   }
 
   @override
@@ -632,6 +635,160 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  child: AuthUserStreamWidget(
+                    builder: (context) => Container(
+                      width: double.infinity,
+                      height: 58.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).alternate,
+                        borderRadius: BorderRadius.circular(12.0),
+                        border: Border.all(
+                          color: !currentUserEmailVerified
+                              ? Color(0xFFFF3F3F)
+                              : Colors.transparent,
+                        ),
+                      ),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 14.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    14.0, 0.0, 14.0, 0.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  child: TextFormField(
+                                    controller: _model.emailController,
+                                    focusNode: _model.emailFocusNode,
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      '_model.emailController',
+                                      Duration(milliseconds: 500),
+                                      () => setState(() {}),
+                                    ),
+                                    readOnly: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText:
+                                          FFLocalizations.of(context).getText(
+                                        'muo9s8yx' /* Email */,
+                                      ),
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Evolventa',
+                                            color:
+                                                (_model.emailFocusNode
+                                                            ?.hasFocus ??
+                                                        false)
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .accent1
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                            fontSize: 17.0,
+                                            useGoogleFonts: false,
+                                            lineHeight: 1.17,
+                                          ),
+                                      alignLabelWithHint: false,
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      errorStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Evolventa',
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            useGoogleFonts: false,
+                                          ),
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedErrorBorder: InputBorder.none,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Evolventa',
+                                          fontSize: 17.0,
+                                          useGoogleFonts: false,
+                                          lineHeight: 1.6,
+                                        ),
+                                    textAlign: TextAlign.start,
+                                    keyboardType: TextInputType.phone,
+                                    cursorColor:
+                                        FlutterFlowTheme.of(context).accent1,
+                                    validator: _model.emailControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            if (!currentUserEmailVerified)
+                              FFButtonWidget(
+                                onPressed: () {
+                                  print('Button pressed ...');
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'y79yrq61' /* Подтвердить */,
+                                ),
+                                options: FFButtonOptions(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: Colors.transparent,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Evolventa',
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent1,
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.bold,
+                                        useGoogleFonts: false,
+                                      ),
+                                  elevation: 0.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 0.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                if (!currentUserEmailVerified)
+                  Align(
+                    alignment: AlignmentDirectional(-1.0, -1.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => Text(
+                          FFLocalizations.of(context).getText(
+                            'kjzekphk' /* Email не подтвержден */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Evolventa',
+                                    color: Color(0xFFFF3F3F),
+                                    fontSize: 15.0,
+                                    useGoogleFonts: false,
+                                  ),
+                        ),
+                      ),
+                    ),
+                  ),
                 Spacer(),
                 if (!(isWeb
                     ? MediaQuery.viewInsetsOf(context).bottom > 0

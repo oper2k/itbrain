@@ -91,6 +91,11 @@ class MeditationCategoriesRecord extends FirestoreRecord {
   int get sort => _sort ?? 0;
   bool hasSort() => _sort != null;
 
+  // "soon" field.
+  bool? _soon;
+  bool get soon => _soon ?? false;
+  bool hasSoon() => _soon != null;
+
   void _initializeFields() {
     _nameCategory = snapshotData['nameCategory'] as String?;
     _descriptionCategory = snapshotData['descriptionCategory'] as String?;
@@ -108,6 +113,7 @@ class MeditationCategoriesRecord extends FirestoreRecord {
     _coastOfPackEng = snapshotData['coastOfPack_eng'] as String?;
     _count = castToType<int>(snapshotData['count']);
     _sort = castToType<int>(snapshotData['sort']);
+    _soon = snapshotData['soon'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -162,6 +168,7 @@ Map<String, dynamic> createMeditationCategoriesRecordData({
   String? coastOfPackEng,
   int? count,
   int? sort,
+  bool? soon,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -180,6 +187,7 @@ Map<String, dynamic> createMeditationCategoriesRecordData({
       'coastOfPack_eng': coastOfPackEng,
       'count': count,
       'sort': sort,
+      'soon': soon,
     }.withoutNulls,
   );
 
@@ -206,7 +214,8 @@ class MeditationCategoriesRecordDocumentEquality
         e1?.descriptionCategoryEng == e2?.descriptionCategoryEng &&
         e1?.coastOfPackEng == e2?.coastOfPackEng &&
         e1?.count == e2?.count &&
-        e1?.sort == e2?.sort;
+        e1?.sort == e2?.sort &&
+        e1?.soon == e2?.soon;
   }
 
   @override
@@ -225,7 +234,8 @@ class MeditationCategoriesRecordDocumentEquality
         e?.descriptionCategoryEng,
         e?.coastOfPackEng,
         e?.count,
-        e?.sort
+        e?.sort,
+        e?.soon
       ]);
 
   @override

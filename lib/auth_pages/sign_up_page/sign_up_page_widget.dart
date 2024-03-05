@@ -25,7 +25,12 @@ import 'sign_up_page_model.dart';
 export 'sign_up_page_model.dart';
 
 class SignUpPageWidget extends StatefulWidget {
-  const SignUpPageWidget({super.key});
+  const SignUpPageWidget({
+    super.key,
+    this.pageParameter,
+  });
+
+  final int? pageParameter;
 
   @override
   State<SignUpPageWidget> createState() => _SignUpPageWidgetState();
@@ -115,8 +120,13 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
             height: 500.0,
             child: PageView(
               physics: const NeverScrollableScrollPhysics(),
-              controller: _model.pageViewController ??=
-                  PageController(initialPage: 0),
+              controller: _model.pageViewController ??= PageController(
+                  initialPage: min(
+                      valueOrDefault<int>(
+                        widget.pageParameter != null ? widget.pageParameter : 0,
+                        0,
+                      ),
+                      2)),
               scrollDirection: Axis.horizontal,
               children: [
                 Padding(
@@ -738,10 +748,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                 _model.surnameController.text,
                                           ));
 
-                                      await _model.pageViewController?.nextPage(
-                                        duration: Duration(milliseconds: 300),
-                                        curve: Curves.ease,
-                                      );
+                                      context.pushNamedAuth(
+                                          'confirmEmail', context.mounted);
+
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     }

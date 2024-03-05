@@ -41,6 +41,10 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
   FocusNode? phoneFocusNode;
   TextEditingController? phoneController;
   String? Function(BuildContext, String?)? phoneControllerValidator;
+  // State field(s) for email widget.
+  FocusNode? emailFocusNode;
+  TextEditingController? emailController;
+  String? Function(BuildContext, String?)? emailControllerValidator;
 
   /// Initialization and disposal methods.
 
@@ -58,6 +62,9 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
 
     phoneFocusNode?.dispose();
     phoneController?.dispose();
+
+    emailFocusNode?.dispose();
+    emailController?.dispose();
   }
 
   /// Action blocks are added here.

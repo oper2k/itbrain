@@ -387,6 +387,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // profileCabinet
   {
+    '87r6bjyr': {
+      'ru': 'Подтвердите email',
+      'en': '',
+    },
+    'zn198xg4': {
+      'ru': 'Подтвержден',
+      'en': '',
+    },
     'hwhd0k82': {
       'ru': 'Изменить профиль',
       'en': 'Edit profile',
@@ -480,6 +488,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '9c4wz64o': {
       'ru': 'Номер телефона',
       'en': 'Name',
+    },
+    'muo9s8yx': {
+      'ru': 'Email',
+      'en': '',
+    },
+    'y79yrq61': {
+      'ru': 'Подтвердить',
+      'en': '',
+    },
+    'kjzekphk': {
+      'ru': 'Email не подтвержден',
+      'en': '',
     },
     'bu2xr0l3': {
       'ru': 'Применить',
@@ -660,6 +680,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // playerPage
   {
+    'rj969l7a': {
+      'ru': 'Описание',
+      'en': '',
+    },
     'w0mnvo2e': {
       'ru': 'Home',
       'en': '',
@@ -713,6 +737,64 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     's8ks71e8': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // confirmEmail
+  {
+    'lzq43swc': {
+      'ru': 'Написать в поддержку',
+      'en': '',
+    },
+    'lkocw12z': {
+      'ru': '📨',
+      'en': '',
+    },
+    '2nqv20ap': {
+      'ru': 'Подтвердите email',
+      'en': '',
+    },
+    'o86v7otv': {
+      'ru': 'Отправить код еще раз через',
+      'en': '',
+    },
+    '1dd2r518': {
+      'ru': 'Отправить код еще раз',
+      'en': '',
+    },
+    '3jbddo0n': {
+      'ru': 'Пропустить',
+      'en': '',
+    },
+    '58i4w14h': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // confirmEmailProfile
+  {
+    'crrgc7f3': {
+      'ru': 'Написать в поддержку',
+      'en': '',
+    },
+    'x23prvfz': {
+      'ru': '📨',
+      'en': '',
+    },
+    'yl8kmbu3': {
+      'ru': 'Подтвердите email',
+      'en': '',
+    },
+    'x3fb3rnp': {
+      'ru': 'Отправить код еще раз через',
+      'en': '',
+    },
+    'n9p18jdy': {
+      'ru': 'Отправить код еще раз',
+      'en': '',
+    },
+    'bbc0tz24': {
       'ru': 'Home',
       'en': '',
     },
@@ -845,6 +927,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '6ocxw9gx': {
       'ru': 'Спасибо',
+      'en': '',
+    },
+  },
+  // meditationComp
+  {
+    'c0orjo43': {
+      'ru': 'КУПЛЕНО',
+      'en': '',
+    },
+    '0ko1m2ax': {
+      'ru': 'СКОРО',
       'en': '',
     },
   },
@@ -998,6 +1091,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
+  // meditationPlayerInfo
+  {
+    'gt5fm4k8': {
+      'ru': 'Понятно!',
+      'en': '',
+    },
+  },
   // Miscellaneous
   {
     '9dizm1py': {
@@ -1029,7 +1129,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Allow to send you notifications about new events and meditations in the application.',
     },
     'gehtb41l': {
-      'ru': 'Ошибка: [error]',
+      'ru': 'Ошибка: [ошибка]',
       'en': 'Error: [error]',
     },
     'gat8isbv': {
@@ -1073,8 +1173,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'This email has already been used',
     },
     'zplip8a9': {
-      'ru': '',
-      'en': '',
+      'ru':
+          'Предоставленные учетные данные для авторизации неверны, введены неправильно или срок их действия истек',
+      'en':
+          'The supplied auth credential is incorrect,malformed or has expired',
     },
     'prqwaa0o': {
       'ru': 'Неверный формат',

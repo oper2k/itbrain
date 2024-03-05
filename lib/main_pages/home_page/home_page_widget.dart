@@ -46,6 +46,19 @@ class _HomePageWidgetState extends State<HomePageWidget>
         ),
       ],
     ),
+    'circleImageOnPageLoadAnimation': AnimationInfo(
+      loop: true,
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        BlurEffect(
+          curve: Curves.easeIn,
+          delay: 0.ms,
+          duration: 10000.ms,
+          begin: Offset(7.0, 7.0),
+          end: Offset(7.0, 7.0),
+        ),
+      ],
+    ),
   };
 
   @override
@@ -156,7 +169,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 50.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -173,31 +186,39 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'hx9gmzsn' /* Добро пожаловать! */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Evolventa',
-                                          fontSize: 17.0,
-                                          useGoogleFonts: false,
-                                          lineHeight: 1.41,
-                                        ),
-                                  ),
-                                  AuthUserStreamWidget(
-                                    builder: (context) => Text(
-                                      currentUserDisplayName,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'hx9gmzsn' /* Добро пожаловать! */,
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Evolventa',
-                                            fontSize: 24.0,
-                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17.0,
                                             useGoogleFonts: false,
-                                            lineHeight: 1.16,
+                                            lineHeight: 1.41,
                                           ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 0.0, 0.0),
+                                    child: AuthUserStreamWidget(
+                                      builder: (context) => Text(
+                                        currentUserDisplayName,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              fontSize: 24.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts: false,
+                                              lineHeight: 1.16,
+                                            ),
+                                      ),
                                     ),
                                   ),
                                 ].divide(SizedBox(height: 2.0)),
@@ -283,7 +304,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 28.0, 24.0, 0.0),
+                                  24.0, 28.0, 24.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -352,24 +373,28 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 if (!FFAppState().isOffline)
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'x2dzs6sp' /* Что нового? */,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'x2dzs6sp' /* Что нового? */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              fontSize: 24.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts: false,
+                                            ),
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Evolventa',
-                                            fontSize: 24.0,
-                                            fontWeight: FontWeight.bold,
-                                            useGoogleFonts: false,
-                                          ),
                                     ),
                                   ),
                                 if (!FFAppState().isOffline)
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 0.0),
+                                        24.0, 10.0, 0.0, 0.0),
                                     child: Builder(
                                       builder: (context) {
                                         final stories =
@@ -382,90 +407,281 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 stories.length, (storiesIndex) {
                                               final storiesItem =
                                                   stories[storiesIndex];
-                                              return AuthUserStreamWidget(
-                                                builder: (context) => InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    context.pushNamed(
-                                                      'Stories',
-                                                      queryParameters: {
-                                                        'stories':
-                                                            serializeParam(
-                                                          containerStoriesRecordList,
-                                                          ParamType.Document,
-                                                          true,
-                                                        ),
-                                                        'index': serializeParam(
-                                                          storiesIndex,
-                                                          ParamType.int,
-                                                        ),
-                                                      }.withoutNulls,
-                                                      extra: <String, dynamic>{
-                                                        'stories':
-                                                            containerStoriesRecordList,
+                                              return Builder(
+                                                builder: (context) {
+                                                  if (!(currentUserDocument
+                                                              ?.viewedStories
+                                                              ?.toList() ??
+                                                          [])
+                                                      .contains(storiesItem
+                                                          .reference)) {
+                                                    return InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        context.pushNamed(
+                                                          'Stories',
+                                                          queryParameters: {
+                                                            'stories':
+                                                                serializeParam(
+                                                              containerStoriesRecordList,
+                                                              ParamType
+                                                                  .Document,
+                                                              true,
+                                                            ),
+                                                            'index':
+                                                                serializeParam(
+                                                              storiesIndex,
+                                                              ParamType.int,
+                                                            ),
+                                                          }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            'stories':
+                                                                containerStoriesRecordList,
+                                                          },
+                                                        );
                                                       },
-                                                    );
-                                                  },
-                                                  child: Container(
-                                                    width: 72.0,
-                                                    height: 72.0,
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.transparent,
-                                                      shape: BoxShape.circle,
-                                                      border: Border.all(
-                                                        color: (currentUserDocument
-                                                                        ?.viewedStories
-                                                                        ?.toList() ??
-                                                                    [])
-                                                                .contains(
-                                                                    storiesItem
-                                                                        .reference)
-                                                            ? Color(0x00FE7110)
-                                                            : FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent1,
-                                                        width: 1.5,
-                                                      ),
-                                                    ),
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
                                                       child: Container(
-                                                        width: 64.0,
-                                                        height: 64.0,
-                                                        clipBehavior:
-                                                            Clip.antiAlias,
+                                                        width: 72.0,
+                                                        height: 72.0,
                                                         decoration:
                                                             BoxDecoration(
+                                                          gradient:
+                                                              LinearGradient(
+                                                            colors: [
+                                                              Color(0xFF9747FF),
+                                                              Color(0xFFF1618E),
+                                                              Color(0xFFFE710B)
+                                                            ],
+                                                            stops: [
+                                                              0.0,
+                                                              0.4,
+                                                              1.0
+                                                            ],
+                                                            begin:
+                                                                AlignmentDirectional(
+                                                                    1.0, 0.34),
+                                                            end:
+                                                                AlignmentDirectional(
+                                                                    -1.0,
+                                                                    -0.34),
+                                                          ),
                                                           shape:
                                                               BoxShape.circle,
+                                                          border: Border.all(
+                                                            color: (currentUserDocument
+                                                                            ?.viewedStories
+                                                                            ?.toList() ??
+                                                                        [])
+                                                                    .contains(
+                                                                        storiesItem
+                                                                            .reference)
+                                                                ? Color(
+                                                                    0x00FE7110)
+                                                                : FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent1,
+                                                          ),
                                                         ),
-                                                        child:
-                                                            CachedNetworkImage(
-                                                          fadeInDuration:
-                                                              Duration(
-                                                                  milliseconds:
-                                                                      500),
-                                                          fadeOutDuration:
-                                                              Duration(
-                                                                  milliseconds:
-                                                                      500),
-                                                          imageUrl:
-                                                              storiesItem.image,
-                                                          fit: BoxFit.cover,
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Container(
+                                                            width: 64.0,
+                                                            height: 64.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .buttonColor2,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          4.0,
+                                                                          4.0,
+                                                                          4.0,
+                                                                          4.0),
+                                                              child: Container(
+                                                                width: 64.0,
+                                                                height: 64.0,
+                                                                clipBehavior: Clip
+                                                                    .antiAlias,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                ),
+                                                                child: Image
+                                                                    .network(
+                                                                  storiesItem
+                                                                      .image,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ),
-                                                ),
+                                                    );
+                                                  } else {
+                                                    return AuthUserStreamWidget(
+                                                      builder: (context) =>
+                                                          InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          context.pushNamed(
+                                                            'Stories',
+                                                            queryParameters: {
+                                                              'stories':
+                                                                  serializeParam(
+                                                                containerStoriesRecordList,
+                                                                ParamType
+                                                                    .Document,
+                                                                true,
+                                                              ),
+                                                              'index':
+                                                                  serializeParam(
+                                                                storiesIndex,
+                                                                ParamType.int,
+                                                              ),
+                                                            }.withoutNulls,
+                                                            extra: <String,
+                                                                dynamic>{
+                                                              'stories':
+                                                                  containerStoriesRecordList,
+                                                            },
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          width: 72.0,
+                                                          height: 72.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .alternate,
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            border: Border.all(
+                                                              color: (currentUserDocument
+                                                                              ?.viewedStories
+                                                                              ?.toList() ??
+                                                                          [])
+                                                                      .contains(
+                                                                          storiesItem
+                                                                              .reference)
+                                                                  ? Color(
+                                                                      0x00FE7110)
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent1,
+                                                            ),
+                                                          ),
+                                                          child: Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: Container(
+                                                              width: 64.0,
+                                                              height: 64.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .buttonColor2,
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                              ),
+                                                              child: Stack(
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            4.0,
+                                                                            4.0,
+                                                                            4.0,
+                                                                            4.0),
+                                                                    child:
+                                                                        Container(
+                                                                      width:
+                                                                          64.0,
+                                                                      height:
+                                                                          64.0,
+                                                                      clipBehavior:
+                                                                          Clip.antiAlias,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                      ),
+                                                                      child: Image
+                                                                          .network(
+                                                                        storiesItem
+                                                                            .image,
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                      ),
+                                                                    ).animateOnPageLoad(
+                                                                            animationsMap['circleImageOnPageLoadAnimation']!),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            4.0,
+                                                                            4.0,
+                                                                            4.0,
+                                                                            4.0),
+                                                                    child:
+                                                                        Container(
+                                                                      width:
+                                                                          64.0,
+                                                                      height:
+                                                                          64.0,
+                                                                      clipBehavior:
+                                                                          Clip.antiAlias,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                      ),
+                                                                      child: Image
+                                                                          .network(
+                                                                        storiesItem
+                                                                            .image,
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                },
                                               );
                                             }).divide(SizedBox(width: 6.0)),
                                           ),
@@ -475,7 +691,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 20.0, 20.0, 0.0),
+                                      24.0, 20.0, 20.0, 0.0),
                                   child: StreamBuilder<List<AffirmationRecord>>(
                                     stream: queryAffirmationRecord(
                                       singleRecord: true,
@@ -605,7 +821,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 48.0, 0.0, 0.0),
+                                        24.0, 48.0, 0.0, 0.0),
                                     child: Text(
                                       valueOrDefault<String>(
                                         !FFAppState().isOffline
@@ -632,103 +848,111 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     ),
                                   ),
                                 ),
-                                StreamBuilder<List<MeditationCategoriesRecord>>(
-                                  stream: FFAppState().listViewCache(
-                                    requestFn: () =>
-                                        queryMeditationCategoriesRecord(
-                                      queryBuilder:
-                                          (meditationCategoriesRecord) =>
-                                              meditationCategoriesRecord
-                                                  .orderBy('sort',
-                                                      descending: true),
-                                    ),
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .tertiary,
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<MeditationCategoriesRecord>
-                                        listViewMeditationCategoriesRecordList =
-                                        snapshot.data!;
-                                    if (listViewMeditationCategoriesRecordList
-                                        .isEmpty) {
-                                      return Container(
-                                        height: 500.0,
-                                        child: OfflineModeWidget(),
-                                      );
-                                    }
-                                    return ListView.builder(
-                                      padding: EdgeInsets.fromLTRB(
-                                        0,
-                                        0,
-                                        0,
-                                        70.0,
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 0.0, 0.0),
+                                  child: StreamBuilder<
+                                      List<MeditationCategoriesRecord>>(
+                                    stream: FFAppState().listViewCache(
+                                      requestFn: () =>
+                                          queryMeditationCategoriesRecord(
+                                        queryBuilder:
+                                            (meditationCategoriesRecord) =>
+                                                meditationCategoriesRecord
+                                                    .orderBy('sort',
+                                                        descending: true),
                                       ),
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount:
-                                          listViewMeditationCategoriesRecordList
-                                              .length,
-                                      itemBuilder: (context, listViewIndex) {
-                                        final listViewMeditationCategoriesRecord =
-                                            listViewMeditationCategoriesRecordList[
-                                                listViewIndex];
-                                        return InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.pushNamed(
-                                              'meditationInfo',
-                                              queryParameters: {
-                                                'meditationCategory':
-                                                    serializeParam(
-                                                  listViewMeditationCategoriesRecord,
-                                                  ParamType.Document,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                'meditationCategory':
-                                                    listViewMeditationCategoriesRecord,
-                                              },
-                                            );
-                                          },
-                                          child: wrapWithModel(
-                                            model: _model.meditationCompModels
-                                                .getModel(
-                                              listViewIndex.toString(),
-                                              listViewIndex,
-                                            ),
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            updateOnChange: true,
-                                            child: MeditationCompWidget(
-                                              key: Key(
-                                                'Key1vu_${listViewIndex.toString()}',
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .tertiary,
                                               ),
-                                              meditationCategories:
-                                                  listViewMeditationCategoriesRecord,
                                             ),
                                           ),
                                         );
-                                      },
-                                    );
-                                  },
+                                      }
+                                      List<MeditationCategoriesRecord>
+                                          listViewMeditationCategoriesRecordList =
+                                          snapshot.data!;
+                                      if (listViewMeditationCategoriesRecordList
+                                          .isEmpty) {
+                                        return Container(
+                                          height: 500.0,
+                                          child: OfflineModeWidget(),
+                                        );
+                                      }
+                                      return ListView.builder(
+                                        padding: EdgeInsets.fromLTRB(
+                                          0,
+                                          0,
+                                          0,
+                                          70.0,
+                                        ),
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount:
+                                            listViewMeditationCategoriesRecordList
+                                                .length,
+                                        itemBuilder: (context, listViewIndex) {
+                                          final listViewMeditationCategoriesRecord =
+                                              listViewMeditationCategoriesRecordList[
+                                                  listViewIndex];
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              if (!listViewMeditationCategoriesRecord
+                                                  .soon) {
+                                                context.pushNamed(
+                                                  'meditationInfo',
+                                                  queryParameters: {
+                                                    'meditationCategory':
+                                                        serializeParam(
+                                                      listViewMeditationCategoriesRecord,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'meditationCategory':
+                                                        listViewMeditationCategoriesRecord,
+                                                  },
+                                                );
+                                              }
+                                            },
+                                            child: wrapWithModel(
+                                              model: _model.meditationCompModels
+                                                  .getModel(
+                                                listViewIndex.toString(),
+                                                listViewIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              updateOnChange: true,
+                                              child: MeditationCompWidget(
+                                                key: Key(
+                                                  'Key1vu_${listViewIndex.toString()}',
+                                                ),
+                                                meditationCategories:
+                                                    listViewMeditationCategoriesRecord,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
                                 ),
                               ],
                             ),

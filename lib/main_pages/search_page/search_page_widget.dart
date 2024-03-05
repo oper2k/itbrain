@@ -583,6 +583,33 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
 
                                                 return;
                                               } else {
+                                                context.pushNamed(
+                                                  'meditationInfo',
+                                                  queryParameters: {
+                                                    'meditationCategory':
+                                                        serializeParam(
+                                                      meditationsMeditationCategoriesRecord,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'meditationCategory':
+                                                        meditationsMeditationCategoriesRecord,
+                                                  },
+                                                );
+
+                                                await currentUserReference!
+                                                    .update({
+                                                  ...mapToFirestore(
+                                                    {
+                                                      'searchHistory':
+                                                          FieldValue
+                                                              .arrayUnion([
+                                                        resultsItem.reference
+                                                      ]),
+                                                    },
+                                                  ),
+                                                });
                                                 return;
                                               }
                                             } else {
