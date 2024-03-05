@@ -62,29 +62,36 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
               alignment: AlignmentDirectional(0.0, 1.0),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
-                child: Material(
-                  color: Colors.transparent,
-                  elevation: 0.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Container(
-                    height: 120.0,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 6.0,
-                          color: FlutterFlowTheme.of(context).accent1,
-                          offset: Offset(0.0, 0.0),
-                        )
-                      ],
+                child: AuthUserStreamWidget(
+                  builder: (context) => Material(
+                    color: Colors.transparent,
+                    elevation: 0.0,
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
-                      border: Border.all(
-                        color: Colors.transparent,
-                      ),
                     ),
-                    child: AuthUserStreamWidget(
-                      builder: (context) => Container(
+                    child: Container(
+                      height: 120.0,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 6.0,
+                            color: (currentUserDocument
+                                            ?.purchasedMeditationsPacks
+                                            ?.toList() ??
+                                        [])
+                                    .contains(
+                                        widget.meditationCategories?.reference)
+                                ? FlutterFlowTheme.of(context).accent1
+                                : Colors.transparent,
+                            offset: Offset(0.0, 0.0),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(20.0),
+                        border: Border.all(
+                          color: Colors.transparent,
+                        ),
+                      ),
+                      child: Container(
                         width: double.infinity,
                         height: 120.0,
                         decoration: BoxDecoration(

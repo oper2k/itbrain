@@ -46,19 +46,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
         ),
       ],
     ),
-    'circleImageOnPageLoadAnimation': AnimationInfo(
-      loop: true,
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        BlurEffect(
-          curve: Curves.easeIn,
-          delay: 0.ms,
-          duration: 10000.ms,
-          begin: Offset(7.0, 7.0),
-          end: Offset(7.0, 7.0),
-        ),
-      ],
-    ),
   };
 
   @override
@@ -614,36 +601,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               ),
                                                               child: Stack(
                                                                 children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            4.0,
-                                                                            4.0,
-                                                                            4.0,
-                                                                            4.0),
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          64.0,
-                                                                      height:
-                                                                          64.0,
-                                                                      clipBehavior:
-                                                                          Clip.antiAlias,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        shape: BoxShape
-                                                                            .circle,
-                                                                      ),
-                                                                      child: Image
-                                                                          .network(
-                                                                        storiesItem
-                                                                            .image,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      ),
-                                                                    ).animateOnPageLoad(
-                                                                            animationsMap['circleImageOnPageLoadAnimation']!),
-                                                                  ),
                                                                   Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(

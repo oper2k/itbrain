@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -12,7 +11,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
@@ -28,27 +26,10 @@ class ProfileCabinetWidget extends StatefulWidget {
   State<ProfileCabinetWidget> createState() => _ProfileCabinetWidgetState();
 }
 
-class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
-    with TickerProviderStateMixin {
+class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
   late ProfileCabinetModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = {
-    'imageOnPageLoadAnimation': AnimationInfo(
-      loop: true,
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        BlurEffect(
-          curve: Curves.easeIn,
-          delay: 0.ms,
-          duration: 20000.ms,
-          begin: Offset(10.0, 10.0),
-          end: Offset(10.0, 10.0),
-        ),
-      ],
-    ),
-  };
 
   @override
   void initState() {
@@ -186,24 +167,6 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                           currentUserPhoto != '') {
                                         return Stack(
                                           children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(100.0),
-                                              child: OctoImage(
-                                                placeholderBuilder:
-                                                    OctoPlaceholder.blurHash(
-                                                  FFAppState()
-                                                      .imageProfileBlurHash,
-                                                ),
-                                                image: NetworkImage(
-                                                  currentUserPhoto,
-                                                ),
-                                                width: 164.0,
-                                                height: 164.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ).animateOnPageLoad(animationsMap[
-                                                'imageOnPageLoadAnimation']!),
                                             ClipRRect(
                                               borderRadius:
                                                   BorderRadius.circular(100.0),

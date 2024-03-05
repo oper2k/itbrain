@@ -745,7 +745,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'lzq43swc': {
       'ru': 'Написать в поддержку',
-      'en': '',
+      'en': 'Write to support',
     },
     'lkocw12z': {
       'ru': '📨',
