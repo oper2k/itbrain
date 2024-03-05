@@ -110,7 +110,14 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                           ],
                           borderRadius: BorderRadius.circular(20.0),
                           border: Border.all(
-                            color: FlutterFlowTheme.of(context).accent1,
+                            color: (currentUserDocument
+                                            ?.purchasedMeditationsPacks
+                                            ?.toList() ??
+                                        [])
+                                    .contains(
+                                        widget.meditationCategories?.reference)
+                                ? FlutterFlowTheme.of(context).accent1
+                                : Colors.transparent,
                             width: 2.0,
                           ),
                         ),

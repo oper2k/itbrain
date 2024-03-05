@@ -9,6 +9,8 @@ import '/profile/rate_the_app/rate_the_app_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -820,6 +822,35 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               await revenue_cat.restorePurchases();
+                              _model.orders = await queryOrdersRecordOnce(
+                                queryBuilder: (ordersRecord) =>
+                                    ordersRecord.where(
+                                  'client_email',
+                                  isEqualTo: currentUserEmail,
+                                ),
+                              );
+                              if (_model.orders!.length > 0) {
+                                _model.meditations =
+                                    await queryMeditationCategoriesRecordOnce(
+                                  queryBuilder: (meditationCategoriesRecord) =>
+                                      meditationCategoriesRecord.whereIn(
+                                          'getcourse_offer',
+                                          _model.orders
+                                              ?.map((e) => e.purchasedProduct)
+                                              .toList()),
+                                );
+
+                                await currentUserReference!.update({
+                                  ...mapToFirestore(
+                                    {
+                                      'purchasedMeditationsPacks': _model
+                                          .meditations
+                                          ?.map((e) => e.reference)
+                                          .toList(),
+                                    },
+                                  ),
+                                });
+                              }
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: Colors.transparent,
@@ -842,6 +873,8 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                   );
                                 },
                               ).then((value) => safeSetState(() {}));
+
+                              setState(() {});
                             },
                             child: Container(
                               width: double.infinity,

@@ -33,49 +33,38 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await authManager.refreshUser();
-      setState(() {
-        _model.showNewCode = false;
-      });
       _model.timerController.onStartTimer();
       _model.instantTimer = InstantTimer.periodic(
-        duration: Duration(milliseconds: 1000),
+        duration: Duration(milliseconds: 300),
         callback: (timer) async {
           if (currentUserEmailVerified) {
             setState(() {
               _model.emailVerified = true;
             });
+            _model.instantTimer?.cancel();
+            if (currentUserEmailVerified) {
+              context.goNamed('editProfile');
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    'Email подтвержден!',
+                    style: TextStyle(
+                      fontFamily: 'Evolventa',
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      fontSize: 15.0,
+                    ),
+                  ),
+                  duration: Duration(milliseconds: 4000),
+                  backgroundColor: Color(0xFF541882),
+                ),
+              );
+            }
           } else {
             setState(() {
               _model.emailVerified = false;
             });
-          }
-
-          _model.instantTimer?.cancel();
-          if (currentUserEmailVerified) {
-            context.pushNamed(
-              'signUpPage',
-              queryParameters: {
-                'pageParameter': serializeParam(
-                  1,
-                  ParamType.int,
-                ),
-              }.withoutNulls,
-            );
-
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  'Email подтвержден!',
-                  style: TextStyle(
-                    fontFamily: 'Evolventa',
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    fontSize: 15.0,
-                  ),
-                ),
-                duration: Duration(milliseconds: 4000),
-                backgroundColor: Color(0xFF541882),
-              ),
-            );
+            return;
           }
         },
         startImmediately: true,
@@ -302,6 +291,8 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
                                 _model.showNewCode = false;
                               });
                               _model.timerController.onResetTimer();
+
+                              _model.timerController.onStartTimer();
                             },
                             text: FFLocalizations.of(context).getText(
                               'n9p18jdy' /* Отправить код еще раз */,

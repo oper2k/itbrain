@@ -13,6 +13,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
@@ -720,6 +721,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           lineHeight: 1.6,
                                         ),
                                     textAlign: TextAlign.start,
+                                    maxLength: 19,
+                                    maxLengthEnforcement:
+                                        MaxLengthEnforcement.enforced,
+                                    buildCounter: (context,
+                                            {required currentLength,
+                                            required isFocused,
+                                            maxLength}) =>
+                                        null,
                                     keyboardType: TextInputType.phone,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).accent1,
@@ -731,8 +740,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             ),
                             if (!currentUserEmailVerified)
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  await authManager.sendEmailVerification();
+
+                                  context.pushNamed('confirmEmailProfile');
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'y79yrq61' /* Подтвердить */,

@@ -72,17 +72,13 @@ class _PaymentPageWidgetState extends State<PaymentPageWidget> {
                   'purchased_product',
                   isEqualTo: widget.getCoursePaymentLink?.getcourseOffer,
                 ),
-            singleRecord: true,
           )..listen((snapshot) async {
               List<OrdersRecord> containerOrdersRecordList = snapshot;
-              final containerOrdersRecord = containerOrdersRecordList.isNotEmpty
-                  ? containerOrdersRecordList.first
-                  : null;
               if (_model.containerPreviousSnapshot != null &&
                   !const ListEquality(OrdersRecordDocumentEquality()).equals(
                       containerOrdersRecordList,
                       _model.containerPreviousSnapshot)) {
-                if (containerOrdersRecord != null) {
+                if (containerOrdersRecordList.length > 0) {
                   await currentUserReference!.update({
                     ...mapToFirestore(
                       {
@@ -116,9 +112,6 @@ class _PaymentPageWidgetState extends State<PaymentPageWidget> {
               );
             }
             List<OrdersRecord> containerOrdersRecordList = snapshot.data!;
-            final containerOrdersRecord = containerOrdersRecordList.isNotEmpty
-                ? containerOrdersRecordList.first
-                : null;
             return Container(
               width: double.infinity,
               height: double.infinity,
