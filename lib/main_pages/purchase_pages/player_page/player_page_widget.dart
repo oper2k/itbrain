@@ -1008,10 +1008,10 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                         }
                                       },
                                     ),
-                                    Stack(
-                                      children: [
-                                        if (FFAppState().repeatMode)
-                                          InkWell(
+                                    Builder(
+                                      builder: (context) {
+                                        if (FFAppState().repeatMode) {
+                                          return InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
                                             hoverColor: Colors.transparent,
@@ -1029,40 +1029,46 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                               height: 32.0,
                                               decoration: BoxDecoration(),
                                               child: Icon(
-                                                FFIcons.kheart45,
+                                                FFIcons.knotHeart45,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 size: 32.0,
                                               ),
                                             ),
-                                          ),
-                                        if (!FFAppState().repeatMode)
-                                          InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              setState(() {
-                                                FFAppState().repeatMode = false;
-                                              });
-                                              await actions.setLoopMode(
-                                                'p1',
-                                              );
-                                            },
-                                            child: Container(
-                                              width: 32.0,
-                                              height: 32.0,
-                                              decoration: BoxDecoration(),
-                                              child: Icon(
-                                                FFIcons.kheart,
-                                                color: Color(0xFFD9D9D9),
-                                                size: 32.0,
+                                          );
+                                        } else {
+                                          return Visibility(
+                                            visible: !FFAppState().repeatMode,
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setState(() {
+                                                  FFAppState().repeatMode =
+                                                      false;
+                                                });
+                                                await actions.setLoopMode(
+                                                  'p1',
+                                                );
+                                              },
+                                              child: Container(
+                                                width: 32.0,
+                                                height: 32.0,
+                                                decoration: BoxDecoration(),
+                                                child: Icon(
+                                                  FFIcons.krotationing,
+                                                  color: Color(0xFFD9D9D9),
+                                                  size: 32.0,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                      ],
+                                          );
+                                        }
+                                      },
                                     ),
                                   ].divide(SizedBox(width: 48.0)),
                                 ),

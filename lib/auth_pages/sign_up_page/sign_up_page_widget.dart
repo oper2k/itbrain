@@ -713,6 +713,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       setState(() {
                                         _model.showDocExistsError = false;
                                       });
+
+                                      context.pushNamedAuth(
+                                          'confirmEmail', context.mounted);
+
                                       GoRouter.of(context).prepareAuthEvent();
                                       if (_model.passwordController.text !=
                                           _model.confirmPassController.text) {
@@ -747,9 +751,6 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                             surname:
                                                 _model.surnameController.text,
                                           ));
-
-                                      context.pushNamedAuth(
-                                          'confirmEmail', context.mounted);
 
                                       if (_shouldSetState) setState(() {});
                                       return;

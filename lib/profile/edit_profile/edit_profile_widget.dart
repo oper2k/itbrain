@@ -670,6 +670,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                       Duration(milliseconds: 500),
                                       () => setState(() {}),
                                     ),
+                                    readOnly: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -692,7 +693,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                         .secondaryText,
                                             fontSize: 17.0,
                                             useGoogleFonts: false,
-                                            lineHeight: 1.17,
+                                            lineHeight: 1.2,
                                           ),
                                       alignLabelWithHint: false,
                                       hintStyle: FlutterFlowTheme.of(context)
@@ -716,7 +717,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           fontFamily: 'Evolventa',
                                           fontSize: 15.0,
                                           useGoogleFonts: false,
-                                          lineHeight: 1.6,
+                                          lineHeight: 1.5,
                                         ),
                                     textAlign: TextAlign.start,
                                     maxLength: 18,
