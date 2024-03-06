@@ -235,146 +235,129 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                 Builder(
                                   builder: (context) {
                                     if (!currentUserEmailVerified) {
-                                      return Visibility(
-                                        visible: !currentUserEmailVerified,
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 1.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              context.pushNamed('editProfile');
-                                            },
-                                            child: Container(
-                                              height: 24.0,
-                                              decoration: BoxDecoration(
-                                                color: Color(0xFFFF3F3F),
-                                                borderRadius:
-                                                    BorderRadius.circular(30.0),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 10.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Icon(
-                                                      FFIcons
-                                                          .kattentionTriangle,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      size: 16.0,
+                                      return Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 1.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed('editProfile');
+                                          },
+                                          child: Container(
+                                            height: 24.0,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFFF3F3F),
+                                              borderRadius:
+                                                  BorderRadius.circular(30.0),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 10.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Icon(
+                                                    FFIcons.kattentionTriangle,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    size: 16.0,
+                                                  ),
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '87r6bjyr' /* Подтвердите email */,
                                                     ),
-                                                    Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        '87r6bjyr' /* Подтвердите email */,
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Evolventa',
-                                                            fontSize: 13.0,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            useGoogleFonts:
-                                                                false,
-                                                          ),
-                                                    ),
-                                                  ].divide(
-                                                      SizedBox(width: 4.0)),
-                                                ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Evolventa',
+                                                          fontSize: 13.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ].divide(SizedBox(width: 4.0)),
                                               ),
                                             ),
                                           ),
                                         ),
                                       );
-                                    } else {
-                                      return Visibility(
-                                        visible: !currentUserEmailVerified,
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 1.0),
-                                          child: AuthUserStreamWidget(
-                                            builder: (context) => InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context
-                                                    .pushNamed('editProfile');
-                                              },
-                                              child: Container(
-                                                width: 126.0,
-                                                height: 24.0,
-                                                decoration: BoxDecoration(
-                                                  gradient: LinearGradient(
-                                                    colors: [
-                                                      Color(0xFF9747FF),
-                                                      Color(0xFFF1618E),
-                                                      Color(0xFFFE710B)
-                                                    ],
-                                                    stops: [0.0, 0.4, 1.0],
-                                                    begin: AlignmentDirectional(
-                                                        1.0, 0.34),
-                                                    end: AlignmentDirectional(
-                                                        -1.0, -0.34),
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          30.0),
-                                                ),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Icon(
-                                                      Icons.done,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      size: 16.0,
-                                                    ),
-                                                    Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'zn198xg4' /* Подтвержден */,
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Evolventa',
-                                                            fontSize: 13.0,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            useGoogleFonts:
-                                                                false,
-                                                          ),
-                                                    ),
-                                                  ].divide(
-                                                      SizedBox(width: 4.0)),
-                                                ),
+                                    } else if (currentUserEmailVerified) {
+                                      return Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 1.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed('editProfile');
+                                          },
+                                          child: Container(
+                                            width: 126.0,
+                                            height: 24.0,
+                                            decoration: BoxDecoration(
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  Color(0xFF9747FF),
+                                                  Color(0xFFF1618E),
+                                                  Color(0xFFFE710B)
+                                                ],
+                                                stops: [0.0, 0.4, 1.0],
+                                                begin: AlignmentDirectional(
+                                                    1.0, 0.34),
+                                                end: AlignmentDirectional(
+                                                    -1.0, -0.34),
                                               ),
+                                              borderRadius:
+                                                  BorderRadius.circular(30.0),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Icon(
+                                                  Icons.done,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 16.0,
+                                                ),
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'zn198xg4' /* Подтвержден */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Evolventa',
+                                                        fontSize: 13.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 4.0)),
                                             ),
                                           ),
+                                        ),
+                                      );
+                                    } else {
+                                      return Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.transparent,
                                         ),
                                       );
                                     }

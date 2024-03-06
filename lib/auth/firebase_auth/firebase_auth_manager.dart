@@ -120,9 +120,11 @@ class FirebaseAuthManager extends AuthManager
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text(FFLocalizations.of(context).getText(
-          'gehtb41l' /* Ошибка: [ошибка] */,
-        ))),
+            content: Text(FFLocalizations.of(context)
+                .getText(
+                  'gehtb41l' /* Ошибка: [error] */,
+                )
+                .replaceAll('[error]', e.message!))),
       );
       return null;
     }
@@ -196,9 +198,11 @@ class FirebaseAuthManager extends AuthManager
       } else if (phoneAuthManager.phoneAuthError != null) {
         final e = phoneAuthManager.phoneAuthError!;
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(FFLocalizations.of(context).getText(
-            'gehtb41l' /* Ошибка: [ошибка] */,
-          )),
+          content: Text(FFLocalizations.of(context)
+              .getText(
+                'gehtb41l' /* Ошибка: [error] */,
+              )
+              .replaceAll('[error]', e.message!)),
         ));
         phoneAuthManager.update(() => phoneAuthManager.phoneAuthError = null);
       }
@@ -310,9 +314,11 @@ class FirebaseAuthManager extends AuthManager
         'INVALID_LOGIN_CREDENTIALS' => FFLocalizations.of(context).getText(
             'zplip8a9' /* Предоставленные учетные данные... */,
           ),
-        _ => FFLocalizations.of(context).getText(
-            'gehtb41l' /* Ошибка: [ошибка] */,
-          ),
+        _ => FFLocalizations.of(context)
+            .getText(
+              'gehtb41l' /* Ошибка: [error] */,
+            )
+            .replaceAll('[error]', e.message!),
       };
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(

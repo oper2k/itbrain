@@ -964,7 +964,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                               height: 32.0,
                                               decoration: BoxDecoration(),
                                               child: Icon(
-                                                Icons.favorite,
+                                                FFIcons.kheart2,
                                                 color: Colors.white,
                                                 size: 32.0,
                                               ),
@@ -999,7 +999,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                               height: 32.0,
                                               decoration: BoxDecoration(),
                                               child: Icon(
-                                                FFIcons.kheart,
+                                                FFIcons.k8,
                                                 color: Colors.white,
                                                 size: 32.0,
                                               ),

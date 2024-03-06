@@ -641,7 +641,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   child: AuthUserStreamWidget(
                     builder: (context) => Container(
                       width: double.infinity,
-                      height: 58.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).alternate,
                         borderRadius: BorderRadius.circular(12.0),
@@ -671,7 +670,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                       Duration(milliseconds: 500),
                                       () => setState(() {}),
                                     ),
-                                    readOnly: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -716,12 +714,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Evolventa',
-                                          fontSize: 17.0,
+                                          fontSize: 15.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.6,
                                         ),
                                     textAlign: TextAlign.start,
-                                    maxLength: 19,
+                                    maxLength: 18,
                                     maxLengthEnforcement:
                                         MaxLengthEnforcement.enforced,
                                     buildCounter: (context,
@@ -729,7 +727,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                             required isFocused,
                                             maxLength}) =>
                                         null,
-                                    keyboardType: TextInputType.phone,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).accent1,
                                     validator: _model.emailControllerValidator

@@ -232,6 +232,10 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                         builder: (context) => Container(
                           width: 83.0,
                           height: 24.0,
+                          constraints: BoxConstraints(
+                            minWidth: 83.0,
+                            maxWidth: 95.0,
+                          ),
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [

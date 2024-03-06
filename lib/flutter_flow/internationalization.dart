@@ -389,11 +389,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '87r6bjyr': {
       'ru': 'Подтвердите email',
-      'en': '',
+      'en': 'Confirm your email',
     },
     'zn198xg4': {
       'ru': 'Подтвержден',
-      'en': '',
+      'en': 'Confirmed',
     },
     'hwhd0k82': {
       'ru': 'Изменить профиль',
@@ -934,11 +934,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'c0orjo43': {
       'ru': 'КУПЛЕНО',
-      'en': '',
+      'en': 'PURCHASED',
     },
     '0ko1m2ax': {
       'ru': 'СКОРО',
-      'en': '',
+      'en': 'SOON',
     },
   },
   // thanksForBuying
@@ -1129,7 +1129,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Allow to send you notifications about new events and meditations in the application.',
     },
     'gehtb41l': {
-      'ru': 'Ошибка: [ошибка]',
+      'ru': 'Ошибка: [error]',
       'en': 'Error: [error]',
     },
     'gat8isbv': {
