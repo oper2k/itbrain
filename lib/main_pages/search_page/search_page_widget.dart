@@ -614,17 +614,26 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                               }
                                             } else {
                                               context.pushNamed(
-                                                'meditationInfo',
+                                                'playerPage',
                                                 queryParameters: {
-                                                  'meditationCategory':
-                                                      serializeParam(
-                                                    meditationsMeditationCategoriesRecord,
+                                                  'audio': serializeParam(
+                                                    _model.simpleSearchResults,
                                                     ParamType.Document,
+                                                    true,
+                                                  ),
+                                                  'index': serializeParam(
+                                                    resultsIndex,
+                                                    ParamType.int,
+                                                  ),
+                                                  'medCategory': serializeParam(
+                                                    resultsItem
+                                                        .meditationCategory,
+                                                    ParamType.DocumentReference,
                                                   ),
                                                 }.withoutNulls,
                                                 extra: <String, dynamic>{
-                                                  'meditationCategory':
-                                                      meditationsMeditationCategoriesRecord,
+                                                  'audio': _model
+                                                      .simpleSearchResults,
                                                 },
                                               );
 

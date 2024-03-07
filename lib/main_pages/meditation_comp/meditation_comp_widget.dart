@@ -279,7 +279,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                         width: 70.0,
                         height: 24.0,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).alternate,
+                          color: Color(0xFF552F72),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Align(

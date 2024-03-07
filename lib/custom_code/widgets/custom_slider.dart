@@ -75,7 +75,7 @@ class _CustomSliderState extends State<CustomSlider> {
   @override
   void dispose() {
     print("dispose");
-    _audioPlayer.dispose();
+    _audioPlayer.stop();
     _positionSubscription?.cancel();
     _playingSubsciption?.cancel();
     super.dispose();
@@ -105,7 +105,7 @@ class _CustomSliderState extends State<CustomSlider> {
             metas: metas,
           ),
           showNotification: !Platform.isAndroid,
-          autoStart: false,
+          autoStart: true,
           playInBackground: PlayInBackground.enabled,
           audioFocusStrategy: AudioFocusStrategy.request(
               resumeAfterInterruption: true,
@@ -148,7 +148,7 @@ class _CustomSliderState extends State<CustomSlider> {
             metas: metas,
           ),
           showNotification: !Platform.isAndroid,
-          autoStart: false,
+          autoStart: true,
           seek: Duration(milliseconds: FFAppState().positionMS),
           playInBackground: PlayInBackground.enabled,
           audioFocusStrategy: AudioFocusStrategy.request(

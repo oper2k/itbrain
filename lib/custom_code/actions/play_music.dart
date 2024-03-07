@@ -17,7 +17,7 @@ Future playMusic(String playerId, String audioFilePath) async {
   final _audioPlayer = AssetsAudioPlayer.withId(playerId);
   // Воспроизведение нового аудиофайла
   await _audioPlayer.open(
-    Audio(audioFilePath),
+    Audio.network(audioFilePath.toString()),
     autoStart: false, // Начать воспроизведение автоматически
   );
 }

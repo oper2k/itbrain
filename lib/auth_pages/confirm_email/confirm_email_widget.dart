@@ -43,23 +43,27 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
             setState(() {
               _model.emailVerified = true;
             });
+            _model.instantTimer?.cancel();
+            if (currentUserEmailVerified) {
+              context.pushNamed(
+                'signUpPage',
+                queryParameters: {
+                  'pageParameter': serializeParam(
+                    1,
+                    ParamType.int,
+                  ),
+                }.withoutNulls,
+              );
+
+              return;
+            } else {
+              return;
+            }
           } else {
             setState(() {
               _model.emailVerified = false;
             });
-          }
-
-          _model.instantTimer?.cancel();
-          if (currentUserEmailVerified) {
-            context.pushNamed(
-              'signUpPage',
-              queryParameters: {
-                'pageParameter': serializeParam(
-                  1,
-                  ParamType.int,
-                ),
-              }.withoutNulls,
-            );
+            return;
           }
         },
         startImmediately: true,

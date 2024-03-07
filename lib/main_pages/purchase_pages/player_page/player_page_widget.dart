@@ -55,6 +55,12 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.yesCreateScreenshots();
+      await actions.playOrPause(
+        'p1',
+      );
+      setState(() {
+        FFAppState().positionMS = 0;
+      });
     });
   }
 
@@ -1018,7 +1024,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               setState(() {
-                                                FFAppState().repeatMode = true;
+                                                FFAppState().repeatMode = false;
                                               });
                                               await actions.setLoopMode(
                                                 'p1',
@@ -1038,32 +1044,27 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                             ),
                                           );
                                         } else {
-                                          return Visibility(
-                                            visible: !FFAppState().repeatMode,
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                setState(() {
-                                                  FFAppState().repeatMode =
-                                                      false;
-                                                });
-                                                await actions.setLoopMode(
-                                                  'p1',
-                                                );
-                                              },
-                                              child: Container(
-                                                width: 32.0,
-                                                height: 32.0,
-                                                decoration: BoxDecoration(),
-                                                child: Icon(
-                                                  FFIcons.krotationing,
-                                                  color: Color(0xFFD9D9D9),
-                                                  size: 32.0,
-                                                ),
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              setState(() {
+                                                FFAppState().repeatMode = true;
+                                              });
+                                              await actions.setLoopMode(
+                                                'p1',
+                                              );
+                                            },
+                                            child: Container(
+                                              width: 32.0,
+                                              height: 32.0,
+                                              decoration: BoxDecoration(),
+                                              child: Icon(
+                                                FFIcons.krotationing,
+                                                color: Color(0xFFD9D9D9),
+                                                size: 32.0,
                                               ),
                                             ),
                                           );
