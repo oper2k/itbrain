@@ -1023,9 +1023,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              setState(() {
-                                                FFAppState().repeatMode = false;
-                                              });
+                                              FFAppState().repeatMode = false;
                                               await actions.setLoopMode(
                                                 'p1',
                                               );
@@ -1050,9 +1048,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              setState(() {
-                                                FFAppState().repeatMode = true;
-                                              });
+                                              FFAppState().repeatMode = true;
                                               await actions.setLoopMode(
                                                 'p1',
                                               );

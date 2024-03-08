@@ -40,6 +40,12 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.yesCreateScreenshots();
+      await actions.playOrPause(
+        'p1',
+      );
+      setState(() {
+        FFAppState().positionMS = 0;
+      });
     });
   }
 
