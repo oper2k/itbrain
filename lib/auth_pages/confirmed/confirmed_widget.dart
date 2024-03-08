@@ -42,8 +42,6 @@ class _ConfirmedWidgetState extends State<ConfirmedWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Container(
       width: double.infinity,
       height: MediaQuery.sizeOf(context).height * 1.0,

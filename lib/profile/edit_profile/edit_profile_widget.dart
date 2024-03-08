@@ -14,6 +14,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
@@ -320,9 +321,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 builder: (context) => ClipRRect(
                                   borderRadius: BorderRadius.circular(100.0),
                                   child: OctoImage(
-                                    placeholderBuilder:
-                                        OctoPlaceholder.blurHash(
-                                      FFAppState().imageProfileBlurHash,
+                                    placeholderBuilder: (_) => SizedBox.expand(
+                                      child: Image(
+                                        image: BlurHashImage(
+                                            FFAppState().imageProfileBlurHash),
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                     image: CachedNetworkImageProvider(
                                       _model.uploadedFileUrl != null &&

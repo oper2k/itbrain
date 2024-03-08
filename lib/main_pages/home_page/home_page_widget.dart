@@ -13,6 +13,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
@@ -226,9 +227,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         borderRadius:
                                             BorderRadius.circular(100.0),
                                         child: OctoImage(
-                                          placeholderBuilder:
-                                              OctoPlaceholder.blurHash(
-                                            FFAppState().imageProfileBlurHash,
+                                          placeholderBuilder: (_) =>
+                                              SizedBox.expand(
+                                            child: Image(
+                                              image: BlurHashImage(FFAppState()
+                                                  .imageProfileBlurHash),
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                           image: CachedNetworkImageProvider(
                                             currentUserPhoto,

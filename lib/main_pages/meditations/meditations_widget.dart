@@ -45,8 +45,6 @@ class _MeditationsWidgetState extends State<MeditationsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: [

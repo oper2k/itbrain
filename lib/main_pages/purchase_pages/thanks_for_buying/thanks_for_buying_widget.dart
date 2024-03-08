@@ -44,8 +44,6 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(

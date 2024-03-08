@@ -38,8 +38,6 @@ class _DocExistsWidgetState extends State<DocExistsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Align(
       alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
