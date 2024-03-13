@@ -34,6 +34,7 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await authManager.refreshUser();
       _model.timerController.onStartTimer();
+      await authManager.sendEmailVerification();
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 300),
         callback: (timer) async {
@@ -172,16 +173,11 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
                   ],
                 ),
                 Spacer(),
-                Text(
-                  FFLocalizations.of(context).getText(
-                    'x23prvfz' /* 📨 */,
-                  ),
-                  textAlign: TextAlign.center,
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Evolventa',
-                        fontSize: 80.0,
-                        useGoogleFonts: false,
-                      ),
+                Image.asset(
+                  'assets/images/9jbw0_.webp',
+                  width: 80.0,
+                  height: 80.0,
+                  fit: BoxFit.cover,
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),

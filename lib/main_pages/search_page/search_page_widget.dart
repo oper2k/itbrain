@@ -104,55 +104,58 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 16.0),
+                  child: Stack(
                     children: [
-                      Expanded(
-                        child: Stack(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(-1.0, 0.0),
-                              child: Image.asset(
-                                'assets/images/Union.png',
-                                width: double.infinity,
-                                height: 56.0,
-                                fit: BoxFit.fill,
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 0.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(96.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(96.0),
+                                  topRight: Radius.circular(0.0),
+                                ),
                               ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Container(
-                                width: double.infinity,
+                                width: 219.0,
                                 height: 56.0,
                                 decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  borderRadius: BorderRadius.circular(96.0),
+                                  color: Color(0x15FFFFFF),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(96.0),
+                                    bottomRight: Radius.circular(0.0),
+                                    topLeft: Radius.circular(96.0),
+                                    topRight: Radius.circular(0.0),
+                                  ),
+                                  border: Border.all(
+                                    color: Colors.transparent,
+                                    width: 0.0,
+                                  ),
                                 ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 8.0, 4.0),
-                                      child: Icon(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 0.0, 0.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Icon(
                                         FFIcons.ksearch,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         size: 24.0,
                                       ),
-                                    ),
-                                    Expanded(
-                                      child: Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 1.0),
+                                      Expanded(
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 100.0, 0.0),
+                                                  8.0, 0.0, 8.0, 0.0),
                                           child: TextFormField(
                                             controller: _model.textController,
                                             focusNode:
@@ -200,356 +203,438 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                             autofocus: true,
                                             obscureText: false,
                                             decoration: InputDecoration(
-                                              alignLabelWithHint: false,
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium,
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                'nqnztqtf' /* Что бы вы хотели послушать? */,
+                                                'clkbqe0o' /* Что бы вы хотели послушать? */,
                                               ),
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
                                                         fontFamily: 'Evolventa',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
                                                         fontSize: 12.0,
                                                         useGoogleFonts: false,
-                                                        lineHeight: 1.5,
                                                       ),
                                               enabledBorder: InputBorder.none,
                                               focusedBorder: InputBorder.none,
                                               errorBorder: InputBorder.none,
                                               focusedErrorBorder:
                                                   InputBorder.none,
-                                              contentPadding:
-                                                  EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 14.0),
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Evolventa',
-                                                  fontSize: 17.0,
-                                                  useGoogleFonts: false,
-                                                  lineHeight: 1.7,
-                                                ),
-                                            textAlign: TextAlign.start,
-                                            cursorColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .accent1,
+                                                .bodyMedium,
                                             validator: _model
                                                 .textControllerValidator
                                                 .asValidator(context),
                                           ),
                                         ),
                                       ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 4.0, 0.0),
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 0.0,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  border: Border.all(
+                                    color: Colors.transparent,
+                                    width: 0.0,
+                                  ),
+                                ),
+                                child: Stack(
+                                  alignment: AlignmentDirectional(1.0, 0.0),
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/Subtract.webp',
+                                      width: 103.0,
+                                      height: 56.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 15.5, 0.0),
+                                      child: Icon(
+                                        FFIcons.kclose2,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
                             ),
-                            Align(
-                              alignment: AlignmentDirectional(1.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 17.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    setState(() {
-                                      _model.textController?.clear();
-                                    });
-                                  },
-                                  child: Icon(
-                                    FFIcons.kclose2,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 24.0,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                  child: Builder(
-                    builder: (context) {
-                      if (!_model.searchOk) {
-                        return Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'fajpr0yk' /* История поиска */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Evolventa',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 17.0,
-                                          useGoogleFonts: false,
-                                          lineHeight: 1.41,
-                                        ),
-                                  ),
-                                ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    await currentUserReference!.update({
-                                      ...mapToFirestore(
-                                        {
-                                          'searchHistory': FieldValue.delete(),
-                                        },
-                                      ),
-                                    });
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                      border: Border.all(
-                                        color: Colors.transparent,
-                                      ),
-                                    ),
+                Expanded(
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                    child: Builder(
+                      builder: (context) {
+                        if (!_model.searchOk) {
+                          return Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        '48mjxk32' /* Очистить */,
+                                        'fajpr0yk' /* История поиска */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Evolventa',
                                             color: FlutterFlowTheme.of(context)
-                                                .accent1,
-                                            fontSize: 15.0,
-                                            fontWeight: FontWeight.bold,
+                                                .secondaryText,
+                                            fontSize: 17.0,
                                             useGoogleFonts: false,
-                                            lineHeight: 1.6,
+                                            lineHeight: 1.41,
                                           ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 32.0, 0.0, 0.0),
-                              child: AuthUserStreamWidget(
-                                builder: (context) => Builder(
-                                  builder: (context) {
-                                    final meditationRef = (currentUserDocument
-                                                ?.searchHistory
-                                                ?.toList() ??
-                                            [])
-                                        .toList();
-                                    return ListView.separated(
-                                      padding: EdgeInsets.zero,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: meditationRef.length,
-                                      separatorBuilder: (_, __) =>
-                                          SizedBox(height: 32.0),
-                                      itemBuilder:
-                                          (context, meditationRefIndex) {
-                                        final meditationRefItem =
-                                            meditationRef[meditationRefIndex];
-                                        return Container(
-                                          decoration: BoxDecoration(
-                                            color: Colors.transparent,
-                                            border: Border.all(
-                                              color: Colors.transparent,
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await currentUserReference!.update({
+                                        ...mapToFirestore(
+                                          {
+                                            'searchHistory':
+                                                FieldValue.delete(),
+                                          },
+                                        ),
+                                      });
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                        border: Border.all(
+                                          color: Colors.transparent,
+                                        ),
+                                      ),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          '48mjxk32' /* Очистить */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent1,
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts: false,
+                                              lineHeight: 1.6,
                                             ),
-                                          ),
-                                          child:
-                                              StreamBuilder<MeditationsRecord>(
-                                            stream: FFAppState().historyCache(
-                                              requestFn: () =>
-                                                  MeditationsRecord.getDocument(
-                                                      meditationRefItem),
-                                            ),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 50.0,
-                                                    height: 50.0,
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      valueColor:
-                                                          AlwaysStoppedAnimation<
-                                                              Color>(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .tertiary,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 32.0, 0.0, 0.0),
+                                  child: AuthUserStreamWidget(
+                                    builder: (context) => Builder(
+                                      builder: (context) {
+                                        final meditationRef =
+                                            (currentUserDocument?.searchHistory
+                                                        ?.toList() ??
+                                                    [])
+                                                .toList();
+                                        return ListView.separated(
+                                          padding: EdgeInsets.zero,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: meditationRef.length,
+                                          separatorBuilder: (_, __) =>
+                                              SizedBox(height: 32.0),
+                                          itemBuilder:
+                                              (context, meditationRefIndex) {
+                                            final meditationRefItem =
+                                                meditationRef[
+                                                    meditationRefIndex];
+                                            return Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                                border: Border.all(
+                                                  color: Colors.transparent,
+                                                ),
+                                              ),
+                                              child: StreamBuilder<
+                                                  MeditationsRecord>(
+                                                stream:
+                                                    FFAppState().historyCache(
+                                                  requestFn: () =>
+                                                      MeditationsRecord
+                                                          .getDocument(
+                                                              meditationRefItem),
+                                                ),
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          valueColor:
+                                                              AlwaysStoppedAnimation<
+                                                                  Color>(
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiary,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                  final meditationsMeditationsRecord =
+                                                      snapshot.data!;
+                                                  return InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      context.pushNamed(
+                                                        'playerPage',
+                                                        queryParameters: {
+                                                          'audio':
+                                                              serializeParam(
+                                                            functions
+                                                                .addMeditationDocumentToList(
+                                                                    meditationsMeditationsRecord),
+                                                            ParamType.Document,
+                                                            true,
+                                                          ),
+                                                          'index':
+                                                              serializeParam(
+                                                            0,
+                                                            ParamType.int,
+                                                          ),
+                                                          'medCategory':
+                                                              serializeParam(
+                                                            meditationsMeditationsRecord
+                                                                .meditationCategory,
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                        }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'audio': functions
+                                                              .addMeditationDocumentToList(
+                                                                  meditationsMeditationsRecord),
+                                                        },
+                                                      );
+                                                    },
+                                                    child: wrapWithModel(
+                                                      model: _model
+                                                          .meditationsModels1
+                                                          .getModel(
+                                                        meditationRefIndex
+                                                            .toString(),
+                                                        meditationRefIndex,
+                                                      ),
+                                                      updateCallback: () =>
+                                                          setState(() {}),
+                                                      updateOnChange: true,
+                                                      child: MeditationsWidget(
+                                                        key: Key(
+                                                          'Keybv0_${meditationRefIndex.toString()}',
+                                                        ),
+                                                        meditation:
+                                                            meditationsMeditationsRecord,
                                                       ),
                                                     ),
+                                                  );
+                                                },
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 3.0, 0.0, 0.0),
+                            child: Builder(
+                              builder: (context) {
+                                final results =
+                                    _model.simpleSearchResults.toList();
+                                return ListView.separated(
+                                  padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: results.length,
+                                  separatorBuilder: (_, __) =>
+                                      SizedBox(height: 32.0),
+                                  itemBuilder: (context, resultsIndex) {
+                                    final resultsItem = results[resultsIndex];
+                                    return Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.transparent,
+                                        border: Border.all(
+                                          color: Colors.transparent,
+                                        ),
+                                      ),
+                                      child: StreamBuilder<
+                                          MeditationCategoriesRecord>(
+                                        stream: MeditationCategoriesRecord
+                                            .getDocument(resultsItem
+                                                .meditationCategory!),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiary,
                                                   ),
-                                                );
-                                              }
-                                              final meditationsMeditationsRecord =
-                                                  snapshot.data!;
-                                              return InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          final meditationsMeditationCategoriesRecord =
+                                              snapshot.data!;
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              if (resultsItem.isPaid) {
+                                                if ((currentUserDocument
+                                                            ?.purchasedMeditationsPacks
+                                                            ?.toList() ??
+                                                        [])
+                                                    .contains(resultsItem
+                                                        .meditationCategory)) {
+                                                  setState(() {
+                                                    FFAppState().positionMS = 0;
+                                                  });
+
+                                                  await currentUserReference!
+                                                      .update({
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'searchHistory':
+                                                            FieldValue
+                                                                .arrayUnion([
+                                                          resultsItem.reference
+                                                        ]),
+                                                      },
+                                                    ),
+                                                  });
+
                                                   context.pushNamed(
                                                     'playerPage',
                                                     queryParameters: {
                                                       'audio': serializeParam(
-                                                        functions
-                                                            .addMeditationDocumentToList(
-                                                                meditationsMeditationsRecord),
+                                                        _model
+                                                            .simpleSearchResults,
                                                         ParamType.Document,
                                                         true,
                                                       ),
                                                       'index': serializeParam(
-                                                        0,
+                                                        resultsIndex,
                                                         ParamType.int,
                                                       ),
                                                       'medCategory':
                                                           serializeParam(
-                                                        meditationsMeditationsRecord
+                                                        resultsItem
                                                             .meditationCategory,
                                                         ParamType
                                                             .DocumentReference,
                                                       ),
                                                     }.withoutNulls,
                                                     extra: <String, dynamic>{
-                                                      'audio': functions
-                                                          .addMeditationDocumentToList(
-                                                              meditationsMeditationsRecord),
+                                                      'audio': _model
+                                                          .simpleSearchResults,
                                                     },
                                                   );
-                                                },
-                                                child: wrapWithModel(
-                                                  model: _model
-                                                      .meditationsModels1
-                                                      .getModel(
-                                                    meditationRefIndex
-                                                        .toString(),
-                                                    meditationRefIndex,
-                                                  ),
-                                                  updateCallback: () =>
-                                                      setState(() {}),
-                                                  updateOnChange: true,
-                                                  child: MeditationsWidget(
-                                                    key: Key(
-                                                      'Keybv0_${meditationRefIndex.toString()}',
-                                                    ),
-                                                    meditation:
-                                                        meditationsMeditationsRecord,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        );
-                      } else {
-                        return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 3.0, 0.0, 0.0),
-                          child: Builder(
-                            builder: (context) {
-                              final results =
-                                  _model.simpleSearchResults.toList();
-                              return ListView.separated(
-                                padding: EdgeInsets.zero,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: results.length,
-                                separatorBuilder: (_, __) =>
-                                    SizedBox(height: 32.0),
-                                itemBuilder: (context, resultsIndex) {
-                                  final resultsItem = results[resultsIndex];
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                      border: Border.all(
-                                        color: Colors.transparent,
-                                      ),
-                                    ),
-                                    child: StreamBuilder<
-                                        MeditationCategoriesRecord>(
-                                      stream: MeditationCategoriesRecord
-                                          .getDocument(
-                                              resultsItem.meditationCategory!),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiary,
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        final meditationsMeditationCategoriesRecord =
-                                            snapshot.data!;
-                                        return InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            if (resultsItem.isPaid) {
-                                              if ((currentUserDocument
-                                                          ?.purchasedMeditationsPacks
-                                                          ?.toList() ??
-                                                      [])
-                                                  .contains(resultsItem
-                                                      .meditationCategory)) {
-                                                await currentUserReference!
-                                                    .update({
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'searchHistory':
-                                                          FieldValue
-                                                              .arrayUnion([
-                                                        resultsItem.reference
-                                                      ]),
+
+                                                  return;
+                                                } else {
+                                                  context.pushNamed(
+                                                    'meditationInfoNew',
+                                                    queryParameters: {
+                                                      'meditationCategory':
+                                                          serializeParam(
+                                                        meditationsMeditationCategoriesRecord,
+                                                        ParamType.Document,
+                                                      ),
+                                                    }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      'meditationCategory':
+                                                          meditationsMeditationCategoriesRecord,
                                                     },
-                                                  ),
+                                                  );
+
+                                                  await currentUserReference!
+                                                      .update({
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'searchHistory':
+                                                            FieldValue
+                                                                .arrayUnion([
+                                                          resultsItem.reference
+                                                        ]),
+                                                      },
+                                                    ),
+                                                  });
+                                                  return;
+                                                }
+                                              } else {
+                                                setState(() {
+                                                  FFAppState().positionMS = 0;
                                                 });
 
                                                 context.pushNamed(
@@ -579,23 +664,6 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                                   },
                                                 );
 
-                                                return;
-                                              } else {
-                                                context.pushNamed(
-                                                  'meditationInfo',
-                                                  queryParameters: {
-                                                    'meditationCategory':
-                                                        serializeParam(
-                                                      meditationsMeditationCategoriesRecord,
-                                                      ParamType.Document,
-                                                    ),
-                                                  }.withoutNulls,
-                                                  extra: <String, dynamic>{
-                                                    'meditationCategory':
-                                                        meditationsMeditationCategoriesRecord,
-                                                  },
-                                                );
-
                                                 await currentUserReference!
                                                     .update({
                                                   ...mapToFirestore(
@@ -610,71 +678,34 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                                 });
                                                 return;
                                               }
-                                            } else {
-                                              context.pushNamed(
-                                                'playerPage',
-                                                queryParameters: {
-                                                  'audio': serializeParam(
-                                                    _model.simpleSearchResults,
-                                                    ParamType.Document,
-                                                    true,
-                                                  ),
-                                                  'index': serializeParam(
-                                                    resultsIndex,
-                                                    ParamType.int,
-                                                  ),
-                                                  'medCategory': serializeParam(
-                                                    resultsItem
-                                                        .meditationCategory,
-                                                    ParamType.DocumentReference,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'audio': _model
-                                                      .simpleSearchResults,
-                                                },
-                                              );
-
-                                              await currentUserReference!
-                                                  .update({
-                                                ...mapToFirestore(
-                                                  {
-                                                    'searchHistory':
-                                                        FieldValue.arrayUnion([
-                                                      resultsItem.reference
-                                                    ]),
-                                                  },
-                                                ),
-                                              });
-                                              return;
-                                            }
-                                          },
-                                          child: wrapWithModel(
-                                            model: _model.meditationsModels2
-                                                .getModel(
-                                              resultsIndex.toString(),
-                                              resultsIndex,
-                                            ),
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            child: MeditationsWidget(
-                                              key: Key(
-                                                'Keyphs_${resultsIndex.toString()}',
+                                            },
+                                            child: wrapWithModel(
+                                              model: _model.meditationsModels2
+                                                  .getModel(
+                                                resultsIndex.toString(),
+                                                resultsIndex,
                                               ),
-                                              meditation: resultsItem,
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              child: MeditationsWidget(
+                                                key: Key(
+                                                  'Keyphs_${resultsIndex.toString()}',
+                                                ),
+                                                meditation: resultsItem,
+                                              ),
                                             ),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                        );
-                      }
-                    },
+                                          );
+                                        },
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          );
+                        }
+                      },
+                    ),
                   ),
                 ),
               ],

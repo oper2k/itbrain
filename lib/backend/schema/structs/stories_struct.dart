@@ -13,10 +13,12 @@ class StoriesStruct extends FFFirebaseStruct {
     String? image,
     String? video,
     int? time,
+    String? imageEng,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _image = image,
         _video = video,
         _time = time,
+        _imageEng = imageEng,
         super(firestoreUtilData);
 
   // "image" field.
@@ -38,10 +40,17 @@ class StoriesStruct extends FFFirebaseStruct {
   void incrementTime(int amount) => _time = time + amount;
   bool hasTime() => _time != null;
 
+  // "imageEng" field.
+  String? _imageEng;
+  String get imageEng => _imageEng ?? '';
+  set imageEng(String? val) => _imageEng = val;
+  bool hasImageEng() => _imageEng != null;
+
   static StoriesStruct fromMap(Map<String, dynamic> data) => StoriesStruct(
         image: data['image'] as String?,
         video: data['video'] as String?,
         time: castToType<int>(data['time']),
+        imageEng: data['imageEng'] as String?,
       );
 
   static StoriesStruct? maybeFromMap(dynamic data) =>
@@ -51,6 +60,7 @@ class StoriesStruct extends FFFirebaseStruct {
         'image': _image,
         'video': _video,
         'time': _time,
+        'imageEng': _imageEng,
       }.withoutNulls;
 
   @override
@@ -66,6 +76,10 @@ class StoriesStruct extends FFFirebaseStruct {
         'time': serializeParam(
           _time,
           ParamType.int,
+        ),
+        'imageEng': serializeParam(
+          _imageEng,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -86,6 +100,11 @@ class StoriesStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        imageEng: deserializeParam(
+          data['imageEng'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -96,17 +115,19 @@ class StoriesStruct extends FFFirebaseStruct {
     return other is StoriesStruct &&
         image == other.image &&
         video == other.video &&
-        time == other.time;
+        time == other.time &&
+        imageEng == other.imageEng;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([image, video, time]);
+  int get hashCode => const ListEquality().hash([image, video, time, imageEng]);
 }
 
 StoriesStruct createStoriesStruct({
   String? image,
   String? video,
   int? time,
+  String? imageEng,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -116,6 +137,7 @@ StoriesStruct createStoriesStruct({
       image: image,
       video: video,
       time: time,
+      imageEng: imageEng,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

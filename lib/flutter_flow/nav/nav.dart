@@ -166,18 +166,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'meditationInfo',
-          path: '/meditationInfo',
-          asyncParams: {
-            'meditationCategory': getDoc(['meditationCategories'],
-                MeditationCategoriesRecord.fromSnapshot),
-          },
-          builder: (context, params) => MeditationInfoWidget(
-            meditationCategory:
-                params.getParam('meditationCategory', ParamType.Document),
-          ),
-        ),
-        FFRoute(
           name: 'buyPack',
           path: '/buyPack',
           asyncParams: {
@@ -267,6 +255,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'confirmEmailProfile',
           path: '/confirmEmailProfile',
           builder: (context, params) => ConfirmEmailProfileWidget(),
+        ),
+        FFRoute(
+          name: 'meditationInfoNew',
+          path: '/meditationInfoNew',
+          asyncParams: {
+            'meditationCategory': getDoc(['meditationCategories'],
+                MeditationCategoriesRecord.fromSnapshot),
+          },
+          builder: (context, params) => MeditationInfoNewWidget(
+            meditationCategory:
+                params.getParam('meditationCategory', ParamType.Document),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

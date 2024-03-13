@@ -32,9 +32,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await authManager.refreshUser();
-      setState(() {
-        _model.showNewCode = false;
-      });
+      await authManager.sendEmailVerification();
       _model.timerController.onStartTimer();
       _model.instantTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 1000),
@@ -171,16 +169,11 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                   ],
                 ),
                 Spacer(),
-                Text(
-                  FFLocalizations.of(context).getText(
-                    'lkocw12z' /* 📨 */,
-                  ),
-                  textAlign: TextAlign.center,
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Evolventa',
-                        fontSize: 80.0,
-                        useGoogleFonts: false,
-                      ),
+                Image.asset(
+                  'assets/images/9jbw0_.webp',
+                  width: 80.0,
+                  height: 80.0,
+                  fit: BoxFit.cover,
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),

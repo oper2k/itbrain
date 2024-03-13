@@ -386,7 +386,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 if (!FFAppState().isOffline)
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 10.0, 0.0, 0.0),
+                                        0.0, 10.0, 0.0, 0.0),
                                     child: Builder(
                                       builder: (context) {
                                         final stories =
@@ -395,8 +395,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           scrollDirection: Axis.horizontal,
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
-                                            children: List.generate(
-                                                stories.length, (storiesIndex) {
+                                            children:
+                                                List.generate(stories.length,
+                                                        (storiesIndex) {
                                               final storiesItem =
                                                   stories[storiesIndex];
                                               return Builder(
@@ -441,8 +442,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         );
                                                       },
                                                       child: Container(
-                                                        width: 72.0,
-                                                        height: 72.0,
+                                                        width: 77.0,
+                                                        height: 77.0,
                                                         decoration:
                                                             BoxDecoration(
                                                           gradient:
@@ -454,16 +455,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             ],
                                                             stops: [
                                                               0.0,
-                                                              0.4,
+                                                              0.6,
                                                               1.0
                                                             ],
                                                             begin:
                                                                 AlignmentDirectional(
-                                                                    1.0, 0.34),
+                                                                    0.0, -1.0),
                                                             end:
                                                                 AlignmentDirectional(
-                                                                    -1.0,
-                                                                    -0.34),
+                                                                    0, 1.0),
                                                           ),
                                                           shape:
                                                               BoxShape.circle,
@@ -487,8 +487,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: Container(
-                                                            width: 64.0,
-                                                            height: 64.0,
+                                                            width: 72.0,
+                                                            height: 72.0,
                                                             decoration:
                                                                 BoxDecoration(
                                                               color: FlutterFlowTheme
@@ -565,8 +565,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           );
                                                         },
                                                         child: Container(
-                                                          width: 72.0,
-                                                          height: 72.0,
+                                                          width: 77.0,
+                                                          height: 77.0,
                                                           decoration:
                                                               BoxDecoration(
                                                             color: FlutterFlowTheme
@@ -594,8 +594,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 AlignmentDirectional(
                                                                     0.0, 0.0),
                                                             child: Container(
-                                                              width: 64.0,
-                                                              height: 64.0,
+                                                              width: 72.0,
+                                                              height: 72.0,
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: FlutterFlowTheme.of(
@@ -645,7 +645,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   }
                                                 },
                                               );
-                                            }).divide(SizedBox(width: 6.0)),
+                                            })
+                                                    .divide(
+                                                        SizedBox(width: 7.0))
+                                                    .addToStart(
+                                                        SizedBox(width: 24.0))
+                                                    .addToEnd(
+                                                        SizedBox(width: 24.0)),
                                           ),
                                         );
                                       },
@@ -878,7 +884,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               if (!listViewMeditationCategoriesRecord
                                                   .soon) {
                                                 context.pushNamed(
-                                                  'meditationInfo',
+                                                  'meditationInfoNew',
                                                   queryParameters: {
                                                     'meditationCategory':
                                                         serializeParam(

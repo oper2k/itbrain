@@ -58,9 +58,6 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
       await actions.playOrPause(
         'p1',
       );
-      setState(() {
-        FFAppState().positionMS = 0;
-      });
     });
   }
 
@@ -386,6 +383,9 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                           1,
                                         )],
                                       );
+                                      setState(() {
+                                        FFAppState().positionMS = 0;
+                                      });
 
                                       context.goNamed(
                                         'playerPage',
@@ -515,12 +515,15 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                   ),
                                   Builder(
                                     builder: (context) {
-                                      if ((currentUserDocument
-                                                  ?.purchasedMeditationsPacks
-                                                  ?.toList() ??
-                                              [])
-                                          .contains(
-                                              widget.meditation?.reference)) {
+                                      if (((currentUserDocument
+                                                          ?.purchasedMeditationsPacks
+                                                          ?.toList() ??
+                                                      [])
+                                                  .contains(widget
+                                                      .audio?[widget.index!]
+                                                      ?.meditationCategory) ==
+                                              true) ||
+                                          (widget.meditation?.free == true)) {
                                         return FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
                                           borderRadius: 20.0,
@@ -537,8 +540,14 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                               widget
                                                   .audio?[(widget.index!) + 1],
                                             );
-
-                                            context.goNamed(
+                                            setState(() {
+                                              FFAppState().positionMS = 0;
+                                            });
+                                            if (Navigator.of(context)
+                                                .canPop()) {
+                                              context.pop();
+                                            }
+                                            context.pushNamed(
                                               'playerPage',
                                               queryParameters: {
                                                 'audio': serializeParam(

@@ -108,14 +108,20 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                           ],
                           borderRadius: BorderRadius.circular(20.0),
                           border: Border.all(
-                            color: (currentUserDocument
-                                            ?.purchasedMeditationsPacks
-                                            ?.toList() ??
-                                        [])
-                                    .contains(
-                                        widget.meditationCategories?.reference)
-                                ? FlutterFlowTheme.of(context).accent1
-                                : Colors.transparent,
+                            color: () {
+                              if ((currentUserDocument
+                                          ?.purchasedMeditationsPacks
+                                          ?.toList() ??
+                                      [])
+                                  .contains(
+                                      widget.meditationCategories?.reference)) {
+                                return FlutterFlowTheme.of(context).accent1;
+                              } else if (widget.meditationCategories!.free) {
+                                return FlutterFlowTheme.of(context).accent1;
+                              } else {
+                                return Colors.transparent;
+                              }
+                            }(),
                             width: 2.0,
                           ),
                         ),

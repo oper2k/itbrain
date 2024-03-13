@@ -15,8 +15,6 @@ export '/drafts_pages/affirmation/affirmation_widget.dart'
     show AffirmationWidget;
 export '/main_pages/home_page/home_page_widget.dart' show HomePageWidget;
 export '/main_pages/stories/stories_widget.dart' show StoriesWidget;
-export '/main_pages/meditation_info/meditation_info_widget.dart'
-    show MeditationInfoWidget;
 export '/main_pages/purchase_pages/buy_pack/buy_pack_widget.dart'
     show BuyPackWidget;
 export '/main_pages/purchase_pages/payment_method/payment_method_widget.dart'
@@ -38,3 +36,5 @@ export '/auth_pages/confirm_email/confirm_email_widget.dart'
     show ConfirmEmailWidget;
 export '/auth_pages/confirm_email_profile/confirm_email_profile_widget.dart'
     show ConfirmEmailProfileWidget;
+export '/main_pages/meditation_info_new/meditation_info_new_widget.dart'
+    show MeditationInfoNewWidget;

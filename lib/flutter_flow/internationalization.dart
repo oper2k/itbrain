@@ -512,6 +512,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Affirmation
   {
+    'hv1mr1ys': {
+      'ru': 'Что бы вы хотели послушать?',
+      'en': 'What would you like to listen to?',
+    },
     '294z7kpt': {
       'ru': 'Home',
       'en': '',
@@ -543,25 +547,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Stories
   {
     's9i0wakv': {
-      'ru': 'Home',
-      'en': 'Home',
-    },
-  },
-  // meditationInfo
-  {
-    '86q0qtxl': {
-      'ru': 'eщё',
-      'en': 'more',
-    },
-    '5v0grdzu': {
-      'ru': 'свернуть',
-      'en': 'collapse',
-    },
-    '3rlf47r3': {
-      'ru': 'Узнать больше и купить',
-      'en': 'Find out more and buy',
-    },
-    'u6bh0k6d': {
       'ru': 'Home',
       'en': 'Home',
     },
@@ -657,13 +642,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // searchPage
   {
-    '86q8fk20': {
-      'ru': '',
-      'en': 'Search',
-    },
-    'nqnztqtf': {
+    'clkbqe0o': {
       'ru': 'Что бы вы хотели послушать?',
-      'en': 'What do you want to listen to?',
+      'en': '',
     },
     'fajpr0yk': {
       'ru': 'История поиска',
@@ -747,10 +728,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Написать в поддержку',
       'en': 'Write to support',
     },
-    'lkocw12z': {
-      'ru': '📨',
-      'en': '',
-    },
     '2nqv20ap': {
       'ru': 'Подтвердите email',
       'en': '',
@@ -778,23 +755,38 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Написать в поддержку',
       'en': '',
     },
-    'x23prvfz': {
-      'ru': '📨',
-      'en': '',
-    },
     'yl8kmbu3': {
       'ru': 'Подтвердите email',
-      'en': '',
+      'en': 'Confirm your email',
     },
     'x3fb3rnp': {
       'ru': 'Отправить код еще раз через',
-      'en': '',
+      'en': 'Send the code again via',
     },
     'n9p18jdy': {
       'ru': 'Отправить код еще раз',
       'en': '',
     },
     'bbc0tz24': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // meditationInfoNew
+  {
+    'vvpwce3u': {
+      'ru': 'eщё',
+      'en': '',
+    },
+    'apyldrf3': {
+      'ru': 'свернуть',
+      'en': '',
+    },
+    '7uzcrwxd': {
+      'ru': 'Узнать больше и купить',
+      'en': '',
+    },
+    'pt4kxvdz': {
       'ru': 'Home',
       'en': '',
     },

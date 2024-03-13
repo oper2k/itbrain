@@ -67,26 +67,29 @@ class _StoriesWidgetState extends State<StoriesWidget> {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryBackground,
+              color: Colors.transparent,
             ),
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              child: custom_widgets.Story(
+            child: Align(
+              alignment: AlignmentDirectional(0.0, 0.0),
+              child: Container(
                 width: double.infinity,
                 height: double.infinity,
-                initialPage: widget.index!,
-                allStories: widget.stories,
-                onUserChanged: () async {
-                  await currentUserReference!.update({
-                    ...mapToFirestore(
-                      {
-                        'viewedStories':
-                            FieldValue.arrayUnion([FFAppState().currentStory]),
-                      },
-                    ),
-                  });
-                },
+                child: custom_widgets.Story(
+                  width: double.infinity,
+                  height: double.infinity,
+                  initialPage: widget.index!,
+                  allStories: widget.stories,
+                  onUserChanged: () async {
+                    await currentUserReference!.update({
+                      ...mapToFirestore(
+                        {
+                          'viewedStories': FieldValue.arrayUnion(
+                              [FFAppState().currentStory]),
+                        },
+                      ),
+                    });
+                  },
+                ),
               ),
             ),
           ),

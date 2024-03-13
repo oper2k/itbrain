@@ -18,11 +18,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 'meditation_info_model.dart';
-export 'meditation_info_model.dart';
+import 'meditation_info_new_model.dart';
+export 'meditation_info_new_model.dart';
 
-class MeditationInfoWidget extends StatefulWidget {
-  const MeditationInfoWidget({
+class MeditationInfoNewWidget extends StatefulWidget {
+  const MeditationInfoNewWidget({
     super.key,
     this.meditationCategory,
   });
@@ -30,12 +30,13 @@ class MeditationInfoWidget extends StatefulWidget {
   final MeditationCategoriesRecord? meditationCategory;
 
   @override
-  State<MeditationInfoWidget> createState() => _MeditationInfoWidgetState();
+  State<MeditationInfoNewWidget> createState() =>
+      _MeditationInfoNewWidgetState();
 }
 
-class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
+class _MeditationInfoNewWidgetState extends State<MeditationInfoNewWidget>
     with TickerProviderStateMixin {
-  late MeditationInfoModel _model;
+  late MeditationInfoNewModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -58,7 +59,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MeditationInfoModel());
+    _model = createModel(context, () => MeditationInfoNewModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -203,342 +204,349 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                               ),
                                             ),
                                           ),
-                                        Container(
-                                          width: 44.0,
-                                          height: 44.0,
-                                          child: Stack(
-                                            children: [
-                                              if ((FFAppState()
-                                                          .downloadedTracks
-                                                          .where((e) =>
-                                                              e.category ==
-                                                              widget
-                                                                  .meditationCategory
-                                                                  ?.reference
-                                                                  .id)
-                                                          .toList()
-                                                          .length >=
-                                                      containerMeditationsRecordList
-                                                          .length) &&
-                                                  ((_model.downloadProgress ==
-                                                          0) ||
-                                                      (_model.downloadProgress ==
-                                                          100)))
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    while (_model
-                                                            .iterationIndex <
-                                                        containerMeditationsRecordList
-                                                            .length) {
-                                                      _model.isDeleted =
-                                                          await actions
-                                                              .deleteFiles(
-                                                        functions.findTrackById(
+                                        if ((currentUserDocument
+                                                    ?.purchasedMeditationsPacks
+                                                    ?.toList() ??
+                                                [])
+                                            .contains(widget
+                                                .meditationCategory?.reference))
+                                          AuthUserStreamWidget(
+                                            builder: (context) => Container(
+                                              width: 44.0,
+                                              height: 44.0,
+                                              child: Stack(
+                                                children: [
+                                                  if ((FFAppState()
+                                                              .downloadedTracks
+                                                              .where((e) =>
+                                                                  e.category ==
+                                                                  widget
+                                                                      .meditationCategory
+                                                                      ?.reference
+                                                                      .id)
+                                                              .toList()
+                                                              .length >=
+                                                          containerMeditationsRecordList
+                                                              .length) &&
+                                                      ((_model.downloadProgress ==
+                                                              0) ||
+                                                          (_model.downloadProgress ==
+                                                              100)))
+                                                    InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        while (_model
+                                                                .iterationIndex <
+                                                            containerMeditationsRecordList
+                                                                .length) {
+                                                          _model.isDeleted =
+                                                              await actions
+                                                                  .deleteFiles(
+                                                            functions.findTrackById(
+                                                                containerMeditationsRecordList[
+                                                                        _model
+                                                                            .iterationIndex]
+                                                                    .reference
+                                                                    .id,
+                                                                FFAppState()
+                                                                    .downloadedTracks
+                                                                    .toList()),
+                                                          );
+                                                          setState(() {
+                                                            _model.iterationIndex =
+                                                                _model.iterationIndex +
+                                                                    1;
+                                                          });
+                                                        }
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return WebViewAware(
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () => _model
+                                                                        .unfocusNode
+                                                                        .canRequestFocus
+                                                                    ? FocusScope.of(
+                                                                            context)
+                                                                        .requestFocus(_model
+                                                                            .unfocusNode)
+                                                                    : FocusScope.of(
+                                                                            context)
+                                                                        .unfocus(),
+                                                                child: Padding(
+                                                                  padding: MediaQuery
+                                                                      .viewInsetsOf(
+                                                                          context),
+                                                                  child:
+                                                                      IsDeletedWidget(),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            safeSetState(
+                                                                () {}));
+
+                                                        setState(() {
+                                                          _model.iterationIndex =
+                                                              0;
+                                                        });
+
+                                                        setState(() {});
+                                                      },
+                                                      child: Container(
+                                                        width: 40.0,
+                                                        height: 44.0,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: FaIcon(
+                                                            FontAwesomeIcons
+                                                                .arrowCircleDown,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            size: 28.0,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  if ((FFAppState()
+                                                              .downloadedTracks
+                                                              .where((e) =>
+                                                                  e.category ==
+                                                                  widget
+                                                                      .meditationCategory
+                                                                      ?.reference
+                                                                      .id)
+                                                              .toList()
+                                                              .length <
+                                                          containerMeditationsRecordList
+                                                              .length) &&
+                                                      ((_model.downloadProgress ==
+                                                              0) ||
+                                                          (_model.downloadProgress ==
+                                                              100)))
+                                                    InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        setState(() {
+                                                          _model.downloadProgress =
+                                                              5;
+                                                        });
+                                                        while (_model
+                                                                .iterationIndex <
+                                                            containerMeditationsRecordList
+                                                                .length) {
+                                                          _model.isDownload =
+                                                              await actions
+                                                                  .downloadUrl(
                                                             containerMeditationsRecordList[
                                                                     _model
                                                                         .iterationIndex]
                                                                 .reference
                                                                 .id,
+                                                            containerMeditationsRecordList[
+                                                                    _model
+                                                                        .iterationIndex]
+                                                                .audioPath,
+                                                            containerMeditationsRecordList[
+                                                                    _model
+                                                                        .iterationIndex]
+                                                                .image,
+                                                          );
+                                                          if (_model
+                                                              .isDownload!) {
                                                             FFAppState()
-                                                                .downloadedTracks
-                                                                .toList()),
-                                                      );
-                                                      setState(() {
-                                                        _model.iterationIndex =
-                                                            _model.iterationIndex +
-                                                                1;
-                                                      });
-                                                    }
-                                                    await showModalBottomSheet(
-                                                      isScrollControlled: true,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      enableDrag: false,
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return WebViewAware(
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () => _model
-                                                                    .unfocusNode
-                                                                    .canRequestFocus
-                                                                ? FocusScope.of(
-                                                                        context)
-                                                                    .requestFocus(
-                                                                        _model
-                                                                            .unfocusNode)
-                                                                : FocusScope.of(
-                                                                        context)
-                                                                    .unfocus(),
-                                                            child: Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  IsDeletedWidget(),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        safeSetState(() {}));
-
-                                                    setState(() {
-                                                      _model.iterationIndex = 0;
-                                                    });
-
-                                                    setState(() {});
-                                                  },
-                                                  child: Container(
-                                                    width: 40.0,
-                                                    height: 44.0,
-                                                    decoration: BoxDecoration(),
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: FaIcon(
-                                                        FontAwesomeIcons
-                                                            .arrowCircleDown,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 28.0,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              if ((FFAppState()
-                                                          .downloadedTracks
-                                                          .where((e) =>
-                                                              e.category ==
-                                                              widget
-                                                                  .meditationCategory
-                                                                  ?.reference
-                                                                  .id)
-                                                          .toList()
-                                                          .length <
-                                                      containerMeditationsRecordList
-                                                          .length) &&
-                                                  ((_model.downloadProgress ==
-                                                          0) ||
-                                                      (_model.downloadProgress ==
-                                                          100)))
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    setState(() {
-                                                      _model.downloadProgress =
-                                                          5;
-                                                    });
-                                                    while (_model
-                                                            .iterationIndex <
-                                                        containerMeditationsRecordList
-                                                            .length) {
-                                                      _model.isDownload =
-                                                          await actions
-                                                              .downloadUrl(
-                                                        containerMeditationsRecordList[
-                                                                _model
-                                                                    .iterationIndex]
-                                                            .reference
-                                                            .id,
-                                                        containerMeditationsRecordList[
-                                                                _model
-                                                                    .iterationIndex]
-                                                            .audioPath,
-                                                        containerMeditationsRecordList[
-                                                                _model
-                                                                    .iterationIndex]
-                                                            .image,
-                                                      );
-                                                      if (_model.isDownload!) {
-                                                        FFAppState()
-                                                            .updateDownloadedTracksAtIndex(
-                                                          valueOrDefault<int>(
-                                                                FFAppState()
-                                                                    .downloadedTracks
-                                                                    .length,
-                                                                1,
-                                                              ) -
-                                                              1,
-                                                          (e) => e
-                                                            ..name =
-                                                                containerMeditationsRecordList[
+                                                                .updateDownloadedTracksAtIndex(
+                                                              valueOrDefault<
+                                                                      int>(
+                                                                    FFAppState()
+                                                                        .downloadedTracks
+                                                                        .length,
+                                                                    1,
+                                                                  ) -
+                                                                  1,
+                                                              (e) => e
+                                                                ..name = containerMeditationsRecordList[
                                                                         _model
                                                                             .iterationIndex]
                                                                     .title
-                                                            ..description =
-                                                                containerMeditationsRecordList[
-                                                                        _model
-                                                                            .iterationIndex]
-                                                                    .description
-                                                            ..audioPath =
-                                                                containerMeditationsRecordList[
-                                                                        _model
-                                                                            .iterationIndex]
-                                                                    .audioPath
-                                                            ..isPaid =
-                                                                containerMeditationsRecordList[
-                                                                        _model
-                                                                            .iterationIndex]
-                                                                    .isPaid
-                                                            ..duration =
-                                                                containerMeditationsRecordList[
-                                                                        _model
-                                                                            .iterationIndex]
-                                                                    .duration
-                                                            ..type =
-                                                                containerMeditationsRecordList[
+                                                                ..description =
+                                                                    containerMeditationsRecordList[
+                                                                            _model.iterationIndex]
+                                                                        .description
+                                                                ..audioPath =
+                                                                    containerMeditationsRecordList[
+                                                                            _model.iterationIndex]
+                                                                        .audioPath
+                                                                ..isPaid =
+                                                                    containerMeditationsRecordList[
+                                                                            _model.iterationIndex]
+                                                                        .isPaid
+                                                                ..duration =
+                                                                    containerMeditationsRecordList[
+                                                                            _model.iterationIndex]
+                                                                        .duration
+                                                                ..type = containerMeditationsRecordList[
                                                                         _model
                                                                             .iterationIndex]
                                                                     .type
-                                                            ..category =
-                                                                containerMeditationsRecordList[
+                                                                ..category = containerMeditationsRecordList[
                                                                         _model
                                                                             .iterationIndex]
                                                                     .meditationCategory
                                                                     ?.id
-                                                            ..meditationCategorg =
-                                                                widget
+                                                                ..meditationCategorg = widget
                                                                     .meditationCategory
                                                                     ?.reference
-                                                            ..nameEng =
-                                                                containerMeditationsRecordList[
-                                                                        _model
-                                                                            .iterationIndex]
-                                                                    .titleEng
-                                                            ..descriptionName =
-                                                                containerMeditationsRecordList[
-                                                                        _model
-                                                                            .iterationIndex]
-                                                                    .descriptionEng
-                                                            ..durationEng =
-                                                                containerMeditationsRecordList[
-                                                                        _model
-                                                                            .iterationIndex]
-                                                                    .durationEng,
-                                                        );
-                                                      }
-                                                      setState(() {
-                                                        _model.iterationIndex =
-                                                            _model.iterationIndex +
-                                                                1;
-                                                        _model
-                                                            .downloadProgress = _model
-                                                                .downloadProgress +
-                                                            (100 /
-                                                                    valueOrDefault<
-                                                                        int>(
-                                                                      containerMeditationsRecordList
-                                                                          .length,
-                                                                      1,
-                                                                    ))
-                                                                .round();
-                                                      });
-                                                    }
-                                                    setState(() {
-                                                      _model.iterationIndex = 0;
-                                                      _model.downloadProgress =
-                                                          100;
-                                                    });
-                                                    await showModalBottomSheet(
-                                                      isScrollControlled: true,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      enableDrag: false,
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return WebViewAware(
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () => _model
-                                                                    .unfocusNode
-                                                                    .canRequestFocus
-                                                                ? FocusScope.of(
-                                                                        context)
-                                                                    .requestFocus(
-                                                                        _model
-                                                                            .unfocusNode)
-                                                                : FocusScope.of(
-                                                                        context)
-                                                                    .unfocus(),
-                                                            child: Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
+                                                                ..nameEng =
+                                                                    containerMeditationsRecordList[
+                                                                            _model.iterationIndex]
+                                                                        .titleEng
+                                                                ..descriptionName =
+                                                                    containerMeditationsRecordList[
+                                                                            _model.iterationIndex]
+                                                                        .descriptionEng
+                                                                ..durationEng =
+                                                                    containerMeditationsRecordList[
+                                                                            _model.iterationIndex]
+                                                                        .durationEng,
+                                                            );
+                                                          }
+                                                          setState(() {
+                                                            _model.iterationIndex =
+                                                                _model.iterationIndex +
+                                                                    1;
+                                                            _model
+                                                                .downloadProgress = _model
+                                                                    .downloadProgress +
+                                                                (100 /
+                                                                        valueOrDefault<
+                                                                            int>(
+                                                                          containerMeditationsRecordList
+                                                                              .length,
+                                                                          1,
+                                                                        ))
+                                                                    .round();
+                                                          });
+                                                        }
+                                                        setState(() {
+                                                          _model.iterationIndex =
+                                                              0;
+                                                          _model.downloadProgress =
+                                                              100;
+                                                        });
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return WebViewAware(
                                                               child:
-                                                                  IsDownloadedAllWidget(),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        safeSetState(() {}));
+                                                                  GestureDetector(
+                                                                onTap: () => _model
+                                                                        .unfocusNode
+                                                                        .canRequestFocus
+                                                                    ? FocusScope.of(
+                                                                            context)
+                                                                        .requestFocus(_model
+                                                                            .unfocusNode)
+                                                                    : FocusScope.of(
+                                                                            context)
+                                                                        .unfocus(),
+                                                                child: Padding(
+                                                                  padding: MediaQuery
+                                                                      .viewInsetsOf(
+                                                                          context),
+                                                                  child:
+                                                                      IsDownloadedAllWidget(),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            safeSetState(
+                                                                () {}));
 
-                                                    setState(() {});
-                                                  },
-                                                  child: Container(
-                                                    width: 40.0,
-                                                    height: 44.0,
-                                                    decoration: BoxDecoration(),
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Icon(
-                                                        FFIcons.kshare3,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                        setState(() {});
+                                                      },
+                                                      child: Container(
+                                                        width: 40.0,
+                                                        height: 44.0,
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Icon(
+                                                            FFIcons.kshare3,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .primaryText,
-                                                        size: 32.0,
+                                                            size: 32.0,
+                                                          ),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ),
-                                              if ((_model.downloadProgress >
-                                                      0) &&
-                                                  (_model.downloadProgress !=
-                                                      100))
-                                                Container(
-                                                  width: 40.0,
-                                                  height: 44.0,
-                                                  decoration: BoxDecoration(),
-                                                  child: Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: Icon(
-                                                      Icons.downloading_rounded,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                  if ((_model.downloadProgress >
+                                                          0) &&
+                                                      (_model.downloadProgress !=
+                                                          100))
+                                                    Container(
+                                                      width: 40.0,
+                                                      height: 44.0,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Icon(
+                                                          Icons
+                                                              .downloading_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
                                                               .primaryText,
-                                                      size: 26.0,
-                                                    ),
-                                                  ),
-                                                ).animateOnPageLoad(animationsMap[
-                                                    'containerOnPageLoadAnimation']!),
-                                            ],
+                                                          size: 26.0,
+                                                        ),
+                                                      ),
+                                                    ).animateOnPageLoad(
+                                                        animationsMap[
+                                                            'containerOnPageLoadAnimation']!),
+                                                ],
+                                              ),
+                                            ),
                                           ),
-                                        ),
                                       ],
                                     ),
                                   ),
@@ -637,7 +645,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '86q0qtxl' /* eщё */,
+                                                'vvpwce3u' /* eщё */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -714,7 +722,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '5v0grdzu' /* свернуть */,
+                                                'apyldrf3' /* свернуть */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -793,7 +801,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            '3rlf47r3' /* Узнать больше и купить */,
+                                            '7uzcrwxd' /* Узнать больше и купить */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium,
@@ -876,6 +884,11 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                               [])
                                                           .contains(meditationsItem
                                                               .meditationCategory)) {
+                                                        setState(() {
+                                                          FFAppState()
+                                                              .positionMS = 0;
+                                                        });
+
                                                         context.pushNamed(
                                                           'playerPage',
                                                           queryParameters: {
@@ -920,6 +933,11 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                         return;
                                                       }
                                                     } else {
+                                                      setState(() {
+                                                        FFAppState()
+                                                            .positionMS = 0;
+                                                      });
+
                                                       context.pushNamed(
                                                         'playerPage',
                                                         queryParameters: {
@@ -962,7 +980,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                   },
                                                   child: MeditationsWidget(
                                                     key: Key(
-                                                        'Key4bj_${meditationsIndex}_of_${meditations.length}'),
+                                                        'Keyb48_${meditationsIndex}_of_${meditations.length}'),
                                                     meditation: meditationsItem,
                                                   ),
                                                 ),
@@ -1024,7 +1042,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                 },
                                                 child: MeditationsOfflineWidget(
                                                   key: Key(
-                                                      'Keykjt_${offlineIndex}_of_${offline.length}'),
+                                                      'Keykhb_${offlineIndex}_of_${offline.length}'),
                                                   indexInList: offlineIndex,
                                                 ),
                                               ),

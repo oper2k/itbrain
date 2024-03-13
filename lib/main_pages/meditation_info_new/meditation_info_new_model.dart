@@ -11,7 +11,7 @@ import '/profile/is_deleted/is_deleted_widget.dart';
 import '/profile/is_downloaded_all/is_downloaded_all_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'meditation_info_widget.dart' show MeditationInfoWidget;
+import 'meditation_info_new_widget.dart' show MeditationInfoNewWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -20,7 +20,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class MeditationInfoModel extends FlutterFlowModel<MeditationInfoWidget> {
+class MeditationInfoNewModel extends FlutterFlowModel<MeditationInfoNewWidget> {
   ///  Local state fields for this page.
 
   bool more = false;
