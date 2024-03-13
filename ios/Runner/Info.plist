@@ -64,6 +64,11 @@
     <string>Нам необходим доступ к вашей галерее, чтобы вы смогли загрузить свой аватар.</string>
 	<key>PermissionGroupNotification</key>
     <string>Разрешите присылать вам уведомления о новых событиях и медитациях в приложении.</string>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>remote-notification</string>
+    </array>
 
 
 	<key>UILaunchStoryboardName</key>
