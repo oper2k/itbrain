@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'feedback_comp_model.dart';
 export 'feedback_comp_model.dart';
 
@@ -237,11 +236,9 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                         enableDrag: false,
                         context: context,
                         builder: (context) {
-                          return WebViewAware(
-                            child: Padding(
-                              padding: MediaQuery.viewInsetsOf(context),
-                              child: ConfirmedFeedbackWidget(),
-                            ),
+                          return Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: ConfirmedFeedbackWidget(),
                           );
                         },
                       ).then((value) => safeSetState(() {}));

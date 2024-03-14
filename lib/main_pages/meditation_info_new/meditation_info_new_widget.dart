@@ -9,6 +9,7 @@ import '/main_pages/meditations/meditations_widget.dart';
 import '/main_pages/meditations_offline/meditations_offline_widget.dart';
 import '/profile/is_deleted/is_deleted_widget.dart';
 import '/profile/is_downloaded_all/is_downloaded_all_widget.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -17,7 +18,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'meditation_info_new_model.dart';
 export 'meditation_info_new_model.dart';
 
@@ -274,26 +274,24 @@ class _MeditationInfoNewWidgetState extends State<MeditationInfoNewWidget>
                                                           enableDrag: false,
                                                           context: context,
                                                           builder: (context) {
-                                                            return WebViewAware(
-                                                              child:
-                                                                  GestureDetector(
-                                                                onTap: () => _model
-                                                                        .unfocusNode
-                                                                        .canRequestFocus
-                                                                    ? FocusScope.of(
-                                                                            context)
-                                                                        .requestFocus(_model
-                                                                            .unfocusNode)
-                                                                    : FocusScope.of(
-                                                                            context)
-                                                                        .unfocus(),
-                                                                child: Padding(
-                                                                  padding: MediaQuery
-                                                                      .viewInsetsOf(
-                                                                          context),
-                                                                  child:
-                                                                      IsDeletedWidget(),
-                                                                ),
+                                                            return GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    IsDeletedWidget(),
                                                               ),
                                                             );
                                                           },
@@ -470,26 +468,24 @@ class _MeditationInfoNewWidgetState extends State<MeditationInfoNewWidget>
                                                           enableDrag: false,
                                                           context: context,
                                                           builder: (context) {
-                                                            return WebViewAware(
-                                                              child:
-                                                                  GestureDetector(
-                                                                onTap: () => _model
-                                                                        .unfocusNode
-                                                                        .canRequestFocus
-                                                                    ? FocusScope.of(
-                                                                            context)
-                                                                        .requestFocus(_model
-                                                                            .unfocusNode)
-                                                                    : FocusScope.of(
-                                                                            context)
-                                                                        .unfocus(),
-                                                                child: Padding(
-                                                                  padding: MediaQuery
-                                                                      .viewInsetsOf(
-                                                                          context),
-                                                                  child:
-                                                                      IsDownloadedAllWidget(),
-                                                                ),
+                                                            return GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    IsDownloadedAllWidget(),
                                                               ),
                                                             );
                                                           },
@@ -762,18 +758,28 @@ class _MeditationInfoNewWidgetState extends State<MeditationInfoNewWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      context.pushNamed(
+                                      unawaited(
+                                        () async {
+                                          await launchURL(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            ruText: widget.meditationCategory
+                                                ?.getCourseUrl,
+                                            enText: widget.meditationCategory
+                                                ?.getCourseUrlEng,
+                                          ));
+                                        }(),
+                                      );
+
+                                      context.goNamed(
                                         'paymentPage',
-                                        queryParameters: {
-                                          'getCoursePaymentLink':
-                                              serializeParam(
-                                            widget.meditationCategory,
-                                            ParamType.Document,
-                                          ),
-                                        }.withoutNulls,
                                         extra: <String, dynamic>{
-                                          'getCoursePaymentLink':
-                                              widget.meditationCategory,
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
                                         },
                                       );
                                     },

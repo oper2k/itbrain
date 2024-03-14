@@ -11,7 +11,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'forgot_password_model.dart';
 export 'forgot_password_model.dart';
 
@@ -328,17 +327,15 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                           enableDrag: false,
                           context: context,
                           builder: (context) {
-                            return WebViewAware(
-                              child: GestureDetector(
-                                onTap: () => _model.unfocusNode.canRequestFocus
-                                    ? FocusScope.of(context)
-                                        .requestFocus(_model.unfocusNode)
-                                    : FocusScope.of(context).unfocus(),
-                                child: Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: ConfirmedWidget(
-                                    email: _model.emailController.text,
-                                  ),
+                            return GestureDetector(
+                              onTap: () => _model.unfocusNode.canRequestFocus
+                                  ? FocusScope.of(context)
+                                      .requestFocus(_model.unfocusNode)
+                                  : FocusScope.of(context).unfocus(),
+                              child: Padding(
+                                padding: MediaQuery.viewInsetsOf(context),
+                                child: ConfirmedWidget(
+                                  email: _model.emailController.text,
                                 ),
                               ),
                             );

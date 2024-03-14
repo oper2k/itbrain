@@ -7,7 +7,6 @@ import 'rate_the_app_widget.dart' show RateTheAppWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 
 class RateTheAppModel extends FlutterFlowModel<RateTheAppWidget> {
   /// Initialization and disposal methods.

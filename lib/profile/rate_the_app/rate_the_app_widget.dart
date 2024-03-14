@@ -6,7 +6,6 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'rate_the_app_model.dart';
 export 'rate_the_app_model.dart';
 
@@ -177,11 +176,9 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                           enableDrag: false,
                           context: context,
                           builder: (context) {
-                            return WebViewAware(
-                              child: Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: FeedbackCompWidget(),
-                              ),
+                            return Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: FeedbackCompWidget(),
                             );
                           },
                         ).then((value) => safeSetState(() {}));

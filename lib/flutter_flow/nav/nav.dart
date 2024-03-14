@@ -234,14 +234,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'paymentPage',
           path: '/paymentPage',
-          asyncParams: {
-            'getCoursePaymentLink': getDoc(['meditationCategories'],
-                MeditationCategoriesRecord.fromSnapshot),
-          },
-          builder: (context, params) => PaymentPageWidget(
-            getCoursePaymentLink:
-                params.getParam('getCoursePaymentLink', ParamType.Document),
-          ),
+          builder: (context, params) => PaymentPageWidget(),
         ),
         FFRoute(
           name: 'testQueryCache',

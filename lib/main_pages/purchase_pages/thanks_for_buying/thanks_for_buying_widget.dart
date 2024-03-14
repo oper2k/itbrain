@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'thanks_for_buying_model.dart';
@@ -27,12 +26,6 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ThanksForBuyingModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 2000));
-      Navigator.pop(context);
-    });
   }
 
   @override
@@ -88,7 +81,7 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: Text(
                 FFLocalizations.of(context).getText(
-                  '7tg1x2jk' /* Наслаждайтесь прослушиванием */,
+                  '7tg1x2jk' /* Ваш платеж пока обрабатывается */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Evolventa',
@@ -108,7 +101,16 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  context.pushNamed('HomePage');
+                  context.goNamed(
+                    'HomePage',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                      ),
+                    },
+                  );
                 },
                 child: Container(
                   width: double.infinity,
@@ -130,7 +132,7 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        '647mfzjl' /* Отлично! */,
+                        '647mfzjl' /* На главную */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Evolventa',

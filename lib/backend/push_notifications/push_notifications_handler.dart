@@ -167,15 +167,7 @@ final parametersBuilderMap =
           'currentAudioIndex': getParameter<int>(data, 'currentAudioIndex'),
         },
       ),
-  'paymentPage': (data) async => ParameterData(
-        allParams: {
-          'getCoursePaymentLink':
-              await getDocumentParameter<MeditationCategoriesRecord>(
-                  data,
-                  'getCoursePaymentLink',
-                  MeditationCategoriesRecord.fromSnapshot),
-        },
-      ),
+  'paymentPage': ParameterData.none(),
   'testQueryCache': ParameterData.none(),
   'confirmEmail': ParameterData.none(),
   'confirmEmailProfile': ParameterData.none(),

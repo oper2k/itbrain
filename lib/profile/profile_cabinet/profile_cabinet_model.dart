@@ -19,7 +19,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 
 class ProfileCabinetModel extends FlutterFlowModel<ProfileCabinetWidget> {
   ///  Local state fields for this page.

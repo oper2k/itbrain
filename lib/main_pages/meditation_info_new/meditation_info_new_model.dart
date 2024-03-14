@@ -9,6 +9,7 @@ import '/main_pages/meditations/meditations_widget.dart';
 import '/main_pages/meditations_offline/meditations_offline_widget.dart';
 import '/profile/is_deleted/is_deleted_widget.dart';
 import '/profile/is_downloaded_all/is_downloaded_all_widget.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'meditation_info_new_widget.dart' show MeditationInfoNewWidget;
@@ -18,7 +19,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 
 class MeditationInfoNewModel extends FlutterFlowModel<MeditationInfoNewWidget> {
   ///  Local state fields for this page.

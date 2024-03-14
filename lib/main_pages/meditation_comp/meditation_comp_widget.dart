@@ -73,14 +73,20 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                         boxShadow: [
                           BoxShadow(
                             blurRadius: 6.0,
-                            color: (currentUserDocument
-                                            ?.purchasedMeditationsPacks
-                                            ?.toList() ??
-                                        [])
-                                    .contains(
-                                        widget.meditationCategories?.reference)
-                                ? FlutterFlowTheme.of(context).accent1
-                                : Colors.transparent,
+                            color: () {
+                              if ((currentUserDocument
+                                          ?.purchasedMeditationsPacks
+                                          ?.toList() ??
+                                      [])
+                                  .contains(
+                                      widget.meditationCategories?.reference)) {
+                                return FlutterFlowTheme.of(context).accent1;
+                              } else if (widget.meditationCategories!.free) {
+                                return FlutterFlowTheme.of(context).accent1;
+                              } else {
+                                return Colors.transparent;
+                              }
+                            }(),
                             offset: Offset(0.0, 0.0),
                           )
                         ],

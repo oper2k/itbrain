@@ -18,7 +18,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'profile_cabinet_model.dart';
 export 'profile_cabinet_model.dart';
 
@@ -117,16 +116,14 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                           backgroundColor: Colors.transparent,
                           context: context,
                           builder: (context) {
-                            return WebViewAware(
-                              child: GestureDetector(
-                                onTap: () => _model.unfocusNode.canRequestFocus
-                                    ? FocusScope.of(context)
-                                        .requestFocus(_model.unfocusNode)
-                                    : FocusScope.of(context).unfocus(),
-                                child: Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: LogOutConfirmWidget(),
-                                ),
+                            return GestureDetector(
+                              onTap: () => _model.unfocusNode.canRequestFocus
+                                  ? FocusScope.of(context)
+                                      .requestFocus(_model.unfocusNode)
+                                  : FocusScope.of(context).unfocus(),
+                              child: Padding(
+                                padding: MediaQuery.viewInsetsOf(context),
+                                child: LogOutConfirmWidget(),
                               ),
                             );
                           },
@@ -611,18 +608,15 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                 enableDrag: false,
                                 context: context,
                                 builder: (context) {
-                                  return WebViewAware(
-                                    child: GestureDetector(
-                                      onTap: () => _model
-                                              .unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
-                                      child: Padding(
-                                        padding:
-                                            MediaQuery.viewInsetsOf(context),
-                                        child: RateTheAppWidget(),
-                                      ),
+                                  return GestureDetector(
+                                    onTap: () => _model
+                                            .unfocusNode.canRequestFocus
+                                        ? FocusScope.of(context)
+                                            .requestFocus(_model.unfocusNode)
+                                        : FocusScope.of(context).unfocus(),
+                                    child: Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: RateTheAppWidget(),
                                     ),
                                   );
                                 },
@@ -845,18 +839,15 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                 enableDrag: false,
                                 context: context,
                                 builder: (context) {
-                                  return WebViewAware(
-                                    child: GestureDetector(
-                                      onTap: () => _model
-                                              .unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
-                                      child: Padding(
-                                        padding:
-                                            MediaQuery.viewInsetsOf(context),
-                                        child: CheckPurchasesWidget(),
-                                      ),
+                                  return GestureDetector(
+                                    onTap: () => _model
+                                            .unfocusNode.canRequestFocus
+                                        ? FocusScope.of(context)
+                                            .requestFocus(_model.unfocusNode)
+                                        : FocusScope.of(context).unfocus(),
+                                    child: Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: CheckPurchasesWidget(),
                                     ),
                                   );
                                 },

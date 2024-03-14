@@ -940,12 +940,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Thank you for your purchase',
     },
     '7tg1x2jk': {
-      'ru': 'Наслаждайтесь прослушиванием',
-      'en': 'Enjoy listening',
+      'ru': 'Ваш платеж пока обрабатывается',
+      'en': 'Your payment is still being processed',
     },
     '647mfzjl': {
-      'ru': 'Отлично!',
-      'en': 'Great!',
+      'ru': 'На главную',
+      'en': 'Home',
     },
   },
   // offlineMode

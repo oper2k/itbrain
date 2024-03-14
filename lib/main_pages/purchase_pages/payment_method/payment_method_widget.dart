@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'payment_method_model.dart';
 export 'payment_method_model.dart';
 
@@ -332,18 +331,11 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       if (_model.buySite) {
-                        context.pushNamed(
-                          'paymentPage',
-                          queryParameters: {
-                            'getCoursePaymentLink': serializeParam(
-                              widget.category,
-                              ParamType.Document,
-                            ),
-                          }.withoutNulls,
-                          extra: <String, dynamic>{
-                            'getCoursePaymentLink': widget.category,
-                          },
-                        );
+                        await launchURL(
+                            FFLocalizations.of(context).getVariableText(
+                          ruText: widget.category?.getCourseUrl,
+                          enText: widget.category?.getCourseUrlEng,
+                        ));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -377,17 +369,14 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                             enableDrag: false,
                             context: context,
                             builder: (context) {
-                              return WebViewAware(
-                                child: GestureDetector(
-                                  onTap: () =>
-                                      _model.unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
-                                  child: Padding(
-                                    padding: MediaQuery.viewInsetsOf(context),
-                                    child: ThanksForBuyingWidget(),
-                                  ),
+                              return GestureDetector(
+                                onTap: () => _model.unfocusNode.canRequestFocus
+                                    ? FocusScope.of(context)
+                                        .requestFocus(_model.unfocusNode)
+                                    : FocusScope.of(context).unfocus(),
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: ThanksForBuyingWidget(),
                                 ),
                               );
                             },
