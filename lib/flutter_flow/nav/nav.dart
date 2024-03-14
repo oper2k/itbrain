@@ -2,23 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
 import '/index.dart';
-import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -87,24 +79,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => _RouteErrorBuilder(
         state: state,
         child:
-            appStateNotifier.loggedIn ? HomePageWidget() : OnBoardingWidget(),
+            appStateNotifier.loggedIn ? const HomePageWidget() : const OnBoardingWidget(),
       ),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : OnBoardingWidget(),
+              appStateNotifier.loggedIn ? const HomePageWidget() : const OnBoardingWidget(),
         ),
         FFRoute(
           name: 'onBoarding',
           path: '/onBoarding',
-          builder: (context, params) => OnBoardingWidget(),
+          builder: (context, params) => const OnBoardingWidget(),
         ),
         FFRoute(
           name: 'DebugPage',
           path: '/debugPage',
-          builder: (context, params) => DebugPageWidget(),
+          builder: (context, params) => const DebugPageWidget(),
         ),
         FFRoute(
           name: 'signUpPage',
@@ -116,27 +108,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'signInPage',
           path: '/signInPage',
-          builder: (context, params) => SignInPageWidget(),
+          builder: (context, params) => const SignInPageWidget(),
         ),
         FFRoute(
           name: 'forgotPassword',
           path: '/forgotPassword',
-          builder: (context, params) => ForgotPasswordWidget(),
+          builder: (context, params) => const ForgotPasswordWidget(),
         ),
         FFRoute(
           name: 'profileCabinet',
           path: '/profileCabinet',
-          builder: (context, params) => ProfileCabinetWidget(),
+          builder: (context, params) => const ProfileCabinetWidget(),
         ),
         FFRoute(
           name: 'aboutPage',
           path: '/aboutPage',
-          builder: (context, params) => AboutPageWidget(),
+          builder: (context, params) => const AboutPageWidget(),
         ),
         FFRoute(
           name: 'editProfile',
           path: '/editProfile',
-          builder: (context, params) => EditProfileWidget(),
+          builder: (context, params) => const EditProfileWidget(),
         ),
         FFRoute(
           name: 'Affirmation',
@@ -153,7 +145,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
-          builder: (context, params) => HomePageWidget(),
+          builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
           name: 'Stories',
@@ -193,12 +185,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'cardDetails',
           path: '/cardDetails',
-          builder: (context, params) => CardDetailsWidget(),
+          builder: (context, params) => const CardDetailsWidget(),
         ),
         FFRoute(
           name: 'searchPage',
           path: '/searchPage',
-          builder: (context, params) => SearchPageWidget(),
+          builder: (context, params) => const SearchPageWidget(),
         ),
         FFRoute(
           name: 'playerPage',
@@ -221,7 +213,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'changeLanguage',
           path: '/changeLanguage',
-          builder: (context, params) => ChangeLanguageWidget(),
+          builder: (context, params) => const ChangeLanguageWidget(),
         ),
         FFRoute(
           name: 'offlinePlayerPage',
@@ -234,22 +226,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'paymentPage',
           path: '/paymentPage',
-          builder: (context, params) => PaymentPageWidget(),
+          builder: (context, params) => const PaymentPageWidget(),
         ),
         FFRoute(
           name: 'testQueryCache',
           path: '/testQueryCache',
-          builder: (context, params) => TestQueryCacheWidget(),
+          builder: (context, params) => const TestQueryCacheWidget(),
         ),
         FFRoute(
           name: 'confirmEmail',
           path: '/confirmEmail',
-          builder: (context, params) => ConfirmEmailWidget(),
+          builder: (context, params) => const ConfirmEmailWidget(),
         ),
         FFRoute(
           name: 'confirmEmailProfile',
           path: '/confirmEmailProfile',
-          builder: (context, params) => ConfirmEmailProfileWidget(),
+          builder: (context, params) => const ConfirmEmailProfileWidget(),
         ),
         FFRoute(
           name: 'meditationInfoNew',
@@ -443,7 +435,7 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Color(0xFF1A0830),
+                  color: const Color(0xFF1A0830),
                   child: Center(
                     child: Image.asset(
                       'assets/images/IT_BRAIN_icon_app_store.png',
@@ -495,15 +487,14 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class _RouteErrorBuilder extends StatefulWidget {
   const _RouteErrorBuilder({
-    Key? key,
     required this.state,
     required this.child,
-  }) : super(key: key);
+  });
 
   final GoRouterState state;
   final Widget child;

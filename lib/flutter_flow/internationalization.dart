@@ -237,9 +237,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Пароли не совпадают',
       'en': 'Passwords don\'t match',
     },
-    'cm2aww30': {
+    '0hn1n0c5': {
       'ru': 'Зарегистрироваться',
-      'en': 'Create account',
+      'en': '',
     },
     'm872kyq1': {
       'ru': 'Шаг №2 из 3',
@@ -277,9 +277,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Поле не заполнено',
       'en': 'Field is requred',
     },
-    'tcrhjrv9': {
+    'qom7s9h0': {
       'ru': 'Далее',
-      'en': 'Next',
+      'en': '',
     },
     '0apbqllj': {
       'ru': 'Шаг №3 из 3',

@@ -2,8 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'confirmed_feedback_model.dart';
 export 'confirmed_feedback_model.dart';
 
@@ -50,7 +48,7 @@ class _ConfirmedFeedbackWidgetState extends State<ConfirmedFeedbackWidget> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Align(
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: const AlignmentDirectional(0.0, 0.0),
           child: Image.asset(
             'assets/images/check.png',
             width: 64.0,
@@ -59,7 +57,7 @@ class _ConfirmedFeedbackWidgetState extends State<ConfirmedFeedbackWidget> {
           ),
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
           child: Text(
             FFLocalizations.of(context).getText(
               'nw3ab5fb' /* Отзыв отправлен */,

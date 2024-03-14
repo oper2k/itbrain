@@ -2,20 +2,16 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/profile/check_purchases/check_purchases_widget.dart';
 import '/profile/log_out_confirm/log_out_confirm_widget.dart';
 import '/profile/rate_the_app/rate_the_app_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
 import 'profile_cabinet_model.dart';
@@ -75,7 +71,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -94,9 +90,9 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                       child: Container(
                         width: 40.0,
                         height: 44.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
                           child: Icon(
                             FFIcons.kleft2,
                             color: FlutterFlowTheme.of(context).accent1,
@@ -123,7 +119,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                   : FocusScope.of(context).unfocus(),
                               child: Padding(
                                 padding: MediaQuery.viewInsetsOf(context),
-                                child: LogOutConfirmWidget(),
+                                child: const LogOutConfirmWidget(),
                               ),
                             );
                           },
@@ -132,9 +128,9 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                       child: Container(
                         width: 40.0,
                         height: 44.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Align(
-                          alignment: AlignmentDirectional(1.0, 0.0),
+                          alignment: const AlignmentDirectional(1.0, 0.0),
                           child: Icon(
                             FFIcons.kleft23,
                             color: FlutterFlowTheme.of(context).primaryText,
@@ -151,20 +147,19 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
-                          child: Container(
+                          child: SizedBox(
                             width: 160.0,
                             height: 170.0,
                             child: Stack(
-                              alignment: AlignmentDirectional(0.0, 1.0),
+                              alignment: const AlignmentDirectional(0.0, 1.0),
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, -1.0),
+                                  alignment: const AlignmentDirectional(0.0, -1.0),
                                   child: Builder(
                                     builder: (context) {
-                                      if (currentUserPhoto != null &&
-                                          currentUserPhoto != '') {
+                                      if (currentUserPhoto != '') {
                                         return Stack(
                                           children: [
                                             ClipRRect(
@@ -201,7 +196,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: AuthUserStreamWidget(
                                               builder: (context) => Text(
                                                 functions
@@ -239,7 +234,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                     if (!currentUserEmailVerified) {
                                       return Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 1.0),
+                                            const AlignmentDirectional(0.0, 1.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -251,12 +246,12 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                           child: Container(
                                             height: 24.0,
                                             decoration: BoxDecoration(
-                                              color: Color(0xFFFF3F3F),
+                                              color: const Color(0xFFFF3F3F),
                                               borderRadius:
                                                   BorderRadius.circular(30.0),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 10.0, 0.0),
                                               child: Row(
@@ -286,7 +281,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                                           useGoogleFonts: false,
                                                         ),
                                                   ),
-                                                ].divide(SizedBox(width: 4.0)),
+                                                ].divide(const SizedBox(width: 4.0)),
                                               ),
                                             ),
                                           ),
@@ -295,7 +290,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                     } else if (currentUserEmailVerified) {
                                       return Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 1.0),
+                                            const AlignmentDirectional(0.0, 1.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -308,7 +303,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                             width: 126.0,
                                             height: 24.0,
                                             decoration: BoxDecoration(
-                                              gradient: LinearGradient(
+                                              gradient: const LinearGradient(
                                                 colors: [
                                                   Color(0xFF9747FF),
                                                   Color(0xFFF1618E),
@@ -351,14 +346,14 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                                         useGoogleFonts: false,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(width: 4.0)),
+                                              ].divide(const SizedBox(width: 4.0)),
                                             ),
                                           ),
                                         ),
                                       );
                                     } else {
                                       return Container(
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Colors.transparent,
                                         ),
                                       );
@@ -370,11 +365,11 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: AuthUserStreamWidget(
                             builder: (context) => Text(
-                              '${currentUserDisplayName} ${valueOrDefault(currentUserDocument?.surname, '')}',
+                              '$currentUserDisplayName ${valueOrDefault(currentUserDocument?.surname, '')}',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -388,9 +383,9 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -406,7 +401,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         'hwhd0k82' /* Изменить профиль */,
@@ -425,7 +420,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Icon(
                                       FFIcons.kedit1,
                                       color:
@@ -433,13 +428,13 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                       size: 18.0,
                                     ),
                                   ),
-                                ].divide(SizedBox(width: 8.0)),
+                                ].divide(const SizedBox(width: 8.0)),
                               ),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: StreamBuilder<List<AffirmationRecord>>(
                             stream: queryAffirmationRecord(
@@ -487,7 +482,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(16.0),
+                                    padding: const EdgeInsets.all(16.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -521,7 +516,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                               .secondaryText,
                                           size: 24.0,
                                         ),
-                                      ].divide(SizedBox(width: 8.0)),
+                                      ].divide(const SizedBox(width: 8.0)),
                                     ),
                                   ),
                                 ),
@@ -530,7 +525,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -554,7 +549,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.all(16.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -587,14 +582,14 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                           .secondaryText,
                                       size: 24.0,
                                     ),
-                                  ].divide(SizedBox(width: 8.0)),
+                                  ].divide(const SizedBox(width: 8.0)),
                                 ),
                               ),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -616,7 +611,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                         : FocusScope.of(context).unfocus(),
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: RateTheAppWidget(),
+                                      child: const RateTheAppWidget(),
                                     ),
                                   );
                                 },
@@ -630,7 +625,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.all(16.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -663,14 +658,14 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                           .secondaryText,
                                       size: 24.0,
                                     ),
-                                  ].divide(SizedBox(width: 8.0)),
+                                  ].divide(const SizedBox(width: 8.0)),
                                 ),
                               ),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -688,7 +683,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.all(16.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -721,7 +716,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                           .secondaryText,
                                       size: 24.0,
                                     ),
-                                  ].divide(SizedBox(width: 8.0)),
+                                  ].divide(const SizedBox(width: 8.0)),
                                 ),
                               ),
                             ),
@@ -730,7 +725,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                         if ((currentUserEmail == 'test@test.test') ||
                             (currentUserEmail == 'alexsabinovcom@gmail.com'))
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -754,7 +749,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(16.0),
+                                  padding: const EdgeInsets.all(16.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -788,14 +783,14 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                             .secondaryText,
                                         size: 24.0,
                                       ),
-                                    ].divide(SizedBox(width: 8.0)),
+                                    ].divide(const SizedBox(width: 8.0)),
                                   ),
                                 ),
                               ),
                             ),
                           ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -811,7 +806,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                   isEqualTo: currentUserEmail,
                                 ),
                               );
-                              if (_model.orders!.length > 0) {
+                              if (_model.orders!.isNotEmpty) {
                                 _model.meditations =
                                     await queryMeditationCategoriesRecordOnce(
                                   queryBuilder: (meditationCategoriesRecord) =>
@@ -847,7 +842,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                         : FocusScope.of(context).unfocus(),
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: CheckPurchasesWidget(),
+                                      child: const CheckPurchasesWidget(),
                                     ),
                                   );
                                 },
@@ -863,7 +858,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.all(16.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
@@ -896,13 +891,13 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                           .secondaryText,
                                       size: 24.0,
                                     ),
-                                  ].divide(SizedBox(width: 8.0)),
+                                  ].divide(const SizedBox(width: 8.0)),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ].addToEnd(SizedBox(height: 60.0)),
+                      ].addToEnd(const SizedBox(height: 60.0)),
                     ),
                   ),
                 ),

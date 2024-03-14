@@ -4,8 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/profile/feedback_comp/feedback_comp_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'rate_the_app_model.dart';
 export 'rate_the_app_model.dart';
 
@@ -41,7 +39,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -49,7 +47,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
           borderRadius: BorderRadius.circular(24.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -75,7 +73,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     '64f4icxa' /* Как тебе наше приложение */,
@@ -89,7 +87,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 12.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'wy6mbk2b' /* Вам придется заново ввести ema... */,
@@ -132,7 +130,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Image.asset(
                                 'assets/images/d655b_.webp',
                                 width: 40.0,
@@ -141,7 +139,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
@@ -178,7 +176,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                           builder: (context) {
                             return Padding(
                               padding: MediaQuery.viewInsetsOf(context),
-                              child: FeedbackCompWidget(),
+                              child: const FeedbackCompWidget(),
                             );
                           },
                         ).then((value) => safeSetState(() {}));
@@ -198,7 +196,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Image.asset(
                                 'assets/images/658u4_.webp',
                                 width: 40.0,
@@ -207,7 +205,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
@@ -229,10 +227,10 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                       ),
                     ),
                   ),
-                ].divide(SizedBox(width: 15.0)),
+                ].divide(const SizedBox(width: 15.0)),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 151.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 151.0, 0.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -249,7 +247,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '4gmoqzn4' /* Закрыть */,

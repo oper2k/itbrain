@@ -4,8 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'meditation_comp_model.dart';
 export 'meditation_comp_model.dart';
 
@@ -46,7 +44,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, -1.0),
+      alignment: const AlignmentDirectional(0.0, -1.0),
       child: Container(
         width: double.infinity,
         height: 152.0,
@@ -57,9 +55,9 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
         child: Stack(
           children: [
             Align(
-              alignment: AlignmentDirectional(0.0, 1.0),
+              alignment: const AlignmentDirectional(0.0, 1.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
                 child: AuthUserStreamWidget(
                   builder: (context) => Material(
                     color: Colors.transparent,
@@ -76,7 +74,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                             color: () {
                               if ((currentUserDocument
                                           ?.purchasedMeditationsPacks
-                                          ?.toList() ??
+                                          .toList() ??
                                       [])
                                   .contains(
                                       widget.meditationCategories?.reference)) {
@@ -87,7 +85,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                 return Colors.transparent;
                               }
                             }(),
-                            offset: Offset(0.0, 0.0),
+                            offset: const Offset(0.0, 0.0),
                           )
                         ],
                         borderRadius: BorderRadius.circular(20.0),
@@ -104,7 +102,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                             BoxShadow(
                               color: (currentUserDocument
                                               ?.purchasedMeditationsPacks
-                                              ?.toList() ??
+                                              .toList() ??
                                           [])
                                       .contains(widget
                                           .meditationCategories?.reference)
@@ -117,7 +115,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                             color: () {
                               if ((currentUserDocument
                                           ?.purchasedMeditationsPacks
-                                          ?.toList() ??
+                                          .toList() ??
                                       [])
                                   .contains(
                                       widget.meditationCategories?.reference)) {
@@ -132,13 +130,13 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                           ),
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 0.0, 0.0),
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 0.527,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -172,12 +170,12 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                         ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Text(
                                       '${valueOrDefault<String>(
                                         widget.meditationCategories?.count
-                                            ?.toString(),
+                                            .toString(),
                                         '0',
                                       )}${valueOrDefault<String>(
                                         FFLocalizations.of(context)
@@ -215,12 +213,12 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(1.0, 1.0),
+              alignment: const AlignmentDirectional(1.0, 1.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
                 child: CachedNetworkImage(
-                  fadeInDuration: Duration(milliseconds: 500),
-                  fadeOutDuration: Duration(milliseconds: 500),
+                  fadeInDuration: const Duration(milliseconds: 500),
+                  fadeOutDuration: const Duration(milliseconds: 500),
                   imageUrl: widget.meditationCategories!.categoryPhoto,
                   width: 147.0,
                   height: 148.0,
@@ -230,24 +228,24 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
             ),
             Stack(
               children: [
-                if ((currentUserDocument?.purchasedMeditationsPacks?.toList() ??
+                if ((currentUserDocument?.purchasedMeditationsPacks.toList() ??
                         [])
                     .contains(widget.meditationCategories?.reference))
                   Align(
-                    alignment: AlignmentDirectional(-1.0, -1.0),
+                    alignment: const AlignmentDirectional(-1.0, -1.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 0.0, 0.0),
                       child: AuthUserStreamWidget(
                         builder: (context) => Container(
                           width: 83.0,
                           height: 24.0,
-                          constraints: BoxConstraints(
+                          constraints: const BoxConstraints(
                             minWidth: 83.0,
                             maxWidth: 95.0,
                           ),
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                               colors: [
                                 Color(0xFF9747FF),
                                 Color(0xFFF1618E),
@@ -260,7 +258,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 'c0orjo43' /* КУПЛЕНО */,
@@ -281,19 +279,19 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                   ),
                 if (widget.meditationCategories?.soon ?? true)
                   Align(
-                    alignment: AlignmentDirectional(-1.0, -1.0),
+                    alignment: const AlignmentDirectional(-1.0, -1.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 0.0, 0.0),
                       child: Container(
                         width: 70.0,
                         height: 24.0,
                         decoration: BoxDecoration(
-                          color: Color(0xFF552F72),
+                          color: const Color(0xFF552F72),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               '0ko1m2ax' /* СКОРО */,
@@ -302,7 +300,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Evolventa',
-                                  color: Color(0xB2FFFFFF),
+                                  color: const Color(0xB2FFFFFF),
                                   fontSize: 13.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: false,
