@@ -135,18 +135,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed(
-                                      'meditationInfoNew',
-                                      queryParameters: {
-                                        'meditationCategory': serializeParam(
-                                          widget.meditation,
-                                          ParamType.Document,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        'meditationCategory': widget.meditation,
-                                      },
-                                    );
+                                    context.safePop();
                                   },
                                   child: Container(
                                     width: 40.0,
@@ -212,6 +201,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                                       .accent1,
                                               fontSize: 15.0,
                                               useGoogleFonts: false,
+                                              lineHeight: 1.2,
                                             ),
                                       ),
                                       Icon(
@@ -242,6 +232,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
+                                    lineHeight: 1.2,
                                   ),
                             ),
                           ),

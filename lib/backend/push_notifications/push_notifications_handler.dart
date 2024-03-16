@@ -147,7 +147,6 @@ final parametersBuilderMap =
         },
       ),
   'cardDetails': ParameterData.none(),
-  'searchPage': ParameterData.none(),
   'playerPage': (data) async => ParameterData(
         allParams: {
           'index': getParameter<int>(data, 'index'),
@@ -166,7 +165,7 @@ final parametersBuilderMap =
   'testQueryCache': ParameterData.none(),
   'confirmEmail': ParameterData.none(),
   'confirmEmailProfile': ParameterData.none(),
-  'meditationInfoNew': (data) async => ParameterData(
+  'meditationInfo': (data) async => ParameterData(
         allParams: {
           'meditationCategory':
               await getDocumentParameter<MeditationCategoriesRecord>(
@@ -175,6 +174,7 @@ final parametersBuilderMap =
                   MeditationCategoriesRecord.fromSnapshot),
         },
       ),
+  'searchPageNew': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

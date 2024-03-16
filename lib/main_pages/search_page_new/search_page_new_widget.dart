@@ -9,25 +9,25 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:text_search/text_search.dart';
-import 'search_page_model.dart';
-export 'search_page_model.dart';
+import 'search_page_new_model.dart';
+export 'search_page_new_model.dart';
 
-class SearchPageWidget extends StatefulWidget {
-  const SearchPageWidget({super.key});
+class SearchPageNewWidget extends StatefulWidget {
+  const SearchPageNewWidget({super.key});
 
   @override
-  State<SearchPageWidget> createState() => _SearchPageWidgetState();
+  State<SearchPageNewWidget> createState() => _SearchPageNewWidgetState();
 }
 
-class _SearchPageWidgetState extends State<SearchPageWidget> {
-  late SearchPageModel _model;
+class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
+  late SearchPageNewModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SearchPageModel());
+    _model = createModel(context, () => SearchPageNewModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -205,7 +205,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                'clkbqe0o' /* Что бы вы хотели послушать? */,
+                                                '6q5n83tq' /* Что бы вы хотели послушать? */,
                                               ),
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
@@ -295,7 +295,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: Builder(
                       builder: (context) {
-                        if (!_model.searchOk) {
+                        if (!_model.searchOk!) {
                           return Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -308,7 +308,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                     alignment: const AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'fajpr0yk' /* История поиска */,
+                                        'mc97jo4d' /* История поиска */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -346,7 +346,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                       ),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          '48mjxk32' /* Очистить */,
+                                          '85uigr7j' /* Очистить */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -482,7 +482,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                                       updateOnChange: true,
                                                       child: MeditationsWidget(
                                                         key: Key(
-                                                          'Keybv0_${meditationRefIndex.toString()}',
+                                                          'Keyztd_${meditationRefIndex.toString()}',
                                                         ),
                                                         meditation:
                                                             meditationsMeditationsRecord,
@@ -611,7 +611,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                                   return;
                                                 } else {
                                                   context.pushNamed(
-                                                    'meditationInfoNew',
+                                                    'meditationInfo',
                                                     queryParameters: {
                                                       'meditationCategory':
                                                           serializeParam(
@@ -696,7 +696,7 @@ class _SearchPageWidgetState extends State<SearchPageWidget> {
                                                   setState(() {}),
                                               child: MeditationsWidget(
                                                 key: Key(
-                                                  'Keyphs_${resultsIndex.toString()}',
+                                                  'Keyv7j_${resultsIndex.toString()}',
                                                 ),
                                                 meditation: resultsItem,
                                               ),

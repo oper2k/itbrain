@@ -297,7 +297,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
                                   context.pushNamed(
-                                    'searchPage',
+                                    'searchPageNew',
                                     extra: <String, dynamic>{
                                       kTransitionInfoKey: const TransitionInfo(
                                         hasTransition: true,
@@ -874,7 +874,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               if (!listViewMeditationCategoriesRecord
                                                   .soon) {
                                                 context.pushNamed(
-                                                  'meditationInfoNew',
+                                                  'meditationInfo',
                                                   queryParameters: {
                                                     'meditationCategory':
                                                         serializeParam(

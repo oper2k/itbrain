@@ -188,11 +188,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const CardDetailsWidget(),
         ),
         FFRoute(
-          name: 'searchPage',
-          path: '/searchPage',
-          builder: (context, params) => const SearchPageWidget(),
-        ),
-        FFRoute(
           name: 'playerPage',
           path: '/playerPage',
           asyncParams: {
@@ -244,16 +239,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const ConfirmEmailProfileWidget(),
         ),
         FFRoute(
-          name: 'meditationInfoNew',
-          path: '/meditationInfoNew',
+          name: 'meditationInfo',
+          path: '/meditationInfo',
           asyncParams: {
             'meditationCategory': getDoc(['meditationCategories'],
                 MeditationCategoriesRecord.fromSnapshot),
           },
-          builder: (context, params) => MeditationInfoNewWidget(
+          builder: (context, params) => MeditationInfoWidget(
             meditationCategory:
                 params.getParam('meditationCategory', ParamType.Document),
           ),
+        ),
+        FFRoute(
+          name: 'searchPageNew',
+          path: '/searchPageNew',
+          builder: (context, params) => const SearchPageNewWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

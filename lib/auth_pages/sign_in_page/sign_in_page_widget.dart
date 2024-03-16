@@ -173,7 +173,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'jt0fm1wh' /* Введите email и пароль указанн... */,
+                        'jt0fm1wh' /* Введите email и пароль, указан... */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Evolventa',

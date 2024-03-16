@@ -157,19 +157,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'jfcfy2fz': {
       'ru': 'EN',
-      'en': '',
+      'en': 'EN',
     },
     'ey1rnj4c': {
       'ru': 'RU',
-      'en': '',
+      'en': 'RU',
     },
     'l8w3a3f1': {
       'ru': 'EN',
-      'en': '',
+      'en': 'EN',
     },
     'ci201uh8': {
       'ru': 'RU',
-      'en': '',
+      'en': 'RU',
     },
     '633u8h5q': {
       'ru': 'Home',
@@ -321,7 +321,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Sign In',
     },
     'jt0fm1wh': {
-      'ru': 'Введите email и пароль указанные при регистрации в приложении',
+      'ru': 'Введите email и пароль, указанные при регистрации в приложении',
       'en':
           'Enter the email and password specified when registering in the application',
     },
@@ -479,31 +479,31 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'fjhfuyy7': {
       'ru': 'Имя',
-      'en': 'First Name',
+      'en': 'Name',
     },
     '7zskc5m5': {
       'ru': 'Фамилия',
-      'en': 'Last Name',
+      'en': 'Surname',
     },
     '9c4wz64o': {
       'ru': 'Номер телефона',
-      'en': 'Name',
+      'en': 'Phone number',
     },
     'muo9s8yx': {
       'ru': 'Email',
-      'en': '',
+      'en': 'Email',
     },
     'y79yrq61': {
       'ru': 'Подтвердить',
-      'en': '',
+      'en': 'Confirm',
     },
     'kjzekphk': {
       'ru': 'Email не подтвержден',
-      'en': '',
+      'en': 'Email not confirmed',
     },
     'bu2xr0l3': {
       'ru': 'Применить',
-      'en': 'Confirm',
+      'en': 'Apply',
     },
     'eqtbr2kl': {
       'ru': 'Home',
@@ -640,34 +640,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
     },
   },
-  // searchPage
-  {
-    'clkbqe0o': {
-      'ru': 'Что бы вы хотели послушать?',
-      'en': '',
-    },
-    'fajpr0yk': {
-      'ru': 'История поиска',
-      'en': 'Search history',
-    },
-    '48mjxk32': {
-      'ru': 'Очистить',
-      'en': 'Clear',
-    },
-    'movysj9c': {
-      'ru': 'Home',
-      'en': 'Home',
-    },
-  },
   // playerPage
   {
     'rj969l7a': {
       'ru': 'Описание',
-      'en': '',
+      'en': 'Description',
     },
     'w0mnvo2e': {
       'ru': 'Home',
-      'en': '',
+      'en': 'Home',
     },
   },
   // changeLanguage
@@ -730,19 +711,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2nqv20ap': {
       'ru': 'Подтвердите email',
-      'en': '',
+      'en': 'Confirm your email',
     },
     'o86v7otv': {
       'ru': 'Отправить код еще раз через',
-      'en': '',
+      'en': 'Send the code again via',
     },
     '1dd2r518': {
       'ru': 'Отправить код еще раз',
-      'en': '',
+      'en': 'Send the code again',
     },
     '3jbddo0n': {
       'ru': 'Пропустить',
-      'en': '',
+      'en': 'Skip',
     },
     '58i4w14h': {
       'ru': 'Home',
@@ -753,7 +734,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'crrgc7f3': {
       'ru': 'Написать в поддержку',
-      'en': '',
+      'en': 'Write to support',
     },
     'yl8kmbu3': {
       'ru': 'Подтвердите email',
@@ -765,30 +746,49 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'n9p18jdy': {
       'ru': 'Отправить код еще раз',
-      'en': '',
+      'en': 'Send the code again',
     },
     'bbc0tz24': {
       'ru': 'Home',
-      'en': '',
+      'en': 'Home',
     },
   },
-  // meditationInfoNew
+  // meditationInfo
   {
-    'vvpwce3u': {
+    'aux1f2j3': {
       'ru': 'eщё',
-      'en': '',
+      'en': 'more',
     },
-    'apyldrf3': {
+    '5r55xoqj': {
       'ru': 'свернуть',
-      'en': '',
+      'en': 'collapse',
     },
-    '7uzcrwxd': {
+    'vnfzb2oi': {
       'ru': 'Узнать больше и купить',
-      'en': '',
+      'en': 'Find out more and buy',
     },
     'pt4kxvdz': {
       'ru': 'Home',
       'en': '',
+    },
+  },
+  // searchPageNew
+  {
+    '6q5n83tq': {
+      'ru': 'Что бы вы хотели послушать?',
+      'en': 'What would you like to listen to?',
+    },
+    'mc97jo4d': {
+      'ru': 'История поиска',
+      'en': 'Search history',
+    },
+    '85uigr7j': {
+      'ru': 'Очистить',
+      'en': 'Clear',
+    },
+    'tn2ssiid': {
+      'ru': 'Home',
+      'en': 'Home',
     },
   },
   // confirmed
@@ -1025,15 +1025,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'cv88anl1': {
       'ru': 'Медитация не загружена',
-      'en': '',
+      'en': 'Meditation not loaded',
     },
     'zbt927dh': {
       'ru': 'Медитация не загружена! Произошла ошибка',
-      'en': '',
+      'en': 'Meditation is not loaded! An error has occurred',
     },
     'oje46arq': {
       'ru': 'Хорошо',
-      'en': 'Ok',
+      'en': 'Fine',
     },
   },
   // isDeletedOnce
@@ -1080,14 +1080,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '7qfk66t3': {
       'ru': 'Хорошо',
-      'en': '',
+      'en': 'Ok',
     },
   },
   // meditationPlayerInfo
   {
     'gt5fm4k8': {
       'ru': 'Понятно!',
-      'en': '',
+      'en': 'Ok',
     },
   },
   // Miscellaneous

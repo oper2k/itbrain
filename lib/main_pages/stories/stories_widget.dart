@@ -57,38 +57,35 @@ class _StoriesWidgetState extends State<StoriesWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.black,
-        body: SafeArea(
-          top: true,
-          child: Align(
+        body: Align(
+          alignment: const AlignmentDirectional(0.0, 0.0),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: const BoxDecoration(
+              color: Colors.transparent,
+            ),
             alignment: const AlignmentDirectional(0.0, 0.0),
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: const BoxDecoration(
-                color: Colors.transparent,
-              ),
+            child: Align(
               alignment: const AlignmentDirectional(0.0, 0.0),
-              child: Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: SizedBox(
+              child: SizedBox(
+                width: double.infinity,
+                height: double.infinity,
+                child: custom_widgets.Story(
                   width: double.infinity,
                   height: double.infinity,
-                  child: custom_widgets.Story(
-                    width: double.infinity,
-                    height: double.infinity,
-                    initialPage: widget.index!,
-                    allStories: widget.stories,
-                    onUserChanged: () async {
-                      await currentUserReference!.update({
-                        ...mapToFirestore(
-                          {
-                            'viewedStories': FieldValue.arrayUnion(
-                                [FFAppState().currentStory]),
-                          },
-                        ),
-                      });
-                    },
-                  ),
+                  initialPage: widget.index!,
+                  allStories: widget.stories,
+                  onUserChanged: () async {
+                    await currentUserReference!.update({
+                      ...mapToFirestore(
+                        {
+                          'viewedStories': FieldValue.arrayUnion(
+                              [FFAppState().currentStory]),
+                        },
+                      ),
+                    });
+                  },
                 ),
               ),
             ),

@@ -1,15 +1,15 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'meditation_info_new_widget.dart' show MeditationInfoNewWidget;
+import 'meditation_info_widget.dart' show MeditationInfoWidget;
 import 'package:flutter/material.dart';
 
-class MeditationInfoNewModel extends FlutterFlowModel<MeditationInfoNewWidget> {
+class MeditationInfoModel extends FlutterFlowModel<MeditationInfoWidget> {
   ///  Local state fields for this page.
-
-  bool more = false;
 
   int iterationIndex = 0;
 
-  int downloadProgress = 0;
+  bool more = false;
+
+  int? downloadProgress;
 
   ///  State fields for stateful widgets in this page.
 

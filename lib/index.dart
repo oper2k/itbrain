@@ -21,7 +21,6 @@ export '/main_pages/purchase_pages/payment_method/payment_method_widget.dart'
     show PaymentMethodWidget;
 export '/drafts_pages/card_details/card_details_widget.dart'
     show CardDetailsWidget;
-export '/main_pages/search_page/search_page_widget.dart' show SearchPageWidget;
 export '/main_pages/purchase_pages/player_page/player_page_widget.dart'
     show PlayerPageWidget;
 export '/profile/change_language/change_language_widget.dart'
@@ -36,5 +35,7 @@ export '/auth_pages/confirm_email/confirm_email_widget.dart'
     show ConfirmEmailWidget;
 export '/auth_pages/confirm_email_profile/confirm_email_profile_widget.dart'
     show ConfirmEmailProfileWidget;
-export '/main_pages/meditation_info_new/meditation_info_new_widget.dart'
-    show MeditationInfoNewWidget;
+export '/main_pages/meditation_info/meditation_info_widget.dart'
+    show MeditationInfoWidget;
+export '/main_pages/search_page_new/search_page_new_widget.dart'
+    show SearchPageNewWidget;

@@ -1,13 +1,15 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/main_pages/meditations/meditations_widget.dart';
-import 'search_page_widget.dart' show SearchPageWidget;
+import 'search_page_new_widget.dart' show SearchPageNewWidget;
 import 'package:flutter/material.dart';
 
-class SearchPageModel extends FlutterFlowModel<SearchPageWidget> {
+class SearchPageNewModel extends FlutterFlowModel<SearchPageNewWidget> {
   ///  Local state fields for this page.
 
-  bool searchOk = false;
+  int iterationIndex = 0;
+
+  bool? searchOk = false;
 
   ///  State fields for stateful widgets in this page.
 
