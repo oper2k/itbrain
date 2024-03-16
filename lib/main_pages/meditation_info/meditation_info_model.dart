@@ -9,7 +9,7 @@ class MeditationInfoModel extends FlutterFlowModel<MeditationInfoWidget> {
 
   bool more = false;
 
-  int? downloadProgress;
+  int? downloadProgress = 0;
 
   ///  State fields for stateful widgets in this page.
 

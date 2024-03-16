@@ -215,217 +215,220 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Builder(
-                                builder: (context) {
-                                  if ((currentUserPhoto == '') &&
-                                      (_model.uploadedFileUrl == '')) {
-                                    return Container(
-                                      width: 124.0,
-                                      height: 124.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: Colors.transparent,
-                                        ),
-                                      ),
-                                      child: Icon(
-                                        Icons.add,
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent1,
-                                        size: 24.0,
-                                      ),
-                                    );
-                                  } else {
-                                    return Stack(
-                                      alignment:
-                                          const AlignmentDirectional(1.0, -1.0),
-                                      children: [
-                                        AuthUserStreamWidget(
-                                          builder: (context) => ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(100.0),
-                                            child: OctoImage(
-                                              placeholderBuilder: (_) =>
-                                                  SizedBox.expand(
-                                                child: Image(
-                                                  image: BlurHashImage(
-                                                      FFAppState()
-                                                          .imageProfileBlurHash),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                              image: CachedNetworkImageProvider(
-                                                _model.uploadedFileUrl !=
-                                                            ''
-                                                    ? _model.uploadedFileUrl
-                                                    : currentUserPhoto,
-                                              ),
-                                              width: 124.0,
-                                              height: 124.0,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(1.0, -1.0),
-                                          child: FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 20.0,
-                                            borderWidth: 0.0,
-                                            buttonSize: 40.0,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            icon: Icon(
-                                              FFIcons.kunion,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 12.0,
-                                            ),
-                                            onPressed: () async {
-                                              setState(() {
-                                                _model.isDataUploading = false;
-                                                _model.uploadedLocalFile =
-                                                    FFUploadedFile(
-                                                        bytes:
-                                                            Uint8List.fromList(
-                                                                []));
-                                                _model.uploadedFileUrl = '';
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  }
-                                },
-                              ),
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  final selectedMedia =
-                                      await selectMediaWithSourceBottomSheet(
-                                    context: context,
-                                    maxWidth: 492.00,
-                                    maxHeight: 492.00,
-                                    imageQuality: 95,
-                                    allowPhoto: true,
-                                    includeBlurHash: true,
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .buttonColor,
-                                    textColor: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    pickerFontFamily: 'Roboto',
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              final selectedMedia =
+                                  await selectMediaWithSourceBottomSheet(
+                                context: context,
+                                maxWidth: 492.00,
+                                maxHeight: 492.00,
+                                imageQuality: 95,
+                                allowPhoto: true,
+                                includeBlurHash: true,
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).buttonColor,
+                                textColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                                pickerFontFamily: 'Roboto',
+                              );
+                              if (selectedMedia != null &&
+                                  selectedMedia.every((m) => validateFileFormat(
+                                      m.storagePath, context))) {
+                                setState(() => _model.isDataUploading = true);
+                                var selectedUploadedFiles = <FFUploadedFile>[];
+
+                                var downloadUrls = <String>[];
+                                try {
+                                  showUploadMessage(
+                                    context,
+                                    FFLocalizations.of(context).getText(
+                                      'lc5m8b8r' /* Загрузка фото */,
+                                    ),
+                                    showLoading: true,
                                   );
-                                  if (selectedMedia != null &&
-                                      selectedMedia.every((m) =>
-                                          validateFileFormat(
-                                              m.storagePath, context))) {
-                                    setState(
-                                        () => _model.isDataUploading = true);
-                                    var selectedUploadedFiles =
-                                        <FFUploadedFile>[];
+                                  selectedUploadedFiles = selectedMedia
+                                      .map((m) => FFUploadedFile(
+                                            name: m.storagePath.split('/').last,
+                                            bytes: m.bytes,
+                                            height: m.dimensions?.height,
+                                            width: m.dimensions?.width,
+                                            blurHash: m.blurHash,
+                                          ))
+                                      .toList();
 
-                                    var downloadUrls = <String>[];
-                                    try {
-                                      showUploadMessage(
-                                        context,
-                                        FFLocalizations.of(context).getText(
-                                          'lc5m8b8r' /* Загрузка фото */,
-                                        ),
-                                        showLoading: true,
-                                      );
-                                      selectedUploadedFiles = selectedMedia
-                                          .map((m) => FFUploadedFile(
-                                                name: m.storagePath
-                                                    .split('/')
-                                                    .last,
-                                                bytes: m.bytes,
-                                                height: m.dimensions?.height,
-                                                width: m.dimensions?.width,
-                                                blurHash: m.blurHash,
-                                              ))
-                                          .toList();
-
-                                      downloadUrls = (await Future.wait(
-                                        selectedMedia.map(
-                                          (m) async => await uploadData(
-                                              m.storagePath, m.bytes),
-                                        ),
-                                      ))
-                                          .where((u) => u != null)
-                                          .map((u) => u!)
-                                          .toList();
-                                    } finally {
-                                      ScaffoldMessenger.of(context)
-                                          .hideCurrentSnackBar();
-                                      _model.isDataUploading = false;
-                                    }
-                                    if (selectedUploadedFiles.length ==
-                                            selectedMedia.length &&
-                                        downloadUrls.length ==
-                                            selectedMedia.length) {
-                                      setState(() {
-                                        _model.uploadedLocalFile =
-                                            selectedUploadedFiles.first;
-                                        _model.uploadedFileUrl =
-                                            downloadUrls.first;
-                                      });
-                                      showUploadMessage(
-                                          context,
-                                          FFLocalizations.of(context).getText(
-                                            'jb7evkbp' /* Готово! */,
-                                          ));
-                                    } else {
-                                      setState(() {});
-                                      showUploadMessage(
-                                          context,
-                                          FFLocalizations.of(context).getText(
-                                            'vnw9exr8' /* Ошибка при загрузке фотографии */,
-                                          ));
-                                      return;
-                                    }
-                                  }
-
+                                  downloadUrls = (await Future.wait(
+                                    selectedMedia.map(
+                                      (m) async => await uploadData(
+                                          m.storagePath, m.bytes),
+                                    ),
+                                  ))
+                                      .where((u) => u != null)
+                                      .map((u) => u!)
+                                      .toList();
+                                } finally {
+                                  ScaffoldMessenger.of(context)
+                                      .hideCurrentSnackBar();
+                                  _model.isDataUploading = false;
+                                }
+                                if (selectedUploadedFiles.length ==
+                                        selectedMedia.length &&
+                                    downloadUrls.length ==
+                                        selectedMedia.length) {
                                   setState(() {
-                                    FFAppState().imageProfileBlurHash =
-                                        _model.uploadedLocalFile.blurHash!;
+                                    _model.uploadedLocalFile =
+                                        selectedUploadedFiles.first;
+                                    _model.uploadedFileUrl = downloadUrls.first;
                                   });
-                                },
-                                text: FFLocalizations.of(context).getText(
-                                  '8qafq7an' /* Добавить фото */,
+                                  showUploadMessage(
+                                      context,
+                                      FFLocalizations.of(context).getText(
+                                        'jb7evkbp' /* Готово! */,
+                                      ));
+                                } else {
+                                  setState(() {});
+                                  showUploadMessage(
+                                      context,
+                                      FFLocalizations.of(context).getText(
+                                        'vnw9exr8' /* Ошибка при загрузке фотографии */,
+                                      ));
+                                  return;
+                                }
+                              }
+
+                              setState(() {
+                                FFAppState().imageProfileBlurHash =
+                                    _model.uploadedLocalFile.blurHash!;
+                              });
+                            },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Builder(
+                                  builder: (context) {
+                                    if ((currentUserPhoto == '') &&
+                                        (_model.uploadedFileUrl == '')) {
+                                      return Container(
+                                        width: 124.0,
+                                        height: 124.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color: Colors.transparent,
+                                          ),
+                                        ),
+                                        child: Icon(
+                                          Icons.add,
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent1,
+                                          size: 24.0,
+                                        ),
+                                      );
+                                    } else {
+                                      return Stack(
+                                        alignment:
+                                            const AlignmentDirectional(1.0, -1.0),
+                                        children: [
+                                          AuthUserStreamWidget(
+                                            builder: (context) => ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(100.0),
+                                              child: OctoImage(
+                                                placeholderBuilder: (_) =>
+                                                    SizedBox.expand(
+                                                  child: Image(
+                                                    image: BlurHashImage(
+                                                        FFAppState()
+                                                            .imageProfileBlurHash),
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                image:
+                                                    CachedNetworkImageProvider(
+                                                  _model.uploadedFileUrl !=
+                                                              ''
+                                                      ? _model.uploadedFileUrl
+                                                      : currentUserPhoto,
+                                                ),
+                                                width: 124.0,
+                                                height: 124.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(1.0, -1.0),
+                                            child: FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 20.0,
+                                              borderWidth: 0.0,
+                                              buttonSize: 40.0,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              icon: Icon(
+                                                FFIcons.kunion,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 12.0,
+                                              ),
+                                              onPressed: () async {
+                                                if (_model.uploadedFileUrl !=
+                                                        '') {
+                                                  setState(() {
+                                                    _model.isDataUploading =
+                                                        false;
+                                                    _model.uploadedLocalFile =
+                                                        FFUploadedFile(
+                                                            bytes: Uint8List
+                                                                .fromList([]));
+                                                    _model.uploadedFileUrl = '';
+                                                  });
+                                                } else {
+                                                  if (currentUserPhoto != '') {
+                                                    await currentUserReference!
+                                                        .update({
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'photo_url':
+                                                              FieldValue
+                                                                  .delete(),
+                                                        },
+                                                      ),
+                                                    });
+                                                  }
+                                                }
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    }
+                                  },
                                 ),
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: Colors.transparent,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'jkqcishr' /* Добавить фото */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Evolventa',
                                         color: FlutterFlowTheme.of(context)
-                                            .accent1,
+                                            .primary,
+                                        fontWeight: FontWeight.bold,
                                         useGoogleFonts: false,
                                       ),
-                                  elevation: 0.0,
-                                  borderSide: const BorderSide(
-                                    color: Colors.transparent,
-                                    width: 0.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                              ),
-                            ].divide(const SizedBox(width: 20.0)),
+                              ].divide(const SizedBox(width: 20.0)),
+                            ),
                           ),
                         ),
                         Padding(

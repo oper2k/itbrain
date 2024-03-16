@@ -473,9 +473,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Изменить профиль',
       'en': 'Edit profile',
     },
-    '8qafq7an': {
+    'jkqcishr': {
       'ru': 'Добавить фото',
-      'en': 'Add photo',
+      'en': '',
     },
     'fjhfuyy7': {
       'ru': 'Имя',
