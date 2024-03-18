@@ -304,6 +304,12 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_LastAffirmationDate', value);
   }
 
+  int _playerIndex = 0;
+  int get playerIndex => _playerIndex;
+  set playerIndex(int value) {
+    _playerIndex = value;
+  }
+
   final _meditationCategoryPageManager =
       StreamRequestManager<List<MeditationsRecord>>();
   Stream<List<MeditationsRecord>> meditationCategoryPage({

@@ -149,7 +149,6 @@ final parametersBuilderMap =
   'cardDetails': ParameterData.none(),
   'playerPage': (data) async => ParameterData(
         allParams: {
-          'index': getParameter<int>(data, 'index'),
           'medCategory': getParameter<DocumentReference>(data, 'medCategory'),
           'meditation': await getDocumentParameter<MeditationCategoriesRecord>(
               data, 'meditation', MeditationCategoriesRecord.fromSnapshot),

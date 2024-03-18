@@ -21,8 +21,7 @@ export '/main_pages/purchase_pages/payment_method/payment_method_widget.dart'
     show PaymentMethodWidget;
 export '/drafts_pages/card_details/card_details_widget.dart'
     show CardDetailsWidget;
-export '/main_pages/purchase_pages/player_page/player_page_widget.dart'
-    show PlayerPageWidget;
+export '/main_pages/player_page/player_page_widget.dart' show PlayerPageWidget;
 export '/profile/change_language/change_language_widget.dart'
     show ChangeLanguageWidget;
 export '/main_pages/purchase_pages/offline_player_page/offline_player_page_widget.dart'

@@ -199,7 +199,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => PlayerPageWidget(
             audio: params.getParam<MeditationsRecord>(
                 'audio', ParamType.Document, true),
-            index: params.getParam('index', ParamType.int),
             medCategory: params.getParam('medCategory',
                 ParamType.DocumentReference, false, ['meditationCategories']),
             meditation: params.getParam('meditation', ParamType.Document),

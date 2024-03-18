@@ -448,11 +448,6 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                             ParamType.Document,
                                                             true,
                                                           ),
-                                                          'index':
-                                                              serializeParam(
-                                                            0,
-                                                            ParamType.int,
-                                                          ),
                                                           'medCategory':
                                                               serializeParam(
                                                             meditationsMeditationsRecord
@@ -590,10 +585,6 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                         ParamType.Document,
                                                         true,
                                                       ),
-                                                      'index': serializeParam(
-                                                        resultsIndex,
-                                                        ParamType.int,
-                                                      ),
                                                       'medCategory':
                                                           serializeParam(
                                                         resultsItem
@@ -652,10 +643,6 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                           .simpleSearchResults,
                                                       ParamType.Document,
                                                       true,
-                                                    ),
-                                                    'index': serializeParam(
-                                                      resultsIndex,
-                                                      ParamType.int,
                                                     ),
                                                     'medCategory':
                                                         serializeParam(

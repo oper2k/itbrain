@@ -642,10 +642,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // playerPage
   {
-    'rj969l7a': {
-      'ru': 'Описание',
-      'en': 'Description',
-    },
     'w0mnvo2e': {
       'ru': 'Home',
       'en': 'Home',
@@ -1088,6 +1084,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'gt5fm4k8': {
       'ru': 'Понятно!',
       'en': 'Ok',
+    },
+  },
+  // playerComp
+  {
+    'rj969l7a': {
+      'ru': 'Описание',
+      'en': 'Description',
     },
   },
   // Miscellaneous

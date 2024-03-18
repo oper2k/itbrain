@@ -60,6 +60,13 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.yesCreateScreenshots();
+      unawaited(
+        () async {
+          await actions.stopMusic(
+            'p1',
+          );
+        }(),
+      );
     });
   }
 
@@ -875,7 +882,16 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                       setState(() {
                                                         FFAppState()
                                                             .positionMS = 0;
+                                                        FFAppState()
+                                                                .playerIndex =
+                                                            valueOrDefault<int>(
+                                                          meditationsIndex,
+                                                          0,
+                                                        );
                                                       });
+                                                      await actions.stopMusic(
+                                                        'p1',
+                                                      );
 
                                                       context.pushNamed(
                                                         'playerPage',
@@ -885,11 +901,6 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                             containerMeditationsRecordList,
                                                             ParamType.Document,
                                                             true,
-                                                          ),
-                                                          'index':
-                                                              serializeParam(
-                                                            meditationsIndex,
-                                                            ParamType.int,
                                                           ),
                                                           'medCategory':
                                                               serializeParam(
@@ -922,7 +933,12 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                     setState(() {
                                                       FFAppState().positionMS =
                                                           0;
+                                                      FFAppState().playerIndex =
+                                                          meditationsIndex;
                                                     });
+                                                    await actions.stopMusic(
+                                                      'p1',
+                                                    );
 
                                                     context.pushNamed(
                                                       'playerPage',
@@ -931,10 +947,6 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                           containerMeditationsRecordList,
                                                           ParamType.Document,
                                                           true,
-                                                        ),
-                                                        'index': serializeParam(
-                                                          meditationsIndex,
-                                                          ParamType.int,
                                                         ),
                                                         'medCategory':
                                                             serializeParam(

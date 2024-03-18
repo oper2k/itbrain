@@ -16,4 +16,5 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 Future stopMusic(String playerId) async {
   final _audioPlayer = AssetsAudioPlayer.withId(playerId);
   await _audioPlayer.stop();
+  await _audioPlayer.dispose();
 }
