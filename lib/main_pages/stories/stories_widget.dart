@@ -59,35 +59,24 @@ class _StoriesWidgetState extends State<StoriesWidget> {
         backgroundColor: Colors.black,
         body: Align(
           alignment: const AlignmentDirectional(0.0, 0.0),
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              color: Colors.transparent,
-            ),
-            alignment: const AlignmentDirectional(0.0, 0.0),
-            child: Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
-              child: SizedBox(
-                width: double.infinity,
-                height: double.infinity,
-                child: custom_widgets.Story(
-                  width: double.infinity,
-                  height: double.infinity,
-                  initialPage: widget.index!,
-                  allStories: widget.stories,
-                  onUserChanged: () async {
-                    await currentUserReference!.update({
-                      ...mapToFirestore(
-                        {
-                          'viewedStories': FieldValue.arrayUnion(
-                              [FFAppState().currentStory]),
-                        },
-                      ),
-                    });
-                  },
-                ),
-              ),
+          child: SizedBox(
+            width: MediaQuery.sizeOf(context).width * 1.0,
+            height: MediaQuery.sizeOf(context).height * 1.0,
+            child: custom_widgets.Story(
+              width: MediaQuery.sizeOf(context).width * 1.0,
+              height: MediaQuery.sizeOf(context).height * 1.0,
+              initialPage: widget.index!,
+              allStories: widget.stories,
+              onUserChanged: () async {
+                await currentUserReference!.update({
+                  ...mapToFirestore(
+                    {
+                      'viewedStories':
+                          FieldValue.arrayUnion([FFAppState().currentStory]),
+                    },
+                  ),
+                });
+              },
             ),
           ),
         ),
