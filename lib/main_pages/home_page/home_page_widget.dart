@@ -120,7 +120,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           body: FutureBuilder<List<StoriesRecord>>(
             future: FFAppState().homePageCache(
-              requestFn: () => queryStoriesRecordOnce(),
+              requestFn: () => queryStoriesRecordOnce(
+                queryBuilder: (storiesRecord) => storiesRecord.where(
+                  'lang',
+                  isEqualTo: FFLocalizations.of(context).languageCode,
+                ),
+              ),
             ),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.

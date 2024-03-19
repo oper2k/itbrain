@@ -13,11 +13,9 @@ import 'package:flutter/material.dart';
 // and then add the boilerplate code using the button on the right!
 import 'package:assets_audio_player/assets_audio_player.dart';
 
-Future playMusic(String playerId, String audioFilePath, bool isAutoPlay) async {
+Future playMusic(String playerId, String audioFilePath) async {
   final _audioPlayer = AssetsAudioPlayer.withId(playerId);
   // Воспроизведение нового аудиофайла
-  await _audioPlayer.open(
-    Audio.network(audioFilePath.toString()),
-    autoStart: isAutoPlay, // Начать воспроизведение автоматически
-  );
+  await _audioPlayer.open(Audio.network(audioFilePath.toString()),
+      autoStart: true);
 }

@@ -114,6 +114,11 @@ class MeditationsRecord extends FirestoreRecord {
   String get playerTextEng => _playerTextEng ?? '';
   bool hasPlayerTextEng() => _playerTextEng != null;
 
+  // "AudioPathEng" field.
+  String? _audioPathEng;
+  String get audioPathEng => _audioPathEng ?? '';
+  bool hasAudioPathEng() => _audioPathEng != null;
+
   void _initializeFields() {
     _meditationCategory =
         snapshotData['meditationCategory'] as DocumentReference?;
@@ -136,6 +141,7 @@ class MeditationsRecord extends FirestoreRecord {
     _playerSubTitleEng = snapshotData['playerSubTitleEng'] as String?;
     _playerText = snapshotData['playerText'] as String?;
     _playerTextEng = snapshotData['playerTextEng'] as String?;
+    _audioPathEng = snapshotData['AudioPathEng'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -193,6 +199,7 @@ Map<String, dynamic> createMeditationsRecordData({
   String? playerSubTitleEng,
   String? playerText,
   String? playerTextEng,
+  String? audioPathEng,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -216,6 +223,7 @@ Map<String, dynamic> createMeditationsRecordData({
       'playerSubTitleEng': playerSubTitleEng,
       'playerText': playerText,
       'playerTextEng': playerTextEng,
+      'AudioPathEng': audioPathEng,
     }.withoutNulls,
   );
 
@@ -246,7 +254,8 @@ class MeditationsRecordDocumentEquality implements Equality<MeditationsRecord> {
         e1?.playerSubTitle == e2?.playerSubTitle &&
         e1?.playerSubTitleEng == e2?.playerSubTitleEng &&
         e1?.playerText == e2?.playerText &&
-        e1?.playerTextEng == e2?.playerTextEng;
+        e1?.playerTextEng == e2?.playerTextEng &&
+        e1?.audioPathEng == e2?.audioPathEng;
   }
 
   @override
@@ -270,7 +279,8 @@ class MeditationsRecordDocumentEquality implements Equality<MeditationsRecord> {
         e?.playerSubTitle,
         e?.playerSubTitleEng,
         e?.playerText,
-        e?.playerTextEng
+        e?.playerTextEng,
+        e?.audioPathEng
       ]);
 
   @override

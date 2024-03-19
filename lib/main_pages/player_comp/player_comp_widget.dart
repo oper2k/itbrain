@@ -339,7 +339,6 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                 'p1',
                                 widget.meditationList![FFAppState().playerIndex]
                                     .audioPath,
-                                FFAppState().isAudioPlaying,
                               );
                               setState(() {});
                               return;
@@ -468,7 +467,6 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                         .meditationList![
                                             FFAppState().playerIndex]
                                         .audioPath,
-                                    FFAppState().isAudioPlaying,
                                   );
                                   setState(() {});
                                 },

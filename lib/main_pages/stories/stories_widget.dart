@@ -59,14 +59,18 @@ class _StoriesWidgetState extends State<StoriesWidget> {
         backgroundColor: Colors.black,
         body: Align(
           alignment: const AlignmentDirectional(0.0, 0.0),
-          child: SizedBox(
+          child: Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
             height: MediaQuery.sizeOf(context).height * 1.0,
+            decoration: const BoxDecoration(),
             child: custom_widgets.Story(
               width: MediaQuery.sizeOf(context).width * 1.0,
               height: MediaQuery.sizeOf(context).height * 1.0,
               initialPage: widget.index!,
-              allStories: widget.stories,
+              allStories: widget.stories
+                  ?.where(
+                      (e) => e.lang == FFLocalizations.of(context).languageCode)
+                  .toList(),
               onUserChanged: () async {
                 await currentUserReference!.update({
                   ...mapToFirestore(
