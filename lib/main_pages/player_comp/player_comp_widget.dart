@@ -431,7 +431,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                     (widget.meditationList!.length - 1)) &&
                                 (!widget
                                         .meditationList![
-                                            FFAppState().playerIndex]
+                                            FFAppState().playerIndex + 1]
                                         .isPaid ||
                                     (currentUserDocument
                                                 ?.purchasedMeditationsPacks
