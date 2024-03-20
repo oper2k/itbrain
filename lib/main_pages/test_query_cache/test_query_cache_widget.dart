@@ -51,7 +51,6 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
 
       _model.isIOnline = await actions.checkInternetConnection();
       if (_model.isIOnline!) {
-        FFAppState().clearHomePageCacheCache();
         FFAppState().clearListViewCacheCache();
         FFAppState().clearMeditationCategoryPageCache();
         FFAppState().clearBuyPackCacheCache();

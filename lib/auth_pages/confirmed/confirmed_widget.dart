@@ -92,7 +92,7 @@ class _ConfirmedWidgetState extends State<ConfirmedWidget> {
               child: Text(
                 FFLocalizations.of(context).getVariableText(
                   ruText: 'Отправили его на ${widget.email}',
-                  enText: 'Email sent to${widget.email}',
+                  enText: 'Email sent to ${widget.email}',
                 ),
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(

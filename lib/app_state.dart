@@ -342,21 +342,6 @@ class FFAppState extends ChangeNotifier {
   void clearBuyPackCacheCacheKey(String? uniqueKey) =>
       _buyPackCacheManager.clearRequest(uniqueKey);
 
-  final _homePageCacheManager = FutureRequestManager<List<StoriesRecord>>();
-  Future<List<StoriesRecord>> homePageCache({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Future<List<StoriesRecord>> Function() requestFn,
-  }) =>
-      _homePageCacheManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearHomePageCacheCache() => _homePageCacheManager.clear();
-  void clearHomePageCacheCacheKey(String? uniqueKey) =>
-      _homePageCacheManager.clearRequest(uniqueKey);
-
   final _historyCacheManager = StreamRequestManager<MeditationsRecord>();
   Stream<MeditationsRecord> historyCache({
     String? uniqueQueryKey,

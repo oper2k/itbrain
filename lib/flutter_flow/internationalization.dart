@@ -117,36 +117,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'To the space of multidimensionality and mindfulness, uniting people around the world',
     },
-    '9o8hcdjf': {
-      'ru': 'Добро пожаловать!',
-      'en': 'WELCOME',
-    },
-    'y6iumx22': {
-      'ru':
-          'В пространство многомерности и осознанности, объединяющее людей по всему миру',
-      'en':
-          'To the space of multidimensionality and mindfulness, uniting people around the world',
-    },
-    '7hc85270': {
-      'ru': 'Добро пожаловать!',
-      'en': 'WELCOME',
-    },
-    'hdiv7k81': {
-      'ru':
-          'В пространство многомерности и осознанности, объединяющее людей по всему миру',
-      'en':
-          'To the space of multidimensionality and mindfulness, uniting people around the world',
-    },
-    'v8ofl9gm': {
-      'ru': 'Добро пожаловать!',
-      'en': 'WELCOME',
-    },
-    'q1mse5hv': {
-      'ru':
-          'В пространство многомерности и осознанности, объединяющее людей по всему миру',
-      'en':
-          'To the space of multidimensionality and mindfulness, uniting people around the world',
-    },
     'kwp7xmkk': {
       'ru': 'Зарегистрироваться',
       'en': 'Sign Up',
@@ -239,7 +209,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0hn1n0c5': {
       'ru': 'Зарегистрироваться',
-      'en': '',
+      'en': 'Sign Up',
     },
     'm872kyq1': {
       'ru': 'Шаг №2 из 3',
@@ -279,7 +249,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'qom7s9h0': {
       'ru': 'Далее',
-      'en': '',
+      'en': 'Next',
     },
     '0apbqllj': {
       'ru': 'Шаг №3 из 3',

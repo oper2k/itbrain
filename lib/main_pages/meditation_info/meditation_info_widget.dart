@@ -755,30 +755,13 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    unawaited(
-                                      () async {
-                                        await launchURL(
-                                            FFLocalizations.of(context)
-                                                .getVariableText(
-                                          ruText: widget
-                                              .meditationCategory?.getCourseUrl,
-                                          enText: widget.meditationCategory
-                                              ?.getCourseUrlEng,
-                                        ));
-                                      }(),
-                                    );
-
-                                    context.goNamed(
-                                      'paymentPage',
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                        ),
-                                      },
-                                    );
+                                    await launchURL(FFLocalizations.of(context)
+                                        .getVariableText(
+                                      ruText: widget
+                                          .meditationCategory?.getCourseUrl,
+                                      enText: widget
+                                          .meditationCategory?.getCourseUrlEng,
+                                    ));
                                   },
                                   child: Container(
                                     width: double.infinity,

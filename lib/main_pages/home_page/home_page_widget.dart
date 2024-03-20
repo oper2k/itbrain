@@ -83,7 +83,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
       await Future.delayed(const Duration(milliseconds: 1000));
       _model.isIOnline = await actions.checkInternetConnection();
       if (_model.isIOnline!) {
-        FFAppState().clearHomePageCacheCache();
         FFAppState().clearListViewCacheCache();
         FFAppState().clearMeditationCategoryPageCache();
         FFAppState().clearBuyPackCacheCache();
@@ -119,13 +118,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           body: FutureBuilder<List<StoriesRecord>>(
-            future: FFAppState().homePageCache(
-              requestFn: () => queryStoriesRecordOnce(
-                queryBuilder: (storiesRecord) => storiesRecord.where(
-                  'lang',
-                  isEqualTo: FFLocalizations.of(context).languageCode,
-                ),
-              ),
+            future: queryStoriesRecordOnce(
+              queryBuilder: (storiesRecord) => storiesRecord
+                  .where(
+                    'lang',
+                    isEqualTo: FFLocalizations.of(context).languageCode,
+                  )
+                  .orderBy('index'),
             ),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.

@@ -5,6 +5,7 @@ import 'package:collection/collection.dart';
 import '/backend/schema/util/firestore_util.dart';
 
 import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class StoriesRecord extends FirestoreRecord {
   StoriesRecord._(
@@ -44,6 +45,11 @@ class StoriesRecord extends FirestoreRecord {
   String get lang => _lang ?? '';
   bool hasLang() => _lang != null;
 
+  // "index" field.
+  int? _index;
+  int get index => _index ?? 0;
+  bool hasIndex() => _index != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _image = snapshotData['image'] as String?;
@@ -54,6 +60,7 @@ class StoriesRecord extends FirestoreRecord {
     );
     _createDate = snapshotData['create_date'] as DateTime?;
     _lang = snapshotData['lang'] as String?;
+    _index = castToType<int>(snapshotData['index']);
   }
 
   static CollectionReference get collection =>
@@ -96,6 +103,7 @@ Map<String, dynamic> createStoriesRecordData({
   bool? visability,
   DateTime? createDate,
   String? lang,
+  int? index,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -104,6 +112,7 @@ Map<String, dynamic> createStoriesRecordData({
       'visability': visability,
       'create_date': createDate,
       'lang': lang,
+      'index': index,
     }.withoutNulls,
   );
 
@@ -121,7 +130,8 @@ class StoriesRecordDocumentEquality implements Equality<StoriesRecord> {
         e1?.visability == e2?.visability &&
         listEquality.equals(e1?.contentStories, e2?.contentStories) &&
         e1?.createDate == e2?.createDate &&
-        e1?.lang == e2?.lang;
+        e1?.lang == e2?.lang &&
+        e1?.index == e2?.index;
   }
 
   @override
@@ -131,7 +141,8 @@ class StoriesRecordDocumentEquality implements Equality<StoriesRecord> {
         e?.visability,
         e?.contentStories,
         e?.createDate,
-        e?.lang
+        e?.lang,
+        e?.index
       ]);
 
   @override
