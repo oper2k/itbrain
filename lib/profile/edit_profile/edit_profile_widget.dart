@@ -841,9 +841,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     if (!currentUserEmailVerified)
                                       FFButtonWidget(
                                         onPressed: () async {
-                                          await authManager
-                                              .sendEmailVerification();
-
                                           context
                                               .pushNamed('confirmEmailProfile');
                                         },

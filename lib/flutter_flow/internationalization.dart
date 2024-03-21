@@ -687,6 +687,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Отправить код еще раз',
       'en': 'Send the code again',
     },
+    'w1jn4x3u': {
+      'ru': 'Не забудьте проверить папку «Спам» и другие.',
+      'en': 'Don\'t forget to check in spam and other folders.',
+    },
     '3jbddo0n': {
       'ru': 'Пропустить',
       'en': 'Skip',
@@ -713,6 +717,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'n9p18jdy': {
       'ru': 'Отправить код еще раз',
       'en': 'Send the code again',
+    },
+    'lmm0mjsw': {
+      'ru': 'Не забудьте проверить папку «Спам» и другие.',
+      'en': '',
     },
     'bbc0tz24': {
       'ru': 'Home',

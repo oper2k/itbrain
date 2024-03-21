@@ -312,6 +312,24 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                   ),
                 ),
                 const Spacer(),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      'w1jn4x3u' /* Не забудьте проверить папку «С... */,
+                    ),
+                    textAlign: TextAlign.center,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Evolventa',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.normal,
+                          useGoogleFonts: false,
+                          lineHeight: 1.2,
+                        ),
+                  ),
+                ),
                 InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,

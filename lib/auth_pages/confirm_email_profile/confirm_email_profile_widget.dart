@@ -318,6 +318,24 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
                   ),
                 ),
                 const Spacer(),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      'lmm0mjsw' /* Не забудьте проверить папку «С... */,
+                    ),
+                    textAlign: TextAlign.center,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Evolventa',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.normal,
+                          useGoogleFonts: false,
+                          lineHeight: 1.2,
+                        ),
+                  ),
+                ),
               ],
             ),
           ),
