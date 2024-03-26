@@ -383,6 +383,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           scrollDirection: Axis.horizontal,
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children:
                                                 List.generate(stories.length,
                                                         (storiesIndex) {
@@ -659,21 +661,36 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       alignment:
                                                           const AlignmentDirectional(
                                                               0.0, 0.0),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getVariableText(
-                                                          ruText:
-                                                              storiesItem.title,
-                                                          enText: storiesItem
-                                                              .titleEng,
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    6.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
+                                                            ruText: storiesItem
+                                                                .homeTitle,
+                                                            enText: storiesItem
+                                                                .homeTitle,
+                                                          ),
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Evolventa',
+                                                                fontSize: 10.0,
+                                                                useGoogleFonts:
+                                                                    false,
+                                                              ),
                                                         ),
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
                                                       ),
                                                     ),
                                                   ],
