@@ -50,6 +50,11 @@ class StoriesRecord extends FirestoreRecord {
   int get index => _index ?? 0;
   bool hasIndex() => _index != null;
 
+  // "title_eng" field.
+  String? _titleEng;
+  String get titleEng => _titleEng ?? '';
+  bool hasTitleEng() => _titleEng != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _image = snapshotData['image'] as String?;
@@ -61,6 +66,7 @@ class StoriesRecord extends FirestoreRecord {
     _createDate = snapshotData['create_date'] as DateTime?;
     _lang = snapshotData['lang'] as String?;
     _index = castToType<int>(snapshotData['index']);
+    _titleEng = snapshotData['title_eng'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -104,6 +110,7 @@ Map<String, dynamic> createStoriesRecordData({
   DateTime? createDate,
   String? lang,
   int? index,
+  String? titleEng,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -113,6 +120,7 @@ Map<String, dynamic> createStoriesRecordData({
       'create_date': createDate,
       'lang': lang,
       'index': index,
+      'title_eng': titleEng,
     }.withoutNulls,
   );
 
@@ -131,7 +139,8 @@ class StoriesRecordDocumentEquality implements Equality<StoriesRecord> {
         listEquality.equals(e1?.contentStories, e2?.contentStories) &&
         e1?.createDate == e2?.createDate &&
         e1?.lang == e2?.lang &&
-        e1?.index == e2?.index;
+        e1?.index == e2?.index &&
+        e1?.titleEng == e2?.titleEng;
   }
 
   @override
@@ -142,7 +151,8 @@ class StoriesRecordDocumentEquality implements Equality<StoriesRecord> {
         e?.contentStories,
         e?.createDate,
         e?.lang,
-        e?.index
+        e?.index,
+        e?.titleEng
       ]);
 
   @override

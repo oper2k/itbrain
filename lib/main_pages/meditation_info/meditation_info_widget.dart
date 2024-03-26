@@ -739,12 +739,13 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                               },
                             ),
                           ),
-                          if (!(currentUserDocument?.purchasedMeditationsPacks
-                                          .toList() ??
-                                      [])
-                                  .contains(
-                                      widget.meditationCategory?.reference) &&
-                              !FFAppState().isOffline)
+                          if ((!(currentUserDocument?.purchasedMeditationsPacks
+                                              .toList() ??
+                                          [])
+                                      .contains(widget
+                                          .meditationCategory?.reference) &&
+                                  !FFAppState().isOffline) &&
+                              !widget.meditationCategory!.free)
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 32.0, 0.0, 0.0),

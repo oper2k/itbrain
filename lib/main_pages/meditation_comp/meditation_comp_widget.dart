@@ -102,6 +102,8 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                   return FlutterFlowTheme.of(context).accent1;
                                 } else if (widget.meditationCategories!.free) {
                                   return FlutterFlowTheme.of(context).accent1;
+                                } else if (widget.meditationCategories!.soon) {
+                                  return Colors.transparent;
                                 } else {
                                   return Colors.transparent;
                                 }
@@ -143,6 +145,8 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                   return FlutterFlowTheme.of(context).accent1;
                                 } else if (widget.meditationCategories!.free) {
                                   return FlutterFlowTheme.of(context).accent1;
+                                } else if (widget.meditationCategories!.soon) {
+                                  return Colors.transparent;
                                 } else {
                                   return Colors.transparent;
                                 }
@@ -300,7 +304,8 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                         ),
                       ),
                     ),
-                  if (widget.meditationCategories?.soon ?? true)
+                  if (widget.meditationCategories!.soon &&
+                      !widget.meditationCategories!.free)
                     Align(
                       alignment: const AlignmentDirectional(-1.0, -1.0),
                       child: Padding(
