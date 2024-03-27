@@ -589,99 +589,15 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                             child: Builder(
                               builder: (context) {
                                 if (!_model.more) {
-                                  return InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      setState(() {
-                                        _model.more = true;
-                                      });
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Expanded(
-                                          child: Align(
-                                            alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getVariableText(
-                                                    ruText: widget
-                                                        .meditationCategory
-                                                        ?.descriptionCategory,
-                                                    enText: widget
-                                                        .meditationCategory
-                                                        ?.descriptionCategoryEng,
-                                                  )
-                                                  .maybeHandleOverflow(
-                                                      maxChars: 105),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Evolventa',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontSize: 17.0,
-                                                        useGoogleFonts: false,
-                                                        lineHeight: 1.41,
-                                                      ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'aux1f2j3' /* eщё */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Evolventa',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent1,
-                                                  fontSize: 17.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: false,
-                                                  lineHeight: 1.41,
-                                                ),
-                                          ),
-                                        ),
-                                      ].divide(const SizedBox(width: 4.0)),
-                                    ),
-                                  );
-                                } else {
-                                  return InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      setState(() {
-                                        _model.more = false;
-                                      });
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Expanded(
-                                          child: Align(
-                                            alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                  return Stack(
+                                    alignment: const AlignmentDirectional(1.0, 1.0),
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Expanded(
                                             child: Text(
                                               valueOrDefault<String>(
                                                 FFLocalizations.of(context)
@@ -694,6 +610,9 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                       ?.descriptionCategoryEng,
                                                 ),
                                                 '0',
+                                              ).maybeHandleOverflow(
+                                                maxChars: 120,
+                                                replacement: '…',
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -701,39 +620,233 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                       .override(
                                                         fontFamily: 'Evolventa',
                                                         color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
+                                                            const Color(0xB3FFFFFF),
                                                         fontSize: 17.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
                                                         useGoogleFonts: false,
-                                                        lineHeight: 1.41,
+                                                        lineHeight: 1.29,
                                                       ),
                                             ),
                                           ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(1.0, 0.0),
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '5r55xoqj' /* свернуть */,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Evolventa',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent1,
-                                                  fontSize: 17.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: false,
-                                                  lineHeight: 1.41,
+                                        ].divide(const SizedBox(width: 4.0)),
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(1.0, 1.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setState(() {
+                                                  _model.more = true;
+                                                });
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
+                                                      const Color(0x00370C59)
+                                                    ],
+                                                    stops: const [0.8, 1.0],
+                                                    begin: const AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: const AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
                                                 ),
+                                                child: Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          1.0, 1.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(20.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                      ),
+                                                      child: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'vvpwce3u' /* eщё */,
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Evolventa',
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .accent1,
+                                                              fontSize: 17.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              useGoogleFonts:
+                                                                  false,
+                                                              lineHeight: 1.41,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ].divide(const SizedBox(width: 4.0)),
-                                    ),
+                                        ],
+                                      ),
+                                    ],
+                                  );
+                                } else {
+                                  return Stack(
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Expanded(
+                                            child: Align(
+                                              alignment: const AlignmentDirectional(
+                                                  -1.0, 0.0),
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  FFLocalizations.of(context)
+                                                      .getVariableText(
+                                                    ruText: widget
+                                                        .meditationCategory
+                                                        ?.descriptionCategory,
+                                                    enText: widget
+                                                        .meditationCategory
+                                                        ?.descriptionCategoryEng,
+                                                  ),
+                                                  '0',
+                                                ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Evolventa',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      fontSize: 17.0,
+                                                      useGoogleFonts: false,
+                                                      lineHeight: 1.41,
+                                                    ),
+                                              ),
+                                            ),
+                                          ),
+                                        ].divide(const SizedBox(width: 4.0)),
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(1.0, 1.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                setState(() {
+                                                  _model.more = false;
+                                                });
+                                              },
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
+                                                      const Color(0x00370C59)
+                                                    ],
+                                                    stops: const [0.8, 1.0],
+                                                    begin: const AlignmentDirectional(
+                                                        1.0, 0.0),
+                                                    end: const AlignmentDirectional(
+                                                        -1.0, 0),
+                                                  ),
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          1.0, 1.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(20.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                      ),
+                                                      child: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '3l3nc22g' /* Свернуть */,
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Evolventa',
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .accent1,
+                                                              fontSize: 17.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              useGoogleFonts:
+                                                                  false,
+                                                              lineHeight: 1.41,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   );
                                 }
                               },

@@ -729,13 +729,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // meditationInfo
   {
-    'aux1f2j3': {
+    'vvpwce3u': {
       'ru': 'eщё',
       'en': 'more',
     },
-    '5r55xoqj': {
-      'ru': 'свернуть',
-      'en': 'collapse',
+    '3l3nc22g': {
+      'ru': 'Свернуть',
+      'en': '',
     },
     'vnfzb2oi': {
       'ru': 'Узнать больше и купить',

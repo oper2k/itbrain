@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'meditation_player_info_model.dart';
 export 'meditation_player_info_model.dart';
 
@@ -56,153 +57,104 @@ class _MeditationPlayerInfoWidgetState
         ),
         child: Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 20.0,
-                    borderWidth: 0.0,
-                    buttonSize: 38.0,
-                    fillColor: FlutterFlowTheme.of(context).alternate,
-                    icon: Icon(
-                      Icons.close_sharp,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 22.0,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 20.0,
+                      borderWidth: 0.0,
+                      buttonSize: 38.0,
+                      fillColor: FlutterFlowTheme.of(context).alternate,
+                      icon: Icon(
+                        Icons.close_sharp,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 22.0,
+                      ),
+                      onPressed: () async {
+                        Navigator.pop(context);
+                      },
                     ),
-                    onPressed: () async {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              ),
-              Align(
-                alignment: const AlignmentDirectional(-1.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  ],
+                ),
+                Align(
+                  alignment: const AlignmentDirectional(-1.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getVariableText(
                       ruText: widget.playerInfo?[widget.index!].playerTitle,
                       enText: widget.playerInfo?[widget.index!].playerTitleEng,
                     ),
-                    textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Evolventa',
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                           useGoogleFonts: false,
-                          lineHeight: 1.2,
                         ),
                   ),
                 ),
-              ),
-              Align(
-                alignment: const AlignmentDirectional(-1.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 4.0),
-                  child: Text(
-                    FFLocalizations.of(context).getVariableText(
-                      ruText: widget.playerInfo?[widget.index!].playerSubTitle,
-                      enText:
-                          widget.playerInfo?[widget.index!].playerSubTitleEng,
+                Align(
+                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                  child: Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                    child: MarkdownBody(
+                      data: widget.playerInfo![widget.index!].playerText,
+                      selectable: true,
+                      onTapLink: (_, url, __) => launchURL(url!),
                     ),
-                    textAlign: TextAlign.start,
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Evolventa',
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          fontSize: 17.0,
-                          fontWeight: FontWeight.bold,
-                          useGoogleFonts: false,
-                          lineHeight: 1.41,
-                        ),
                   ),
                 ),
-              ),
-              Container(
-                decoration: const BoxDecoration(),
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    Align(
-                      alignment: const AlignmentDirectional(-1.0, 0.0),
-                      child: Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 101.0, 0.0, 0.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 52.0,
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [
+                            Color(0xFF9747FF),
+                            Color(0xFFF1618E),
+                            Color(0xFFFE710B)
+                          ],
+                          stops: [0.0, 0.4, 1.0],
+                          begin: AlignmentDirectional(1.0, 0.34),
+                          end: AlignmentDirectional(-1.0, -0.34),
+                        ),
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: Align(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Text(
-                          FFLocalizations.of(context).getVariableText(
-                            ruText:
-                                widget.playerInfo?[widget.index!].playerText,
-                            enText: widget
-                                .playerInfo?[widget.index!].playerTextEng,
+                          FFLocalizations.of(context).getText(
+                            'gt5fm4k8' /* Понятно! */,
                           ),
-                          textAlign: TextAlign.start,
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Evolventa',
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                fontSize: 17.0,
-                                fontWeight: FontWeight.normal,
-                                useGoogleFonts: false,
-                                lineHeight: 1.41,
-                              ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Evolventa',
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.bold,
+                                    useGoogleFonts: false,
+                                  ),
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 101.0, 0.0, 0.0),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 52.0,
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [
-                          Color(0xFF9747FF),
-                          Color(0xFFF1618E),
-                          Color(0xFFFE710B)
-                        ],
-                        stops: [0.0, 0.4, 1.0],
-                        begin: AlignmentDirectional(1.0, 0.34),
-                        end: AlignmentDirectional(-1.0, -0.34),
-                      ),
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: Text(
-                        FFLocalizations.of(context).getText(
-                          'gt5fm4k8' /* Понятно! */,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Evolventa',
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.bold,
-                              useGoogleFonts: false,
-                            ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
