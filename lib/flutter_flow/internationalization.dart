@@ -735,7 +735,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3l3nc22g': {
       'ru': 'Свернуть',
-      'en': '',
+      'en': 'Collapse',
     },
     'vnfzb2oi': {
       'ru': 'Узнать больше и купить',

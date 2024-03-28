@@ -118,14 +118,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
             return Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: Image.asset(
-                    'assets/images/Frame_11818.png',
-                  ).image,
-                ),
+              decoration: const BoxDecoration(
+                color: Color(0xFF370C59),
               ),
               child: SingleChildScrollView(
                 child: Column(
@@ -611,7 +605,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                 ),
                                                 '0',
                                               ).maybeHandleOverflow(
-                                                maxChars: 120,
+                                                maxChars: 145,
                                                 replacement: '…',
                                               ),
                                               style:
@@ -719,6 +713,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                   );
                                 } else {
                                   return Stack(
+                                    alignment: const AlignmentDirectional(1.0, 1.0),
                                     children: [
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -784,18 +779,16 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                 });
                                               },
                                               child: Container(
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   gradient: LinearGradient(
                                                     colors: [
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryBackground,
-                                                      const Color(0x00370C59)
+                                                      Color(0xFF370C59),
+                                                      Color(0x00370C59)
                                                     ],
-                                                    stops: const [0.8, 1.0],
-                                                    begin: const AlignmentDirectional(
+                                                    stops: [0.8, 1.0],
+                                                    begin: AlignmentDirectional(
                                                         1.0, 0.0),
-                                                    end: const AlignmentDirectional(
+                                                    end: AlignmentDirectional(
                                                         -1.0, 0),
                                                   ),
                                                 ),
