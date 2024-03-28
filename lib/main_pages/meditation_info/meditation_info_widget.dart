@@ -592,35 +592,41 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                             CrossAxisAlignment.end,
                                         children: [
                                           Expanded(
-                                            child: Text(
-                                              valueOrDefault<String>(
-                                                FFLocalizations.of(context)
-                                                    .getVariableText(
-                                                  ruText: widget
-                                                      .meditationCategory
-                                                      ?.descriptionCategory,
-                                                  enText: widget
-                                                      .meditationCategory
-                                                      ?.descriptionCategoryEng,
+                                            child: Align(
+                                              alignment: const AlignmentDirectional(
+                                                  -1.0, 0.0),
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  FFLocalizations.of(context)
+                                                      .getVariableText(
+                                                    ruText: widget
+                                                        .meditationCategory
+                                                        ?.descriptionCategory,
+                                                    enText: widget
+                                                        .meditationCategory
+                                                        ?.descriptionCategoryEng,
+                                                  ),
+                                                  '0',
+                                                ).maybeHandleOverflow(
+                                                  maxChars: 145,
+                                                  replacement: '…',
                                                 ),
-                                                '0',
-                                              ).maybeHandleOverflow(
-                                                maxChars: 145,
-                                                replacement: '…',
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Evolventa',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      fontSize: 17.0,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      useGoogleFonts: false,
+                                                      lineHeight: 1.29,
+                                                    ),
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Evolventa',
-                                                        color:
-                                                            const Color(0xB3FFFFFF),
-                                                        fontSize: 17.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        useGoogleFonts: false,
-                                                        lineHeight: 1.29,
-                                                      ),
                                             ),
                                           ),
                                         ].divide(const SizedBox(width: 4.0)),
@@ -750,7 +756,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                               .secondaryText,
                                                       fontSize: 17.0,
                                                       useGoogleFonts: false,
-                                                      lineHeight: 1.41,
+                                                      lineHeight: 1.29,
                                                     ),
                                               ),
                                             ),
