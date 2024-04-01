@@ -65,8 +65,6 @@ class SignUpPageModel extends FlutterFlowModel<SignUpPageWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl = '';
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     passwordVisibility = false;
@@ -94,8 +92,4 @@ class SignUpPageModel extends FlutterFlowModel<SignUpPageWidget> {
     phoneNumberFocusNode?.dispose();
     phoneNumberController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

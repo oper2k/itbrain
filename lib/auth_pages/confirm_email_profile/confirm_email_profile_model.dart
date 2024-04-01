@@ -27,8 +27,6 @@ class ConfirmEmailProfileModel
   FlutterFlowTimerController timerController =
       FlutterFlowTimerController(StopWatchTimer(mode: StopWatchMode.countDown));
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -38,8 +36,4 @@ class ConfirmEmailProfileModel
     instantTimer?.cancel();
     timerController.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

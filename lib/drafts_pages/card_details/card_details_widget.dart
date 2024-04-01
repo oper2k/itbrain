@@ -110,6 +110,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                             fontFamily: 'Evolventa',
                             color: FlutterFlowTheme.of(context).primaryText,
                             fontSize: 24.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: false,
                             lineHeight: 1.16,
@@ -155,8 +156,10 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                               const Duration(milliseconds: 500),
                               () => setState(() {}),
                             ),
+                            autofocus: false,
                             obscureText: false,
                             decoration: InputDecoration(
+                              isDense: false,
                               labelText: FFLocalizations.of(context).getText(
                                 '2junazsi' /* Номер карты */,
                               ),
@@ -171,17 +174,24 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                         : FlutterFlowTheme.of(context)
                                             .secondaryText,
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                     lineHeight: 1.7,
                                   ),
                               alignLabelWithHint: false,
-                              hintStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Evolventa',
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: false,
+                                  ),
                               errorStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Evolventa',
                                     color: FlutterFlowTheme.of(context).error,
+                                    letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                   ),
                               enabledBorder: InputBorder.none,
@@ -194,10 +204,12 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                 .override(
                                   fontFamily: 'Evolventa',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                   lineHeight: 1.5,
                                 ),
                             textAlign: TextAlign.start,
+                            minLines: null,
                             cursorColor: FlutterFlowTheme.of(context).accent1,
                             validator: _model.cardNumberControllerValidator
                                 .asValidator(context),
@@ -221,6 +233,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                               fontFamily: 'Evolventa',
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontSize: 15.0,
+                              letterSpacing: 0.0,
                               useGoogleFonts: false,
                               lineHeight: 1.2,
                             ),
@@ -275,8 +288,10 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                         const Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
+                                      autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
+                                        isDense: false,
                                         labelText:
                                             FFLocalizations.of(context).getText(
                                           'ucaza66x' /* Дата окончания */,
@@ -293,12 +308,18 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               fontSize: 17.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.7,
                                             ),
                                         alignLabelWithHint: false,
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium,
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: false,
+                                            ),
                                         errorStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -306,6 +327,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .error,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
                                         enabledBorder: InputBorder.none,
@@ -318,10 +340,12 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                           .override(
                                             fontFamily: 'Evolventa',
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                             lineHeight: 1.5,
                                           ),
                                       textAlign: TextAlign.start,
+                                      minLines: null,
                                       keyboardType: TextInputType.datetime,
                                       cursorColor:
                                           FlutterFlowTheme.of(context).accent1,
@@ -350,6 +374,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.2,
                                         ),
@@ -401,8 +426,10 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                         const Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
+                                      autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
+                                        isDense: false,
                                         labelText:
                                             FFLocalizations.of(context).getText(
                                           'jt97zzal' /* CVC/CVV */,
@@ -419,12 +446,18 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               fontSize: 17.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.7,
                                             ),
                                         alignLabelWithHint: false,
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium,
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: false,
+                                            ),
                                         errorStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -432,6 +465,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .error,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
                                         enabledBorder: InputBorder.none,
@@ -444,10 +478,12 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                           .override(
                                             fontFamily: 'Evolventa',
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                             lineHeight: 1.5,
                                           ),
                                       textAlign: TextAlign.start,
+                                      minLines: null,
                                       keyboardType: TextInputType.number,
                                       cursorColor:
                                           FlutterFlowTheme.of(context).accent1,
@@ -475,6 +511,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.2,
                                         ),
@@ -501,6 +538,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Evolventa',
                               fontSize: 15.0,
+                              letterSpacing: 0.0,
                               useGoogleFonts: false,
                               lineHeight: 1.2,
                             ),
@@ -514,6 +552,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Evolventa',
                               fontSize: 17.0,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: false,
                               lineHeight: 1.29,
@@ -612,6 +651,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),

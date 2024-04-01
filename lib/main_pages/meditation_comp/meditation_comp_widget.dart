@@ -189,6 +189,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                                 : FlutterFlowTheme.of(context)
                                                     .primaryText,
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             useGoogleFonts: false,
                                             lineHeight: 1.29,
@@ -222,6 +223,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                                   : FlutterFlowTheme.of(context)
                                                       .primaryText,
                                               fontSize: 15.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.2,
                                             ),
@@ -295,6 +297,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                     .override(
                                       fontFamily: 'Evolventa',
                                       fontSize: 13.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,
                                     ),
@@ -330,6 +333,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                     fontFamily: 'Evolventa',
                                     color: const Color(0xB2FFFFFF),
                                     fontSize: 13.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),

@@ -14,8 +14,6 @@ class PaymentPageModel extends FlutterFlowModel<PaymentPageWidget> {
   // Model for thanksForBuying component.
   late ThanksForBuyingModel thanksForBuyingModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     thanksForBuyingModel = createModel(context, () => ThanksForBuyingModel());
@@ -26,8 +24,4 @@ class PaymentPageModel extends FlutterFlowModel<PaymentPageWidget> {
     unfocusNode.dispose();
     thanksForBuyingModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

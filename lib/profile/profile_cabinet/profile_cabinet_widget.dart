@@ -217,6 +217,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                                                   context)
                                                               .accent1,
                                                       fontSize: 40.0,
+                                                      letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       useGoogleFonts: false,
@@ -276,6 +277,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                                           fontFamily:
                                                               'Evolventa',
                                                           fontSize: 13.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           useGoogleFonts: false,
@@ -341,6 +343,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                                       .override(
                                                         fontFamily: 'Evolventa',
                                                         fontSize: 13.0,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         useGoogleFonts: false,
@@ -375,6 +378,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                   .override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 24.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                     lineHeight: 1.16,
@@ -413,6 +417,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                             color: FlutterFlowTheme.of(context)
                                                 .accent1,
                                             fontSize: 16.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             useGoogleFonts: false,
                                             lineHeight: 1.29,
@@ -506,6 +511,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                                 .override(
                                                   fontFamily: 'Evolventa',
                                                   fontSize: 16.0,
+                                                  letterSpacing: 0.0,
                                                   useGoogleFonts: false,
                                                 ),
                                           ),
@@ -572,6 +578,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                             .override(
                                               fontFamily: 'Evolventa',
                                               fontSize: 16.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
                                       ),
@@ -648,6 +655,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                             .override(
                                               fontFamily: 'Evolventa',
                                               fontSize: 16.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
                                       ),
@@ -706,6 +714,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                             .override(
                                               fontFamily: 'Evolventa',
                                               fontSize: 16.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
                                       ),
@@ -773,6 +782,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                               .override(
                                                 fontFamily: 'Evolventa',
                                                 fontSize: 16.0,
+                                                letterSpacing: 0.0,
                                                 useGoogleFonts: false,
                                               ),
                                         ),
@@ -881,6 +891,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                             .override(
                                               fontFamily: 'Evolventa',
                                               fontSize: 16.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
                                       ),

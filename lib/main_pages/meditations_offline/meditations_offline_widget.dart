@@ -118,6 +118,7 @@ class _MeditationsOfflineWidgetState extends State<MeditationsOfflineWidget> {
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Evolventa',
                       fontSize: 17.0,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
                       useGoogleFonts: false,
                       lineHeight: 1.29,
@@ -136,6 +137,7 @@ class _MeditationsOfflineWidgetState extends State<MeditationsOfflineWidget> {
                       fontFamily: 'Evolventa',
                       color: FlutterFlowTheme.of(context).secondaryText,
                       fontSize: 15.0,
+                      letterSpacing: 0.0,
                       useGoogleFonts: false,
                       lineHeight: 1.2,
                     ),

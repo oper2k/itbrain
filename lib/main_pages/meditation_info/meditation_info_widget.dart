@@ -195,7 +195,12 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                               textAlign: TextAlign.end,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Evolventa',
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
+                                                      ),
                                             ),
                                           ),
                                         ),
@@ -570,6 +575,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                     .override(
                                       fontFamily: 'Evolventa',
                                       fontSize: 24.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,
                                       lineHeight: 1.16,
@@ -621,6 +627,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                                   context)
                                                               .secondaryText,
                                                       fontSize: 17.0,
+                                                      letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.normal,
                                                       useGoogleFonts: false,
@@ -699,6 +706,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                                       .of(context)
                                                                   .accent1,
                                                               fontSize: 17.0,
+                                                              letterSpacing:
+                                                                  0.0,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -755,6 +764,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                                   context)
                                                               .secondaryText,
                                                       fontSize: 17.0,
+                                                      letterSpacing: 0.0,
                                                       useGoogleFonts: false,
                                                       lineHeight: 1.29,
                                                     ),
@@ -829,6 +839,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                                       .of(context)
                                                                   .accent1,
                                                               fontSize: 17.0,
+                                                              letterSpacing:
+                                                                  0.0,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .bold,
@@ -899,7 +911,12 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                           'vnfzb2oi' /* Узнать больше и купить */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: false,
+                                            ),
                                       ),
                                     ),
                                   ),
@@ -918,7 +935,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                   '0',
                                 )}${FFLocalizations.of(context).getVariableText(
                                   ruText: ' аудиозаписей внутри',
-                                  enText: ' audios  inside',
+                                  enText: ' audios inside',
                                 )}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -927,6 +944,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
                                       fontSize: 24.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,
                                     ),

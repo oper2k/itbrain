@@ -138,7 +138,12 @@ class _AffirmationWidgetState extends State<AffirmationWidget> {
                                         decoration: InputDecoration(
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .labelMedium,
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Evolventa',
+                                                    letterSpacing: 0.0,
+                                                    useGoogleFonts: false,
+                                                  ),
                                           hintText: FFLocalizations.of(context)
                                               .getText(
                                             'hv1mr1ys' /* Что бы вы хотели послушать? */,
@@ -149,6 +154,7 @@ class _AffirmationWidgetState extends State<AffirmationWidget> {
                                                   .override(
                                                     fontFamily: 'Evolventa',
                                                     fontSize: 12.0,
+                                                    letterSpacing: 0.0,
                                                     useGoogleFonts: false,
                                                   ),
                                           enabledBorder: InputBorder.none,
@@ -157,7 +163,13 @@ class _AffirmationWidgetState extends State<AffirmationWidget> {
                                           focusedErrorBorder: InputBorder.none,
                                         ),
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: false,
+                                            ),
+                                        minLines: null,
                                         validator: _model
                                             .textControllerValidator
                                             .asValidator(context),

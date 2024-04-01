@@ -82,6 +82,7 @@ class _ConfirmedWidgetState extends State<ConfirmedWidget> {
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Evolventa',
                       fontSize: 24.0,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
                       useGoogleFonts: false,
                     ),
@@ -99,12 +100,31 @@ class _ConfirmedWidgetState extends State<ConfirmedWidget> {
                       fontFamily: 'Evolventa',
                       color: FlutterFlowTheme.of(context).secondaryText,
                       fontSize: 16.0,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.normal,
                       useGoogleFonts: false,
                     ),
               ),
             ),
             const Spacer(),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+              child: Text(
+                FFLocalizations.of(context).getText(
+                  'lmm0mjsw' /* Не забудьте проверить папку «С... */,
+                ),
+                textAlign: TextAlign.center,
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Evolventa',
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      fontSize: 15.0,
+                      letterSpacing: 0.0,
+                      fontWeight: FontWeight.normal,
+                      useGoogleFonts: false,
+                      lineHeight: 1.2,
+                    ),
+              ),
+            ),
             InkWell(
               splashColor: Colors.transparent,
               focusColor: Colors.transparent,
@@ -138,6 +158,7 @@ class _ConfirmedWidgetState extends State<ConfirmedWidget> {
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Evolventa',
                           fontSize: 14.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
                           useGoogleFonts: false,
                         ),

@@ -201,7 +201,12 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                             decoration: InputDecoration(
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Evolventa',
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
+                                                      ),
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
@@ -213,6 +218,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                       .override(
                                                         fontFamily: 'Evolventa',
                                                         fontSize: 12.0,
+                                                        letterSpacing: 0.0,
                                                         useGoogleFonts: false,
                                                       ),
                                               enabledBorder: InputBorder.none,
@@ -222,7 +228,13 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                   InputBorder.none,
                                             ),
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Evolventa',
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: false,
+                                                ),
+                                            minLines: null,
                                             validator: _model
                                                 .textControllerValidator
                                                 .asValidator(context),
@@ -317,6 +329,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                             lineHeight: 1.41,
                                           ),
@@ -356,6 +369,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .accent1,
                                               fontSize: 15.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               useGoogleFonts: false,
                                               lineHeight: 1.6,

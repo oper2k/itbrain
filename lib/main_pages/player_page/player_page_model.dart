@@ -14,8 +14,6 @@ class PlayerPageModel extends FlutterFlowModel<PlayerPageWidget> {
   // Model for playerComp component.
   late PlayerCompModel playerCompModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     playerCompModel = createModel(context, () => PlayerCompModel());
@@ -26,8 +24,4 @@ class PlayerPageModel extends FlutterFlowModel<PlayerPageWidget> {
     unfocusNode.dispose();
     playerCompModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

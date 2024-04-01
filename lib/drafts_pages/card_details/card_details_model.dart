@@ -27,8 +27,6 @@ class CardDetailsModel extends FlutterFlowModel<CardDetailsWidget> {
   TextEditingController? cvcController;
   String? Function(BuildContext, String?)? cvcControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -44,8 +42,4 @@ class CardDetailsModel extends FlutterFlowModel<CardDetailsWidget> {
     cvcFocusNode?.dispose();
     cvcController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

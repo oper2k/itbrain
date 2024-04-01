@@ -122,6 +122,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
                                     .override(
                                       fontFamily: 'Evolventa',
                                       fontSize: 24.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,
                                     ),
@@ -191,6 +192,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
                                             .override(
                                               fontFamily: 'Evolventa',
                                               fontSize: 17.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               useGoogleFonts: false,
                                               lineHeight: 1.29,
@@ -211,6 +213,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
                                               .override(
                                                 fontFamily: 'Evolventa',
                                                 fontSize: 15.0,
+                                                letterSpacing: 0.0,
                                                 useGoogleFonts: false,
                                                 lineHeight: 1.2,
                                               ),

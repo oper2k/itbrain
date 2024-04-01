@@ -112,6 +112,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                             fontFamily: 'Evolventa',
                             color: FlutterFlowTheme.of(context).primaryText,
                             fontSize: 24.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: false,
                             lineHeight: 1.16,
@@ -161,6 +162,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                                     .override(
                                       fontFamily: 'Evolventa',
                                       fontSize: 17.0,
+                                      letterSpacing: 0.0,
                                       useGoogleFonts: false,
                                       lineHeight: 1.41,
                                     ),
@@ -239,6 +241,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                                     .override(
                                       fontFamily: 'Evolventa',
                                       fontSize: 17.0,
+                                      letterSpacing: 0.0,
                                       useGoogleFonts: false,
                                       lineHeight: 1.41,
                                     ),
@@ -289,6 +292,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Evolventa',
                               fontSize: 15.0,
+                              letterSpacing: 0.0,
                               useGoogleFonts: false,
                               lineHeight: 1.2,
                             ),
@@ -310,6 +314,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Evolventa',
                               fontSize: 17.0,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: false,
                               lineHeight: 1.29,
@@ -424,6 +429,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),

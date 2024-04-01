@@ -13,8 +13,6 @@ class TestQueryCacheModel extends FlutterFlowModel<TestQueryCacheWidget> {
   // Stores action output result for [Custom Action - checkInternetConnection] action in testQueryCache widget.
   bool? isIOnline;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -22,8 +20,4 @@ class TestQueryCacheModel extends FlutterFlowModel<TestQueryCacheWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

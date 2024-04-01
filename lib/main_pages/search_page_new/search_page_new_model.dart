@@ -24,8 +24,6 @@ class SearchPageNewModel extends FlutterFlowModel<SearchPageNewWidget> {
   // Models for meditations dynamic component.
   late FlutterFlowDynamicModels<MeditationsModel> meditationsModels2;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     meditationsModels1 = FlutterFlowDynamicModels(() => MeditationsModel());
@@ -41,8 +39,4 @@ class SearchPageNewModel extends FlutterFlowModel<SearchPageNewWidget> {
     meditationsModels1.dispose();
     meditationsModels2.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

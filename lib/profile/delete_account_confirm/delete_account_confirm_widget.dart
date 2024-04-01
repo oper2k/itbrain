@@ -108,6 +108,7 @@ class _DeleteAccountConfirmWidgetState
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Evolventa',
                               fontSize: 24.0,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: false,
                             ),
@@ -122,6 +123,7 @@ class _DeleteAccountConfirmWidgetState
                             fontFamily: 'Evolventa',
                             color: FlutterFlowTheme.of(context).secondaryText,
                             fontSize: 17.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.normal,
                             useGoogleFonts: false,
                             lineHeight: 1.41,
@@ -165,6 +167,7 @@ class _DeleteAccountConfirmWidgetState
                                     fontFamily: 'Evolventa',
                                     color: const Color(0xFFFF3F3F),
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),
@@ -205,6 +208,7 @@ class _DeleteAccountConfirmWidgetState
                                   .override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),

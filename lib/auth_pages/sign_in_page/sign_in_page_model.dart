@@ -22,8 +22,6 @@ class SignInPageModel extends FlutterFlowModel<SignInPageWidget> {
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     passwordVisibility = false;
@@ -38,8 +36,4 @@ class SignInPageModel extends FlutterFlowModel<SignInPageWidget> {
     passwordFocusNode?.dispose();
     passwordController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

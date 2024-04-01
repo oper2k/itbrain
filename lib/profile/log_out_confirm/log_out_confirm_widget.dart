@@ -106,6 +106,7 @@ class _LogOutConfirmWidgetState extends State<LogOutConfirmWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Evolventa',
                               fontSize: 24.0,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: false,
                             ),
@@ -120,6 +121,7 @@ class _LogOutConfirmWidgetState extends State<LogOutConfirmWidget> {
                             fontFamily: 'Evolventa',
                             color: FlutterFlowTheme.of(context).secondaryText,
                             fontSize: 17.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.normal,
                             useGoogleFonts: false,
                             lineHeight: 1.41,
@@ -161,6 +163,7 @@ class _LogOutConfirmWidgetState extends State<LogOutConfirmWidget> {
                                   .override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),
@@ -201,6 +204,7 @@ class _LogOutConfirmWidgetState extends State<LogOutConfirmWidget> {
                                   .override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),

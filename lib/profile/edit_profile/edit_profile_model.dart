@@ -28,8 +28,6 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
   TextEditingController? emailController;
   String? Function(BuildContext, String?)? emailControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -48,8 +46,4 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
     emailFocusNode?.dispose();
     emailController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

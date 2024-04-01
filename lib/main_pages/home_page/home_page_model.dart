@@ -16,8 +16,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   // Models for meditationComp dynamic component.
   late FlutterFlowDynamicModels<MeditationCompModel> meditationCompModels;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     meditationCompModels =
@@ -29,8 +27,4 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
     unfocusNode.dispose();
     meditationCompModels.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

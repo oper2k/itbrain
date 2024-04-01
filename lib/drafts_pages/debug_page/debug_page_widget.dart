@@ -68,6 +68,7 @@ class _DebugPageWidgetState extends State<DebugPageWidget> {
                   fontFamily: 'Evolventa',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                   useGoogleFonts: false,
                 ),
           ),
@@ -99,7 +100,12 @@ class _DebugPageWidgetState extends State<DebugPageWidget> {
                             packageItem.identifier,
                             '-_-',
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Evolventa',
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: false,
+                                  ),
                         );
                       },
                     );
@@ -145,6 +151,7 @@ class _DebugPageWidgetState extends State<DebugPageWidget> {
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Evolventa',
                                 color: Colors.white,
+                                letterSpacing: 0.0,
                                 useGoogleFonts: false,
                               ),
                       elevation: 3.0,
@@ -194,6 +201,7 @@ class _DebugPageWidgetState extends State<DebugPageWidget> {
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Evolventa',
                                 color: Colors.white,
+                                letterSpacing: 0.0,
                                 useGoogleFonts: false,
                               ),
                       elevation: 3.0,

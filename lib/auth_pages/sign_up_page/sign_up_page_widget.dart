@@ -188,6 +188,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .accent1,
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                           useGoogleFonts: false,
                                           lineHeight: 1.6,
@@ -216,6 +217,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       .override(
                                         fontFamily: 'Evolventa',
                                         fontSize: 17.0,
+                                        letterSpacing: 0.0,
                                         useGoogleFonts: false,
                                         lineHeight: 1.41,
                                       ),
@@ -236,6 +238,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       .override(
                                         fontFamily: 'Evolventa',
                                         fontSize: 24.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         useGoogleFonts: false,
                                         lineHeight: 1.16,
@@ -274,8 +277,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         const Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
+                                      autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
+                                        isDense: false,
                                         labelText:
                                             FFLocalizations.of(context).getText(
                                           'z4ur154g' /* Email */,
@@ -295,6 +300,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                               context)
                                                           .secondaryText,
                                               fontSize: 17.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.17,
                                             ),
@@ -307,6 +313,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .error,
                                               fontSize: 17.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
                                         enabledBorder: InputBorder.none,
@@ -336,10 +343,12 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           .override(
                                             fontFamily: 'Evolventa',
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                             lineHeight: 1.6,
                                           ),
                                       textAlign: TextAlign.start,
+                                      minLines: null,
                                       keyboardType: TextInputType.emailAddress,
                                       cursorColor:
                                           FlutterFlowTheme.of(context).accent1,
@@ -367,6 +376,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.2,
                                         ),
@@ -406,8 +416,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         const Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
+                                      autofocus: false,
                                       obscureText: !_model.passwordVisibility,
                                       decoration: InputDecoration(
+                                        isDense: false,
                                         labelText:
                                             FFLocalizations.of(context).getText(
                                           'wig6i5ol' /* Придумайте пароль */,
@@ -424,6 +436,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               fontSize: 17.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.17,
                                             ),
@@ -435,6 +448,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .error,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
                                         enabledBorder: InputBorder.none,
@@ -463,10 +477,12 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           .override(
                                             fontFamily: 'Evolventa',
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                             lineHeight: 1.6,
                                           ),
                                       textAlign: TextAlign.start,
+                                      minLines: null,
                                       cursorColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       validator: _model
@@ -494,6 +510,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.2,
                                         ),
@@ -533,9 +550,11 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         const Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
+                                      autofocus: false,
                                       obscureText:
                                           !_model.confirmPassVisibility,
                                       decoration: InputDecoration(
+                                        isDense: false,
                                         labelText:
                                             FFLocalizations.of(context).getText(
                                           'dw40rg6m' /* Подтвердите пароль */,
@@ -553,6 +572,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               fontSize: 17.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.17,
                                             ),
@@ -564,6 +584,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .error,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
                                         enabledBorder: InputBorder.none,
@@ -592,10 +613,12 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           .override(
                                             fontFamily: 'Evolventa',
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                             lineHeight: 1.6,
                                           ),
                                       textAlign: TextAlign.start,
+                                      minLines: null,
                                       cursorColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       validator: _model
@@ -626,6 +649,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               fontSize: 15.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.2,
                                             ),
@@ -650,6 +674,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               fontSize: 15.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.2,
                                             ),
@@ -850,6 +875,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         .override(
                                           fontFamily: 'Evolventa',
                                           fontSize: 14.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                           useGoogleFonts: false,
                                         ),
@@ -920,6 +946,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       .override(
                                         fontFamily: 'Evolventa',
                                         fontSize: 17.0,
+                                        letterSpacing: 0.0,
                                         useGoogleFonts: false,
                                         lineHeight: 1.41,
                                       ),
@@ -940,6 +967,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       .override(
                                         fontFamily: 'Evolventa',
                                         fontSize: 24.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         useGoogleFonts: false,
                                         lineHeight: 1.16,
@@ -963,6 +991,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
                                         fontSize: 17.0,
+                                        letterSpacing: 0.0,
                                         useGoogleFonts: false,
                                         lineHeight: 1.41,
                                       ),
@@ -1000,8 +1029,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         const Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
+                                      autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
+                                        isDense: false,
                                         labelText:
                                             FFLocalizations.of(context).getText(
                                           '2o2yaouw' /* Имя */,
@@ -1018,12 +1049,18 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               fontSize: 17.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.5,
                                             ),
                                         alignLabelWithHint: false,
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium,
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: false,
+                                            ),
                                         errorStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -1031,6 +1068,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .error,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
                                         enabledBorder: InputBorder.none,
@@ -1060,10 +1098,12 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           .override(
                                             fontFamily: 'Evolventa',
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                             lineHeight: 1.5,
                                           ),
                                       textAlign: TextAlign.start,
+                                      minLines: null,
                                       keyboardType: TextInputType.name,
                                       cursorColor:
                                           FlutterFlowTheme.of(context).accent1,
@@ -1091,6 +1131,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.2,
                                         ),
@@ -1129,8 +1170,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         const Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
+                                      autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
+                                        isDense: false,
                                         labelText:
                                             FFLocalizations.of(context).getText(
                                           'pv7nzke4' /* Фамилия */,
@@ -1147,12 +1190,18 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               fontSize: 17.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.5,
                                             ),
                                         alignLabelWithHint: false,
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium,
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: false,
+                                            ),
                                         errorStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -1160,6 +1209,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .error,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
                                         enabledBorder: InputBorder.none,
@@ -1189,10 +1239,12 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           .override(
                                             fontFamily: 'Evolventa',
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                             lineHeight: 1.5,
                                           ),
                                       textAlign: TextAlign.start,
+                                      minLines: null,
                                       cursorColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       validator: _model
@@ -1220,6 +1272,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.2,
                                         ),
@@ -1258,8 +1311,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         const Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
+                                      autofocus: false,
                                       obscureText: false,
                                       decoration: InputDecoration(
+                                        isDense: false,
                                         labelText:
                                             FFLocalizations.of(context).getText(
                                           'o190g5el' /* Телефон */,
@@ -1277,12 +1332,18 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                               fontSize: 17.0,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.5,
                                             ),
                                         alignLabelWithHint: false,
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium,
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: false,
+                                            ),
                                         errorStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -1290,6 +1351,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .error,
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
                                         enabledBorder: InputBorder.none,
@@ -1321,10 +1383,12 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           .override(
                                             fontFamily: 'Evolventa',
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                             lineHeight: 1.5,
                                           ),
                                       textAlign: TextAlign.start,
+                                      minLines: null,
                                       maxLength: 30,
                                       maxLengthEnforcement:
                                           MaxLengthEnforcement.enforced,
@@ -1361,6 +1425,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontSize: 15.0,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.2,
                                         ),
@@ -1462,6 +1527,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           .override(
                                             fontFamily: 'Evolventa',
                                             fontSize: 14.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             useGoogleFonts: false,
                                           ),
@@ -1535,6 +1601,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         .override(
                                           fontFamily: 'Evolventa',
                                           fontSize: 16.0,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.41,
                                         ),
@@ -1555,6 +1622,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         .override(
                                           fontFamily: 'Evolventa',
                                           fontSize: 24.0,
+                                          letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                           useGoogleFonts: false,
                                           lineHeight: 1.16,
@@ -1578,6 +1646,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontSize: 17.0,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.41,
                                         ),
@@ -1781,6 +1850,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                           fontFamily:
                                                               'Evolventa',
                                                           color: Colors.white,
+                                                          letterSpacing: 0.0,
                                                           useGoogleFonts: false,
                                                         ),
                                                     elevation: 0.0,
@@ -1886,6 +1956,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Evolventa',
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         useGoogleFonts: false,
                                       ),
@@ -1923,6 +1994,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     fontFamily: 'Evolventa',
                                     color: Colors.white,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),
@@ -1981,6 +2053,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     .override(
                                       fontFamily: 'Evolventa',
                                       fontSize: 14.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,
                                     ),

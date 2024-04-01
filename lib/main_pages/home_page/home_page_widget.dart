@@ -184,6 +184,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           .override(
                                             fontFamily: 'Evolventa',
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                             lineHeight: 1.41,
                                           ),
@@ -200,6 +201,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             .override(
                                               fontFamily: 'Evolventa',
                                               fontSize: 24.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               useGoogleFonts: false,
                                               lineHeight: 1.16,
@@ -274,6 +276,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             context)
                                                         .accent1,
                                                     fontSize: 12.0,
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                     useGoogleFonts: false,
                                                   ),
@@ -332,6 +335,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               .override(
                                                 fontFamily: 'Evolventa',
                                                 fontSize: 17.0,
+                                                letterSpacing: 0.0,
                                                 useGoogleFonts: false,
                                               ),
                                         ),
@@ -365,6 +369,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             .override(
                                               fontFamily: 'Evolventa',
                                               fontSize: 24.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               useGoogleFonts: false,
                                             ),
@@ -676,7 +681,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             ruText: storiesItem
                                                                 .homeTitle,
                                                             enText: storiesItem
-                                                                .homeTitle,
+                                                                .homeTitleEng,
                                                           ),
                                                           textAlign:
                                                               TextAlign.center,
@@ -687,6 +692,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 fontFamily:
                                                                     'Evolventa',
                                                                 fontSize: 10.0,
+                                                                letterSpacing:
+                                                                    0.0,
                                                                 useGoogleFonts:
                                                                     false,
                                                               ),
@@ -814,6 +821,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           fontFamily:
                                                               'Evolventa',
                                                           fontSize: 16.0,
+                                                          letterSpacing: 0.0,
                                                           useGoogleFonts: false,
                                                         ),
                                                   ),
@@ -858,6 +866,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           .override(
                                             fontFamily: 'Evolventa',
                                             fontSize: 24.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             useGoogleFonts: false,
                                           ),

@@ -102,7 +102,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'signUpPage',
           path: '/signUpPage',
           builder: (context, params) => SignUpPageWidget(
-            pageParameter: params.getParam('pageParameter', ParamType.int),
+            pageParameter: params.getParam(
+              'pageParameter',
+              ParamType.int,
+            ),
           ),
         ),
         FFRoute(
@@ -138,8 +141,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 getDoc(['affirmation'], AffirmationRecord.fromSnapshot),
           },
           builder: (context, params) => AffirmationWidget(
-            currentAffirmation:
-                params.getParam('currentAffirmation', ParamType.Document),
+            currentAffirmation: params.getParam(
+              'currentAffirmation',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
@@ -155,8 +160,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           },
           builder: (context, params) => StoriesWidget(
             stories: params.getParam<StoriesRecord>(
-                'stories', ParamType.Document, true),
-            index: params.getParam('index', ParamType.int),
+              'stories',
+              ParamType.Document,
+              true,
+            ),
+            index: params.getParam(
+              'index',
+              ParamType.int,
+            ),
           ),
         ),
         FFRoute(
@@ -167,8 +178,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 MeditationCategoriesRecord.fromSnapshot),
           },
           builder: (context, params) => BuyPackWidget(
-            meditationCategory:
-                params.getParam('meditationCategory', ParamType.Document),
+            meditationCategory: params.getParam(
+              'meditationCategory',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
@@ -179,7 +192,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 MeditationCategoriesRecord.fromSnapshot),
           },
           builder: (context, params) => PaymentMethodWidget(
-            category: params.getParam('category', ParamType.Document),
+            category: params.getParam(
+              'category',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
@@ -198,10 +214,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           },
           builder: (context, params) => PlayerPageWidget(
             audio: params.getParam<MeditationsRecord>(
-                'audio', ParamType.Document, true),
-            medCategory: params.getParam('medCategory',
-                ParamType.DocumentReference, false, ['meditationCategories']),
-            meditation: params.getParam('meditation', ParamType.Document),
+              'audio',
+              ParamType.Document,
+              true,
+            ),
+            medCategory: params.getParam(
+              'medCategory',
+              ParamType.DocumentReference,
+              false,
+              ['meditationCategories'],
+            ),
+            meditation: params.getParam(
+              'meditation',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
@@ -213,8 +239,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'offlinePlayerPage',
           path: '/offlinePlayerPage',
           builder: (context, params) => OfflinePlayerPageWidget(
-            currentAudioIndex:
-                params.getParam('currentAudioIndex', ParamType.int),
+            currentAudioIndex: params.getParam(
+              'currentAudioIndex',
+              ParamType.int,
+            ),
           ),
         ),
         FFRoute(
@@ -245,8 +273,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 MeditationCategoriesRecord.fromSnapshot),
           },
           builder: (context, params) => MeditationInfoWidget(
-            meditationCategory:
-                params.getParam('meditationCategory', ParamType.Document),
+            meditationCategory: params.getParam(
+              'meditationCategory',
+              ParamType.Document,
+            ),
           ),
         ),
         FFRoute(
@@ -372,6 +402,7 @@ class FFParameters {
     ParamType type, [
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   ]) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -385,8 +416,13 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
+    );
   }
 }
 

@@ -87,6 +87,7 @@ class _IsNotDownloadedWidgetState extends State<IsNotDownloadedWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Evolventa',
                               fontSize: 24.0,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: false,
                             ),
@@ -101,6 +102,7 @@ class _IsNotDownloadedWidgetState extends State<IsNotDownloadedWidget> {
                             fontFamily: 'Evolventa',
                             color: FlutterFlowTheme.of(context).secondaryText,
                             fontSize: 17.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.normal,
                             useGoogleFonts: false,
                             lineHeight: 1.41,
@@ -138,6 +140,7 @@ class _IsNotDownloadedWidgetState extends State<IsNotDownloadedWidget> {
                                   .override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),

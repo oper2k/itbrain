@@ -15,8 +15,6 @@ class PaymentMethodModel extends FlutterFlowModel<PaymentMethodWidget> {
   // Stores action output result for [RevenueCat - Purchase] action in Container widget.
   bool? revenuePurchase;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -24,8 +22,4 @@ class PaymentMethodModel extends FlutterFlowModel<PaymentMethodWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -81,6 +81,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Evolventa',
                         fontSize: 24.0,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                         useGoogleFonts: false,
                       ),
@@ -97,6 +98,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                         fontFamily: 'Evolventa',
                         color: FlutterFlowTheme.of(context).secondaryText,
                         fontSize: 17.0,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.normal,
                         useGoogleFonts: false,
                         lineHeight: 1.41,
@@ -150,6 +152,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                                     .override(
                                       fontFamily: 'Evolventa',
                                       fontSize: 17.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,
                                       lineHeight: 1.29,
@@ -216,6 +219,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                                     .override(
                                       fontFamily: 'Evolventa',
                                       fontSize: 17.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,
                                       lineHeight: 1.29,
@@ -255,6 +259,7 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Evolventa',
                               fontSize: 17.0,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: false,
                             ),

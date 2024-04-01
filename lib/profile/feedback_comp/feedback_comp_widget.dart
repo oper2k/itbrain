@@ -88,6 +88,7 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Evolventa',
                         fontSize: 24.0,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                         useGoogleFonts: false,
                       ),
@@ -104,6 +105,7 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                         fontFamily: 'Evolventa',
                         color: FlutterFlowTheme.of(context).secondaryText,
                         fontSize: 17.0,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.normal,
                         useGoogleFonts: false,
                         lineHeight: 1.41,
@@ -138,8 +140,10 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                           const Duration(milliseconds: 500),
                           () => setState(() {}),
                         ),
+                        autofocus: false,
                         obscureText: false,
                         decoration: InputDecoration(
+                          isDense: false,
                           labelText: FFLocalizations.of(context).getText(
                             'mc1vs16p' /* Ваш отзыв */,
                           ),
@@ -153,15 +157,22 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                                     : FlutterFlowTheme.of(context)
                                         .secondaryText,
                                 fontSize: 17.0,
+                                letterSpacing: 0.0,
                                 useGoogleFonts: false,
                                 lineHeight: 1.0,
                               ),
                           alignLabelWithHint: false,
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          hintStyle:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Evolventa',
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: false,
+                                  ),
                           errorStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Evolventa',
                                     color: FlutterFlowTheme.of(context).error,
+                                    letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                   ),
                           enabledBorder: InputBorder.none,
@@ -188,12 +199,12 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Evolventa',
                               fontSize: 17.0,
+                              letterSpacing: 0.0,
                               useGoogleFonts: false,
                               lineHeight: 1.0,
                             ),
                         textAlign: TextAlign.start,
                         maxLines: 6,
-                        minLines: 1,
                         maxLength: 500,
                         maxLengthEnforcement: MaxLengthEnforcement.enforced,
                         buildCounter: (context,
@@ -267,6 +278,7 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Evolventa',
                               fontSize: 15.0,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: false,
                             ),

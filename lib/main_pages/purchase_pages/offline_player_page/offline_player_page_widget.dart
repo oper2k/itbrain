@@ -175,6 +175,7 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                   .override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 20.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),
@@ -205,6 +206,7 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                   .override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                     lineHeight: 1.2,
                                   ),
@@ -275,6 +277,7 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Evolventa',
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.2,
                                             ),
@@ -296,6 +299,7 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Evolventa',
+                                              letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                               lineHeight: 1.2,
                                             ),

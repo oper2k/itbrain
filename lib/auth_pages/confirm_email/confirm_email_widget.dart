@@ -152,6 +152,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                                   fontFamily: 'Evolventa',
                                   color: FlutterFlowTheme.of(context).accent1,
                                   fontSize: 15.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: false,
                                   lineHeight: 1.6,
@@ -183,6 +184,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Evolventa',
                           fontSize: 24.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
                           useGoogleFonts: false,
                         ),
@@ -201,6 +203,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                           fontFamily: 'Evolventa',
                           color: FlutterFlowTheme.of(context).secondaryText,
                           fontSize: 16.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.normal,
                           useGoogleFonts: false,
                         ),
@@ -230,6 +233,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       fontSize: 15.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,
                                       lineHeight: 1.2,
@@ -264,6 +268,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       fontSize: 15.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,
                                       lineHeight: 1.2,
@@ -295,6 +300,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                                     fontFamily: 'Evolventa',
                                     color: FlutterFlowTheme.of(context).accent1,
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                     lineHeight: 1.2,
@@ -324,6 +330,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                           fontSize: 15.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.normal,
                           useGoogleFonts: false,
                           lineHeight: 1.2,
@@ -362,6 +369,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Evolventa',
                               fontSize: 14.0,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: false,
                             ),

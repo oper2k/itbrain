@@ -70,6 +70,7 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Evolventa',
                       fontSize: 24.0,
+                      letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
                       useGoogleFonts: false,
                     ),
@@ -85,6 +86,7 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
                       fontFamily: 'Evolventa',
                       color: FlutterFlowTheme.of(context).secondaryText,
                       fontSize: 17.0,
+                      letterSpacing: 0.0,
                       useGoogleFonts: false,
                       lineHeight: 1.41,
                     ),
@@ -135,6 +137,7 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Evolventa',
                             fontSize: 15.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: false,
                           ),

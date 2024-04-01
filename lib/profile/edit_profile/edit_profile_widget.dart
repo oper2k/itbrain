@@ -206,6 +206,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   .override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 24.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),
@@ -423,6 +424,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         fontFamily: 'Evolventa',
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         useGoogleFonts: false,
                                       ),
@@ -457,8 +459,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     const Duration(milliseconds: 500),
                                     () => setState(() {}),
                                   ),
+                                  autofocus: false,
                                   obscureText: false,
                                   decoration: InputDecoration(
+                                    isDense: false,
                                     labelText:
                                         FFLocalizations.of(context).getText(
                                       'fjhfuyy7' /* Имя */,
@@ -475,18 +479,25 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                           fontSize: 17.0,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.17,
                                         ),
                                     alignLabelWithHint: false,
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Evolventa',
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
                                     errorStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Evolventa',
                                           color: FlutterFlowTheme.of(context)
                                               .error,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                         ),
                                     enabledBorder: InputBorder.none,
@@ -515,10 +526,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                       .override(
                                         fontFamily: 'Evolventa',
                                         fontSize: 17.0,
+                                        letterSpacing: 0.0,
                                         useGoogleFonts: false,
                                         lineHeight: 1.6,
                                       ),
                                   textAlign: TextAlign.start,
+                                  minLines: null,
                                   keyboardType: TextInputType.name,
                                   cursorColor:
                                       FlutterFlowTheme.of(context).accent1,
@@ -556,8 +569,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     const Duration(milliseconds: 500),
                                     () => setState(() {}),
                                   ),
+                                  autofocus: false,
                                   obscureText: false,
                                   decoration: InputDecoration(
+                                    isDense: false,
                                     labelText:
                                         FFLocalizations.of(context).getText(
                                       '7zskc5m5' /* Фамилия */,
@@ -574,18 +589,25 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                               : FlutterFlowTheme.of(context)
                                                   .secondaryText,
                                           fontSize: 17.0,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.17,
                                         ),
                                     alignLabelWithHint: false,
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Evolventa',
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
                                     errorStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Evolventa',
                                           color: FlutterFlowTheme.of(context)
                                               .error,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                         ),
                                     enabledBorder: InputBorder.none,
@@ -614,10 +636,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                       .override(
                                         fontFamily: 'Evolventa',
                                         fontSize: 17.0,
+                                        letterSpacing: 0.0,
                                         useGoogleFonts: false,
                                         lineHeight: 1.6,
                                       ),
                                   textAlign: TextAlign.start,
+                                  minLines: null,
                                   cursorColor:
                                       FlutterFlowTheme.of(context).accent1,
                                   validator: _model.surnameControllerValidator
@@ -654,8 +678,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     const Duration(milliseconds: 500),
                                     () => setState(() {}),
                                   ),
+                                  autofocus: false,
                                   obscureText: false,
                                   decoration: InputDecoration(
+                                    isDense: false,
                                     labelText:
                                         FFLocalizations.of(context).getText(
                                       '9c4wz64o' /* Номер телефона */,
@@ -673,18 +699,25 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryText,
                                           fontSize: 17.0,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                           lineHeight: 1.17,
                                         ),
                                     alignLabelWithHint: false,
                                     hintStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Evolventa',
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
                                     errorStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Evolventa',
                                           color: FlutterFlowTheme.of(context)
                                               .error,
+                                          letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                         ),
                                     enabledBorder: InputBorder.none,
@@ -713,10 +746,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                       .override(
                                         fontFamily: 'Evolventa',
                                         fontSize: 17.0,
+                                        letterSpacing: 0.0,
                                         useGoogleFonts: false,
                                         lineHeight: 1.6,
                                       ),
                                   textAlign: TextAlign.start,
+                                  minLines: null,
                                   keyboardType: TextInputType.phone,
                                   cursorColor:
                                       FlutterFlowTheme.of(context).accent1,
@@ -763,9 +798,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                               const Duration(milliseconds: 500),
                                               () => setState(() {}),
                                             ),
+                                            autofocus: false,
                                             readOnly: true,
                                             obscureText: false,
                                             decoration: InputDecoration(
+                                              isDense: false,
                                               labelText:
                                                   FFLocalizations.of(context)
                                                       .getText(
@@ -787,13 +824,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                                 context)
                                                             .secondaryText,
                                                     fontSize: 17.0,
+                                                    letterSpacing: 0.0,
                                                     useGoogleFonts: false,
                                                     lineHeight: 1.2,
                                                   ),
                                               alignLabelWithHint: false,
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Evolventa',
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
+                                                      ),
                                               errorStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -803,6 +846,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .error,
+                                                        letterSpacing: 0.0,
                                                         useGoogleFonts: false,
                                                       ),
                                               enabledBorder: InputBorder.none,
@@ -816,10 +860,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                 .override(
                                                   fontFamily: 'Evolventa',
                                                   fontSize: 15.0,
+                                                  letterSpacing: 0.0,
                                                   useGoogleFonts: false,
                                                   lineHeight: 1.5,
                                                 ),
                                             textAlign: TextAlign.start,
+                                            minLines: null,
                                             maxLength: 18,
                                             maxLengthEnforcement:
                                                 MaxLengthEnforcement.enforced,
@@ -865,6 +911,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .accent1,
                                                 fontSize: 15.0,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
                                                 useGoogleFonts: false,
                                               ),
@@ -900,6 +947,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         fontFamily: 'Evolventa',
                                         color: const Color(0xFFFF3F3F),
                                         fontSize: 15.0,
+                                        letterSpacing: 0.0,
                                         useGoogleFonts: false,
                                       ),
                                 ),
@@ -966,6 +1014,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),

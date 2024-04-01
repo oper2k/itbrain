@@ -159,6 +159,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                     fontFamily: 'Evolventa',
                                     color: FlutterFlowTheme.of(context).accent1,
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                     lineHeight: 1.2,
                                   ),
@@ -188,6 +189,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Evolventa',
                           fontSize: 20.0,
+                          letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
                           useGoogleFonts: false,
                           lineHeight: 1.2,
@@ -207,6 +209,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Evolventa',
                           fontSize: 15.0,
+                          letterSpacing: 0.0,
                           useGoogleFonts: false,
                           lineHeight: 1.2,
                         ),
@@ -263,6 +266,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Evolventa',
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                   lineHeight: 1.2,
                                 ),
@@ -280,6 +284,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Evolventa',
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                   lineHeight: 1.2,
                                 ),

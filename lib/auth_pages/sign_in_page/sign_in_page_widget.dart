@@ -134,6 +134,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                   fontFamily: 'Evolventa',
                                   color: FlutterFlowTheme.of(context).accent1,
                                   fontSize: 15.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: false,
                                   lineHeight: 1.6,
@@ -159,6 +160,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Evolventa',
                             fontSize: 24.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: false,
                             lineHeight: 1.16,
@@ -179,6 +181,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                             fontFamily: 'Evolventa',
                             color: FlutterFlowTheme.of(context).secondaryText,
                             fontSize: 16.0,
+                            letterSpacing: 0.0,
                             useGoogleFonts: false,
                             lineHeight: 1.41,
                           ),
@@ -216,8 +219,10 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                               const Duration(milliseconds: 500),
                               () => setState(() {}),
                             ),
+                            autofocus: false,
                             obscureText: false,
                             decoration: InputDecoration(
+                              isDense: false,
                               labelText: FFLocalizations.of(context).getText(
                                 'ee70g2fx' /* Email */,
                               ),
@@ -231,17 +236,24 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                         : FlutterFlowTheme.of(context)
                                             .secondaryText,
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                     lineHeight: 1.6,
                                   ),
                               alignLabelWithHint: false,
-                              hintStyle:
-                                  FlutterFlowTheme.of(context).labelMedium,
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Evolventa',
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: false,
+                                  ),
                               errorStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Evolventa',
                                     color: FlutterFlowTheme.of(context).error,
+                                    letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                   ),
                               enabledBorder: InputBorder.none,
@@ -269,10 +281,12 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                 .override(
                                   fontFamily: 'Evolventa',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                   lineHeight: 1.6,
                                 ),
                             textAlign: TextAlign.start,
+                            minLines: null,
                             keyboardType: TextInputType.emailAddress,
                             cursorColor: FlutterFlowTheme.of(context).accent1,
                             validator: _model.emailControllerValidator
@@ -297,6 +311,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                               fontFamily: 'Evolventa',
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontSize: 15.0,
+                              letterSpacing: 0.0,
                               useGoogleFonts: false,
                               lineHeight: 1.2,
                             ),
@@ -332,8 +347,10 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                             const Duration(milliseconds: 500),
                             () => setState(() {}),
                           ),
+                          autofocus: false,
                           obscureText: !_model.passwordVisibility,
                           decoration: InputDecoration(
+                            isDense: false,
                             labelText: FFLocalizations.of(context).getText(
                               'wgta6hza' /* Пароль */,
                             ),
@@ -347,16 +364,24 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                       : FlutterFlowTheme.of(context)
                                           .secondaryText,
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                   lineHeight: 1.17,
                                 ),
                             alignLabelWithHint: false,
-                            hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Evolventa',
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: false,
+                                ),
                             errorStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Evolventa',
                                   color: FlutterFlowTheme.of(context).error,
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                 ),
                             enabledBorder: InputBorder.none,
@@ -383,10 +408,12 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                     lineHeight: 1.17,
                                   ),
                           textAlign: TextAlign.start,
+                          minLines: null,
                           cursorColor: FlutterFlowTheme.of(context).accent1,
                           validator: _model.passwordControllerValidator
                               .asValidator(context),
@@ -409,6 +436,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                               fontFamily: 'Evolventa',
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontSize: 15.0,
+                              letterSpacing: 0.0,
                               useGoogleFonts: false,
                               lineHeight: 1.2,
                             ),
@@ -439,6 +467,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                   fontFamily: 'Evolventa',
                                   color: Colors.white,
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: false,
                                   lineHeight: 1.6,
@@ -526,6 +555,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),

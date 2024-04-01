@@ -65,6 +65,7 @@ class _ConfirmedFeedbackWidgetState extends State<ConfirmedFeedbackWidget> {
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Evolventa',
                   fontSize: 24.0,
+                  letterSpacing: 0.0,
                   fontWeight: FontWeight.bold,
                   useGoogleFonts: false,
                   lineHeight: 1.16,

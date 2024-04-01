@@ -138,6 +138,7 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                     lineHeight: 1.41,
                                   ),
@@ -158,6 +159,7 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 24.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                     lineHeight: 1.16,
@@ -189,6 +191,7 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
                                 fontSize: 20.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
                                 useGoogleFonts: false,
                                 lineHeight: 1.2,
@@ -258,6 +261,7 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                                     .override(
                                       fontFamily: 'Evolventa',
                                       fontSize: 15.0,
+                                      letterSpacing: 0.0,
                                       useGoogleFonts: false,
                                       lineHeight: 1.2,
                                     ),
@@ -277,6 +281,7 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                                     .override(
                                       fontFamily: 'Evolventa',
                                       fontSize: 17.0,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,
                                       lineHeight: 1.29,
@@ -336,6 +341,7 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                                   .override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),

@@ -15,15 +15,9 @@ class PlayerCompModel extends FlutterFlowModel<PlayerCompWidget> {
   // Stores action output result for [Custom Action - downloadUrl] action in DonwloadTrackBtn widget.
   bool? isDownload;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
   @override
   void dispose() {}
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

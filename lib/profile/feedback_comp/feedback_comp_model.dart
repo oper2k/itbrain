@@ -10,8 +10,6 @@ class FeedbackCompModel extends FlutterFlowModel<FeedbackCompWidget> {
   TextEditingController? feedbackController;
   String? Function(BuildContext, String?)? feedbackControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -20,8 +18,4 @@ class FeedbackCompModel extends FlutterFlowModel<FeedbackCompWidget> {
     feedbackFocusNode?.dispose();
     feedbackController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

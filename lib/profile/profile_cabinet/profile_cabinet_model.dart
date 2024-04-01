@@ -16,8 +16,6 @@ class ProfileCabinetModel extends FlutterFlowModel<ProfileCabinetWidget> {
   // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
   List<MeditationCategoriesRecord>? meditations;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -25,8 +23,4 @@ class ProfileCabinetModel extends FlutterFlowModel<ProfileCabinetWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

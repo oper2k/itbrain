@@ -103,6 +103,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Evolventa',
                               fontSize: 17.0,
+                              letterSpacing: 0.0,
                               useGoogleFonts: false,
                               lineHeight: 1.41,
                             ),
@@ -161,6 +162,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                                                 .override(
                                                   fontFamily: 'Evolventa',
                                                   fontSize: 17.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   useGoogleFonts: false,
                                                 ),
@@ -204,6 +206,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                                                   fontFamily: 'Evolventa',
                                                   color: Colors.black,
                                                   fontSize: 17.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   useGoogleFonts: false,
                                                 ),
@@ -269,6 +272,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                                                   fontFamily: 'Evolventa',
                                                   color: Colors.black,
                                                   fontSize: 17.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   useGoogleFonts: false,
                                                 ),
@@ -310,6 +314,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                                                 .override(
                                                   fontFamily: 'Evolventa',
                                                   fontSize: 17.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   useGoogleFonts: false,
                                                 ),

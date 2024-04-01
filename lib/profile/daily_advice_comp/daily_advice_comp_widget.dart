@@ -109,6 +109,7 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
                               fontFamily: 'Evolventa',
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontSize: 17.0,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.normal,
                               useGoogleFonts: false,
                               lineHeight: 1.41,
@@ -124,6 +125,7 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
                             fontFamily: 'Evolventa',
                             color: FlutterFlowTheme.of(context).primaryText,
                             fontSize: 24.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: false,
                           ),
@@ -166,6 +168,7 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
                                   .override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 15.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),

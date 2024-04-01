@@ -718,7 +718,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Отправить код еще раз',
       'en': 'Send the code again',
     },
-    'lmm0mjsw': {
+    'd9f6lqf8': {
       'ru': 'Не забудьте проверить папку «Спам» и другие.',
       'en': '',
     },
@@ -770,6 +770,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '9oilinzf': {
       'ru': 'Перейди по ссылке\nв письме',
       'en': 'Follow the link\nin a letter',
+    },
+    'lmm0mjsw': {
+      'ru': 'Не забудьте проверить папку «Спам» и другие.',
+      'en': '',
     },
     'mteqd617': {
       'ru': 'Отлично!',

@@ -131,6 +131,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                   fontFamily: 'Evolventa',
                                   color: FlutterFlowTheme.of(context).accent1,
                                   fontSize: 15.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: false,
                                   lineHeight: 1.6,
@@ -157,6 +158,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Evolventa',
                             fontSize: 24.0,
+                            letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
                             useGoogleFonts: false,
                             lineHeight: 1.16,
@@ -176,6 +178,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                             fontFamily: 'Evolventa',
                             color: FlutterFlowTheme.of(context).secondaryText,
                             fontSize: 16.0,
+                            letterSpacing: 0.0,
                             useGoogleFonts: false,
                             lineHeight: 1.41,
                           ),
@@ -210,8 +213,10 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                             const Duration(milliseconds: 500),
                             () => setState(() {}),
                           ),
+                          autofocus: false,
                           obscureText: false,
                           decoration: InputDecoration(
+                            isDense: false,
                             labelText: FFLocalizations.of(context).getText(
                               '5otb3ne5' /* Email */,
                             ),
@@ -220,16 +225,24 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                 .override(
                                   fontFamily: 'Evolventa',
                                   fontSize: 17.0,
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                   lineHeight: 1.7,
                                 ),
                             alignLabelWithHint: false,
-                            hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Evolventa',
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: false,
+                                ),
                             errorStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Evolventa',
                                   color: FlutterFlowTheme.of(context).error,
+                                  letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                 ),
                             enabledBorder: InputBorder.none,
@@ -255,10 +268,12 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Evolventa',
                                     fontSize: 17.0,
+                                    letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                     lineHeight: 1.5,
                                   ),
                           textAlign: TextAlign.start,
+                          minLines: null,
                           keyboardType: TextInputType.emailAddress,
                           cursorColor: FlutterFlowTheme.of(context).accent1,
                           validator: _model.emailControllerValidator
@@ -282,6 +297,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                               fontFamily: 'Evolventa',
                               color: FlutterFlowTheme.of(context).secondaryText,
                               fontSize: 15.0,
+                              letterSpacing: 0.0,
                               useGoogleFonts: false,
                               lineHeight: 1.2,
                             ),
@@ -375,6 +391,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                 .override(
                                   fontFamily: 'Evolventa',
                                   fontSize: 14.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: false,
                                 ),

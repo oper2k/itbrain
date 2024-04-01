@@ -169,6 +169,7 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
                                 .override(
                                   fontFamily: 'Evolventa',
                                   fontSize: 24.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: false,
                                 ),
@@ -189,6 +190,7 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
                                 fontSize: 17.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.normal,
                                 useGoogleFonts: false,
                                 lineHeight: 1.41,
@@ -232,6 +234,7 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
                                       .override(
                                         fontFamily: 'Evolventa',
                                         fontSize: 15.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         useGoogleFonts: false,
                                       ),

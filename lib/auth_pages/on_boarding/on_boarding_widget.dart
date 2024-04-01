@@ -101,6 +101,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                                 .override(
                                                   fontFamily: 'Evolventa',
                                                   fontSize: 40.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   useGoogleFonts: false,
                                                   lineHeight: 1.1,
@@ -123,6 +124,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                                           context)
                                                       .secondaryText,
                                                   fontSize: 17.0,
+                                                  letterSpacing: 0.0,
                                                   useGoogleFonts: false,
                                                   lineHeight: 1.41,
                                                 ),
@@ -185,6 +187,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                             .override(
                                               fontFamily: 'Evolventa',
                                               fontSize: 17.0,
+                                              letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               useGoogleFonts: false,
                                             ),
@@ -223,6 +226,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                           .override(
                                             fontFamily: 'Evolventa',
                                             fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             useGoogleFonts: false,
                                           ),
@@ -298,6 +302,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                               .override(
                                                 fontFamily: 'Evolventa',
                                                 fontSize: 17.0,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
                                                 useGoogleFonts: false,
                                               ),
@@ -341,6 +346,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                                 fontFamily: 'Evolventa',
                                                 color: Colors.black,
                                                 fontSize: 17.0,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
                                                 useGoogleFonts: false,
                                               ),
@@ -406,6 +412,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                                 fontFamily: 'Evolventa',
                                                 color: Colors.black,
                                                 fontSize: 17.0,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
                                                 useGoogleFonts: false,
                                               ),
@@ -447,6 +454,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                               .override(
                                                 fontFamily: 'Evolventa',
                                                 fontSize: 17.0,
+                                                letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
                                                 useGoogleFonts: false,
                                               ),
