@@ -104,7 +104,11 @@ class _MeditationPlayerInfoWidgetState
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: MarkdownBody(
-                      data: widget.playerInfo![widget.index!].playerText,
+                      data: FFLocalizations.of(context).getVariableText(
+                        ruText: widget.playerInfo?[widget.index!].playerText,
+                        enText:
+                            widget.playerInfo?[widget.index!].playerTextEng,
+                      ),
                       selectable: true,
                       onTapLink: (_, url, __) => launchURL(url!),
                     ),

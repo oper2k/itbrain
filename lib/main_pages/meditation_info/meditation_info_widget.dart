@@ -92,10 +92,15 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
           stream: FFAppState().meditationCategoryPage(
             uniqueQueryKey: widget.meditationCategory?.reference.id,
             requestFn: () => queryMeditationsRecord(
-              queryBuilder: (meditationsRecord) => meditationsRecord.where(
-                'meditationCategory',
-                isEqualTo: widget.meditationCategory?.reference,
-              ),
+              queryBuilder: (meditationsRecord) => meditationsRecord
+                  .where(
+                    'meditationCategory',
+                    isEqualTo: widget.meditationCategory?.reference,
+                  )
+                  .where(
+                    'lang',
+                    isEqualTo: FFLocalizations.of(context).languageCode,
+                  ),
             ),
           ),
           builder: (context, snapshot) {
