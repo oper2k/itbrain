@@ -60,13 +60,15 @@ class _StoriesWidgetState extends State<StoriesWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.black,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Align(
           alignment: AlignmentDirectional(0.0, 0.0),
           child: Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
             height: MediaQuery.sizeOf(context).height * 1.0,
-            decoration: BoxDecoration(),
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).primaryBackground,
+            ),
             child: custom_widgets.Story(
               width: MediaQuery.sizeOf(context).width * 1.0,
               height: MediaQuery.sizeOf(context).height * 1.0,
@@ -75,6 +77,9 @@ class _StoriesWidgetState extends State<StoriesWidget> {
                   ?.where(
                       (e) => e.lang == FFLocalizations.of(context).languageCode)
                   .toList(),
+              color: FlutterFlowTheme.of(context).primaryBackground,
+              image:
+                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-m-t-meditation-y84ym0/assets/kel0crxujwhz/Background.png',
               onUserChanged: () async {
                 await currentUserReference!.update({
                   ...mapToFirestore(

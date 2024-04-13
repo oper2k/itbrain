@@ -12,9 +12,14 @@ import 'package:flutter/material.dart';
 
 import 'index.dart'; // Imports other custom widgets
 
+import 'index.dart'; // Imports other custom widgets
+
+import 'index.dart'; // Imports other custom widgets
+
 import 'package:story/story.dart';
 import 'package:video_player/video_player.dart';
 import '../../backend/schema/stories_record.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class Story extends StatefulWidget {
   const Story({
@@ -24,6 +29,8 @@ class Story extends StatefulWidget {
     required this.initialPage,
     this.onUserChanged,
     this.allStories,
+    this.color,
+    this.image,
   }) : super(key: key);
 
   final double? width;
@@ -31,6 +38,8 @@ class Story extends StatefulWidget {
   final int initialPage;
   final Future<dynamic> Function()? onUserChanged;
   final List<StoriesRecord>? allStories;
+  final Color? color;
+  final String? image;
 
   @override
   State<Story> createState() => _StoryState();
@@ -96,7 +105,15 @@ class _StoryState extends State<Story> {
           return Stack(
             children: [
               Positioned.fill(
-                child: Container(color: Colors.black),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: widget.color,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: CachedNetworkImageProvider(widget.image ?? ''),
+                    ),
+                  ),
+                ),
               ),
               _isVideo
                   ? StoryVideoPlayer(
@@ -107,6 +124,7 @@ class _StoryState extends State<Story> {
                       },
                     )
                   : StoryImage(
+                      //color: Color(0xFF003CFF),
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: MediaQuery.sizeOf(context).height * 1.0,
                       key: ValueKey(story.imageUrl),
