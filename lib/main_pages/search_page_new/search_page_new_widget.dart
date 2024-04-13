@@ -2,12 +2,16 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main_pages/meditations/meditations_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'search_page_new_model.dart';
 export 'search_page_new_model.dart';
@@ -67,7 +71,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(24.0, 46.0, 24.0, 46.0),
+            padding: EdgeInsetsDirectional.fromSTEB(24.0, 46.0, 24.0, 46.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -86,9 +90,9 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                       child: Container(
                         width: 40.0,
                         height: 44.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Icon(
                             FFIcons.kleft2,
                             color: FlutterFlowTheme.of(context).accent1,
@@ -100,7 +104,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 16.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 16.0),
                   child: Stack(
                     children: [
                       Row(
@@ -111,7 +115,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                             child: Material(
                               color: Colors.transparent,
                               elevation: 0.0,
-                              shape: const RoundedRectangleBorder(
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(96.0),
                                   bottomRight: Radius.circular(0.0),
@@ -123,8 +127,8 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                 width: 219.0,
                                 height: 56.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0x15FFFFFF),
-                                  borderRadius: const BorderRadius.only(
+                                  color: Color(0x15FFFFFF),
+                                  borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(96.0),
                                     bottomRight: Radius.circular(0.0),
                                     topLeft: Radius.circular(96.0),
@@ -136,7 +140,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -150,7 +154,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 8.0, 0.0),
                                           child: TextFormField(
                                             controller: _model.textController,
@@ -159,7 +163,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                             onChanged: (_) =>
                                                 EasyDebounce.debounce(
                                               '_model.textController',
-                                              const Duration(milliseconds: 300),
+                                              Duration(milliseconds: 300),
                                               () async {
                                                 setState(() {
                                                   _model.searchOk = true;
@@ -177,7 +181,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                                           record,
                                                                           [
                                                                     record
-                                                                        .title
+                                                                        .title!
                                                                   ]),
                                                             )
                                                             .toList(),
@@ -234,7 +238,6 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                   letterSpacing: 0.0,
                                                   useGoogleFonts: false,
                                                 ),
-                                            minLines: null,
                                             validator: _model
                                                 .textControllerValidator
                                                 .asValidator(context),
@@ -248,7 +251,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 4.0, 0.0),
                             child: Material(
                               color: Colors.transparent,
@@ -262,7 +265,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                   ),
                                 ),
                                 child: Stack(
-                                  alignment: const AlignmentDirectional(1.0, 0.0),
+                                  alignment: AlignmentDirectional(1.0, 0.0),
                                   children: [
                                     InkWell(
                                       splashColor: Colors.transparent,
@@ -282,7 +285,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 15.5, 0.0),
                                       child: Icon(
                                         FFIcons.kclose2,
@@ -304,7 +307,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: Builder(
                       builder: (context) {
                         if (!_model.searchOk!) {
@@ -317,7 +320,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         'mc97jo4d' /* История поиска */,
@@ -381,14 +384,14 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 32.0, 0.0, 0.0),
                                   child: AuthUserStreamWidget(
                                     builder: (context) => Builder(
                                       builder: (context) {
                                         final meditationRef =
                                             (currentUserDocument?.searchHistory
-                                                        .toList() ??
+                                                        ?.toList() ??
                                                     [])
                                                 .toList();
                                         return ListView.separated(
@@ -397,7 +400,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                           scrollDirection: Axis.vertical,
                                           itemCount: meditationRef.length,
                                           separatorBuilder: (_, __) =>
-                                              const SizedBox(height: 32.0),
+                                              SizedBox(height: 32.0),
                                           itemBuilder:
                                               (context, meditationRefIndex) {
                                             final meditationRefItem =
@@ -547,7 +550,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                           );
                         } else {
                           return Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 3.0, 0.0, 0.0),
                             child: Builder(
                               builder: (context) {
@@ -559,7 +562,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                   scrollDirection: Axis.vertical,
                                   itemCount: results.length,
                                   separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 32.0),
+                                      SizedBox(height: 32.0),
                                   itemBuilder: (context, resultsIndex) {
                                     final resultsItem = results[resultsIndex];
                                     return Container(
@@ -606,7 +609,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                 if (resultsItem.isPaid) {
                                                   if ((currentUserDocument
                                                               ?.purchasedMeditationsPacks
-                                                              .toList() ??
+                                                              ?.toList() ??
                                                           [])
                                                       .contains(resultsItem
                                                           .meditationCategory)) {

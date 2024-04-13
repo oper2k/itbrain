@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main_pages/meditation_comp/meditation_comp_widget.dart';
 import '/main_pages/offline_mode/offline_mode_widget.dart';
 import '/profile/affirmation_comp/affirmation_comp_widget.dart';
@@ -13,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
 import 'home_page_model.dart';
@@ -70,7 +72,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   : FocusScope.of(context).unfocus(),
               child: Padding(
                 padding: MediaQuery.viewInsetsOf(context),
-                child: const AffirmationCompWidget(),
+                child: AffirmationCompWidget(),
               ),
             );
           },
@@ -155,14 +157,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 24.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -173,7 +175,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
@@ -191,7 +193,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 0.0, 0.0),
                                     child: AuthUserStreamWidget(
                                       builder: (context) => Text(
@@ -209,7 +211,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       ),
                                     ),
                                   ),
-                                ].divide(const SizedBox(height: 2.0)),
+                                ].divide(SizedBox(height: 2.0)),
                               ),
                               InkWell(
                                 splashColor: Colors.transparent,
@@ -221,7 +223,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 },
                                 child: Builder(
                                   builder: (context) {
-                                    if (currentUserPhoto != '') {
+                                    if (currentUserPhoto != null &&
+                                        currentUserPhoto != '') {
                                       return ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(100.0),
@@ -253,7 +256,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         ),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: AuthUserStreamWidget(
                                             builder: (context) => Text(
                                               valueOrDefault<String>(
@@ -293,9 +296,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         ),
                         if (!FFAppState().isOffline)
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 28.0, 24.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -308,14 +311,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 child: Container(
                                   height: 56.0,
                                   decoration: BoxDecoration(
-                                    color: const Color(0x14FFFFFF),
+                                    color: Color(0x14FFFFFF),
                                     borderRadius: BorderRadius.circular(96.0),
                                     border: Border.all(
                                       color: Colors.transparent,
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 20.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -339,7 +342,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 useGoogleFonts: false,
                                               ),
                                         ),
-                                      ].divide(const SizedBox(width: 6.0)),
+                                      ].divide(SizedBox(width: 6.0)),
                                     ),
                                   ),
                                 ),
@@ -347,7 +350,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 40.0, 0.0, 0.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -356,9 +359,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               children: [
                                 if (!FFAppState().isOffline)
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -378,7 +381,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   ),
                                 if (!FFAppState().isOffline)
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: Builder(
                                       builder: (context) {
@@ -396,7 +399,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               final storiesItem =
                                                   stories[storiesIndex];
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Column(
                                                   mainAxisSize:
@@ -408,7 +411,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       builder: (context) {
                                                         if (!(currentUserDocument
                                                                     ?.viewedStories
-                                                                    .toList() ??
+                                                                    ?.toList() ??
                                                                 [])
                                                             .contains(storiesItem
                                                                 .reference)) {
@@ -454,7 +457,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               decoration:
                                                                   BoxDecoration(
                                                                 gradient:
-                                                                    const LinearGradient(
+                                                                    LinearGradient(
                                                                   colors: [
                                                                     Color(
                                                                         0xFF9747FF),
@@ -481,11 +484,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     .circle,
                                                                 border:
                                                                     Border.all(
-                                                                  color: (currentUserDocument?.viewedStories.toList() ??
+                                                                  color: (currentUserDocument?.viewedStories?.toList() ??
                                                                               [])
                                                                           .contains(storiesItem
                                                                               .reference)
-                                                                      ? const Color(
+                                                                      ? Color(
                                                                           0x00FE7110)
                                                                       : FlutterFlowTheme.of(
                                                                               context)
@@ -494,7 +497,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               ),
                                                               child: Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         0.0,
                                                                         0.0),
                                                                 child:
@@ -511,7 +514,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   ),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             4.0,
                                                                             4.0,
@@ -526,7 +529,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       clipBehavior:
                                                                           Clip.antiAlias,
                                                                       decoration:
-                                                                          const BoxDecoration(
+                                                                          BoxDecoration(
                                                                         shape: BoxShape
                                                                             .circle,
                                                                       ),
@@ -596,11 +599,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       .circle,
                                                                   border: Border
                                                                       .all(
-                                                                    color: (currentUserDocument?.viewedStories.toList() ??
+                                                                    color: (currentUserDocument?.viewedStories?.toList() ??
                                                                                 [])
                                                                             .contains(storiesItem
                                                                                 .reference)
-                                                                        ? const Color(
+                                                                        ? Color(
                                                                             0x00FE7110)
                                                                         : FlutterFlowTheme.of(context)
                                                                             .accent1,
@@ -608,7 +611,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 ),
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           0.0,
                                                                           0.0),
                                                                   child:
@@ -628,7 +631,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                         Stack(
                                                                       children: [
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               4.0,
                                                                               4.0,
                                                                               4.0,
@@ -642,7 +645,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                             clipBehavior:
                                                                                 Clip.antiAlias,
                                                                             decoration:
-                                                                                const BoxDecoration(
+                                                                                BoxDecoration(
                                                                               shape: BoxShape.circle,
                                                                             ),
                                                                             child:
@@ -664,11 +667,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     6.0,
@@ -705,18 +708,18 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               );
                                             })
                                                     .divide(
-                                                        const SizedBox(width: 7.0))
+                                                        SizedBox(width: 7.0))
                                                     .addToStart(
-                                                        const SizedBox(width: 24.0))
+                                                        SizedBox(width: 24.0))
                                                     .addToEnd(
-                                                        const SizedBox(width: 24.0)),
+                                                        SizedBox(width: 24.0)),
                                           ),
                                         );
                                       },
                                     ),
                                   ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 20.0, 20.0, 0.0),
                                   child: StreamBuilder<List<AffirmationRecord>>(
                                     stream: queryAffirmationRecord(
@@ -776,7 +779,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       MediaQuery.viewInsetsOf(
                                                           context),
                                                   child:
-                                                      const AffirmationCompWidget(),
+                                                      AffirmationCompWidget(),
                                                 ),
                                               );
                                             },
@@ -792,7 +795,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 BorderRadius.circular(12.0),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(16.0),
+                                            padding: EdgeInsets.all(16.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -833,7 +836,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                              ].divide(const SizedBox(width: 8.0)),
+                                              ].divide(SizedBox(width: 8.0)),
                                             ),
                                           ),
                                         ),
@@ -842,9 +845,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 48.0, 0.0, 0.0),
                                     child: Text(
                                       valueOrDefault<String>(
@@ -874,7 +877,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 0.0, 0.0),
                                   child: StreamBuilder<
                                       List<MeditationCategoriesRecord>>(
@@ -910,13 +913,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           snapshot.data!;
                                       if (listViewMeditationCategoriesRecordList
                                           .isEmpty) {
-                                        return const SizedBox(
+                                        return Container(
                                           height: 500.0,
                                           child: OfflineModeWidget(),
                                         );
                                       }
                                       return ListView.builder(
-                                        padding: const EdgeInsets.fromLTRB(
+                                        padding: EdgeInsets.fromLTRB(
                                           0,
                                           0,
                                           0,

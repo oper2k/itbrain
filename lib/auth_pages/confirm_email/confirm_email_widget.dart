@@ -7,6 +7,8 @@ import '/flutter_flow/instant_timer.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'confirm_email_model.dart';
 export 'confirm_email_model.dart';
 
@@ -33,7 +35,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
       await authManager.sendEmailVerification();
       _model.timerController.onStartTimer();
       _model.instantTimer = InstantTimer.periodic(
-        duration: const Duration(milliseconds: 1000),
+        duration: Duration(milliseconds: 1000),
         callback: (timer) async {
           if (currentUserEmailVerified) {
             setState(() {
@@ -98,7 +100,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 46.0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 46.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -117,9 +119,9 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                       child: Container(
                         width: 40.0,
                         height: 44.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Icon(
                             FFIcons.kleft2,
                             color: FlutterFlowTheme.of(context).accent1,
@@ -143,9 +145,9 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                       options: FFButtonOptions(
                         height: 40.0,
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: Colors.transparent,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -158,7 +160,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                                   lineHeight: 1.6,
                                 ),
                         elevation: 0.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 0.0,
                         ),
@@ -167,7 +169,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                     ),
                   ],
                 ),
-                const Spacer(),
+                Spacer(),
                 Image.asset(
                   'assets/images/9jbw0_.webp',
                   width: 80.0,
@@ -175,7 +177,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                   fit: BoxFit.cover,
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       '2nqv20ap' /* Подтвердите email */,
@@ -191,12 +193,12 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getVariableText(
                       ruText:
-                          'Для этого перейдите по ссылке в письме на $currentUserEmail',
-                      enText: 'Follow the link on $currentUserEmail',
+                          'Для этого перейдите по ссылке в письме на ${currentUserEmail}',
+                      enText: 'Follow the link on ${currentUserEmail}',
                     ),
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -210,10 +212,10 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                     child: Builder(
                       builder: (context) {
                         if (!_model.showNewCode) {
@@ -249,7 +251,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                                 ),
                                 controller: _model.timerController,
                                 updateStateInterval:
-                                    const Duration(milliseconds: 1000),
+                                    Duration(milliseconds: 1000),
                                 onChanged: (value, displayTime, shouldUpdate) {
                                   _model.timerMilliseconds = value;
                                   _model.timerValue = displayTime;
@@ -274,7 +276,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                                       lineHeight: 1.2,
                                     ),
                               ),
-                            ].divide(const SizedBox(width: 4.0)),
+                            ].divide(SizedBox(width: 4.0)),
                           );
                         } else {
                           return FFButtonWidget(
@@ -289,9 +291,9 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                               '1dd2r518' /* Отправить код еще раз */,
                             ),
                             options: FFButtonOptions(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.transparent,
                               textStyle: FlutterFlowTheme.of(context)
@@ -306,7 +308,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                                     lineHeight: 1.2,
                                   ),
                               elevation: 0.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 0.0,
                               ),
@@ -317,9 +319,9 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                     ),
                   ),
                 ),
-                const Spacer(),
+                Spacer(),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'w1jn4x3u' /* Не забудьте проверить папку «С... */,
@@ -357,11 +359,11 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                     width: double.infinity,
                     height: 52.0,
                     decoration: BoxDecoration(
-                      color: const Color(0x1FFFFFFF),
+                      color: Color(0x1FFFFFFF),
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           '3jbddo0n' /* Пропустить */,

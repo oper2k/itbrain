@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'meditations_model.dart';
 export 'meditations_model.dart';
 
@@ -52,7 +54,7 @@ class _MeditationsWidgetState extends State<MeditationsWidget> {
             Builder(
               builder: (context) {
                 if ((widget.meditation?.isPaid == false) ||
-                    (currentUserDocument?.purchasedMeditationsPacks.toList() ??
+                    (currentUserDocument?.purchasedMeditationsPacks?.toList() ??
                             [])
                         .contains(widget.meditation?.meditationCategory)) {
                   return Container(
@@ -63,10 +65,10 @@ class _MeditationsWidgetState extends State<MeditationsWidget> {
                       shape: BoxShape.circle,
                     ),
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
                         child: FaIcon(
                           FontAwesomeIcons.play,
                           color: FlutterFlowTheme.of(context).tertiary,
@@ -84,10 +86,10 @@ class _MeditationsWidgetState extends State<MeditationsWidget> {
                       shape: BoxShape.circle,
                     ),
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
                         child: FaIcon(
                           FontAwesomeIcons.play,
                           color: FlutterFlowTheme.of(context).primaryText,
@@ -135,10 +137,10 @@ class _MeditationsWidgetState extends State<MeditationsWidget> {
                       lineHeight: 1.2,
                     ),
               ),
-            ].divide(const SizedBox(height: 4.0)),
+            ].divide(SizedBox(height: 4.0)),
           ),
         ),
-      ].divide(const SizedBox(width: 8.0)),
+      ].divide(SizedBox(width: 8.0)),
     );
   }
 }

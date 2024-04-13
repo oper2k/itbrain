@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'delete_account_confirm_model.dart';
 export 'delete_account_confirm_model.dart';
 
@@ -40,7 +42,7 @@ class _DeleteAccountConfirmWidgetState
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -48,7 +50,7 @@ class _DeleteAccountConfirmWidgetState
           borderRadius: BorderRadius.circular(24.0),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -74,14 +76,14 @@ class _DeleteAccountConfirmWidgetState
                 ],
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                       child: Container(
                         width: 80.0,
                         height: 80.0,
@@ -99,7 +101,7 @@ class _DeleteAccountConfirmWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'ksov762s' /* Вы уверены, что хотите удалить... */,
@@ -131,7 +133,7 @@ class _DeleteAccountConfirmWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 49.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 49.0, 0.0, 8.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -156,7 +158,7 @@ class _DeleteAccountConfirmWidgetState
                             ),
                           ),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 'hneg8fw6' /* Удалить аккаунт навсегда */,
@@ -165,7 +167,7 @@ class _DeleteAccountConfirmWidgetState
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Evolventa',
-                                    color: const Color(0xFFFF3F3F),
+                                    color: Color(0xFFFF3F3F),
                                     fontSize: 15.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -178,7 +180,7 @@ class _DeleteAccountConfirmWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 46.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 46.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -198,7 +200,7 @@ class _DeleteAccountConfirmWidgetState
                             ),
                           ),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 '3x43byeq' /* Отмена */,

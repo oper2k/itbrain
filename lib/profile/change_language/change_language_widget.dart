@@ -1,8 +1,11 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'change_language_model.dart';
 export 'change_language_model.dart';
 
@@ -58,7 +61,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -77,9 +80,9 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                       child: Container(
                         width: 40.0,
                         height: 44.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Icon(
                             FFIcons.kleft2,
                             color: FlutterFlowTheme.of(context).accent1,
@@ -95,7 +98,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(-1.0, 0.0),
+                      alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'qfv3pjkl' /* Выберите язык */,
@@ -136,7 +139,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                                       borderRadius: BorderRadius.circular(40.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           6.0, 6.0, 6.0, 6.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -167,7 +170,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                                                   useGoogleFonts: false,
                                                 ),
                                           ),
-                                        ].divide(const SizedBox(width: 4.0)),
+                                        ].divide(SizedBox(width: 4.0)),
                                       ),
                                     ),
                                   ),
@@ -179,7 +182,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                                       borderRadius: BorderRadius.circular(40.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           6.0, 6.0, 6.0, 6.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -211,11 +214,11 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                                                   useGoogleFonts: false,
                                                 ),
                                           ),
-                                        ].divide(const SizedBox(width: 4.0)),
+                                        ].divide(SizedBox(width: 4.0)),
                                       ),
                                     ),
                                   ),
-                                ].divide(const SizedBox(width: 8.0)),
+                                ].divide(SizedBox(width: 8.0)),
                               ),
                             ),
                           );
@@ -245,7 +248,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                                       borderRadius: BorderRadius.circular(40.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           6.0, 6.0, 6.0, 6.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -277,7 +280,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                                                   useGoogleFonts: false,
                                                 ),
                                           ),
-                                        ].divide(const SizedBox(width: 4.0)),
+                                        ].divide(SizedBox(width: 4.0)),
                                       ),
                                     ),
                                   ),
@@ -288,7 +291,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                                       borderRadius: BorderRadius.circular(40.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           6.0, 6.0, 6.0, 6.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -319,11 +322,11 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                                                   useGoogleFonts: false,
                                                 ),
                                           ),
-                                        ].divide(const SizedBox(width: 4.0)),
+                                        ].divide(SizedBox(width: 4.0)),
                                       ),
                                     ),
                                   ),
-                                ].divide(const SizedBox(width: 8.0)),
+                                ].divide(SizedBox(width: 8.0)),
                               ),
                             ),
                           );

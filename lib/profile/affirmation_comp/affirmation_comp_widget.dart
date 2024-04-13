@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'affirmation_comp_model.dart';
 export 'affirmation_comp_model.dart';
@@ -53,7 +54,7 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: StreamBuilder<List<AffirmationRecord>>(
         stream: queryAffirmationRecord(
           singleRecord: true,
@@ -90,7 +91,7 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
               borderRadius: BorderRadius.circular(24.0),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -116,13 +117,13 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
                     ],
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: Container(
                             width: 88.0,
@@ -132,12 +133,12 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
                               shape: BoxShape.circle,
                             ),
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 width: 55.0,
                                 height: 55.0,
                                 clipBehavior: Clip.antiAlias,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.network(
@@ -154,14 +155,14 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 8.0),
                           child: Text(
                             FFLocalizations.of(context).getVariableText(
                               ruText:
-                                  containerAffirmationRecord.affirmationTitle,
+                                  containerAffirmationRecord?.affirmationTitle,
                               enText: containerAffirmationRecord
-                                  .affirmationTitleEng,
+                                  ?.affirmationTitleEng,
                             ),
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
@@ -178,9 +179,9 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
                         Text(
                           FFLocalizations.of(context).getVariableText(
                             ruText:
-                                containerAffirmationRecord.affirmationSubTitle,
+                                containerAffirmationRecord?.affirmationSubTitle,
                             enText: containerAffirmationRecord
-                                .affirmationSubTitleEng,
+                                ?.affirmationSubTitleEng,
                           ),
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context)
@@ -197,7 +198,7 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
                               ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 46.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -211,7 +212,7 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
                               width: double.infinity,
                               height: 52.0,
                               decoration: BoxDecoration(
-                                gradient: const LinearGradient(
+                                gradient: LinearGradient(
                                   colors: [
                                     Color(0xFF9747FF),
                                     Color(0xFFF1618E),
@@ -224,7 +225,7 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     'cau5xidz' /* Спасибо */,

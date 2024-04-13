@@ -10,12 +10,14 @@ import '/profile/delete_account_confirm/delete_account_confirm_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
 import 'edit_profile_model.dart';
@@ -63,7 +65,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     _model.surnameFocusNode ??= FocusNode();
     _model.surnameFocusNode!.addListener(() => setState(() {}));
     _model.phoneController ??= TextEditingController(
-        text: currentPhoneNumber != ''
+        text: currentPhoneNumber != null && currentPhoneNumber != ''
             ? currentPhoneNumber
             : '+7');
     _model.phoneFocusNode ??= FocusNode();
@@ -111,13 +113,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 44.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -134,9 +136,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 child: Container(
                                   width: 40.0,
                                   height: 44.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Icon(
                                       FFIcons.kleft2,
                                       color:
@@ -168,7 +170,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: const DeleteAccountConfirmWidget(),
+                                          child: DeleteAccountConfirmWidget(),
                                         ),
                                       );
                                     },
@@ -177,9 +179,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 child: Container(
                                   width: 40.0,
                                   height: 44.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(1.0, 0.0),
+                                    alignment: AlignmentDirectional(1.0, 0.0),
                                     child: Icon(
                                       FFIcons.kleft345,
                                       color: FlutterFlowTheme.of(context)
@@ -193,9 +195,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
@@ -214,7 +216,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -310,8 +312,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               children: [
                                 Builder(
                                   builder: (context) {
-                                    if ((currentUserPhoto == '') &&
-                                        (_model.uploadedFileUrl == '')) {
+                                    if ((currentUserPhoto == null ||
+                                            currentUserPhoto == '') &&
+                                        (_model.uploadedFileUrl == null ||
+                                            _model.uploadedFileUrl == '')) {
                                       return Container(
                                         width: 124.0,
                                         height: 124.0,
@@ -333,7 +337,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     } else {
                                       return Stack(
                                         alignment:
-                                            const AlignmentDirectional(1.0, -1.0),
+                                            AlignmentDirectional(1.0, -1.0),
                                         children: [
                                           AuthUserStreamWidget(
                                             builder: (context) => ClipRRect(
@@ -352,6 +356,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                 image:
                                                     CachedNetworkImageProvider(
                                                   _model.uploadedFileUrl !=
+                                                              null &&
+                                                          _model.uploadedFileUrl !=
                                                               ''
                                                       ? _model.uploadedFileUrl
                                                       : currentUserPhoto,
@@ -364,7 +370,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(1.0, -1.0),
+                                                AlignmentDirectional(1.0, -1.0),
                                             child: FlutterFlowIconButton(
                                               borderColor: Colors.transparent,
                                               borderRadius: 20.0,
@@ -382,6 +388,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                               ),
                                               onPressed: () async {
                                                 if (_model.uploadedFileUrl !=
+                                                        null &&
+                                                    _model.uploadedFileUrl !=
                                                         '') {
                                                   setState(() {
                                                     _model.isDataUploading =
@@ -393,7 +401,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                     _model.uploadedFileUrl = '';
                                                   });
                                                 } else {
-                                                  if (currentUserPhoto != '') {
+                                                  if (currentUserPhoto !=
+                                                          null &&
+                                                      currentUserPhoto != '') {
                                                     await currentUserReference!
                                                         .update({
                                                       ...mapToFirestore(
@@ -429,12 +439,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         useGoogleFonts: false,
                                       ),
                                 ),
-                              ].divide(const SizedBox(width: 20.0)),
+                              ].divide(SizedBox(width: 20.0)),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: Container(
                             height: 58.0,
@@ -448,7 +458,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   14.0, 0.0, 14.0, 0.0),
                               child: AuthUserStreamWidget(
                                 builder: (context) => TextFormField(
@@ -456,7 +466,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   focusNode: _model.nameFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.nameController',
-                                    const Duration(milliseconds: 500),
+                                    Duration(milliseconds: 500),
                                     () => setState(() {}),
                                   ),
                                   autofocus: false,
@@ -531,7 +541,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         lineHeight: 1.6,
                                       ),
                                   textAlign: TextAlign.start,
-                                  minLines: null,
                                   keyboardType: TextInputType.name,
                                   cursorColor:
                                       FlutterFlowTheme.of(context).accent1,
@@ -543,7 +552,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: Container(
                             height: 58.0,
@@ -558,7 +567,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   14.0, 0.0, 14.0, 0.0),
                               child: AuthUserStreamWidget(
                                 builder: (context) => TextFormField(
@@ -566,7 +575,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   focusNode: _model.surnameFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.surnameController',
-                                    const Duration(milliseconds: 500),
+                                    Duration(milliseconds: 500),
                                     () => setState(() {}),
                                   ),
                                   autofocus: false,
@@ -641,7 +650,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         lineHeight: 1.6,
                                       ),
                                   textAlign: TextAlign.start,
-                                  minLines: null,
                                   cursorColor:
                                       FlutterFlowTheme.of(context).accent1,
                                   validator: _model.surnameControllerValidator
@@ -652,7 +660,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: Container(
                             height: 58.0,
@@ -667,7 +675,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   14.0, 0.0, 14.0, 0.0),
                               child: AuthUserStreamWidget(
                                 builder: (context) => TextFormField(
@@ -675,7 +683,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   focusNode: _model.phoneFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.phoneController',
-                                    const Duration(milliseconds: 500),
+                                    Duration(milliseconds: 500),
                                     () => setState(() {}),
                                   ),
                                   autofocus: false,
@@ -751,7 +759,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         lineHeight: 1.6,
                                       ),
                                   textAlign: TextAlign.start,
-                                  minLines: null,
                                   keyboardType: TextInputType.phone,
                                   cursorColor:
                                       FlutterFlowTheme.of(context).accent1,
@@ -763,7 +770,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
                           child: AuthUserStreamWidget(
                             builder: (context) => Container(
@@ -773,21 +780,21 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 borderRadius: BorderRadius.circular(12.0),
                                 border: Border.all(
                                   color: !currentUserEmailVerified
-                                      ? const Color(0xFFFF3F3F)
+                                      ? Color(0xFFFF3F3F)
                                       : Colors.transparent,
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 14.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             14.0, 0.0, 14.0, 0.0),
-                                        child: SizedBox(
+                                        child: Container(
                                           width: double.infinity,
                                           child: TextFormField(
                                             controller: _model.emailController,
@@ -795,7 +802,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                             onChanged: (_) =>
                                                 EasyDebounce.debounce(
                                               '_model.emailController',
-                                              const Duration(milliseconds: 500),
+                                              Duration(milliseconds: 500),
                                               () => setState(() {}),
                                             ),
                                             autofocus: false,
@@ -865,7 +872,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                   lineHeight: 1.5,
                                                 ),
                                             textAlign: TextAlign.start,
-                                            minLines: null,
                                             maxLength: 18,
                                             maxLengthEnforcement:
                                                 MaxLengthEnforcement.enforced,
@@ -896,10 +902,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                         ),
                                         options: FFButtonOptions(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: Colors.transparent,
                                           textStyle: FlutterFlowTheme.of(
@@ -916,7 +922,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                 useGoogleFonts: false,
                                               ),
                                           elevation: 0.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 0.0,
                                           ),
@@ -932,9 +938,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         ),
                         if (!currentUserEmailVerified)
                           Align(
-                            alignment: const AlignmentDirectional(-1.0, -1.0),
+                            alignment: AlignmentDirectional(-1.0, -1.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 6.0, 0.0, 0.0),
                               child: AuthUserStreamWidget(
                                 builder: (context) => Text(
@@ -945,7 +951,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Evolventa',
-                                        color: const Color(0xFFFF3F3F),
+                                        color: Color(0xFFFF3F3F),
                                         fontSize: 15.0,
                                         letterSpacing: 0.0,
                                         useGoogleFonts: false,
@@ -964,7 +970,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   : _isKeyboardVisible))
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 46.0),
+                      EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 46.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -972,16 +978,20 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       await currentUserReference!.update(createUsersRecordData(
-                        displayName: _model.nameController.text != ''
+                        displayName: _model.nameController.text != null &&
+                                _model.nameController.text != ''
                             ? _model.nameController.text
                             : currentUserDisplayName,
-                        surname: _model.surnameController.text != ''
+                        surname: _model.surnameController.text != null &&
+                                _model.surnameController.text != ''
                             ? _model.surnameController.text
                             : valueOrDefault(currentUserDocument?.surname, ''),
-                        phoneNumber: _model.phoneController.text != ''
+                        phoneNumber: _model.phoneController.text != null &&
+                                _model.phoneController.text != ''
                             ? _model.phoneController.text
                             : currentPhoneNumber,
-                        photoUrl: _model.uploadedFileUrl != ''
+                        photoUrl: _model.uploadedFileUrl != null &&
+                                _model.uploadedFileUrl != ''
                             ? _model.uploadedFileUrl
                             : currentUserPhoto,
                       ));
@@ -992,7 +1002,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       width: double.infinity,
                       height: 52.0,
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           colors: [
                             Color(0xFF9747FF),
                             Color(0xFFF1618E),
@@ -1005,7 +1015,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'bu2xr0l3' /* Применить */,

@@ -1,8 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main_pages/meditations/meditations_widget.dart';
 import '/main_pages/meditations_offline/meditations_offline_widget.dart';
 import '/profile/is_deleted/is_deleted_widget.dart';
@@ -14,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'meditation_info_model.dart';
 export 'meditation_info_model.dart';
@@ -123,7 +126,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
             return Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Color(0xFF370C59),
               ),
               child: SingleChildScrollView(
@@ -132,7 +135,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: ClipRRect(
                         child: Container(
                           width: double.infinity,
@@ -146,7 +149,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                             ),
                           ),
                           child: Stack(
-                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            alignment: AlignmentDirectional(0.0, -1.0),
                             children: [
                               Image.asset(
                                 'assets/images/Frame_12202.webp',
@@ -154,9 +157,9 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                 fit: BoxFit.cover,
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, -0.92),
+                                alignment: AlignmentDirectional(0.0, -0.92),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 44.0, 20.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -174,10 +177,10 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                         child: Container(
                                           width: 40.0,
                                           height: 44.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Icon(
                                               FFIcons.kleft2,
                                               color:
@@ -193,7 +196,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               '${_model.downloadProgress?.toString()}% из 100%',
@@ -211,12 +214,12 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                         ),
                                       if ((currentUserDocument
                                                   ?.purchasedMeditationsPacks
-                                                  .toList() ??
+                                                  ?.toList() ??
                                               [])
                                           .contains(widget
                                               .meditationCategory?.reference))
                                         AuthUserStreamWidget(
-                                          builder: (context) => SizedBox(
+                                          builder: (context) => Container(
                                             width: 44.0,
                                             height: 44.0,
                                             child: Stack(
@@ -296,7 +299,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                                   .viewInsetsOf(
                                                                       context),
                                                               child:
-                                                                  const IsDeletedWidget(),
+                                                                  IsDeletedWidget(),
                                                             ),
                                                           );
                                                         },
@@ -314,10 +317,10 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                       width: 40.0,
                                                       height: 44.0,
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: FaIcon(
                                                           FontAwesomeIcons
@@ -492,7 +495,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                                   .viewInsetsOf(
                                                                       context),
                                                               child:
-                                                                  const IsDownloadedAllWidget(),
+                                                                  IsDownloadedAllWidget(),
                                                             ),
                                                           );
                                                         },
@@ -505,10 +508,10 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                       width: 40.0,
                                                       height: 44.0,
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: Icon(
                                                           FFIcons.kshare3,
@@ -527,10 +530,10 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                   Container(
                                                     width: 40.0,
                                                     height: 44.0,
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Icon(
                                                         Icons
@@ -559,14 +562,14 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   4.0, 24.0, 4.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getVariableText(
@@ -589,13 +592,13 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 4.0, 8.0, 4.0, 0.0),
                             child: Builder(
                               builder: (context) {
                                 if (!_model.more) {
                                   return Stack(
-                                    alignment: const AlignmentDirectional(1.0, 1.0),
+                                    alignment: AlignmentDirectional(1.0, 1.0),
                                     children: [
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -604,7 +607,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                         children: [
                                           Expanded(
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
@@ -641,7 +644,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                               ),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(width: 4.0)),
+                                        ].divide(SizedBox(width: 4.0)),
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -652,7 +655,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(1.0, 1.0),
+                                                AlignmentDirectional(1.0, 1.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -671,22 +674,22 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .primaryBackground,
-                                                      const Color(0x00370C59)
+                                                      Color(0x00370C59)
                                                     ],
-                                                    stops: const [0.8, 1.0],
-                                                    begin: const AlignmentDirectional(
+                                                    stops: [0.8, 1.0],
+                                                    begin: AlignmentDirectional(
                                                         1.0, 0.0),
-                                                    end: const AlignmentDirectional(
+                                                    end: AlignmentDirectional(
                                                         -1.0, 0),
                                                   ),
                                                 ),
                                                 child: Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           1.0, 1.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Container(
@@ -733,7 +736,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                   );
                                 } else {
                                   return Stack(
-                                    alignment: const AlignmentDirectional(1.0, 1.0),
+                                    alignment: AlignmentDirectional(1.0, 1.0),
                                     children: [
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -744,7 +747,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                         children: [
                                           Expanded(
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
@@ -776,7 +779,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                               ),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(width: 4.0)),
+                                        ].divide(SizedBox(width: 4.0)),
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -787,7 +790,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(1.0, 1.0),
+                                                AlignmentDirectional(1.0, 1.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -800,7 +803,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                 });
                                               },
                                               child: Container(
-                                                decoration: const BoxDecoration(
+                                                decoration: BoxDecoration(
                                                   gradient: LinearGradient(
                                                     colors: [
                                                       Color(0xFF370C59),
@@ -815,11 +818,11 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                 ),
                                                 child: Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           1.0, 1.0),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Container(
@@ -869,14 +872,14 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                             ),
                           ),
                           if ((!(currentUserDocument?.purchasedMeditationsPacks
-                                              .toList() ??
+                                              ?.toList() ??
                                           [])
                                       .contains(widget
                                           .meditationCategory?.reference) &&
                                   !FFAppState().isOffline) &&
                               !widget.meditationCategory!.free)
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 32.0, 0.0, 0.0),
                               child: AuthUserStreamWidget(
                                 builder: (context) => InkWell(
@@ -897,7 +900,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                     width: double.infinity,
                                     height: 52.0,
                                     decoration: BoxDecoration(
-                                      gradient: const LinearGradient(
+                                      gradient: LinearGradient(
                                         colors: [
                                           Color(0xFF9747FF),
                                           Color(0xFFF1618E),
@@ -910,7 +913,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
                                           'vnfzb2oi' /* Узнать больше и купить */,
@@ -929,9 +932,9 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                               ),
                             ),
                           Align(
-                            alignment: const AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 28.0, 0.0, 0.0),
                               child: Text(
                                 '${valueOrDefault<String>(
@@ -960,7 +963,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                             builder: (context) {
                               if (!FFAppState().isOffline) {
                                 return Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 22.0, 0.0, 32.0),
                                   child: Builder(
                                     builder: (context) {
@@ -974,15 +977,15 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                         scrollDirection: Axis.vertical,
                                         itemCount: meditations.length,
                                         separatorBuilder: (_, __) =>
-                                            const SizedBox(height: 36.0),
+                                            SizedBox(height: 36.0),
                                         itemBuilder:
                                             (context, meditationsIndex) {
                                           final meditationsItem =
                                               meditations[meditationsIndex];
                                           return Container(
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, -1.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
@@ -994,7 +997,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                   if (meditationsItem.isPaid) {
                                                     if ((currentUserDocument
                                                                 ?.purchasedMeditationsPacks
-                                                                .toList() ??
+                                                                ?.toList() ??
                                                             [])
                                                         .contains(meditationsItem
                                                             .meditationCategory)) {
@@ -1107,7 +1110,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                 );
                               } else {
                                 return Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 22.0, 0.0, 0.0),
                                   child: Builder(
                                     builder: (context) {
@@ -1119,7 +1122,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                   ?.reference)
                                           .toList();
                                       return ListView.separated(
-                                        padding: const EdgeInsets.fromLTRB(
+                                        padding: EdgeInsets.fromLTRB(
                                           0,
                                           0,
                                           0,
@@ -1130,12 +1133,12 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                         scrollDirection: Axis.vertical,
                                         itemCount: offline.length,
                                         separatorBuilder: (_, __) =>
-                                            const SizedBox(height: 36.0),
+                                            SizedBox(height: 36.0),
                                         itemBuilder: (context, offlineIndex) {
                                           final offlineItem =
                                               offline[offlineIndex];
                                           return Container(
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,

@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -8,6 +9,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'offline_player_page_model.dart';
 export 'offline_player_page_model.dart';
@@ -86,10 +88,10 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                 fit: BoxFit.cover,
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Container(
                   width: double.infinity,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Color(0x983A1537),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
@@ -99,7 +101,7 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                     ),
                   ),
                   child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
+                    borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(0.0),
                       topLeft: Radius.circular(32.0),
@@ -114,14 +116,14 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 24.0, 24.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(-1.0, 1.0),
+                                  alignment: AlignmentDirectional(-1.0, 1.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -133,10 +135,10 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                     child: Container(
                                       width: 44.0,
                                       height: 44.0,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
+                                            AlignmentDirectional(-1.0, 0.0),
                                         child: Icon(
                                           FFIcons.kclose2,
                                           color: FlutterFlowTheme.of(context)
@@ -147,11 +149,11 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                     ),
                                   ),
                                 ),
-                              ].divide(const SizedBox(width: 16.0)),
+                              ].divide(SizedBox(width: 16.0)),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 32.0, 20.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context)
@@ -182,7 +184,7 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 8.0, 20.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context)
@@ -213,14 +215,14 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 48.0, 24.0, 0.0),
-                            child: SizedBox(
+                            child: Container(
                               height: 55.0,
                               child: Stack(
-                                alignment: const AlignmentDirectional(0.0, 1.0),
+                                alignment: AlignmentDirectional(0.0, 1.0),
                                 children: [
-                                  SizedBox(
+                                  Container(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,
                                     height: 48.0,
@@ -263,9 +265,9 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(1.0, 1.0),
+                                    alignment: AlignmentDirectional(1.0, 1.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         valueOrDefault<String>(
@@ -285,9 +287,9 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, 1.0),
+                                    alignment: AlignmentDirectional(-1.0, 1.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         valueOrDefault<String>(
@@ -311,10 +313,10 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 38.0, 0.0, 92.0),
                             child: Container(
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -360,7 +362,7 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                           ),
                                         }.withoutNulls,
                                         extra: <String, dynamic>{
-                                          kTransitionInfoKey: const TransitionInfo(
+                                          kTransitionInfoKey: TransitionInfo(
                                             hasTransition: true,
                                             transitionType:
                                                 PageTransitionType.fade,
@@ -370,7 +372,7 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                       );
                                     },
                                   ),
-                                  SizedBox(
+                                  Container(
                                     width: 56.0,
                                     height: 56.0,
                                     child: Stack(
@@ -429,11 +431,11 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   2.0,
                                                                   0.0,
@@ -481,7 +483,7 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                           ),
                                         }.withoutNulls,
                                         extra: <String, dynamic>{
-                                          kTransitionInfoKey: const TransitionInfo(
+                                          kTransitionInfoKey: TransitionInfo(
                                             hasTransition: true,
                                             transitionType:
                                                 PageTransitionType.fade,
@@ -508,7 +510,7 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                       );
                                     },
                                   ),
-                                ].divide(const SizedBox(width: 24.0)),
+                                ].divide(SizedBox(width: 24.0)),
                               ),
                             ),
                           ),

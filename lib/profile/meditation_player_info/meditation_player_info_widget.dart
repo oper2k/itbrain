@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'meditation_player_info_model.dart';
 export 'meditation_player_info_model.dart';
 
@@ -48,7 +50,7 @@ class _MeditationPlayerInfoWidgetState
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -56,7 +58,7 @@ class _MeditationPlayerInfoWidgetState
           borderRadius: BorderRadius.circular(24.0),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
+          padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -83,11 +85,11 @@ class _MeditationPlayerInfoWidgetState
                   ],
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                  alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getVariableText(
-                      ruText: widget.playerInfo?[widget.index!].playerTitle,
-                      enText: widget.playerInfo?[widget.index!].playerTitleEng,
+                      ruText: widget.playerInfo?[widget.index!]?.playerTitle,
+                      enText: widget.playerInfo?[widget.index!]?.playerTitleEng,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Evolventa',
@@ -99,15 +101,15 @@ class _MeditationPlayerInfoWidgetState
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                  alignment: AlignmentDirectional(-1.0, -1.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: MarkdownBody(
                       data: FFLocalizations.of(context).getVariableText(
-                        ruText: widget.playerInfo?[widget.index!].playerText,
+                        ruText: widget.playerInfo?[widget.index!]?.playerText,
                         enText:
-                            widget.playerInfo?[widget.index!].playerTextEng,
+                            widget.playerInfo?[widget.index!]?.playerTextEng,
                       ),
                       selectable: true,
                       onTapLink: (_, url, __) => launchURL(url!),
@@ -115,7 +117,7 @@ class _MeditationPlayerInfoWidgetState
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 101.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 101.0, 0.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -128,7 +130,7 @@ class _MeditationPlayerInfoWidgetState
                       width: double.infinity,
                       height: 52.0,
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           colors: [
                             Color(0xFF9747FF),
                             Color(0xFFF1618E),
@@ -141,7 +143,7 @@ class _MeditationPlayerInfoWidgetState
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'gt5fm4k8' /* Понятно! */,
