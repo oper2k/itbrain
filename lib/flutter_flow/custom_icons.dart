@@ -10,6 +10,8 @@ class FFIcons {
   static const String _player293434Family = 'Player293434';
   static const String _isensorydop1255Family = 'Isensorydop1255';
   static const String _isensorydop12Family = 'Isensorydop12';
+  static const String _dmtAppBarFamily = 'DmtAppBar';
+  static const String _dmtLockFamily = 'DmtLock';
 
   // DMTIcons
   static const IconData kedit1 = IconData(0xe900, fontFamily: _dMTIconsFamily);
@@ -75,4 +77,22 @@ class FFIcons {
       IconData(0xe902, fontFamily: _isensorydop12Family);
   static const IconData knotHeart45 =
       IconData(0xe903, fontFamily: _isensorydop12Family);
+
+  // dmtAppBar
+  static const IconData kdmtHome =
+      IconData(0xe900, fontFamily: _dmtAppBarFamily);
+  static const IconData kdmtUser1 =
+      IconData(0xe904, fontFamily: _dmtAppBarFamily);
+  static const IconData kdmtStudy =
+      IconData(0xe905, fontFamily: _dmtAppBarFamily);
+  static const IconData kactiveHome =
+      IconData(0xe901, fontFamily: _dmtAppBarFamily);
+  static const IconData kactiveStudy =
+      IconData(0xe902, fontFamily: _dmtAppBarFamily);
+  static const IconData kactiveUser =
+      IconData(0xe903, fontFamily: _dmtAppBarFamily);
+
+  // dmtLock
+  static const IconData klockLevels =
+      IconData(0xe900, fontFamily: _dmtLockFamily);
 }

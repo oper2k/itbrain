@@ -38,3 +38,10 @@ export '/main_pages/meditation_info/meditation_info_widget.dart'
     show MeditationInfoWidget;
 export '/main_pages/search_page_new/search_page_new_widget.dart'
     show SearchPageNewWidget;
+export '/study/study_page/study_page_widget.dart' show StudyPageWidget;
+export '/study/study_info_page/study_info_page_widget.dart'
+    show StudyInfoPageWidget;
+export '/study/study_levels/study_levels_widget.dart' show StudyLevelsWidget;
+export '/study/study_level_info/study_level_info_widget.dart'
+    show StudyLevelInfoWidget;
+export '/study/content_page/content_page_widget.dart' show ContentPageWidget;

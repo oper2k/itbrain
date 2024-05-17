@@ -1,0 +1,589 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/components/progress_bar_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/study/level_not_paid/level_not_paid_widget.dart';
+import 'dart:async';
+import '/custom_code/actions/index.dart' as actions;
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'study_levels_model.dart';
+export 'study_levels_model.dart';
+
+class StudyLevelsWidget extends StatefulWidget {
+  const StudyLevelsWidget({
+    super.key,
+    required this.course,
+  });
+
+  final StudyCategoriesRecord? course;
+
+  @override
+  State<StudyLevelsWidget> createState() => _StudyLevelsWidgetState();
+}
+
+class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
+  late StudyLevelsModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => StudyLevelsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.yesCreateScreenshots();
+      unawaited(
+        () async {
+          await actions.stopMusic(
+            'p1',
+          );
+        }(),
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: StreamBuilder<List<LevelsRecord>>(
+          stream: queryLevelsRecord(
+            queryBuilder: (levelsRecord) => levelsRecord.where(
+              'course_ref',
+              isEqualTo: widget.course?.reference,
+            ),
+          ),
+          builder: (context, snapshot) {
+            // Customize what your widget looks like when it's loading.
+            if (!snapshot.hasData) {
+              return Center(
+                child: SizedBox(
+                  width: 50.0,
+                  height: 50.0,
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      FlutterFlowTheme.of(context).tertiary,
+                    ),
+                  ),
+                ),
+              );
+            }
+            List<LevelsRecord> containerLevelsRecordList = snapshot.data!;
+            return Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: const BoxDecoration(
+                color: Color(0xFF370C59),
+              ),
+              child: StreamBuilder<List<LessonsRecord>>(
+                stream: queryLessonsRecord(
+                  queryBuilder: (lessonsRecord) => lessonsRecord.where(
+                    'course',
+                    isEqualTo: widget.course?.reference,
+                  ),
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).tertiary,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                  List<LessonsRecord> containerLessonsRecordList =
+                      snapshot.data!;
+                  return Container(
+                    decoration: const BoxDecoration(),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Stack(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 44.0, 0.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Stack(
+                                      children: [
+                                        Container(
+                                          decoration: const BoxDecoration(),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, -0.92),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 12.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          context.safePop();
+                                                        },
+                                                        child: Container(
+                                                          width: 40.0,
+                                                          height: 44.0,
+                                                          decoration:
+                                                              const BoxDecoration(),
+                                                          child: Align(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    -1.0, 0.0),
+                                                            child: Icon(
+                                                              FFIcons.kleft2,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                              size: 24.0,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: AuthUserStreamWidget(
+                                                  builder: (context) => Text(
+                                                    'Пройдено ${valueOrDefault<String>(
+                                                      ((valueOrDefault<int>(
+                                                                    (currentUserDocument?.completeLessons.toList() ??
+                                                                            [])
+                                                                        .length,
+                                                                    0,
+                                                                  ) /
+                                                                  valueOrDefault<
+                                                                      int>(
+                                                                    containerLessonsRecordList
+                                                                        .length,
+                                                                    0,
+                                                                  )) *
+                                                              100)
+                                                          .toString(),
+                                                      '0',
+                                                    )} %',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Evolventa',
+                                                          fontSize: 17.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 8.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      widget.course?.title,
+                                                      '0',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Evolventa',
+                                                          fontSize: 28.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 16.0, 0.0, 0.0),
+                                            child: Image.asset(
+                                              'assets/images/telegram-cloud-document-4-5791884542503557378_1.webp',
+                                              width: 125.0,
+                                              height: 164.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Align(
+                                      alignment:
+                                          const AlignmentDirectional(-1.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'm5f4vain' /* Уровни */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              color: const Color(0xB3FFFFFF),
+                                              fontSize: 20.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts: false,
+                                            ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 32.0, 20.0, 0.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final levels =
+                                                containerLevelsRecordList
+                                                    .sortedList((e) => e.count)
+                                                    .toList();
+                                            return SingleChildScrollView(
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children:
+                                                    List.generate(levels.length,
+                                                        (levelsIndex) {
+                                                  final levelsItem =
+                                                      levels[levelsIndex];
+                                                  return InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      if ((currentUserDocument
+                                                                  ?.purchasedLevels
+                                                                  .toList() ??
+                                                              [])
+                                                          .contains(levelsItem
+                                                              .reference)) {
+                                                        context.pushNamed(
+                                                          'studyLevelInfo',
+                                                          queryParameters: {
+                                                            'study':
+                                                                serializeParam(
+                                                              widget.course,
+                                                              ParamType
+                                                                  .Document,
+                                                            ),
+                                                            'levels':
+                                                                serializeParam(
+                                                              levelsItem,
+                                                              ParamType
+                                                                  .Document,
+                                                            ),
+                                                          }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            'study':
+                                                                widget.course,
+                                                            'levels':
+                                                                levelsItem,
+                                                          },
+                                                        );
+                                                      } else {
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    const LevelNotPaidWidget(),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            safeSetState(
+                                                                () {}));
+                                                      }
+                                                    },
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Align(
+                                                          alignment:
+                                                              const AlignmentDirectional(
+                                                                  -1.0, -1.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              if ((currentUserDocument
+                                                                          ?.purchasedLevels
+                                                                          .toList() ??
+                                                                      [])
+                                                                  .contains(
+                                                                      levelsItem
+                                                                          .reference))
+                                                                AuthUserStreamWidget(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          ProgressBarWidget(
+                                                                    key: Key(
+                                                                        'Key6bb_${levelsIndex}_of_${levels.length}'),
+                                                                  ),
+                                                                ),
+                                                              if (!(currentUserDocument
+                                                                          ?.purchasedLevels
+                                                                          .toList() ??
+                                                                      [])
+                                                                  .contains(
+                                                                      levelsItem
+                                                                          .reference))
+                                                                AuthUserStreamWidget(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          Icon(
+                                                                    FFIcons
+                                                                        .klockLevels,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    size: 24.0,
+                                                                  ),
+                                                                ),
+                                                              if (levelsIndex !=
+                                                                  valueOrDefault<
+                                                                      int>(
+                                                                    containerLevelsRecordList
+                                                                            .length -
+                                                                        1,
+                                                                    0,
+                                                                  ))
+                                                                Container(
+                                                                  width: 2.0,
+                                                                  height: 54.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                  ),
+                                                                ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      12.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  'Уровень ${valueOrDefault<String>(
+                                                                    levelsItem
+                                                                        .count,
+                                                                    '0',
+                                                                  )}',
+                                                                  '0',
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Evolventa',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
+                                                              ),
+                                                              Text(
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  levelsItem
+                                                                      .title,
+                                                                  '0',
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Evolventa',
+                                                                      fontSize:
+                                                                          15.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                }),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 0.0),
+                          child: Container(
+                            width: double.infinity,
+                            height: 52.0,
+                            decoration: BoxDecoration(
+                              color: const Color(0x1EFFFFFF),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'ptvcl6lu' /* Слушать все коды */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Evolventa',
+                                      fontSize: 15.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ].addToEnd(const SizedBox(height: 46.0)),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}

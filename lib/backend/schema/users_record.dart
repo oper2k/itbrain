@@ -3,16 +3,14 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
-import '/flutter_flow/flutter_flow_util.dart';
 
 class UsersRecord extends FirestoreRecord {
   UsersRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -89,6 +87,22 @@ class UsersRecord extends FirestoreRecord {
       _purchasedMeditationsPacks ?? const [];
   bool hasPurchasedMeditationsPacks() => _purchasedMeditationsPacks != null;
 
+  // "purchasedStudyPacks" field.
+  List<DocumentReference>? _purchasedStudyPacks;
+  List<DocumentReference> get purchasedStudyPacks =>
+      _purchasedStudyPacks ?? const [];
+  bool hasPurchasedStudyPacks() => _purchasedStudyPacks != null;
+
+  // "purchasedLevels" field.
+  List<DocumentReference>? _purchasedLevels;
+  List<DocumentReference> get purchasedLevels => _purchasedLevels ?? const [];
+  bool hasPurchasedLevels() => _purchasedLevels != null;
+
+  // "completeLessons" field.
+  List<DocumentReference>? _completeLessons;
+  List<DocumentReference> get completeLessons => _completeLessons ?? const [];
+  bool hasCompleteLessons() => _completeLessons != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -105,6 +119,9 @@ class UsersRecord extends FirestoreRecord {
     _searchHistory = getDataList(snapshotData['searchHistory']);
     _purchasedMeditationsPacks =
         getDataList(snapshotData['purchasedMeditationsPacks']);
+    _purchasedStudyPacks = getDataList(snapshotData['purchasedStudyPacks']);
+    _purchasedLevels = getDataList(snapshotData['purchasedLevels']);
+    _completeLessons = getDataList(snapshotData['completeLessons']);
   }
 
   static CollectionReference get collection =>
@@ -188,7 +205,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.paymentMethod == e2?.paymentMethod &&
         listEquality.equals(e1?.searchHistory, e2?.searchHistory) &&
         listEquality.equals(
-            e1?.purchasedMeditationsPacks, e2?.purchasedMeditationsPacks);
+            e1?.purchasedMeditationsPacks, e2?.purchasedMeditationsPacks) &&
+        listEquality.equals(e1?.purchasedStudyPacks, e2?.purchasedStudyPacks) &&
+        listEquality.equals(e1?.purchasedLevels, e2?.purchasedLevels) &&
+        listEquality.equals(e1?.completeLessons, e2?.completeLessons);
   }
 
   @override
@@ -206,7 +226,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.listenedMeditations,
         e?.paymentMethod,
         e?.searchHistory,
-        e?.purchasedMeditationsPacks
+        e?.purchasedMeditationsPacks,
+        e?.purchasedStudyPacks,
+        e?.purchasedLevels,
+        e?.completeLessons
       ]);
 
   @override

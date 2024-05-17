@@ -2,12 +2,10 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'test_query_cache_model.dart';
 export 'test_query_cache_model.dart';
@@ -25,20 +23,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 820.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -64,6 +49,21 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
         });
         return;
       }
+    });
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 820.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
     });
   }
 
@@ -98,7 +98,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 71.0, 0.0, 85.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 71.0, 0.0, 85.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -106,7 +106,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -114,7 +114,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
                         children: [
                           if (!FFAppState().isOffline)
                             Align(
-                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              alignment: const AlignmentDirectional(-1.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   '4gbrahh3' /* Что нового? */,
@@ -136,7 +136,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                     child: StreamBuilder<List<MeditationCategoriesRecord>>(
                       stream: FFAppState().demoCache(
                         requestFn: () => queryMeditationCategoriesRecord(),
@@ -169,7 +169,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
                                 columnMeditationCategoriesRecordList[
                                     columnIndex];
                             return Align(
-                              alignment: AlignmentDirectional(0.0, 1.0),
+                              alignment: const AlignmentDirectional(0.0, 1.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 140.0,
@@ -179,7 +179,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(20.0),
+                                  padding: const EdgeInsets.all(20.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -201,7 +201,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
                                             ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Text(
                                           valueOrDefault<String>(
@@ -226,7 +226,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
                                 ),
                               ),
                             );
-                          }).divide(SizedBox(height: 20.0)),
+                          }).divide(const SizedBox(height: 20.0)),
                         );
                       },
                     ),

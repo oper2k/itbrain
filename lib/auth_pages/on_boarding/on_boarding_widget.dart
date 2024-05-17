@@ -1,11 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'on_boarding_model.dart';
 export 'on_boarding_model.dart';
 
@@ -58,7 +55,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                 Expanded(
                   child: Stack(
                     children: [
-                      Container(
+                      SizedBox(
                         width: double.infinity,
                         child: PageView(
                           physics: const NeverScrollableScrollPhysics(),
@@ -79,21 +76,21 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 46.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Spacer(flex: 4),
+                                    const Spacer(flex: 4),
                                     Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, -1.0),
+                                              const AlignmentDirectional(0.0, -1.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
                                               'kaaaep2h' /* Добро пожаловать! */,
@@ -113,7 +110,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, -1.0),
+                                              const AlignmentDirectional(0.0, -1.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
                                               'lcfus07o' /* В пространство многомерности и... */,
@@ -133,9 +130,9 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                                 ),
                                           ),
                                         ),
-                                      ].divide(SizedBox(height: 8.0)),
+                                      ].divide(const SizedBox(height: 8.0)),
                                     ),
-                                    Spacer(flex: 3),
+                                    const Spacer(flex: 3),
                                   ],
                                 ),
                               ),
@@ -144,16 +141,16 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 46.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -167,7 +164,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                     width: double.infinity,
                                     height: 52.0,
                                     decoration: BoxDecoration(
-                                      gradient: LinearGradient(
+                                      gradient: const LinearGradient(
                                         colors: [
                                           Color(0xFF9747FF),
                                           Color(0xFFF1618E),
@@ -180,7 +177,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
                                           'kwp7xmkk' /* Зарегистрироваться */,
@@ -201,7 +198,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -219,7 +216,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         'usof6ixi' /* Войти */,
@@ -247,7 +244,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
               ],
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(12.0, 46.0, 12.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 46.0, 12.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -279,7 +276,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         6.0, 6.0, 6.0, 6.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -310,7 +307,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                                 useGoogleFonts: false,
                                               ),
                                         ),
-                                      ].divide(SizedBox(width: 4.0)),
+                                      ].divide(const SizedBox(width: 4.0)),
                                     ),
                                   ),
                                 ),
@@ -322,7 +319,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         6.0, 6.0, 6.0, 6.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -354,11 +351,11 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                                 useGoogleFonts: false,
                                               ),
                                         ),
-                                      ].divide(SizedBox(width: 4.0)),
+                                      ].divide(const SizedBox(width: 4.0)),
                                     ),
                                   ),
                                 ),
-                              ].divide(SizedBox(width: 8.0)),
+                              ].divide(const SizedBox(width: 8.0)),
                             ),
                           ),
                         );
@@ -388,7 +385,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         6.0, 6.0, 6.0, 6.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -420,7 +417,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                                 useGoogleFonts: false,
                                               ),
                                         ),
-                                      ].divide(SizedBox(width: 4.0)),
+                                      ].divide(const SizedBox(width: 4.0)),
                                     ),
                                   ),
                                 ),
@@ -431,7 +428,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         6.0, 6.0, 6.0, 6.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -462,18 +459,18 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                                 useGoogleFonts: false,
                                               ),
                                         ),
-                                      ].divide(SizedBox(width: 4.0)),
+                                      ].divide(const SizedBox(width: 4.0)),
                                     ),
                                   ),
                                 ),
-                              ].divide(SizedBox(width: 8.0)),
+                              ].divide(const SizedBox(width: 8.0)),
                             ),
                           ),
                         );
                       }
                     },
                   ),
-                ].divide(SizedBox(width: 6.0)),
+                ].divide(const SizedBox(width: 6.0)),
               ),
             ),
           ],

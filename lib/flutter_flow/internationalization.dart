@@ -394,7 +394,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Restore purchases',
     },
     'nnhmhlas': {
-      'ru': 'Home',
+      'ru': 'Профиль',
       'en': 'Home',
     },
   },
@@ -497,10 +497,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Добро пожаловать!',
       'en': 'Welcome!',
     },
-    'wzo7tihb': {
-      'ru': 'Поиск',
-      'en': 'Search',
-    },
     'x2dzs6sp': {
       'ru': 'Что нового?',
       'en': 'What\'s new?',
@@ -510,7 +506,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Message of the day',
     },
     'bl74ak1h': {
-      'ru': 'Home',
+      'ru': 'Главная',
       'en': 'Home',
     },
   },
@@ -763,6 +759,69 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'tn2ssiid': {
       'ru': 'Home',
       'en': 'Home',
+    },
+  },
+  // studyPage
+  {
+    'zdr2ssm7': {
+      'ru': 'Обучение',
+      'en': '',
+    },
+    '9f6fcpg0': {
+      'ru': 'от приложения IT BRAIN',
+      'en': '',
+    },
+    'bugr0nhk': {
+      'ru': 'Обучение',
+      'en': '',
+    },
+  },
+  // studyInfoPage
+  {
+    '0hwzv6dz': {
+      'ru': 'Скоро',
+      'en': '',
+    },
+    '6fzep0g2': {
+      'ru': 'Напомнить об открытии продаж',
+      'en': '',
+    },
+    '58i4w14h': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // studyLevels
+  {
+    'm5f4vain': {
+      'ru': 'Уровни',
+      'en': '',
+    },
+    'ptvcl6lu': {
+      'ru': 'Слушать все коды',
+      'en': '',
+    },
+    '6khoust6': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // studyLevelInfo
+  {
+    'tysk2a96': {
+      'ru': 'Перейти на следующий уровень',
+      'en': '',
+    },
+    '4kdyliml': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // contentPage
+  {
+    'm0jw9buc': {
+      'ru': 'Обучение',
+      'en': '',
     },
   },
   // confirmed
@@ -1073,6 +1132,143 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'rj969l7a': {
       'ru': 'Описание',
       'en': 'Description',
+    },
+  },
+  // studyComp
+  {
+    'z9pynuek': {
+      'ru': 'Узнать подробнее',
+      'en': '',
+    },
+    'fgdbuy0p': {
+      'ru': 'Скоро',
+      'en': '',
+    },
+    '2hzh15uf': {
+      'ru': 'Просмотрено',
+      'en': '',
+    },
+    '9mcvesj0': {
+      'ru': '50%',
+      'en': '',
+    },
+    'fs07da0s': {
+      'ru': 'Перейти в курс',
+      'en': '',
+    },
+    'tnq0fkkt': {
+      'ru': 'Узнать подробнее',
+      'en': '',
+    },
+  },
+  // levelNotPaid
+  {
+    'xa645yp4': {
+      'ru': 'Уровень не приобретен',
+      'en': '',
+    },
+    'x8qumqus': {
+      'ru': 'Вы можете купить его прямо сейчас',
+      'en': '',
+    },
+    'a4pg3pvq': {
+      'ru': 'Перейти к покупке',
+      'en': '',
+    },
+  },
+  // soon
+  {
+    'dufo8q2k': {
+      'ru': 'Встреча скоро откроется',
+      'en': '',
+    },
+    'n6wmgyxh': {
+      'ru': 'Понятно',
+      'en': '',
+    },
+  },
+  // createdBy
+  {
+    'j9hq13ek': {
+      'ru': 'Created by',
+      'en': '',
+    },
+    'tq7bhxlu': {
+      'ru': 'Anna Kamallaya Hefors',
+      'en': '',
+    },
+  },
+  // taskBookComp
+  {
+    'xqiyd1e9': {
+      'ru': 'Show more',
+      'en': '',
+    },
+  },
+  // contentBlock
+  {
+    'oxsl9hph': {
+      'ru': 'See your anwser(codes)',
+      'en': '',
+    },
+  },
+  // contentText
+  {
+    't5i17ne7': {
+      'ru': 'Закрыть',
+      'en': 'Close',
+    },
+  },
+  // navbarHome
+  {
+    'u27gmzx6': {
+      'ru': 'Главная',
+      'en': '',
+    },
+    'pjizsek4': {
+      'ru': 'Обучение',
+      'en': '',
+    },
+    'vf4c1plt': {
+      'ru': 'Профиль',
+      'en': '',
+    },
+  },
+  // navbarProfile
+  {
+    '9z7ozp98': {
+      'ru': 'Главная',
+      'en': '',
+    },
+    '3jhy5596': {
+      'ru': 'Обучение',
+      'en': '',
+    },
+    'ljdwndwc': {
+      'ru': 'Профиль',
+      'en': '',
+    },
+  },
+  // navbarStudy
+  {
+    'm9ih9mtc': {
+      'ru': 'Главная',
+      'en': '',
+    },
+    'ztl340rp': {
+      'ru': 'Обучение',
+      'en': '',
+    },
+    '9h7ymcdk': {
+      'ru': 'Профиль',
+      'en': '',
+    },
+  },
+  // BookContent
+  {
+    'mcqju336': {
+      'ru': 'Закрыть',
+      'en': '',
     },
   },
   // Miscellaneous

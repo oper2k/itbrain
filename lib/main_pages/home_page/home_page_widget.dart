@@ -3,9 +3,9 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main_pages/meditation_comp/meditation_comp_widget.dart';
 import '/main_pages/offline_mode/offline_mode_widget.dart';
+import '/navbar/navbar_home/navbar_home_widget.dart';
 import '/profile/affirmation_comp/affirmation_comp_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -14,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
 import 'home_page_model.dart';
@@ -33,20 +32,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 820.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -72,7 +58,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   : FocusScope.of(context).unfocus(),
               child: Padding(
                 padding: MediaQuery.viewInsetsOf(context),
-                child: AffirmationCompWidget(),
+                child: const AffirmationCompWidget(),
               ),
             );
           },
@@ -96,6 +82,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
         });
         return;
       }
+    });
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 820.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
     });
   }
 
@@ -156,182 +157,35 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     ).image,
                   ),
                 ),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 24.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 24.0, 0.0),
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'hx9gmzsn' /* Добро пожаловать! */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Evolventa',
-                                            fontSize: 17.0,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: false,
-                                            lineHeight: 1.41,
-                                          ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 0.0, 0.0),
-                                    child: AuthUserStreamWidget(
-                                      builder: (context) => Text(
-                                        currentUserDisplayName,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Evolventa',
-                                              fontSize: 24.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              useGoogleFonts: false,
-                                              lineHeight: 1.16,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                ].divide(SizedBox(height: 2.0)),
-                              ),
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('profileCabinet');
-                                },
-                                child: Builder(
-                                  builder: (context) {
-                                    if (currentUserPhoto != null &&
-                                        currentUserPhoto != '') {
-                                      return ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(100.0),
-                                        child: OctoImage(
-                                          placeholderBuilder: (_) =>
-                                              SizedBox.expand(
-                                            child: Image(
-                                              image: BlurHashImage(FFAppState()
-                                                  .imageProfileBlurHash),
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                          image: CachedNetworkImageProvider(
-                                            currentUserPhoto,
-                                          ),
-                                          width: 48.0,
-                                          height: 48.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      );
-                                    } else {
-                                      return Container(
-                                        width: 48.0,
-                                        height: 48.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: AuthUserStreamWidget(
-                                            builder: (context) => Text(
-                                              valueOrDefault<String>(
-                                                functions
-                                                    .nameSurnameFirstLetters(
-                                                        currentUserDisplayName,
-                                                        valueOrDefault(
-                                                            currentUserDocument
-                                                                ?.surname,
-                                                            '')),
-                                                '0',
-                                              ),
-                                              textAlign: TextAlign.start,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Evolventa',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .accent1,
-                                                    fontSize: 12.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.bold,
-                                                    useGoogleFonts: false,
-                                                  ),
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        if (!FFAppState().isOffline)
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 28.0, 24.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('searchPageNew');
-                                },
-                                child: Container(
-                                  height: 56.0,
-                                  decoration: BoxDecoration(
-                                    color: Color(0x14FFFFFF),
-                                    borderRadius: BorderRadius.circular(96.0),
-                                    border: Border.all(
-                                      color: Colors.transparent,
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 0.0, 20.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Icon(
-                                          Icons.search_sharp,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
-                                        ),
-                                        Text(
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 0.0, 0.0),
+                                        child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'wzo7tihb' /* Поиск */,
+                                            'hx9gmzsn' /* Добро пожаловать! */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -340,656 +194,782 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 fontSize: 17.0,
                                                 letterSpacing: 0.0,
                                                 useGoogleFonts: false,
+                                                lineHeight: 1.41,
                                               ),
                                         ),
-                                      ].divide(SizedBox(width: 6.0)),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 40.0, 0.0, 0.0),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                if (!FFAppState().isOffline)
-                                  Align(
-                                    alignment: AlignmentDirectional(-1.0, 0.0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'x2dzs6sp' /* Что нового? */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Evolventa',
-                                              fontSize: 24.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              useGoogleFonts: false,
-                                            ),
                                       ),
-                                    ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 0.0, 0.0),
+                                        child: AuthUserStreamWidget(
+                                          builder: (context) => Text(
+                                            currentUserDisplayName,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Evolventa',
+                                                  fontSize: 24.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                  lineHeight: 1.16,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                    ].divide(const SizedBox(height: 2.0)),
                                   ),
-                                if (!FFAppState().isOffline)
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 0.0),
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed('profileCabinet');
+                                    },
                                     child: Builder(
                                       builder: (context) {
-                                        final stories =
-                                            containerStoriesRecordList.toList();
-                                        return SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children:
-                                                List.generate(stories.length,
+                                        if (currentUserPhoto != '') {
+                                          return ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(100.0),
+                                            child: OctoImage(
+                                              placeholderBuilder: (_) =>
+                                                  SizedBox.expand(
+                                                child: Image(
+                                                  image: BlurHashImage(
+                                                      FFAppState()
+                                                          .imageProfileBlurHash),
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              image: CachedNetworkImageProvider(
+                                                currentUserPhoto,
+                                              ),
+                                              width: 48.0,
+                                              height: 48.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          );
+                                        } else {
+                                          return Container(
+                                            width: 48.0,
+                                            height: 48.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: AuthUserStreamWidget(
+                                                builder: (context) => Text(
+                                                  valueOrDefault<String>(
+                                                    functions.nameSurnameFirstLetters(
+                                                        currentUserDisplayName,
+                                                        valueOrDefault(
+                                                            currentUserDocument
+                                                                ?.surname,
+                                                            '')),
+                                                    '0',
+                                                  ),
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Evolventa',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent1,
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 40.0, 0.0, 0.0),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    if (!FFAppState().isOffline)
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'x2dzs6sp' /* Что нового? */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Evolventa',
+                                                  fontSize: 24.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                    if (!FFAppState().isOffline)
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 0.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final stories =
+                                                containerStoriesRecordList
+                                                    .toList();
+                                            return SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: List.generate(
+                                                        stories.length,
                                                         (storiesIndex) {
-                                              final storiesItem =
-                                                  stories[storiesIndex];
-                                              return Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Builder(
-                                                      builder: (context) {
-                                                        if (!(currentUserDocument
-                                                                    ?.viewedStories
-                                                                    ?.toList() ??
-                                                                [])
-                                                            .contains(storiesItem
-                                                                .reference)) {
-                                                          return InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
+                                                  final storiesItem =
+                                                      stories[storiesIndex];
+                                                  return Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Builder(
+                                                          builder: (context) {
+                                                            if (!(currentUserDocument
+                                                                        ?.viewedStories
+                                                                        .toList() ??
+                                                                    [])
+                                                                .contains(
+                                                                    storiesItem
+                                                                        .reference)) {
+                                                              return InkWell(
+                                                                splashColor: Colors
                                                                     .transparent,
-                                                            onTap: () async {
-                                                              context.pushNamed(
-                                                                'Stories',
-                                                                queryParameters:
-                                                                    {
-                                                                  'stories':
-                                                                      serializeParam(
-                                                                    containerStoriesRecordList,
-                                                                    ParamType
-                                                                        .Document,
-                                                                    true,
-                                                                  ),
-                                                                  'index':
-                                                                      serializeParam(
-                                                                    storiesIndex,
-                                                                    ParamType
-                                                                        .int,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                                extra: <String,
-                                                                    dynamic>{
-                                                                  'stories':
-                                                                      containerStoriesRecordList,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                onTap:
+                                                                    () async {
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'Stories',
+                                                                    queryParameters:
+                                                                        {
+                                                                      'stories':
+                                                                          serializeParam(
+                                                                        containerStoriesRecordList,
+                                                                        ParamType
+                                                                            .Document,
+                                                                        true,
+                                                                      ),
+                                                                      'index':
+                                                                          serializeParam(
+                                                                        storiesIndex,
+                                                                        ParamType
+                                                                            .int,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                    extra: <String,
+                                                                        dynamic>{
+                                                                      'stories':
+                                                                          containerStoriesRecordList,
+                                                                    },
+                                                                  );
                                                                 },
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: 77.0,
-                                                              height: 77.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                gradient:
-                                                                    LinearGradient(
-                                                                  colors: [
-                                                                    Color(
-                                                                        0xFF9747FF),
-                                                                    Color(
-                                                                        0xFFF1618E),
-                                                                    Color(
-                                                                        0xFFFE710B)
-                                                                  ],
-                                                                  stops: [
-                                                                    0.0,
-                                                                    0.6,
-                                                                    1.0
-                                                                  ],
-                                                                  begin:
-                                                                      AlignmentDirectional(
-                                                                          0.0,
-                                                                          -1.0),
-                                                                  end:
-                                                                      AlignmentDirectional(
-                                                                          0,
-                                                                          1.0),
-                                                                ),
-                                                                shape: BoxShape
-                                                                    .circle,
-                                                                border:
-                                                                    Border.all(
-                                                                  color: (currentUserDocument?.viewedStories?.toList() ??
-                                                                              [])
-                                                                          .contains(storiesItem
-                                                                              .reference)
-                                                                      ? Color(
-                                                                          0x00FE7110)
-                                                                      : FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .accent1,
-                                                                ),
-                                                              ),
-                                                              child: Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
                                                                 child:
                                                                     Container(
-                                                                  width: 72.0,
-                                                                  height: 72.0,
+                                                                  width: 77.0,
+                                                                  height: 77.0,
                                                                   decoration:
                                                                       BoxDecoration(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .buttonColor2,
+                                                                    gradient:
+                                                                        const LinearGradient(
+                                                                      colors: [
+                                                                        Color(
+                                                                            0xFF9747FF),
+                                                                        Color(
+                                                                            0xFFF1618E),
+                                                                        Color(
+                                                                            0xFFFE710B)
+                                                                      ],
+                                                                      stops: [
+                                                                        0.0,
+                                                                        0.6,
+                                                                        1.0
+                                                                      ],
+                                                                      begin: AlignmentDirectional(
+                                                                          0.0,
+                                                                          -1.0),
+                                                                      end: AlignmentDirectional(
+                                                                          0,
+                                                                          1.0),
+                                                                    ),
                                                                     shape: BoxShape
                                                                         .circle,
+                                                                    border:
+                                                                        Border
+                                                                            .all(
+                                                                      color: (currentUserDocument?.viewedStories.toList() ?? []).contains(storiesItem
+                                                                              .reference)
+                                                                          ? const Color(
+                                                                              0x00FE7110)
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .accent1,
+                                                                    ),
                                                                   ),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                  child: Align(
+                                                                    alignment:
+                                                                        const AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        Container(
+                                                                      width:
+                                                                          72.0,
+                                                                      height:
+                                                                          72.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .buttonColor2,
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                      ),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             4.0,
                                                                             4.0,
                                                                             4.0,
                                                                             4.0),
-                                                                    child:
-                                                                        Container(
-                                                                      width:
-                                                                          64.0,
-                                                                      height:
-                                                                          64.0,
-                                                                      clipBehavior:
-                                                                          Clip.antiAlias,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        shape: BoxShape
-                                                                            .circle,
-                                                                      ),
-                                                                      child: Image
-                                                                          .network(
-                                                                        storiesItem
-                                                                            .image,
-                                                                        fit: BoxFit
-                                                                            .cover,
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              64.0,
+                                                                          height:
+                                                                              64.0,
+                                                                          clipBehavior:
+                                                                              Clip.antiAlias,
+                                                                          decoration:
+                                                                              const BoxDecoration(
+                                                                            shape:
+                                                                                BoxShape.circle,
+                                                                          ),
+                                                                          child:
+                                                                              Image.network(
+                                                                            storiesItem.image,
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ),
-                                                          );
-                                                        } else {
-                                                          return AuthUserStreamWidget(
-                                                            builder:
-                                                                (context) =>
-                                                                    InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
+                                                              );
+                                                            } else {
+                                                              return AuthUserStreamWidget(
+                                                                builder:
+                                                                    (context) =>
+                                                                        InkWell(
+                                                                  splashColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  focusColor: Colors
                                                                       .transparent,
-                                                              onTap: () async {
-                                                                context
-                                                                    .pushNamed(
-                                                                  'Stories',
-                                                                  queryParameters:
-                                                                      {
-                                                                    'stories':
-                                                                        serializeParam(
-                                                                      containerStoriesRecordList,
-                                                                      ParamType
-                                                                          .Document,
-                                                                      true,
-                                                                    ),
-                                                                    'index':
-                                                                        serializeParam(
-                                                                      storiesIndex,
-                                                                      ParamType
-                                                                          .int,
-                                                                    ),
-                                                                  }.withoutNulls,
-                                                                  extra: <String,
-                                                                      dynamic>{
-                                                                    'stories':
-                                                                        containerStoriesRecordList,
+                                                                  hoverColor: Colors
+                                                                      .transparent,
+                                                                  highlightColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  onTap:
+                                                                      () async {
+                                                                    context
+                                                                        .pushNamed(
+                                                                      'Stories',
+                                                                      queryParameters:
+                                                                          {
+                                                                        'stories':
+                                                                            serializeParam(
+                                                                          containerStoriesRecordList,
+                                                                          ParamType
+                                                                              .Document,
+                                                                          true,
+                                                                        ),
+                                                                        'index':
+                                                                            serializeParam(
+                                                                          storiesIndex,
+                                                                          ParamType
+                                                                              .int,
+                                                                        ),
+                                                                      }.withoutNulls,
+                                                                      extra: <String,
+                                                                          dynamic>{
+                                                                        'stories':
+                                                                            containerStoriesRecordList,
+                                                                      },
+                                                                    );
                                                                   },
-                                                                );
-                                                              },
-                                                              child: Container(
-                                                                width: 77.0,
-                                                                height: 77.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .alternate,
-                                                                  shape: BoxShape
-                                                                      .circle,
-                                                                  border: Border
-                                                                      .all(
-                                                                    color: (currentUserDocument?.viewedStories?.toList() ??
-                                                                                [])
-                                                                            .contains(storiesItem
-                                                                                .reference)
-                                                                        ? Color(
-                                                                            0x00FE7110)
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .accent1,
-                                                                  ),
-                                                                ),
-                                                                child: Align(
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0),
                                                                   child:
                                                                       Container(
-                                                                    width: 72.0,
+                                                                    width: 77.0,
                                                                     height:
-                                                                        72.0,
+                                                                        77.0,
                                                                     decoration:
                                                                         BoxDecoration(
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .buttonColor2,
+                                                                          .alternate,
                                                                       shape: BoxShape
                                                                           .circle,
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                        color: (currentUserDocument?.viewedStories.toList() ?? []).contains(storiesItem.reference)
+                                                                            ? const Color(0x00FE7110)
+                                                                            : FlutterFlowTheme.of(context).accent1,
+                                                                      ),
                                                                     ),
                                                                     child:
-                                                                        Stack(
-                                                                      children: [
-                                                                        Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              4.0,
-                                                                              4.0,
-                                                                              4.0,
-                                                                              4.0),
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                64.0,
-                                                                            height:
-                                                                                64.0,
-                                                                            clipBehavior:
-                                                                                Clip.antiAlias,
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              shape: BoxShape.circle,
-                                                                            ),
-                                                                            child:
-                                                                                Image.network(
-                                                                              storiesItem.image,
-                                                                              fit: BoxFit.cover,
-                                                                            ),
-                                                                          ),
+                                                                        Align(
+                                                                      alignment:
+                                                                          const AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            72.0,
+                                                                        height:
+                                                                            72.0,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).buttonColor2,
+                                                                          shape:
+                                                                              BoxShape.circle,
                                                                         ),
-                                                                      ],
+                                                                        child:
+                                                                            Stack(
+                                                                          children: [
+                                                                            Padding(
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
+                                                                              child: Container(
+                                                                                width: 64.0,
+                                                                                height: 64.0,
+                                                                                clipBehavior: Clip.antiAlias,
+                                                                                decoration: const BoxDecoration(
+                                                                                  shape: BoxShape.circle,
+                                                                                ),
+                                                                                child: Image.network(
+                                                                                  storiesItem.image,
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
+                                                              );
+                                                            }
+                                                          },
+                                                        ),
+                                                        Align(
+                                                          alignment:
+                                                              const AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        6.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getVariableText(
+                                                                ruText: storiesItem
+                                                                    .homeTitle,
+                                                                enText: storiesItem
+                                                                    .homeTitleEng,
                                                               ),
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Evolventa',
+                                                                    fontSize:
+                                                                        10.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts:
+                                                                        false,
+                                                                  ),
                                                             ),
-                                                          );
-                                                        }
-                                                      },
-                                                    ),
-                                                    Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    6.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getVariableText(
-                                                            ruText: storiesItem
-                                                                .homeTitle,
-                                                            enText: storiesItem
-                                                                .homeTitleEng,
                                                           ),
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Evolventa',
-                                                                fontSize: 10.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts:
-                                                                    false,
-                                                              ),
                                                         ),
-                                                      ),
+                                                      ],
                                                     ),
-                                                  ],
-                                                ),
-                                              );
-                                            })
+                                                  );
+                                                })
                                                     .divide(
-                                                        SizedBox(width: 7.0))
+                                                        const SizedBox(width: 7.0))
                                                     .addToStart(
-                                                        SizedBox(width: 24.0))
+                                                        const SizedBox(width: 24.0))
                                                     .addToEnd(
-                                                        SizedBox(width: 24.0)),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 20.0, 20.0, 0.0),
-                                  child: StreamBuilder<List<AffirmationRecord>>(
-                                    stream: queryAffirmationRecord(
-                                      singleRecord: true,
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .tertiary,
+                                                        const SizedBox(width: 24.0)),
                                               ),
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      List<AffirmationRecord>
-                                          containerAffirmationRecordList =
-                                          snapshot.data!;
-                                      // Return an empty Container when the item does not exist.
-                                      if (snapshot.data!.isEmpty) {
-                                        return Container();
-                                      }
-                                      final containerAffirmationRecord =
-                                          containerAffirmationRecordList
-                                                  .isNotEmpty
-                                              ? containerAffirmationRecordList
-                                                  .first
-                                              : null;
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            context: context,
-                                            builder: (context) {
-                                              return GestureDetector(
-                                                onTap: () => _model.unfocusNode
-                                                        .canRequestFocus
-                                                    ? FocusScope.of(context)
-                                                        .requestFocus(
-                                                            _model.unfocusNode)
-                                                    : FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child:
-                                                      AffirmationCompWidget(),
-                                                ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
-                                        },
-                                        child: Container(
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .buttonColor2,
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                          ),
-                                          child: Padding(
-                                            padding: EdgeInsets.all(16.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  FFIcons.kyoga,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent1,
-                                                  size: 24.0,
-                                                ),
-                                                Expanded(
-                                                  child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'frx0mzd2' /* Послание дня */,
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Evolventa',
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: false,
-                                                        ),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 20.0, 20.0, 0.0),
+                                      child: StreamBuilder<
+                                          List<AffirmationRecord>>(
+                                        stream: queryAffirmationRecord(
+                                          singleRecord: true,
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiary,
                                                   ),
                                                 ),
-                                                Icon(
-                                                  Icons.chevron_right,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 24.0,
-                                                ),
-                                              ].divide(SizedBox(width: 8.0)),
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 48.0, 0.0, 0.0),
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        !FFAppState().isOffline
-                                            ? FFLocalizations.of(context)
-                                                .getVariableText(
-                                                ruText: 'Проекты',
-                                                enText: 'Projects',
-                                              )
-                                            : FFLocalizations.of(context)
-                                                .getVariableText(
-                                                ruText: 'Офлайн режим',
-                                                enText: 'Offline mode',
                                               ),
-                                        'Медитации',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Evolventa',
-                                            fontSize: 24.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            useGoogleFonts: false,
-                                          ),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 0.0, 0.0),
-                                  child: StreamBuilder<
-                                      List<MeditationCategoriesRecord>>(
-                                    stream: FFAppState().listViewCache(
-                                      requestFn: () =>
-                                          queryMeditationCategoriesRecord(
-                                        queryBuilder:
-                                            (meditationCategoriesRecord) =>
-                                                meditationCategoriesRecord
-                                                    .orderBy('sort',
-                                                        descending: true),
-                                      ),
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .tertiary,
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      List<MeditationCategoriesRecord>
-                                          listViewMeditationCategoriesRecordList =
-                                          snapshot.data!;
-                                      if (listViewMeditationCategoriesRecordList
-                                          .isEmpty) {
-                                        return Container(
-                                          height: 500.0,
-                                          child: OfflineModeWidget(),
-                                        );
-                                      }
-                                      return ListView.builder(
-                                        padding: EdgeInsets.fromLTRB(
-                                          0,
-                                          0,
-                                          0,
-                                          70.0,
-                                        ),
-                                        primary: false,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount:
-                                            listViewMeditationCategoriesRecordList
-                                                .length,
-                                        itemBuilder: (context, listViewIndex) {
-                                          final listViewMeditationCategoriesRecord =
-                                              listViewMeditationCategoriesRecordList[
-                                                  listViewIndex];
+                                            );
+                                          }
+                                          List<AffirmationRecord>
+                                              containerAffirmationRecordList =
+                                              snapshot.data!;
+                                          // Return an empty Container when the item does not exist.
+                                          if (snapshot.data!.isEmpty) {
+                                            return Container();
+                                          }
+                                          final containerAffirmationRecord =
+                                              containerAffirmationRecordList
+                                                      .isNotEmpty
+                                                  ? containerAffirmationRecordList
+                                                      .first
+                                                  : null;
                                           return InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              if (!listViewMeditationCategoriesRecord
-                                                  .soon) {
-                                                context.pushNamed(
-                                                  'meditationInfo',
-                                                  queryParameters: {
-                                                    'meditationCategory':
-                                                        serializeParam(
-                                                      listViewMeditationCategoriesRecord,
-                                                      ParamType.Document,
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                context: context,
+                                                builder: (context) {
+                                                  return GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child: Padding(
+                                                      padding: MediaQuery
+                                                          .viewInsetsOf(
+                                                              context),
+                                                      child:
+                                                          const AffirmationCompWidget(),
                                                     ),
-                                                  }.withoutNulls,
-                                                  extra: <String, dynamic>{
-                                                    'meditationCategory':
-                                                        listViewMeditationCategoriesRecord,
-                                                  },
-                                                );
-                                              }
+                                                  );
+                                                },
+                                              ).then((value) =>
+                                                  safeSetState(() {}));
                                             },
-                                            child: wrapWithModel(
-                                              model: _model.meditationCompModels
-                                                  .getModel(
-                                                listViewIndex.toString(),
-                                                listViewIndex,
+                                            child: Container(
+                                              width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .buttonColor2,
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
                                               ),
-                                              updateCallback: () =>
-                                                  setState(() {}),
-                                              updateOnChange: true,
-                                              child: MeditationCompWidget(
-                                                key: Key(
-                                                  'Key1vu_${listViewIndex.toString()}',
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(16.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Icon(
+                                                      FFIcons.kyoga,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent1,
+                                                      size: 24.0,
+                                                    ),
+                                                    Expanded(
+                                                      child: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'frx0mzd2' /* Послание дня */,
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Evolventa',
+                                                              fontSize: 16.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  false,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                    Icon(
+                                                      Icons.chevron_right,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 24.0,
+                                                    ),
+                                                  ].divide(
+                                                      const SizedBox(width: 8.0)),
                                                 ),
-                                                meditationCategories:
-                                                    listViewMeditationCategoriesRecord,
                                               ),
                                             ),
                                           );
                                         },
-                                      );
-                                    },
-                                  ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          const AlignmentDirectional(-1.0, 0.0),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 48.0, 0.0, 0.0),
+                                        child: Text(
+                                          valueOrDefault<String>(
+                                            !FFAppState().isOffline
+                                                ? FFLocalizations.of(context)
+                                                    .getVariableText(
+                                                    ruText: 'Проекты',
+                                                    enText: 'Projects',
+                                                  )
+                                                : FFLocalizations.of(context)
+                                                    .getVariableText(
+                                                    ruText: 'Офлайн режим',
+                                                    enText: 'Offline mode',
+                                                  ),
+                                            'Медитации',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Evolventa',
+                                                fontSize: 24.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                useGoogleFonts: false,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 0.0, 0.0),
+                                      child: StreamBuilder<
+                                          List<MeditationCategoriesRecord>>(
+                                        stream: FFAppState().listViewCache(
+                                          requestFn: () =>
+                                              queryMeditationCategoriesRecord(
+                                            queryBuilder:
+                                                (meditationCategoriesRecord) =>
+                                                    meditationCategoriesRecord
+                                                        .orderBy('sort',
+                                                            descending: true),
+                                          ),
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiary,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          List<MeditationCategoriesRecord>
+                                              listViewMeditationCategoriesRecordList =
+                                              snapshot.data!;
+                                          if (listViewMeditationCategoriesRecordList
+                                              .isEmpty) {
+                                            return const SizedBox(
+                                              height: 500.0,
+                                              child: OfflineModeWidget(),
+                                            );
+                                          }
+                                          return ListView.builder(
+                                            padding: const EdgeInsets.fromLTRB(
+                                              0,
+                                              0,
+                                              0,
+                                              70.0,
+                                            ),
+                                            primary: false,
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount:
+                                                listViewMeditationCategoriesRecordList
+                                                    .length,
+                                            itemBuilder:
+                                                (context, listViewIndex) {
+                                              final listViewMeditationCategoriesRecord =
+                                                  listViewMeditationCategoriesRecordList[
+                                                      listViewIndex];
+                                              return InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  if (!listViewMeditationCategoriesRecord
+                                                      .soon) {
+                                                    context.pushNamed(
+                                                      'meditationInfo',
+                                                      queryParameters: {
+                                                        'meditationCategory':
+                                                            serializeParam(
+                                                          listViewMeditationCategoriesRecord,
+                                                          ParamType.Document,
+                                                        ),
+                                                      }.withoutNulls,
+                                                      extra: <String, dynamic>{
+                                                        'meditationCategory':
+                                                            listViewMeditationCategoriesRecord,
+                                                      },
+                                                    );
+                                                  }
+                                                },
+                                                child: wrapWithModel(
+                                                  model: _model
+                                                      .meditationCompModels
+                                                      .getModel(
+                                                    listViewIndex.toString(),
+                                                    listViewIndex,
+                                                  ),
+                                                  updateCallback: () =>
+                                                      setState(() {}),
+                                                  updateOnChange: true,
+                                                  child: MeditationCompWidget(
+                                                    key: Key(
+                                                      'Key1vu_${listViewIndex.toString()}',
+                                                    ),
+                                                    meditationCategories:
+                                                        listViewMeditationCategoriesRecord,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
+                      ).animateOnPageLoad(
+                          animationsMap['columnOnPageLoadAnimation']!),
                     ),
-                  ).animateOnPageLoad(
-                      animationsMap['columnOnPageLoadAnimation']!),
+                    Align(
+                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      child: wrapWithModel(
+                        model: _model.navbarHomeModel,
+                        updateCallback: () => setState(() {}),
+                        updateOnChange: true,
+                        child: const NavbarHomeWidget(),
+                      ),
+                    ),
+                  ],
                 ),
               );
             },

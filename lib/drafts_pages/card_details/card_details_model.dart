@@ -1,14 +1,6 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/main_pages/purchase_pages/thanks_for_buying/thanks_for_buying_widget.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'card_details_widget.dart' show CardDetailsWidget;
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class CardDetailsModel extends FlutterFlowModel<CardDetailsWidget> {
   ///  Local state fields for this page.
@@ -24,16 +16,16 @@ class CardDetailsModel extends FlutterFlowModel<CardDetailsWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for cardNumber widget.
   FocusNode? cardNumberFocusNode;
-  TextEditingController? cardNumberController;
-  String? Function(BuildContext, String?)? cardNumberControllerValidator;
+  TextEditingController? cardNumberTextController;
+  String? Function(BuildContext, String?)? cardNumberTextControllerValidator;
   // State field(s) for dateEnd widget.
   FocusNode? dateEndFocusNode;
-  TextEditingController? dateEndController;
-  String? Function(BuildContext, String?)? dateEndControllerValidator;
+  TextEditingController? dateEndTextController;
+  String? Function(BuildContext, String?)? dateEndTextControllerValidator;
   // State field(s) for CVC widget.
   FocusNode? cvcFocusNode;
-  TextEditingController? cvcController;
-  String? Function(BuildContext, String?)? cvcControllerValidator;
+  TextEditingController? cvcTextController;
+  String? Function(BuildContext, String?)? cvcTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -42,12 +34,12 @@ class CardDetailsModel extends FlutterFlowModel<CardDetailsWidget> {
   void dispose() {
     unfocusNode.dispose();
     cardNumberFocusNode?.dispose();
-    cardNumberController?.dispose();
+    cardNumberTextController?.dispose();
 
     dateEndFocusNode?.dispose();
-    dateEndController?.dispose();
+    dateEndTextController?.dispose();
 
     cvcFocusNode?.dispose();
-    cvcController?.dispose();
+    cvcTextController?.dispose();
   }
 }

@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -12,11 +11,9 @@ import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'player_comp_model.dart';
@@ -68,10 +65,10 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0x983A1537),
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
@@ -81,7 +78,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
           ),
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
             topLeft: Radius.circular(32.0),
@@ -97,7 +94,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,9 +113,9 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                         child: Container(
                           width: 40.0,
                           height: 40.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Align(
-                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            alignment: const AlignmentDirectional(-1.0, 0.0),
                             child: Icon(
                               FFIcons.kclose2,
                               color: FlutterFlowTheme.of(context).primaryText,
@@ -172,21 +169,21 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                               color: FlutterFlowTheme.of(context).accent1,
                               size: 24.0,
                             ),
-                          ].divide(SizedBox(width: 4.0)),
+                          ].divide(const SizedBox(width: 4.0)),
                         ),
                       ),
-                    ].divide(SizedBox(width: 16.0)),
+                    ].divide(const SizedBox(width: 16.0)),
                   ),
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 32.0, 24.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 32.0, 24.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getVariableText(
                       ruText: widget
-                          .meditationList?[FFAppState().playerIndex]?.title,
+                          .meditationList?[FFAppState().playerIndex].title,
                       enText: widget
-                          .meditationList?[FFAppState().playerIndex]?.titleEng,
+                          .meditationList?[FFAppState().playerIndex].titleEng,
                     ),
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -200,13 +197,13 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getVariableText(
                       ruText: widget.meditationList?[FFAppState().playerIndex]
-                          ?.description,
+                          .description,
                       enText: widget.meditationList?[FFAppState().playerIndex]
-                          ?.descriptionEng,
+                          .descriptionEng,
                     ),
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -220,16 +217,16 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(24.0, 48.0, 24.0, 0.0),
-                  child: Container(
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 48.0, 24.0, 0.0),
+                  child: SizedBox(
                     height: 55.0,
                     child: Stack(
-                      alignment: AlignmentDirectional(0.0, 1.0),
+                      alignment: const AlignmentDirectional(0.0, 1.0),
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 12.0),
-                          child: Container(
+                          child: SizedBox(
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: 48.0,
                             child: custom_widgets.CustomSlider(
@@ -242,23 +239,23 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                   FlutterFlowTheme.of(context).buttonColor2,
                               id: widget
                                   .meditationList?[FFAppState().playerIndex]
-                                  ?.reference
+                                  .reference
                                   .id,
                               title: widget
                                   .meditationList?[FFAppState().playerIndex]
-                                  ?.title,
+                                  .title,
                               duration: 20,
                               image: widget
                                   .meditationList?[FFAppState().playerIndex]
-                                  ?.image,
+                                  .image,
                               audioPath: widget
                                   .meditationList?[FFAppState().playerIndex]
-                                  ?.audioPath,
+                                  .audioPath,
                             ),
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(1.0, 1.0),
+                          alignment: const AlignmentDirectional(1.0, 1.0),
                           child: Text(
                             valueOrDefault<String>(
                               functions
@@ -276,7 +273,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1.0, 1.0),
+                          alignment: const AlignmentDirectional(-1.0, 1.0),
                           child: Text(
                             valueOrDefault<String>(
                               functions
@@ -298,9 +295,9 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 38.0, 0.0, 64.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 38.0, 0.0, 64.0),
                   child: Container(
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -355,7 +352,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                             }
                           },
                         ),
-                        Container(
+                        SizedBox(
                           width: 56.0,
                           height: 56.0,
                           child: Stack(
@@ -364,7 +361,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                 builder: (context) {
                                   if (FFAppState().isAudioPlaying) {
                                     return Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: FlutterFlowIconButton(
                                         borderColor: Colors.transparent,
                                         borderRadius: 48.0,
@@ -411,10 +408,10 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                         ),
                                         child: Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     2.0, 0.0, 0.0, 0.0),
                                             child: FaIcon(
                                               FontAwesomeIcons.play,
@@ -443,12 +440,12 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                         .isPaid ||
                                     (currentUserDocument
                                                 ?.purchasedMeditationsPacks
-                                                ?.toList() ??
+                                                .toList() ??
                                             [])
                                         .contains(widget
                                             .meditationList?[
                                                 FFAppState().playerIndex]
-                                            ?.meditationCategory))) {
+                                            .meditationCategory))) {
                               return FlutterFlowIconButton(
                                 borderColor: Colors.transparent,
                                 borderRadius: 20.0,
@@ -514,12 +511,12 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                             );
                           },
                         ),
-                      ].divide(SizedBox(width: 24.0)),
+                      ].divide(const SizedBox(width: 24.0)),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 44.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 44.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -539,13 +536,13 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                   context,
                                   title: widget
                                       .meditationList?[FFAppState().playerIndex]
-                                      ?.title,
+                                      .title,
                                   imageUrl: widget
                                       .meditationList?[FFAppState().playerIndex]
-                                      ?.image,
+                                      .image,
                                   description: widget
                                       .meditationList?[FFAppState().playerIndex]
-                                      ?.description,
+                                      .description,
                                 );
 
                                 await Share.share(
@@ -557,7 +554,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                               child: Container(
                                 width: 32.0,
                                 height: 32.0,
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Icon(
                                   FFIcons.kshare2,
                                   color:
@@ -579,7 +576,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                           .downloadingTracks
                                           .toList()) !=
                                   null)
-                                Container(
+                                SizedBox(
                                   width: 32.0,
                                   height: 32.0,
                                   child: custom_widgets.CustomProgressBar(
@@ -637,7 +634,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
                                                         context),
-                                                child: IsDeletedOnceWidget(),
+                                                child: const IsDeletedOnceWidget(),
                                               );
                                             },
                                           ).then(
@@ -676,16 +673,16 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                             widget
                                                 .meditationList?[
                                                     FFAppState().playerIndex]
-                                                ?.reference
+                                                .reference
                                                 .id,
                                             widget
                                                 .meditationList?[
                                                     FFAppState().playerIndex]
-                                                ?.audioPath,
+                                                .audioPath,
                                             widget
                                                 .meditationList?[
                                                     FFAppState().playerIndex]
-                                                ?.image,
+                                                .image,
                                           );
                                         }
                                         if (_model.isDownload!) {
@@ -704,47 +701,47 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                                     .meditationList?[
                                                         FFAppState()
                                                             .playerIndex]
-                                                    ?.title
+                                                    .title
                                                 ..description = widget
                                                     .meditationList?[
                                                         FFAppState()
                                                             .playerIndex]
-                                                    ?.description
+                                                    .description
                                                 ..audioPath = widget
                                                     .meditationList?[
                                                         FFAppState()
                                                             .playerIndex]
-                                                    ?.audioPath
+                                                    .audioPath
                                                 ..isPaid = widget
                                                     .meditationList?[
                                                         FFAppState()
                                                             .playerIndex]
-                                                    ?.isPaid
+                                                    .isPaid
                                                 ..duration = widget
                                                     .meditationList?[
                                                         FFAppState()
                                                             .playerIndex]
-                                                    ?.duration
+                                                    .duration
                                                 ..type = widget
                                                     .meditationList?[
                                                         FFAppState()
                                                             .playerIndex]
-                                                    ?.type
+                                                    .type
                                                 ..nameEng = widget
                                                     .meditationList?[
                                                         FFAppState()
                                                             .playerIndex]
-                                                    ?.titleEng
+                                                    .titleEng
                                                 ..descriptionName = widget
                                                     .meditationList?[
                                                         FFAppState()
                                                             .playerIndex]
-                                                    ?.descriptionEng
+                                                    .descriptionEng
                                                 ..durationEng = widget
                                                     .meditationList?[
                                                         FFAppState()
                                                             .playerIndex]
-                                                    ?.durationEng,
+                                                    .durationEng,
                                             );
                                           });
                                           await showModalBottomSheet(
@@ -757,7 +754,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
                                                         context),
-                                                child: IsDownloadedOnceWidget(),
+                                                child: const IsDownloadedOnceWidget(),
                                               );
                                             },
                                           ).then(
@@ -773,7 +770,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
                                                         context),
-                                                child: IsNotDownloadedWidget(),
+                                                child: const IsNotDownloadedWidget(),
                                               );
                                             },
                                           ).then(
@@ -782,7 +779,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
 
                                         setState(() {});
                                       },
-                                      child: Icon(
+                                      child: const Icon(
                                         FFIcons.kshare3,
                                         color: Colors.white,
                                         size: 32.0,
@@ -796,12 +793,12 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                           Builder(
                             builder: (context) {
                               if ((currentUserDocument?.meditationsWishList
-                                              ?.toList() ??
+                                              .toList() ??
                                           [])
                                       .contains(widget
                                           .meditationList?[
                                               FFAppState().playerIndex]
-                                          ?.reference) ||
+                                          .reference) ||
                                   _model.isLiked) {
                                 return InkWell(
                                   splashColor: Colors.transparent,
@@ -817,7 +814,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                             widget
                                                 .meditationList?[
                                                     FFAppState().playerIndex]
-                                                ?.reference
+                                                .reference
                                           ]),
                                         },
                                       ),
@@ -829,8 +826,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                   child: Container(
                                     width: 32.0,
                                     height: 32.0,
-                                    decoration: BoxDecoration(),
-                                    child: Icon(
+                                    decoration: const BoxDecoration(),
+                                    child: const Icon(
                                       FFIcons.kheart2,
                                       color: Colors.white,
                                       size: 32.0,
@@ -852,7 +849,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                             widget
                                                 .meditationList?[
                                                     FFAppState().playerIndex]
-                                                ?.reference
+                                                .reference
                                           ]),
                                         },
                                       ),
@@ -864,8 +861,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                   child: Container(
                                     width: 32.0,
                                     height: 32.0,
-                                    decoration: BoxDecoration(),
-                                    child: Icon(
+                                    decoration: const BoxDecoration(),
+                                    child: const Icon(
                                       FFIcons.k8,
                                       color: Colors.white,
                                       size: 32.0,
@@ -892,7 +889,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                   child: Container(
                                     width: 32.0,
                                     height: 32.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                     child: Icon(
                                       FFIcons.knotHeart45,
                                       color: FlutterFlowTheme.of(context)
@@ -916,8 +913,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                   child: Container(
                                     width: 32.0,
                                     height: 32.0,
-                                    decoration: BoxDecoration(),
-                                    child: Icon(
+                                    decoration: const BoxDecoration(),
+                                    child: const Icon(
                                       FFIcons.krotationing,
                                       color: Color(0xFFD9D9D9),
                                       size: 32.0,
@@ -927,7 +924,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                               }
                             },
                           ),
-                        ].divide(SizedBox(width: 48.0)),
+                        ].divide(const SizedBox(width: 48.0)),
                       ),
                     ],
                   ),

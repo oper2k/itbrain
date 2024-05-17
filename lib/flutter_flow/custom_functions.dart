@@ -11,6 +11,7 @@ import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
 String? nameSurnameFirstLetters(
@@ -197,4 +198,38 @@ double? passCheckupProgress(String? pass) {
   if (RegExp(r'[0-9]').hasMatch(pass)) count++;
   if (RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(pass)) count++;
   return (count * 20) / 100;
+}
+
+bool isLessonAvailable(
+  DateTime currentDate,
+  DateTime openDate,
+  int lessonIndex,
+) {
+  // Создаем пустой список lessonDates для хранения дат уроков
+  List<DateTime> lessonDates = [];
+
+  // Начинаем с openDate и ищем все следующие вторники и четверги, добавляя соответствующие lessonIndex в список
+  DateTime currentDateIter = openDate;
+  while (lessonDates.length <= (lessonIndex)) {
+    if (currentDateIter.weekday == DateTime.tuesday ||
+        currentDateIter.weekday == DateTime.thursday) {
+      // Обнуляем время у текущей даты перед добавлением в список
+      lessonDates.add(DateTime(
+          currentDateIter.year, currentDateIter.month, currentDateIter.day));
+    }
+    currentDateIter = currentDateIter.add(Duration(days: 1));
+  }
+
+  // Проверяем, если список lessonDates пустой
+  if (lessonDates.isEmpty) {
+    return false; // Нет доступных уроков
+  }
+
+  // Получаем последнюю дату в списке lessonDates
+  DateTime lastLessonDate = lessonDates.last;
+
+  // Проверяем, если currentDate позже или равно последней дате урока
+  bool isAvailable = lastLessonDate.isBefore(currentDate);
+
+  return isAvailable;
 }

@@ -3,16 +3,14 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
-import '/flutter_flow/flutter_flow_util.dart';
 
 class OrdersRecord extends FirestoreRecord {
   OrdersRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -46,6 +44,11 @@ class OrdersRecord extends FirestoreRecord {
   String get clientPhone => _clientPhone ?? '';
   bool hasClientPhone() => _clientPhone != null;
 
+  // "type" field.
+  String? _type;
+  String get type => _type ?? '';
+  bool hasType() => _type != null;
+
   void _initializeFields() {
     _clientEmail = snapshotData['client_email'] as String?;
     _createdAt = snapshotData['created_at'] as DateTime?;
@@ -53,6 +56,7 @@ class OrdersRecord extends FirestoreRecord {
     _orderId = snapshotData['order_id'] as String?;
     _status = snapshotData['status'] as String?;
     _clientPhone = snapshotData['client_phone'] as String?;
+    _type = snapshotData['type'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -95,6 +99,7 @@ Map<String, dynamic> createOrdersRecordData({
   String? orderId,
   String? status,
   String? clientPhone,
+  String? type,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -104,6 +109,7 @@ Map<String, dynamic> createOrdersRecordData({
       'order_id': orderId,
       'status': status,
       'client_phone': clientPhone,
+      'type': type,
     }.withoutNulls,
   );
 
@@ -120,7 +126,8 @@ class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
         e1?.purchasedProduct == e2?.purchasedProduct &&
         e1?.orderId == e2?.orderId &&
         e1?.status == e2?.status &&
-        e1?.clientPhone == e2?.clientPhone;
+        e1?.clientPhone == e2?.clientPhone &&
+        e1?.type == e2?.type;
   }
 
   @override
@@ -130,7 +137,8 @@ class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
         e?.purchasedProduct,
         e?.orderId,
         e?.status,
-        e?.clientPhone
+        e?.clientPhone,
+        e?.type
       ]);
 
   @override

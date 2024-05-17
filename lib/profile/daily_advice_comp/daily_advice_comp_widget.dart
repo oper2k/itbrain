@@ -2,8 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'daily_advice_comp_model.dart';
 export 'daily_advice_comp_model.dart';
 
@@ -39,7 +37,7 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -47,7 +45,7 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
           borderRadius: BorderRadius.circular(24.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -73,14 +71,14 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
                 ],
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                       child: Container(
                         width: 88.0,
                         height: 88.0,
@@ -89,7 +87,7 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
                           shape: BoxShape.circle,
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Image.asset(
                             'assets/images/toa91_.webp',
                             width: 64.0,
@@ -101,7 +99,7 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'xos9ms57' /* Совет дня */,
@@ -134,7 +132,7 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 93.0, 0.0, 46.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 93.0, 0.0, 46.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -147,7 +145,7 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
                           width: double.infinity,
                           height: 52.0,
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                               colors: [
                                 Color(0xFF9747FF),
                                 Color(0xFFF1618E),
@@ -160,7 +158,7 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 '6ocxw9gx' /* Спасибо */,
