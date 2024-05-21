@@ -91,7 +91,6 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
-                              blurRadius: 6.0,
                               color: () {
                                 if ((currentUserDocument
                                             ?.purchasedMeditationsPacks
@@ -108,7 +107,6 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                   return Colors.transparent;
                                 }
                               }(),
-                              offset: const Offset(0.0, 0.0),
                             )
                           ],
                           borderRadius: BorderRadius.circular(20.0),
@@ -160,7 +158,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 0.0, 0.0),
                               child: Container(
-                                width: MediaQuery.sizeOf(context).width * 0.527,
+                                width: MediaQuery.sizeOf(context).width * 0.6,
                                 decoration: const BoxDecoration(),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -332,6 +330,52 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                   .override(
                                     fontFamily: 'Evolventa',
                                     color: const Color(0xB2FFFFFF),
+                                    fontSize: 13.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    useGoogleFonts: false,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (widget.meditationCategories?.free ?? true)
+                    Align(
+                      alignment: const AlignmentDirectional(-1.0, -1.0),
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            16.0, 20.0, 0.0, 0.0),
+                        child: Container(
+                          width: 99.0,
+                          height: 24.0,
+                          constraints: const BoxConstraints(
+                            minWidth: 83.0,
+                            maxWidth: 95.0,
+                          ),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [
+                                Color(0xFF9747FF),
+                                Color(0xFFF1618E),
+                                Color(0xFFFE710B)
+                              ],
+                              stops: [0.0, 0.4, 1.0],
+                              begin: AlignmentDirectional(1.0, 0.34),
+                              end: AlignmentDirectional(-1.0, -0.34),
+                            ),
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          child: Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'jvntpdkz' /* БЕСПЛАТНО */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Evolventa',
                                     fontSize: 13.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,

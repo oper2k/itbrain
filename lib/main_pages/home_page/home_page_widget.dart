@@ -710,8 +710,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           queryBuilder:
                                               (meditationCategoriesRecord) =>
                                                   meditationCategoriesRecord
-                                                      .orderBy('sort',
-                                                          descending: true),
+                                                      .orderBy('sort'),
                                         ),
                                       ),
                                       builder: (context, snapshot) {

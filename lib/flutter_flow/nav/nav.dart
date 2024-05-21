@@ -585,7 +585,7 @@ class FFRoute {
                   color: FlutterFlowTheme.of(context).thirdBackground,
                   child: Center(
                     child: Image.asset(
-                      'assets/images/Icon,_PNG_v1.png',
+                      'assets/images/Rectangle_6622.jpg',
                       width: 150.0,
                       height: 150.0,
                       fit: BoxFit.cover,

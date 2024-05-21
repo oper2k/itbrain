@@ -998,6 +998,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'СКОРО',
       'en': 'SOON',
     },
+    'jvntpdkz': {
+      'ru': 'БЕСПЛАТНО',
+      'en': '',
+    },
   },
   // thanksForBuying
   {
