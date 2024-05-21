@@ -64,6 +64,8 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
                     functions.listShuffleBooks(_model.allPages!.toList()),
               },
             );
+
+            Navigator.pop(context);
           }
         },
         startImmediately: true,
@@ -173,8 +175,8 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
               lineWidth: 12.0,
               animation: false,
               animateFromLastPercent: true,
-              progressColor: FlutterFlowTheme.of(context).primary,
-              backgroundColor: FlutterFlowTheme.of(context).accent4,
+              progressColor: Colors.transparent,
+              backgroundColor: Colors.transparent,
             ),
           ),
         ],

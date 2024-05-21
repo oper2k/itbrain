@@ -234,7 +234,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
         } else {
           return Container(
             width: double.infinity,
-            height: 255.0,
+            height: 270.0,
             decoration: const BoxDecoration(
               color: Colors.transparent,
             ),
@@ -242,12 +242,16 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
               children: [
                 Align(
                   alignment: const AlignmentDirectional(0.0, -1.0),
-                  child: CachedNetworkImage(
-                    fadeInDuration: const Duration(milliseconds: 500),
-                    fadeOutDuration: const Duration(milliseconds: 500),
-                    imageUrl: widget.book!.photoCover,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
+                  child: Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 100.0),
+                    child: CachedNetworkImage(
+                      fadeInDuration: const Duration(milliseconds: 500),
+                      fadeOutDuration: const Duration(milliseconds: 500),
+                      imageUrl: widget.book!.photoCover,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Align(
@@ -261,7 +265,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                     ),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -273,6 +277,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                 widget.book?.title,
                                 '0',
                               ),
+                              textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -294,6 +299,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                   widget.book?.description,
                                   '0',
                                 ),
+                                textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(

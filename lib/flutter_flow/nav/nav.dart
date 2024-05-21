@@ -10,6 +10,7 @@ import '/auth/base_auth_user_provider.dart';
 import '/backend/push_notifications/push_notifications_handler.dart'
     show PushNotificationsHandler;
 import '/index.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -581,13 +582,13 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: const Color(0xFF1A0830),
+                  color: FlutterFlowTheme.of(context).thirdBackground,
                   child: Center(
                     child: Image.asset(
-                      'assets/images/IT_BRAIN_icon_app_store.png',
+                      'assets/images/Icon,_PNG_v1.png',
                       width: 150.0,
                       height: 150.0,
-                      fit: BoxFit.contain,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 )
