@@ -130,7 +130,7 @@ class _TaskBookCompWidgetState extends State<TaskBookCompWidget> {
                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'xqiyd1e9' /* Show more */,
+                        'xqiyd1e9' /* Еще */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Evolventa',

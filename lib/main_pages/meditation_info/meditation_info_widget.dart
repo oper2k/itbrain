@@ -7,10 +7,10 @@ import '/main_pages/meditations/meditations_widget.dart';
 import '/main_pages/meditations_offline/meditations_offline_widget.dart';
 import '/profile/is_deleted/is_deleted_widget.dart';
 import '/profile/is_downloaded_all/is_downloaded_all_widget.dart';
+import '/study/meditation_pack_info/meditation_pack_info_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -151,11 +151,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                           child: Stack(
                             alignment: const AlignmentDirectional(0.0, -1.0),
                             children: [
-                              CachedNetworkImage(
-                                fadeInDuration: const Duration(milliseconds: 500),
-                                fadeOutDuration: const Duration(milliseconds: 500),
-                                imageUrl:
-                                    widget.meditationCategory!.categoryPhoto,
+                              Image.asset(
+                                'assets/images/Frame_12202.webp',
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 fit: BoxFit.cover,
                               ),
@@ -565,7 +562,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -573,7 +570,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                             alignment: const AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  4.0, 24.0, 4.0, 0.0),
+                                  0.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getVariableText(
                                   ruText:
@@ -596,282 +593,168 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                4.0, 8.0, 4.0, 0.0),
-                            child: Builder(
-                              builder: (context) {
-                                if (!_model.more) {
-                                  return Stack(
-                                    alignment: const AlignmentDirectional(1.0, 1.0),
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Expanded(
-                                            child: Align(
-                                              alignment: const AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Text(
-                                                valueOrDefault<String>(
-                                                  FFLocalizations.of(context)
-                                                      .getVariableText(
-                                                    ruText: widget
-                                                        .meditationCategory
-                                                        ?.descriptionCategory,
-                                                    enText: widget
-                                                        .meditationCategory
-                                                        ?.descriptionCategoryEng,
-                                                  ),
-                                                  '0',
-                                                ).maybeHandleOverflow(
-                                                  maxChars: 145,
-                                                  replacement: '…',
-                                                ),
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Evolventa',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      fontSize: 17.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                      useGoogleFonts: false,
-                                                      lineHeight: 1.29,
-                                                    ),
+                                0.0, 8.0, 0.0, 0.0),
+                            child: Stack(
+                              alignment: const AlignmentDirectional(1.0, 1.0),
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(-1.0, 0.0),
+                                        child: Text(
+                                          valueOrDefault<String>(
+                                            FFLocalizations.of(context)
+                                                .getVariableText(
+                                              ruText: widget.meditationCategory
+                                                  ?.descriptionCategory,
+                                              enText: widget.meditationCategory
+                                                  ?.descriptionCategoryEng,
+                                            ),
+                                            '0',
+                                          ).maybeHandleOverflow(
+                                            maxChars: 145,
+                                            replacement: '…',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Evolventa',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 17.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.normal,
+                                                useGoogleFonts: false,
+                                                lineHeight: 1.29,
                                               ),
+                                        ),
+                                      ),
+                                    ),
+                                  ].divide(const SizedBox(width: 4.0)),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Align(
+                                      alignment: const AlignmentDirectional(1.0, 1.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            context: context,
+                                            builder: (context) {
+                                              return GestureDetector(
+                                                onTap: () => _model.unfocusNode
+                                                        .canRequestFocus
+                                                    ? FocusScope.of(context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode)
+                                                    : FocusScope.of(context)
+                                                        .unfocus(),
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child:
+                                                      MeditationPackInfoWidget(
+                                                    title: FFLocalizations.of(
+                                                            context)
+                                                        .getVariableText(
+                                                      ruText: widget
+                                                          .meditationCategory
+                                                          ?.nameCategory,
+                                                      enText: widget
+                                                          .meditationCategory
+                                                          ?.nameCategoryEng,
+                                                    ),
+                                                    text: FFLocalizations.of(
+                                                            context)
+                                                        .getVariableText(
+                                                      ruText: widget
+                                                          .meditationCategory
+                                                          ?.descriptionCategory,
+                                                      enText: widget
+                                                          .meditationCategory
+                                                          ?.descriptionCategoryEng,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ).then(
+                                              (value) => safeSetState(() {}));
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                              colors: [
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
+                                                const Color(0x00370C59)
+                                              ],
+                                              stops: const [0.8, 1.0],
+                                              begin: const AlignmentDirectional(
+                                                  1.0, 0.0),
+                                              end:
+                                                  const AlignmentDirectional(-1.0, 0),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(width: 4.0)),
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Align(
+                                          child: Align(
                                             alignment:
                                                 const AlignmentDirectional(1.0, 1.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                setState(() {
-                                                  _model.more = true;
-                                                });
-                                              },
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      20.0, 0.0, 0.0, 0.0),
                                               child: Container(
                                                 decoration: BoxDecoration(
-                                                  gradient: LinearGradient(
-                                                    colors: [
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryBackground,
-                                                      const Color(0x00370C59)
-                                                    ],
-                                                    stops: const [0.8, 1.0],
-                                                    begin: const AlignmentDirectional(
-                                                        1.0, 0.0),
-                                                    end: const AlignmentDirectional(
-                                                        -1.0, 0),
-                                                  ),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
                                                 ),
-                                                child: Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          1.0, 1.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(20.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
-                                                      ),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'vvpwce3u' /* eщё */,
-                                                        ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Evolventa',
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .accent1,
-                                                              fontSize: 17.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                              lineHeight: 1.41,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  );
-                                } else {
-                                  return Stack(
-                                    alignment: const AlignmentDirectional(1.0, 1.0),
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Expanded(
-                                            child: Align(
-                                              alignment: const AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Text(
-                                                valueOrDefault<String>(
+                                                child: Text(
                                                   FFLocalizations.of(context)
-                                                      .getVariableText(
-                                                    ruText: widget
-                                                        .meditationCategory
-                                                        ?.descriptionCategory,
-                                                    enText: widget
-                                                        .meditationCategory
-                                                        ?.descriptionCategoryEng,
+                                                      .getText(
+                                                    'vvpwce3u' /* eщё */,
                                                   ),
-                                                  '0',
-                                                ),
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Evolventa',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      fontSize: 17.0,
-                                                      letterSpacing: 0.0,
-                                                      useGoogleFonts: false,
-                                                      lineHeight: 1.29,
-                                                    ),
-                                              ),
-                                            ),
-                                          ),
-                                        ].divide(const SizedBox(width: 4.0)),
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Align(
-                                            alignment:
-                                                const AlignmentDirectional(1.0, 1.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                setState(() {
-                                                  _model.more = false;
-                                                });
-                                              },
-                                              child: Container(
-                                                decoration: const BoxDecoration(
-                                                  gradient: LinearGradient(
-                                                    colors: [
-                                                      Color(0xFF370C59),
-                                                      Color(0x00370C59)
-                                                    ],
-                                                    stops: [0.8, 1.0],
-                                                    begin: AlignmentDirectional(
-                                                        1.0, 0.0),
-                                                    end: AlignmentDirectional(
-                                                        -1.0, 0),
-                                                  ),
-                                                ),
-                                                child: Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          1.0, 1.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(20.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Evolventa',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent1,
+                                                        fontSize: 17.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: false,
+                                                        lineHeight: 1.41,
                                                       ),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '3l3nc22g' /* Свернуть */,
-                                                        ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Evolventa',
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .accent1,
-                                                              fontSize: 17.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                              lineHeight: 1.41,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
-                                        ],
+                                        ),
                                       ),
-                                    ],
-                                  );
-                                }
-                              },
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                           if ((!(currentUserDocument?.purchasedMeditationsPacks
@@ -945,8 +828,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                       .toString(),
                                   '0',
                                 )}${FFLocalizations.of(context).getVariableText(
-                                  ruText: ' аудиозаписей внутри',
-                                  enText: ' audios inside',
+                                  ruText: ' аудио',
+                                  enText: ' audios ',
                                 )}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

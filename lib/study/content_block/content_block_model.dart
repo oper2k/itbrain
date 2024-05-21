@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/study/created_by/created_by_widget.dart';
 import '/study/divider/divider_widget.dart';
@@ -14,6 +15,8 @@ class ContentBlockModel extends FlutterFlowModel<ContentBlockWidget> {
   late StudyImageModel studyImageModel;
   // Model for studyAudio component.
   late StudyAudioModel studyAudioModel;
+  // Stores action output result for [Custom Action - convertLessonToMeditation] action in studyAudio widget.
+  List<MeditationsRecord>? meditations;
   // Model for createdBy component.
   late CreatedByModel createdByModel;
   // Model for taskBookComp component.

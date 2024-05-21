@@ -104,7 +104,12 @@ class _StudyPageWidgetState extends State<StudyPageWidget> {
                               listViewStudyCategoriesRecordList =
                               snapshot.data!;
                           return ListView.separated(
-                            padding: EdgeInsets.zero,
+                            padding: const EdgeInsets.fromLTRB(
+                              0,
+                              0,
+                              0,
+                              100.0,
+                            ),
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
                             itemCount: listViewStudyCategoriesRecordList.length,

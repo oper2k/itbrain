@@ -233,3 +233,8 @@ bool isLessonAvailable(
 
   return isAvailable;
 }
+
+BooksPagesRecord listShuffleBooks(List<BooksPagesRecord> books) {
+  books.shuffle(math.Random());
+  return books[0];
+}

@@ -50,6 +50,36 @@ class LessonsRecord extends FirestoreRecord {
   DocumentReference? get course => _course;
   bool hasCourse() => _course != null;
 
+  // "mainAudio" field.
+  String? _mainAudio;
+  String get mainAudio => _mainAudio ?? '';
+  bool hasMainAudio() => _mainAudio != null;
+
+  // "lang" field.
+  String? _lang;
+  String get lang => _lang ?? '';
+  bool hasLang() => _lang != null;
+
+  // "order" field.
+  int? _order;
+  int get order => _order ?? 0;
+  bool hasOrder() => _order != null;
+
+  // "audioTitle" field.
+  String? _audioTitle;
+  String get audioTitle => _audioTitle ?? '';
+  bool hasAudioTitle() => _audioTitle != null;
+
+  // "audioDuration" field.
+  String? _audioDuration;
+  String get audioDuration => _audioDuration ?? '';
+  bool hasAudioDuration() => _audioDuration != null;
+
+  // "audioDescription" field.
+  String? _audioDescription;
+  String get audioDescription => _audioDescription ?? '';
+  bool hasAudioDescription() => _audioDescription != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _count = castToType<int>(snapshotData['count']);
@@ -61,6 +91,12 @@ class LessonsRecord extends FirestoreRecord {
     _titleEng = snapshotData['titleEng'] as String?;
     _level = snapshotData['level'] as DocumentReference?;
     _course = snapshotData['course'] as DocumentReference?;
+    _mainAudio = snapshotData['mainAudio'] as String?;
+    _lang = snapshotData['lang'] as String?;
+    _order = castToType<int>(snapshotData['order']);
+    _audioTitle = snapshotData['audioTitle'] as String?;
+    _audioDuration = snapshotData['audioDuration'] as String?;
+    _audioDescription = snapshotData['audioDescription'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -104,6 +140,12 @@ Map<String, dynamic> createLessonsRecordData({
   String? titleEng,
   DocumentReference? level,
   DocumentReference? course,
+  String? mainAudio,
+  String? lang,
+  int? order,
+  String? audioTitle,
+  String? audioDuration,
+  String? audioDescription,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -113,6 +155,12 @@ Map<String, dynamic> createLessonsRecordData({
       'titleEng': titleEng,
       'level': level,
       'course': course,
+      'mainAudio': mainAudio,
+      'lang': lang,
+      'order': order,
+      'audioTitle': audioTitle,
+      'audioDuration': audioDuration,
+      'audioDescription': audioDescription,
     }.withoutNulls,
   );
 
@@ -131,7 +179,13 @@ class LessonsRecordDocumentEquality implements Equality<LessonsRecord> {
         e1?.openDate == e2?.openDate &&
         e1?.titleEng == e2?.titleEng &&
         e1?.level == e2?.level &&
-        e1?.course == e2?.course;
+        e1?.course == e2?.course &&
+        e1?.mainAudio == e2?.mainAudio &&
+        e1?.lang == e2?.lang &&
+        e1?.order == e2?.order &&
+        e1?.audioTitle == e2?.audioTitle &&
+        e1?.audioDuration == e2?.audioDuration &&
+        e1?.audioDescription == e2?.audioDescription;
   }
 
   @override
@@ -142,7 +196,13 @@ class LessonsRecordDocumentEquality implements Equality<LessonsRecord> {
         e?.openDate,
         e?.titleEng,
         e?.level,
-        e?.course
+        e?.course,
+        e?.mainAudio,
+        e?.lang,
+        e?.order,
+        e?.audioTitle,
+        e?.audioDuration,
+        e?.audioDescription
       ]);
 
   @override

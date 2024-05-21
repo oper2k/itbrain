@@ -80,9 +80,15 @@ class _BookContentWidgetState extends State<BookContentWidget> {
                       child: Align(
                         alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Text(
-                          valueOrDefault<String>(
-                            widget.content?.bookTitle,
-                            '0',
+                          FFLocalizations.of(context).getVariableText(
+                            ruText: valueOrDefault<String>(
+                              widget.content?.bookTitle,
+                              '0',
+                            ),
+                            enText: valueOrDefault<String>(
+                              widget.content?.bookTitleEng,
+                              '0',
+                            ),
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
@@ -125,9 +131,15 @@ class _BookContentWidgetState extends State<BookContentWidget> {
                           Align(
                             alignment: const AlignmentDirectional(-1.0, -1.0),
                             child: Text(
-                              valueOrDefault<String>(
-                                widget.content?.bookText,
-                                '0',
+                              FFLocalizations.of(context).getVariableText(
+                                ruText: valueOrDefault<String>(
+                                  widget.content?.bookText,
+                                  '0',
+                                ),
+                                enText: valueOrDefault<String>(
+                                  widget.content?.bookTextEng,
+                                  '0',
+                                ),
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium

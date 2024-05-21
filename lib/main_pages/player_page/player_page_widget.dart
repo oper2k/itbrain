@@ -12,7 +12,7 @@ class PlayerPageWidget extends StatefulWidget {
   const PlayerPageWidget({
     super.key,
     required this.audio,
-    required this.medCategory,
+    this.medCategory,
     this.meditation,
   });
 
@@ -60,7 +60,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryBackground,
+            color: Colors.transparent,
             image: DecorationImage(
               fit: BoxFit.cover,
               image: Image.asset(
@@ -71,9 +71,9 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
           child: Stack(
             children: [
               Image.asset(
-                'assets/images/Mask_group2.png',
+                'assets/images/image_28.webp',
                 width: double.infinity,
-                height: double.infinity,
+                height: 400.0,
                 fit: BoxFit.cover,
               ),
               Align(

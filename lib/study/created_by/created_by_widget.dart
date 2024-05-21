@@ -59,7 +59,7 @@ class _CreatedByWidgetState extends State<CreatedByWidget> {
             children: [
               Text(
                 FFLocalizations.of(context).getText(
-                  'j9hq13ek' /* Created by */,
+                  'j9hq13ek' /* С любовью */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Evolventa',
@@ -72,7 +72,7 @@ class _CreatedByWidgetState extends State<CreatedByWidget> {
               ),
               Text(
                 FFLocalizations.of(context).getText(
-                  'tq7bhxlu' /* Anna Kamallaya Hefors */,
+                  'tq7bhxlu' /* Камаллая */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Evolventa',

@@ -961,7 +961,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget> {
                                 ),
                               ),
                             ),
-                          ].addToEnd(const SizedBox(height: 60.0)),
+                          ].addToEnd(const SizedBox(height: 100.0)),
                         ),
                       ),
                     ),

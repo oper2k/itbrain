@@ -11,6 +11,8 @@ class StudyInfoPageModel extends FlutterFlowModel<StudyInfoPageWidget> {
 
   int? downloadProgress = 0;
 
+  bool isPushOn = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

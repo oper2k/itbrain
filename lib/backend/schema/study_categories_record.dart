@@ -64,6 +64,21 @@ class StudyCategoriesRecord extends FirestoreRecord {
   String get durationEng => _durationEng ?? '';
   bool hasDurationEng() => _durationEng != null;
 
+  // "course_url" field.
+  String? _courseUrl;
+  String get courseUrl => _courseUrl ?? '';
+  bool hasCourseUrl() => _courseUrl != null;
+
+  // "course_eng_url" field.
+  String? _courseEngUrl;
+  String get courseEngUrl => _courseEngUrl ?? '';
+  bool hasCourseEngUrl() => _courseEngUrl != null;
+
+  // "course_info_image" field.
+  String? _courseInfoImage;
+  String get courseInfoImage => _courseInfoImage ?? '';
+  bool hasCourseInfoImage() => _courseInfoImage != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _description = snapshotData['description'] as String?;
@@ -75,6 +90,9 @@ class StudyCategoriesRecord extends FirestoreRecord {
     _startDate = snapshotData['start_date'] as DateTime?;
     _duration = snapshotData['duration'] as String?;
     _durationEng = snapshotData['durationEng'] as String?;
+    _courseUrl = snapshotData['course_url'] as String?;
+    _courseEngUrl = snapshotData['course_eng_url'] as String?;
+    _courseInfoImage = snapshotData['course_info_image'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -122,6 +140,9 @@ Map<String, dynamic> createStudyCategoriesRecordData({
   DateTime? startDate,
   String? duration,
   String? durationEng,
+  String? courseUrl,
+  String? courseEngUrl,
+  String? courseInfoImage,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -135,6 +156,9 @@ Map<String, dynamic> createStudyCategoriesRecordData({
       'start_date': startDate,
       'duration': duration,
       'durationEng': durationEng,
+      'course_url': courseUrl,
+      'course_eng_url': courseEngUrl,
+      'course_info_image': courseInfoImage,
     }.withoutNulls,
   );
 
@@ -156,7 +180,10 @@ class StudyCategoriesRecordDocumentEquality
         e1?.coverEng == e2?.coverEng &&
         e1?.startDate == e2?.startDate &&
         e1?.duration == e2?.duration &&
-        e1?.durationEng == e2?.durationEng;
+        e1?.durationEng == e2?.durationEng &&
+        e1?.courseUrl == e2?.courseUrl &&
+        e1?.courseEngUrl == e2?.courseEngUrl &&
+        e1?.courseInfoImage == e2?.courseInfoImage;
   }
 
   @override
@@ -170,7 +197,10 @@ class StudyCategoriesRecordDocumentEquality
         e?.coverEng,
         e?.startDate,
         e?.duration,
-        e?.durationEng
+        e?.durationEng,
+        e?.courseUrl,
+        e?.courseEngUrl,
+        e?.courseInfoImage
       ]);
 
   @override

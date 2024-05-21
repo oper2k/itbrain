@@ -1,11 +1,12 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'study_level_info_model.dart';
 export 'study_level_info_model.dart';
 
@@ -14,10 +15,12 @@ class StudyLevelInfoWidget extends StatefulWidget {
     super.key,
     required this.study,
     required this.levels,
+    required this.currentLevelndex,
   });
 
   final StudyCategoriesRecord? study;
   final LevelsRecord? levels;
+  final int? currentLevelndex;
 
   @override
   State<StudyLevelInfoWidget> createState() => _StudyLevelInfoWidgetState();
@@ -64,10 +67,16 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: StreamBuilder<List<LessonsRecord>>(
           stream: queryLessonsRecord(
-            queryBuilder: (lessonsRecord) => lessonsRecord.where(
-              'level',
-              isEqualTo: widget.levels?.reference,
-            ),
+            queryBuilder: (lessonsRecord) => lessonsRecord.where(Filter.or(
+              Filter(
+                'level',
+                isEqualTo: widget.levels?.reference,
+              ),
+              Filter(
+                'lang',
+                isEqualTo: FFLocalizations.of(context).languageCode,
+              ),
+            )),
           ),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
@@ -144,19 +153,48 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                               ),
                               Align(
                                 alignment: const AlignmentDirectional(1.0, 0.0),
-                                child: Text(
-                                  valueOrDefault<String>(
-                                    'Пройдено 0%',
-                                    '0',
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Evolventa',
-                                        fontSize: 17.0,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: false,
+                                child: AuthUserStreamWidget(
+                                  builder: (context) => Text(
+                                    '${FFLocalizations.of(context).getVariableText(
+                                      ruText: 'Пройдено',
+                                      enText: 'Finished',
+                                    )} ${valueOrDefault<String>(
+                                      formatNumber(
+                                        (valueOrDefault<int>(
+                                                  (currentUserDocument
+                                                              ?.completeLessons
+                                                              .toList() ??
+                                                          [])
+                                                      .length,
+                                                  0,
+                                                ) /
+                                                containerLessonsRecordList
+                                                    .where((e) =>
+                                                        (e.level ==
+                                                            widget.levels
+                                                                ?.reference) &&
+                                                        (e.course ==
+                                                            widget.study
+                                                                ?.reference))
+                                                    .toList()
+                                                    .length) *
+                                            100,
+                                        formatType: FormatType.custom,
+                                        format: '',
+                                        locale: '',
                                       ),
+                                      '0',
+                                    )}%',
+                                    textAlign: TextAlign.end,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Evolventa',
+                                          fontSize: 17.0,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
                                 ),
                               ),
                               Align(
@@ -165,10 +203,11 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Text(
-                                    valueOrDefault<String>(
-                                      widget.study?.title,
-                                      '0',
+                                    FFLocalizations.of(context).getVariableText(
+                                      ruText: widget.levels?.title,
+                                      enText: widget.levels?.titleEng,
                                     ),
+                                    textAlign: TextAlign.end,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -187,9 +226,9 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Text(
-                                    valueOrDefault<String>(
-                                      widget.study?.description,
-                                      '0',
+                                    FFLocalizations.of(context).getVariableText(
+                                      ruText: widget.levels?.description,
+                                      enText: widget.levels?.descrEng,
                                     ),
                                     textAlign: TextAlign.end,
                                     style: FlutterFlowTheme.of(context)
@@ -210,8 +249,9 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                       0.0, 52.0, 0.0, 0.0),
                                   child: Builder(
                                     builder: (context) {
-                                      final lessons =
-                                          containerLessonsRecordList.toList();
+                                      final lessons = containerLessonsRecordList
+                                          .sortedList((e) => e.order)
+                                          .toList();
                                       return ListView.separated(
                                         padding: EdgeInsets.zero,
                                         shrinkWrap: true,
@@ -222,72 +262,205 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                         itemBuilder: (context, lessonsIndex) {
                                           final lessonsItem =
                                               lessons[lessonsIndex];
-                                          return InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              context.pushNamed(
-                                                'contentPage',
-                                                queryParameters: {
-                                                  'lesson': serializeParam(
-                                                    lessonsItem,
-                                                    ParamType.Document,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'lesson': lessonsItem,
-                                                },
-                                              );
-                                            },
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 65.0,
-                                              decoration: BoxDecoration(
-                                                color: const Color(0x10FFFFFF),
-                                                borderRadius:
-                                                    BorderRadius.circular(20.0),
-                                              ),
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        20.0, 0.0, 20.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Text(
-                                                        '${lessonsItem.count.toString()}.${lessonsItem.title}',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Evolventa',
-                                                              fontSize: 17.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              useGoogleFonts:
-                                                                  false,
+                                          return Visibility(
+                                            visible: functions.isLessonAvailable(
+                                                getCurrentTimestamp,
+                                                (currentUserDocument
+                                                            ?.purchasedCoursesDates
+                                                            .toList() ??
+                                                        [])
+                                                    .where((e) =>
+                                                        e.courseRef ==
+                                                        widget.study?.reference)
+                                                    .toList()
+                                                    .first
+                                                    .purchasedDate!,
+                                                lessonsItem.order),
+                                            child: AuthUserStreamWidget(
+                                              builder: (context) => Builder(
+                                                builder: (context) {
+                                                  if ((currentUserDocument
+                                                              ?.completeLessons
+                                                              .toList() ??
+                                                          [])
+                                                      .contains(lessonsItem
+                                                          .reference)) {
+                                                    return InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        context.pushNamed(
+                                                          'contentPage',
+                                                          queryParameters: {
+                                                            'lesson':
+                                                                serializeParam(
+                                                              lessonsItem,
+                                                              ParamType
+                                                                  .Document,
                                                             ),
+                                                          }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            'lesson':
+                                                                lessonsItem,
+                                                          },
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        height: 65.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              const Color(0x10FFFFFF),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      20.0,
+                                                                      0.0,
+                                                                      20.0,
+                                                                      0.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Text(
+                                                                  '${lessonsItem.count.toString()}.${lessonsItem.title}',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Evolventa',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
+                                                                        fontSize:
+                                                                            17.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            false,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                              Icon(
+                                                                FFIcons.kitsok,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 24.0,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
                                                       ),
-                                                    ),
-                                                    FaIcon(
-                                                      FontAwesomeIcons
-                                                          .angleRight,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      size: 24.0,
-                                                    ),
-                                                  ],
-                                                ),
+                                                    );
+                                                  } else {
+                                                    return InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        context.pushNamed(
+                                                          'contentPage',
+                                                          queryParameters: {
+                                                            'lesson':
+                                                                serializeParam(
+                                                              lessonsItem,
+                                                              ParamType
+                                                                  .Document,
+                                                            ),
+                                                          }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            'lesson':
+                                                                lessonsItem,
+                                                          },
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        height: 65.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              const Color(0x1EFFFFFF),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20.0),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      20.0,
+                                                                      0.0,
+                                                                      20.0,
+                                                                      0.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Text(
+                                                                  '${lessonsItem.count.toString()}.${lessonsItem.title}',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Evolventa',
+                                                                        fontSize:
+                                                                            17.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            false,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                              Icon(
+                                                                FFIcons
+                                                                    .krightDMTnew,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 24.0,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }
+                                                },
                                               ),
                                             ),
                                           );
@@ -313,42 +486,109 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 46.0),
-                    child: Container(
-                      width: double.infinity,
-                      height: 52.0,
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color(0xFF9747FF),
-                            Color(0xFFF1618E),
-                            Color(0xFFFE710B)
-                          ],
-                          stops: [0.0, 0.4, 1.0],
-                          begin: AlignmentDirectional(1.0, 0.34),
-                          end: AlignmentDirectional(-1.0, -0.34),
-                        ),
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            'tysk2a96' /* Перейти на следующий уровень */,
+                  FutureBuilder<List<LevelsRecord>>(
+                    future: queryLevelsRecordOnce(
+                      queryBuilder: (levelsRecord) => levelsRecord
+                          .where(
+                            'course_ref',
+                            isEqualTo: widget.study?.reference,
+                          )
+                          .where(
+                            'count',
+                            isGreaterThan: valueOrDefault<String>(
+                              ((widget.currentLevelndex!) + 1).toString(),
+                              '0',
+                            ),
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Evolventa',
-                                    fontSize: 15.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    useGoogleFonts: false,
-                                  ),
-                        ),
-                      ),
+                      singleRecord: true,
                     ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                FlutterFlowTheme.of(context).tertiary,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      List<LevelsRecord> containerLevelsRecordList =
+                          snapshot.data!;
+                      // Return an empty Container when the item does not exist.
+                      if (snapshot.data!.isEmpty) {
+                        return Container();
+                      }
+                      final containerLevelsRecord =
+                          containerLevelsRecordList.isNotEmpty
+                              ? containerLevelsRecordList.first
+                              : null;
+                      return Container(
+                        decoration: const BoxDecoration(),
+                        child: Visibility(
+                          visible: !(currentUserDocument?.purchasedLevels
+                                      .toList() ??
+                                  [])
+                              .contains(containerLevelsRecord?.reference),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 0.0, 20.0, 46.0),
+                            child: AuthUserStreamWidget(
+                              builder: (context) => InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await launchURL(valueOrDefault<String>(
+                                    containerLevelsRecord?.getCourseUrl,
+                                    '0',
+                                  ));
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 52.0,
+                                  decoration: BoxDecoration(
+                                    gradient: const LinearGradient(
+                                      colors: [
+                                        Color(0xFF9747FF),
+                                        Color(0xFFF1618E),
+                                        Color(0xFFFE710B)
+                                      ],
+                                      stops: [0.0, 0.4, 1.0],
+                                      begin: AlignmentDirectional(1.0, 0.34),
+                                      end: AlignmentDirectional(-1.0, -0.34),
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  child: Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'tysk2a96' /* Перейти на следующий уровень */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Evolventa',
+                                            fontSize: 15.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                            useGoogleFonts: false,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

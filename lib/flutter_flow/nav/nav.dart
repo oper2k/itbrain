@@ -96,7 +96,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'DebugPage',
           path: '/debugPage',
-          builder: (context, params) => const DebugPageWidget(),
+          asyncParams: {
+            'meditaionsList':
+                getDocList(['meditations'], MeditationsRecord.fromSnapshot),
+          },
+          builder: (context, params) => DebugPageWidget(
+            meditaionsList: params.getParam<MeditationsRecord>(
+              'meditaionsList',
+              ParamType.Document,
+              isList: true,
+            ),
+          ),
         ),
         FFRoute(
           name: 'signUpPage',
@@ -334,6 +344,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'levels',
               ParamType.Document,
             ),
+            currentLevelndex: params.getParam(
+              'currentLevelndex',
+              ParamType.int,
+            ),
           ),
         ),
         FFRoute(
@@ -345,6 +359,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ContentPageWidget(
             lesson: params.getParam(
               'lesson',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'bookPageInfo',
+          path: '/bookPageInfo',
+          asyncParams: {
+            'pageInfo': getDoc(['booksPages'], BooksPagesRecord.fromSnapshot),
+          },
+          builder: (context, params) => BookPageInfoWidget(
+            pageInfo: params.getParam(
+              'pageInfo',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'allVideos',
+          path: '/allVideos',
+          builder: (context, params) => const AllVideosWidget(),
+        ),
+        FFRoute(
+          name: 'lessonsAllCodes',
+          path: '/lessonsAllCodes',
+          asyncParams: {
+            'courseInfo':
+                getDoc(['studyCategories'], StudyCategoriesRecord.fromSnapshot),
+          },
+          builder: (context, params) => LessonsAllCodesWidget(
+            courseInfo: params.getParam(
+              'courseInfo',
               ParamType.Document,
             ),
           ),

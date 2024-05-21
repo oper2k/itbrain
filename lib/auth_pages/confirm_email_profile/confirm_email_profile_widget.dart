@@ -328,7 +328,7 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
-                      'lmm0mjsw' /* Не забудьте проверить папку «С... */,
+                      'd9f6lqf8' /* Не забудьте проверить папку «С... */,
                     ),
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(

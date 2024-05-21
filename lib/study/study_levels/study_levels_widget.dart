@@ -1,9 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/progress_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/study/level_not_paid/level_not_paid_widget.dart';
+import '/study/progress_bar/progress_bar_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
@@ -191,23 +191,39 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                     -1.0, 0.0),
                                                 child: AuthUserStreamWidget(
                                                   builder: (context) => Text(
-                                                    'Пройдено ${valueOrDefault<String>(
-                                                      ((valueOrDefault<int>(
-                                                                    (currentUserDocument?.completeLessons.toList() ??
-                                                                            [])
-                                                                        .length,
-                                                                    0,
-                                                                  ) /
-                                                                  valueOrDefault<
-                                                                      int>(
-                                                                    containerLessonsRecordList
-                                                                        .length,
-                                                                    0,
-                                                                  )) *
-                                                              100)
-                                                          .toString(),
+                                                    '${FFLocalizations.of(context).getVariableText(
+                                                      ruText: 'Пройдено',
+                                                      enText: 'Finished',
+                                                    )} ${valueOrDefault<String>(
+                                                      formatNumber(
+                                                        (valueOrDefault<int>(
+                                                                  (currentUserDocument
+                                                                              ?.completeLessons
+                                                                              .toList() ??
+                                                                          [])
+                                                                      .length,
+                                                                  0,
+                                                                ) /
+                                                                valueOrDefault<
+                                                                    int>(
+                                                                  containerLessonsRecordList
+                                                                      .where((e) =>
+                                                                          e.course ==
+                                                                          widget
+                                                                              .course
+                                                                              ?.reference)
+                                                                      .toList()
+                                                                      .length,
+                                                                  0,
+                                                                )) *
+                                                            100,
+                                                        formatType:
+                                                            FormatType.custom,
+                                                        format: '',
+                                                        locale: '',
+                                                      ),
                                                       '0',
-                                                    )} %',
+                                                    )}%',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -339,6 +355,11 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                               levelsItem,
                                                               ParamType
                                                                   .Document,
+                                                            ),
+                                                            'currentLevelndex':
+                                                                serializeParam(
+                                                              levelsIndex,
+                                                              ParamType.int,
                                                             ),
                                                           }.withoutNulls,
                                                           extra: <String,
@@ -481,7 +502,12 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                               Text(
                                                                 valueOrDefault<
                                                                     String>(
-                                                                  'Уровень ${valueOrDefault<String>(
+                                                                  '${FFLocalizations.of(context).getVariableText(
+                                                                    ruText:
+                                                                        'Уровень',
+                                                                    enText:
+                                                                        'Level',
+                                                                  )} ${valueOrDefault<String>(
                                                                     levelsItem
                                                                         .count,
                                                                     '0',
@@ -504,11 +530,14 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                                     ),
                                                               ),
                                                               Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  levelsItem
-                                                                      .title,
-                                                                  '0',
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                                  ruText:
+                                                                      levelsItem
+                                                                          .title,
+                                                                  enText: levelsItem
+                                                                      .titleEng,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -549,28 +578,48 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
-                          child: Container(
-                            width: double.infinity,
-                            height: 52.0,
-                            decoration: BoxDecoration(
-                              color: const Color(0x1EFFFFFF),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'ptvcl6lu' /* Слушать все коды */,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                'lessonsAllCodes',
+                                queryParameters: {
+                                  'courseInfo': serializeParam(
+                                    widget.course,
+                                    ParamType.Document,
+                                  ),
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'courseInfo': widget.course,
+                                },
+                              );
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 52.0,
+                              decoration: BoxDecoration(
+                                color: const Color(0x1EFFFFFF),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'ptvcl6lu' /* Слушать все коды */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Evolventa',
+                                        fontSize: 15.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.bold,
+                                        useGoogleFonts: false,
+                                      ),
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Evolventa',
-                                      fontSize: 15.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                      useGoogleFonts: false,
-                                    ),
                               ),
                             ),
                           ),

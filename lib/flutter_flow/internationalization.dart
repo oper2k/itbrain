@@ -148,14 +148,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // DebugPage
   {
-    'oeuohdto': {
-      'ru': 'Удалить покупки',
-      'en': '',
-    },
-    '3hcfqhfp': {
-      'ru': 'Удалить все треки',
-      'en': '',
-    },
     '29zd174a': {
       'ru': 'DEBUG PAGE',
       'en': '',
@@ -501,6 +493,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Что нового?',
       'en': 'What\'s new?',
     },
+    'jzorskdy': {
+      'ru': 'Видео',
+      'en': '',
+    },
     'frx0mzd2': {
       'ru': 'Послание дня',
       'en': 'Message of the day',
@@ -729,10 +725,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'eщё',
       'en': 'more',
     },
-    '3l3nc22g': {
-      'ru': 'Свернуть',
-      'en': 'Collapse',
-    },
     'vnfzb2oi': {
       'ru': 'Узнать больше и купить',
       'en': 'Find out more and buy',
@@ -765,11 +757,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'zdr2ssm7': {
       'ru': 'Обучение',
-      'en': '',
+      'en': 'Study',
     },
     '9f6fcpg0': {
       'ru': 'от приложения IT BRAIN',
-      'en': '',
+      'en': 'from IT BRAIN',
     },
     'bugr0nhk': {
       'ru': 'Обучение',
@@ -780,10 +772,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '0hwzv6dz': {
       'ru': 'Скоро',
-      'en': '',
+      'en': 'Soon',
     },
     '6fzep0g2': {
       'ru': 'Напомнить об открытии продаж',
+      'en': 'Remind about the opening of sales',
+    },
+    'wwbhgqk2': {
+      'ru': 'Вы подписались на уведомления',
       'en': '',
     },
     '58i4w14h': {
@@ -795,11 +791,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'm5f4vain': {
       'ru': 'Уровни',
-      'en': '',
+      'en': 'Levels',
     },
     'ptvcl6lu': {
       'ru': 'Слушать все коды',
-      'en': '',
+      'en': 'Listen all codes',
     },
     '6khoust6': {
       'ru': 'Home',
@@ -821,6 +817,39 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'm0jw9buc': {
       'ru': 'Обучение',
+      'en': '',
+    },
+  },
+  // bookPageInfo
+  {
+    'q343b0bi': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // allVideos
+  {
+    'xbqqs07l': {
+      'ru': 'Видео',
+      'en': '',
+    },
+    'p0ndhkva': {
+      'ru': 'С канала \"Расшифровка генома человечности\"',
+      'en': '',
+    },
+    'p5qgl4l7': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
+  // lessonsAllCodes
+  {
+    'uucso3rn': {
+      'ru': 'Собрали все аудио с курса в одном месте для вашего удобства',
+      'en': '',
+    },
+    'f3bthe0z': {
+      'ru': 'Home',
       'en': '',
     },
   },
@@ -1138,49 +1167,49 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'z9pynuek': {
       'ru': 'Узнать подробнее',
-      'en': '',
+      'en': 'Learn more',
     },
     'fgdbuy0p': {
-      'ru': 'Скоро',
-      'en': '',
+      'ru': 'СКОРО',
+      'en': 'SOON',
     },
     '2hzh15uf': {
       'ru': 'Просмотрено',
-      'en': '',
+      'en': 'Viewed',
     },
     '9mcvesj0': {
-      'ru': '50%',
+      'ru': '',
       'en': '',
     },
     'fs07da0s': {
       'ru': 'Перейти в курс',
-      'en': '',
+      'en': 'Go to course',
     },
     'tnq0fkkt': {
       'ru': 'Узнать подробнее',
-      'en': '',
+      'en': 'Go to course',
     },
   },
   // levelNotPaid
   {
     'xa645yp4': {
       'ru': 'Уровень не приобретен',
-      'en': '',
+      'en': 'Level not purchased',
     },
     'x8qumqus': {
       'ru': 'Вы можете купить его прямо сейчас',
-      'en': '',
+      'en': 'You can buy it right now',
     },
     'a4pg3pvq': {
       'ru': 'Перейти к покупке',
-      'en': '',
+      'en': 'Purchase',
     },
   },
   // soon
   {
     'dufo8q2k': {
       'ru': 'Встреча скоро откроется',
-      'en': '',
+      'en': 'The meeting will open soon',
     },
     'n6wmgyxh': {
       'ru': 'Понятно',
@@ -1190,26 +1219,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // createdBy
   {
     'j9hq13ek': {
-      'ru': 'Created by',
-      'en': '',
+      'ru': 'С любовью',
+      'en': 'With love',
     },
     'tq7bhxlu': {
-      'ru': 'Anna Kamallaya Hefors',
-      'en': '',
+      'ru': 'Камаллая',
+      'en': 'Kamallaya',
     },
   },
   // taskBookComp
   {
     'xqiyd1e9': {
-      'ru': 'Show more',
-      'en': '',
+      'ru': 'Еще',
+      'en': 'Show more',
     },
   },
   // contentBlock
   {
     'oxsl9hph': {
-      'ru': 'See your anwser(codes)',
-      'en': '',
+      'ru': 'Посмотреть ответы (коды)',
+      'en': 'See your anwser(codes)',
     },
   },
   // contentText
@@ -1223,50 +1252,83 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'u27gmzx6': {
       'ru': 'Главная',
-      'en': '',
+      'en': 'Home',
     },
     'pjizsek4': {
       'ru': 'Обучение',
-      'en': '',
+      'en': 'Study',
     },
     'vf4c1plt': {
       'ru': 'Профиль',
-      'en': '',
+      'en': 'Profile',
     },
   },
   // navbarProfile
   {
     '9z7ozp98': {
       'ru': 'Главная',
-      'en': '',
+      'en': 'home',
     },
     '3jhy5596': {
       'ru': 'Обучение',
-      'en': '',
+      'en': 'Education',
     },
     'ljdwndwc': {
       'ru': 'Профиль',
-      'en': '',
+      'en': 'Profile',
     },
   },
   // navbarStudy
   {
     'm9ih9mtc': {
       'ru': 'Главная',
-      'en': '',
+      'en': 'home',
     },
     'ztl340rp': {
       'ru': 'Обучение',
-      'en': '',
+      'en': 'Education',
     },
     '9h7ymcdk': {
       'ru': 'Профиль',
-      'en': '',
+      'en': 'Profile',
     },
   },
   // BookContent
   {
     'mcqju336': {
+      'ru': 'Закрыть',
+      'en': 'Close',
+    },
+  },
+  // bookAnswerComp
+  {
+    '7qa5ez4q': {
+      'ru': 'О книге',
+      'en': 'About',
+    },
+    'anmfdwwt': {
+      'ru': 'Получить ответ',
+      'en': 'Get answer',
+    },
+    '00xzoznz': {
+      'ru': 'Cкачать',
+      'en': 'Download',
+    },
+    'yz9lrk64': {
+      'ru': 'Слушать',
+      'en': 'Listen',
+    },
+  },
+  // bookInfoTimer
+  {
+    '81k519jd': {
+      'ru': 'Подбираем твою страницу на сегодня',
+      'en': '',
+    },
+  },
+  // meditationPackInfo
+  {
+    'yegekz55': {
       'ru': 'Закрыть',
       'en': '',
     },

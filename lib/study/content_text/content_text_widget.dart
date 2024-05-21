@@ -80,9 +80,9 @@ class _ContentTextWidgetState extends State<ContentTextWidget> {
                           ),
                           Expanded(
                             child: Text(
-                              valueOrDefault<String>(
-                                widget.content?.textAutorNameEng,
-                                '0',
+                              FFLocalizations.of(context).getVariableText(
+                                ruText: widget.content?.textAutorName,
+                                enText: widget.content?.textAutorNameEng,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium

@@ -17,6 +17,9 @@ import 'schema/study_categories_record.dart';
 import 'schema/ff_custom_push_notifications_record.dart';
 import 'schema/levels_record.dart';
 import 'schema/lessons_record.dart';
+import 'schema/videos_record.dart';
+import 'schema/book_info_record.dart';
+import 'schema/books_pages_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -37,6 +40,9 @@ export 'schema/study_categories_record.dart';
 export 'schema/ff_custom_push_notifications_record.dart';
 export 'schema/levels_record.dart';
 export 'schema/lessons_record.dart';
+export 'schema/videos_record.dart';
+export 'schema/book_info_record.dart';
+export 'schema/books_pages_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -479,6 +485,117 @@ Future<List<LessonsRecord>> queryLessonsRecordOnce({
     queryCollectionOnce(
       LessonsRecord.collection,
       LessonsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query VideosRecords (as a Stream and as a Future).
+Future<int> queryVideosRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      VideosRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<VideosRecord>> queryVideosRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      VideosRecord.collection,
+      VideosRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<VideosRecord>> queryVideosRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      VideosRecord.collection,
+      VideosRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query BookInfoRecords (as a Stream and as a Future).
+Future<int> queryBookInfoRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      BookInfoRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<BookInfoRecord>> queryBookInfoRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      BookInfoRecord.collection,
+      BookInfoRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<BookInfoRecord>> queryBookInfoRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      BookInfoRecord.collection,
+      BookInfoRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query BooksPagesRecords (as a Stream and as a Future).
+Future<int> queryBooksPagesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      BooksPagesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<BooksPagesRecord>> queryBooksPagesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      BooksPagesRecord.collection,
+      BooksPagesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<BooksPagesRecord>> queryBooksPagesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      BooksPagesRecord.collection,
+      BooksPagesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

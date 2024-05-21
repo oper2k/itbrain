@@ -25,7 +25,6 @@ class LessonContentStruct extends FFFirebaseStruct {
     String? textAutorPhoto,
     int? order,
     String? photoEng,
-    String? textEng,
     String? audioTitleEng,
     String? audioDurationEng,
     String? titleEng,
@@ -34,6 +33,10 @@ class LessonContentStruct extends FFFirebaseStruct {
     String? textAutorNameEng,
     String? textAutorPhotoEng,
     String? audioEng,
+    String? textEng,
+    String? audioDescription,
+    String? audioDescriptionEng,
+    String? lang,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _photo = photo,
         _type = type,
@@ -49,7 +52,6 @@ class LessonContentStruct extends FFFirebaseStruct {
         _textAutorPhoto = textAutorPhoto,
         _order = order,
         _photoEng = photoEng,
-        _textEng = textEng,
         _audioTitleEng = audioTitleEng,
         _audioDurationEng = audioDurationEng,
         _titleEng = titleEng,
@@ -58,6 +60,10 @@ class LessonContentStruct extends FFFirebaseStruct {
         _textAutorNameEng = textAutorNameEng,
         _textAutorPhotoEng = textAutorPhotoEng,
         _audioEng = audioEng,
+        _textEng = textEng,
+        _audioDescription = audioDescription,
+        _audioDescriptionEng = audioDescriptionEng,
+        _lang = lang,
         super(firestoreUtilData);
 
   // "photo" field.
@@ -145,12 +151,6 @@ class LessonContentStruct extends FFFirebaseStruct {
   set photoEng(String? val) => _photoEng = val;
   bool hasPhotoEng() => _photoEng != null;
 
-  // "textEng" field.
-  String? _textEng;
-  String get textEng => _textEng ?? '';
-  set textEng(String? val) => _textEng = val;
-  bool hasTextEng() => _textEng != null;
-
   // "audioTitleEng" field.
   String? _audioTitleEng;
   String get audioTitleEng => _audioTitleEng ?? '';
@@ -199,6 +199,30 @@ class LessonContentStruct extends FFFirebaseStruct {
   set audioEng(String? val) => _audioEng = val;
   bool hasAudioEng() => _audioEng != null;
 
+  // "textEng" field.
+  String? _textEng;
+  String get textEng => _textEng ?? '';
+  set textEng(String? val) => _textEng = val;
+  bool hasTextEng() => _textEng != null;
+
+  // "audioDescription" field.
+  String? _audioDescription;
+  String get audioDescription => _audioDescription ?? '';
+  set audioDescription(String? val) => _audioDescription = val;
+  bool hasAudioDescription() => _audioDescription != null;
+
+  // "audioDescriptionEng" field.
+  String? _audioDescriptionEng;
+  String get audioDescriptionEng => _audioDescriptionEng ?? '';
+  set audioDescriptionEng(String? val) => _audioDescriptionEng = val;
+  bool hasAudioDescriptionEng() => _audioDescriptionEng != null;
+
+  // "lang" field.
+  String? _lang;
+  String get lang => _lang ?? '';
+  set lang(String? val) => _lang = val;
+  bool hasLang() => _lang != null;
+
   static LessonContentStruct fromMap(Map<String, dynamic> data) =>
       LessonContentStruct(
         photo: data['photo'] as String?,
@@ -215,7 +239,6 @@ class LessonContentStruct extends FFFirebaseStruct {
         textAutorPhoto: data['textAutorPhoto'] as String?,
         order: castToType<int>(data['order']),
         photoEng: data['photoEng'] as String?,
-        textEng: data['textEng'] as String?,
         audioTitleEng: data['audioTitleEng'] as String?,
         audioDurationEng: data['audioDurationEng'] as String?,
         titleEng: data['titleEng'] as String?,
@@ -224,6 +247,10 @@ class LessonContentStruct extends FFFirebaseStruct {
         textAutorNameEng: data['textAutorNameEng'] as String?,
         textAutorPhotoEng: data['textAutorPhotoEng'] as String?,
         audioEng: data['audioEng'] as String?,
+        textEng: data['textEng'] as String?,
+        audioDescription: data['audioDescription'] as String?,
+        audioDescriptionEng: data['audioDescriptionEng'] as String?,
+        lang: data['lang'] as String?,
       );
 
   static LessonContentStruct? maybeFromMap(dynamic data) => data is Map
@@ -245,7 +272,6 @@ class LessonContentStruct extends FFFirebaseStruct {
         'textAutorPhoto': _textAutorPhoto,
         'order': _order,
         'photoEng': _photoEng,
-        'textEng': _textEng,
         'audioTitleEng': _audioTitleEng,
         'audioDurationEng': _audioDurationEng,
         'titleEng': _titleEng,
@@ -254,6 +280,10 @@ class LessonContentStruct extends FFFirebaseStruct {
         'textAutorNameEng': _textAutorNameEng,
         'textAutorPhotoEng': _textAutorPhotoEng,
         'audioEng': _audioEng,
+        'textEng': _textEng,
+        'audioDescription': _audioDescription,
+        'audioDescriptionEng': _audioDescriptionEng,
+        'lang': _lang,
       }.withoutNulls;
 
   @override
@@ -314,10 +344,6 @@ class LessonContentStruct extends FFFirebaseStruct {
           _photoEng,
           ParamType.String,
         ),
-        'textEng': serializeParam(
-          _textEng,
-          ParamType.String,
-        ),
         'audioTitleEng': serializeParam(
           _audioTitleEng,
           ParamType.String,
@@ -348,6 +374,22 @@ class LessonContentStruct extends FFFirebaseStruct {
         ),
         'audioEng': serializeParam(
           _audioEng,
+          ParamType.String,
+        ),
+        'textEng': serializeParam(
+          _textEng,
+          ParamType.String,
+        ),
+        'audioDescription': serializeParam(
+          _audioDescription,
+          ParamType.String,
+        ),
+        'audioDescriptionEng': serializeParam(
+          _audioDescriptionEng,
+          ParamType.String,
+        ),
+        'lang': serializeParam(
+          _lang,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -424,11 +466,6 @@ class LessonContentStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        textEng: deserializeParam(
-          data['textEng'],
-          ParamType.String,
-          false,
-        ),
         audioTitleEng: deserializeParam(
           data['audioTitleEng'],
           ParamType.String,
@@ -469,6 +506,26 @@ class LessonContentStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        textEng: deserializeParam(
+          data['textEng'],
+          ParamType.String,
+          false,
+        ),
+        audioDescription: deserializeParam(
+          data['audioDescription'],
+          ParamType.String,
+          false,
+        ),
+        audioDescriptionEng: deserializeParam(
+          data['audioDescriptionEng'],
+          ParamType.String,
+          false,
+        ),
+        lang: deserializeParam(
+          data['lang'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -491,7 +548,6 @@ class LessonContentStruct extends FFFirebaseStruct {
         textAutorPhoto == other.textAutorPhoto &&
         order == other.order &&
         photoEng == other.photoEng &&
-        textEng == other.textEng &&
         audioTitleEng == other.audioTitleEng &&
         audioDurationEng == other.audioDurationEng &&
         titleEng == other.titleEng &&
@@ -499,7 +555,11 @@ class LessonContentStruct extends FFFirebaseStruct {
         bookTextEng == other.bookTextEng &&
         textAutorNameEng == other.textAutorNameEng &&
         textAutorPhotoEng == other.textAutorPhotoEng &&
-        audioEng == other.audioEng;
+        audioEng == other.audioEng &&
+        textEng == other.textEng &&
+        audioDescription == other.audioDescription &&
+        audioDescriptionEng == other.audioDescriptionEng &&
+        lang == other.lang;
   }
 
   @override
@@ -518,7 +578,6 @@ class LessonContentStruct extends FFFirebaseStruct {
         textAutorPhoto,
         order,
         photoEng,
-        textEng,
         audioTitleEng,
         audioDurationEng,
         titleEng,
@@ -526,7 +585,11 @@ class LessonContentStruct extends FFFirebaseStruct {
         bookTextEng,
         textAutorNameEng,
         textAutorPhotoEng,
-        audioEng
+        audioEng,
+        textEng,
+        audioDescription,
+        audioDescriptionEng,
+        lang
       ]);
 }
 
@@ -545,7 +608,6 @@ LessonContentStruct createLessonContentStruct({
   String? textAutorPhoto,
   int? order,
   String? photoEng,
-  String? textEng,
   String? audioTitleEng,
   String? audioDurationEng,
   String? titleEng,
@@ -554,6 +616,10 @@ LessonContentStruct createLessonContentStruct({
   String? textAutorNameEng,
   String? textAutorPhotoEng,
   String? audioEng,
+  String? textEng,
+  String? audioDescription,
+  String? audioDescriptionEng,
+  String? lang,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -574,7 +640,6 @@ LessonContentStruct createLessonContentStruct({
       textAutorPhoto: textAutorPhoto,
       order: order,
       photoEng: photoEng,
-      textEng: textEng,
       audioTitleEng: audioTitleEng,
       audioDurationEng: audioDurationEng,
       titleEng: titleEng,
@@ -583,6 +648,10 @@ LessonContentStruct createLessonContentStruct({
       textAutorNameEng: textAutorNameEng,
       textAutorPhotoEng: textAutorPhotoEng,
       audioEng: audioEng,
+      textEng: textEng,
+      audioDescription: audioDescription,
+      audioDescriptionEng: audioDescriptionEng,
+      lang: lang,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

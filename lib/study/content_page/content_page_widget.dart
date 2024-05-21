@@ -32,14 +32,17 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await currentUserReference!.update({
-        ...mapToFirestore(
-          {
-            'completeLessons':
-                FieldValue.arrayUnion([widget.lesson?.reference]),
-          },
-        ),
-      });
+      if (!(currentUserDocument?.completeLessons.toList() ?? [])
+          .contains(widget.lesson?.reference)) {
+        await currentUserReference!.update({
+          ...mapToFirestore(
+            {
+              'completeLessons':
+                  FieldValue.arrayUnion([widget.lesson?.reference]),
+            },
+          ),
+        });
+      }
     });
   }
 
@@ -92,9 +95,9 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
                   ),
                   Expanded(
                     child: Text(
-                      '${widget.lesson?.count.toString()}. ${valueOrDefault<String>(
-                        widget.lesson?.title,
-                        '0',
+                      '${widget.lesson?.count.toString()}. ${FFLocalizations.of(context).getVariableText(
+                        ruText: widget.lesson?.title,
+                        enText: widget.lesson?.titleEng,
                       )}',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(

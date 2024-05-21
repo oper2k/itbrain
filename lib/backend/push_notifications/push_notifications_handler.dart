@@ -108,7 +108,9 @@ class ParameterData {
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
   'onBoarding': ParameterData.none(),
-  'DebugPage': ParameterData.none(),
+  'DebugPage': (data) async => const ParameterData(
+        allParams: {},
+      ),
   'signUpPage': (data) async => ParameterData(
         allParams: {
           'pageParameter': getParameter<int>(data, 'pageParameter'),
@@ -193,12 +195,26 @@ final parametersBuilderMap =
               data, 'study', StudyCategoriesRecord.fromSnapshot),
           'levels': await getDocumentParameter<LevelsRecord>(
               data, 'levels', LevelsRecord.fromSnapshot),
+          'currentLevelndex': getParameter<int>(data, 'currentLevelndex'),
         },
       ),
   'contentPage': (data) async => ParameterData(
         allParams: {
           'lesson': await getDocumentParameter<LessonsRecord>(
               data, 'lesson', LessonsRecord.fromSnapshot),
+        },
+      ),
+  'bookPageInfo': (data) async => ParameterData(
+        allParams: {
+          'pageInfo': await getDocumentParameter<BooksPagesRecord>(
+              data, 'pageInfo', BooksPagesRecord.fromSnapshot),
+        },
+      ),
+  'allVideos': ParameterData.none(),
+  'lessonsAllCodes': (data) async => ParameterData(
+        allParams: {
+          'courseInfo': await getDocumentParameter<StudyCategoriesRecord>(
+              data, 'courseInfo', StudyCategoriesRecord.fromSnapshot),
         },
       ),
 };

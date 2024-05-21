@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -8,6 +9,7 @@ import '/study/divider/divider_widget.dart';
 import '/study/study_audio/study_audio_widget.dart';
 import '/study/study_image/study_image_widget.dart';
 import '/study/task_book_comp/task_book_comp_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -76,18 +78,57 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
           return wrapWithModel(
             model: _model.studyImageModel,
             updateCallback: () => setState(() {}),
+            updateOnChange: true,
             child: StudyImageWidget(
-              image: widget.level!.photo,
+              image: FFLocalizations.of(context).languageCode == 'en'
+                  ? widget.level!.photoEng
+                  : widget.level!.photo,
             ),
           );
         } else if (widget.level?.type == ContentType.audio) {
-          return wrapWithModel(
-            model: _model.studyAudioModel,
-            updateCallback: () => setState(() {}),
-            updateOnChange: true,
-            child: StudyAudioWidget(
-              title: widget.level!.audioTitle,
-              duration: widget.level!.audioDuration,
+          return InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              _model.meditations = await actions.convertLessonToMeditation(
+                widget.level!,
+              );
+              setState(() {
+                FFAppState().playerIndex = 0;
+              });
+
+              context.pushNamed(
+                'playerPage',
+                queryParameters: {
+                  'audio': serializeParam(
+                    _model.meditations,
+                    ParamType.Document,
+                    true,
+                  ),
+                }.withoutNulls,
+                extra: <String, dynamic>{
+                  'audio': _model.meditations,
+                },
+              );
+
+              setState(() {});
+            },
+            child: wrapWithModel(
+              model: _model.studyAudioModel,
+              updateCallback: () => setState(() {}),
+              updateOnChange: true,
+              child: StudyAudioWidget(
+                title: FFLocalizations.of(context).getVariableText(
+                  ruText: widget.level?.audioTitle,
+                  enText: widget.level?.audioTitleEng,
+                ),
+                duration: FFLocalizations.of(context).getVariableText(
+                  ruText: widget.level?.audioDuration,
+                  enText: widget.level?.audioDurationEng,
+                ),
+              ),
             ),
           );
         } else if (widget.level?.type == ContentType.button) {
@@ -111,7 +152,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
               alignment: const AlignmentDirectional(0.0, 0.0),
               child: Text(
                 FFLocalizations.of(context).getText(
-                  'oxsl9hph' /* See your anwser(codes) */,
+                  'oxsl9hph' /* Посмотреть ответы (коды) */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Evolventa',
@@ -125,7 +166,10 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
           );
         } else if (widget.level?.type == ContentType.text) {
           return MarkdownBody(
-            data: widget.level!.text,
+            data: FFLocalizations.of(context).getVariableText(
+              ruText: widget.level?.text,
+              enText: widget.level?.textEng,
+            ),
             selectable: false,
             onTapLink: (_, url, __) => launchURL(url!),
           ).animateOnPageLoad(animationsMap['markdownOnPageLoadAnimation']!);
@@ -138,9 +182,9 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
           );
         } else if (widget.level?.type == ContentType.title) {
           return Text(
-            valueOrDefault<String>(
-              widget.level?.title,
-              '0',
+            FFLocalizations.of(context).getVariableText(
+              ruText: widget.level?.title,
+              enText: widget.level?.titleEng,
             ),
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Evolventa',
@@ -168,9 +212,9 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
               ),
               Expanded(
                 child: Text(
-                  valueOrDefault<String>(
-                    widget.level?.textAutorName,
-                    '0',
+                  FFLocalizations.of(context).getVariableText(
+                    ruText: widget.level?.textAutorName,
+                    enText: widget.level?.textAutorNameEng,
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Evolventa',
@@ -187,9 +231,16 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
           return wrapWithModel(
             model: _model.taskBookCompModel,
             updateCallback: () => setState(() {}),
+            updateOnChange: true,
             child: TaskBookCompWidget(
-              title: widget.level!.bookTitle,
-              description: widget.level!.bookText,
+              title: FFLocalizations.of(context).getVariableText(
+                ruText: widget.level?.bookTitle,
+                enText: widget.level?.bookTitleEng,
+              ),
+              description: FFLocalizations.of(context).getVariableText(
+                ruText: widget.level?.bookText,
+                enText: widget.level?.bookTextEng,
+              ),
             ),
           );
         } else if (widget.level?.showDivider ?? false) {

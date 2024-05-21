@@ -45,3 +45,8 @@ export '/study/study_levels/study_levels_widget.dart' show StudyLevelsWidget;
 export '/study/study_level_info/study_level_info_widget.dart'
     show StudyLevelInfoWidget;
 export '/study/content_page/content_page_widget.dart' show ContentPageWidget;
+export '/study/book_page_info/book_page_info_widget.dart'
+    show BookPageInfoWidget;
+export '/main_pages/all_videos/all_videos_widget.dart' show AllVideosWidget;
+export '/study/lessons_all_codes/lessons_all_codes_widget.dart'
+    show LessonsAllCodesWidget;

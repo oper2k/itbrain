@@ -69,9 +69,9 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                         Align(
                           alignment: const AlignmentDirectional(-1.0, 0.0),
                           child: Text(
-                            valueOrDefault<String>(
-                              widget.course?.title,
-                              '0',
+                            FFLocalizations.of(context).getVariableText(
+                              ruText: widget.course?.title,
+                              enText: widget.course?.titleEng,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -81,6 +81,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   useGoogleFonts: false,
+                                  lineHeight: 1.2,
                                 ),
                           ),
                         ),
@@ -90,9 +91,9 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 0.0, 0.0),
                             child: Text(
-                              valueOrDefault<String>(
-                                widget.course?.description,
-                                '0',
+                              FFLocalizations.of(context).getVariableText(
+                                ruText: widget.course?.description,
+                                enText: widget.course?.descrEng,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -104,6 +105,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                     useGoogleFonts: false,
+                                    lineHeight: 1.23,
                                   ),
                             ),
                           ),
@@ -196,7 +198,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                           0.0, 0.0, 0.0, 2.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'fgdbuy0p' /* Скоро */,
+                                          'fgdbuy0p' /* СКОРО */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -277,7 +279,10 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                               alignment: const AlignmentDirectional(-1.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
-                                  widget.course?.title,
+                                  FFLocalizations.of(context).getVariableText(
+                                    ruText: widget.course?.title,
+                                    enText: widget.course?.titleEng,
+                                  ),
                                   '0',
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -288,6 +293,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: false,
+                                      lineHeight: 1.14,
                                     ),
                               ),
                             ),
@@ -298,7 +304,13 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   valueOrDefault<String>(
-                                    widget.course?.description,
+                                    FFLocalizations.of(context).getVariableText(
+                                      ruText: valueOrDefault<String>(
+                                        widget.course?.description,
+                                        '0',
+                                      ),
+                                      enText: widget.course?.descrEng,
+                                    ),
                                     '0',
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -311,6 +323,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
                                         useGoogleFonts: false,
+                                        lineHeight: 1.23,
                                       ),
                                 ),
                               ),
@@ -342,8 +355,10 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Evolventa',
+                                            fontSize: 13.0,
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
+                                            lineHeight: 1.23,
                                           ),
                                     ),
                                   ),
@@ -352,14 +367,24 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                     child: Text(
                                       valueOrDefault<String>(
                                         '${valueOrDefault<String>(
-                                          (((currentUserDocument?.completeLessons
-                                                                  .toList() ??
-                                                              [])
-                                                          .length /
-                                                      containerLessonsRecordList
-                                                          .length) *
-                                                  100)
-                                              .toString(),
+                                          formatNumber(
+                                            ((currentUserDocument
+                                                                ?.completeLessons
+                                                                .toList() ??
+                                                            [])
+                                                        .length /
+                                                    containerLessonsRecordList
+                                                        .where((e) =>
+                                                            e.course ==
+                                                            widget.course
+                                                                ?.reference)
+                                                        .toList()
+                                                        .length) *
+                                                100,
+                                            formatType: FormatType.custom,
+                                            format: '',
+                                            locale: '',
+                                          ),
                                           '0',
                                         )} %',
                                         '0 %',
@@ -368,8 +393,11 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Evolventa',
+                                            fontSize: 13.0,
                                             letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
                                             useGoogleFonts: false,
+                                            lineHeight: 1.23,
                                           ),
                                     ),
                                   ),
@@ -389,28 +417,22 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                                         .toList() ??
                                                     [])
                                                 .length /
-                                            containerLessonsRecordList.length,
+                                            containerLessonsRecordList
+                                                .where((e) =>
+                                                    e.course ==
+                                                    widget.course?.reference)
+                                                .toList()
+                                                .length,
                                         0.0,
                                       ),
                                       lineHeight: 6.0,
                                       animation: true,
                                       animateFromLastPercent: true,
                                       progressColor:
-                                          FlutterFlowTheme.of(context).primary,
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context).accent4,
-                                      center: Text(
-                                        FFLocalizations.of(context).getText(
-                                          '9mcvesj0' /* 50% */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineSmall
-                                            .override(
-                                              fontFamily: 'Evolventa',
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: false,
-                                            ),
-                                      ),
+                                          FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                      backgroundColor: const Color(0x67FFFFFF),
+                                      barRadius: const Radius.circular(10.0),
                                       padding: EdgeInsets.zero,
                                     ),
                                   ),
@@ -512,9 +534,9 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                         Align(
                           alignment: const AlignmentDirectional(-1.0, 0.0),
                           child: Text(
-                            valueOrDefault<String>(
-                              widget.course?.title,
-                              '0',
+                            FFLocalizations.of(context).getVariableText(
+                              ruText: widget.course?.title,
+                              enText: widget.course?.titleEng,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -533,9 +555,9 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 0.0, 0.0),
                             child: Text(
-                              valueOrDefault<String>(
-                                widget.course?.description,
-                                '0',
+                              FFLocalizations.of(context).getVariableText(
+                                ruText: widget.course?.description,
+                                enText: widget.course?.descrEng,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -569,18 +591,11 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context.pushNamed(
-                                  'studyLevels',
-                                  queryParameters: {
-                                    'course': serializeParam(
-                                      widget.course,
-                                      ParamType.Document,
-                                    ),
-                                  }.withoutNulls,
-                                  extra: <String, dynamic>{
-                                    'course': widget.course,
-                                  },
-                                );
+                                await launchURL(
+                                    FFLocalizations.of(context).getVariableText(
+                                  ruText: widget.course?.courseUrl,
+                                  enText: widget.course?.courseEngUrl,
+                                ));
                               },
                               child: Container(
                                 width: double.infinity,
@@ -602,7 +617,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                   alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'fs07da0s' /* Узнать подробнее */,
+                                      'tnq0fkkt' /* Узнать подробнее */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import 'dart:math' as math;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'study_info_page_model.dart';
@@ -83,8 +84,10 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                       child: Stack(
                         alignment: const AlignmentDirectional(0.0, -1.0),
                         children: [
-                          Image.asset(
-                            'assets/images/Frame_12202.webp',
+                          CachedNetworkImage(
+                            fadeInDuration: const Duration(milliseconds: 500),
+                            fadeOutDuration: const Duration(milliseconds: 500),
+                            imageUrl: widget.courseInfo!.courseInfoImage,
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             fit: BoxFit.cover,
                           ),
@@ -147,7 +150,10 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                               alignment: const AlignmentDirectional(-1.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
-                                  widget.courseInfo?.duration,
+                                  FFLocalizations.of(context).getVariableText(
+                                    ruText: widget.courseInfo?.duration,
+                                    enText: widget.courseInfo?.durationEng,
+                                  ),
                                   '0',
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -221,9 +227,9 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               4.0, 24.0, 4.0, 0.0),
                           child: Text(
-                            valueOrDefault<String>(
-                              widget.courseInfo?.title,
-                              '0',
+                            FFLocalizations.of(context).getVariableText(
+                              ruText: widget.courseInfo?.title,
+                              enText: widget.courseInfo?.titleEng,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -247,9 +253,9 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                             child: Align(
                               alignment: const AlignmentDirectional(-1.0, 0.0),
                               child: Text(
-                                valueOrDefault<String>(
-                                  widget.courseInfo?.description,
-                                  '0',
+                                FFLocalizations.of(context).getVariableText(
+                                  ruText: widget.courseInfo?.description,
+                                  enText: widget.courseInfo?.descrEng,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -271,66 +277,118 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 32.0, 0.0, 0.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              await FfCustomPushNotificationsRecord.collection
-                                  .doc()
-                                  .set(
-                                      createFfCustomPushNotificationsRecordData(
-                                    tag: '',
-                                    isRepeat: false,
-                                    repeatInterval: '',
-                                    status: 'started',
-                                    targetAudience: 'All',
-                                    userRefs: currentUserReference?.id,
-                                    variable: '',
-                                    parameterData: '',
-                                    notificationTitle: '',
-                                    notificationText: '',
-                                    condition: '',
-                                    conditionValue: '',
-                                    initialPageName: 'studyPage',
-                                    timestamp: getCurrentTimestamp,
-                                    scheduledTime: widget.courseInfo?.startDate,
-                                    notificationImageUrl: '',
-                                  ));
-                            },
-                            child: Container(
-                              width: double.infinity,
-                              height: 52.0,
-                              decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                  colors: [
-                                    Color(0xFF9747FF),
-                                    Color(0xFFF1618E),
-                                    Color(0xFFFE710B)
-                                  ],
-                                  stops: [0.0, 0.4, 1.0],
-                                  begin: AlignmentDirectional(1.0, 0.34),
-                                  end: AlignmentDirectional(-1.0, -0.34),
-                                ),
-                                borderRadius: BorderRadius.circular(12.0),
-                              ),
-                              child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    '6fzep0g2' /* Напомнить об открытии продаж */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Evolventa',
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: false,
+                          child: Builder(
+                            builder: (context) {
+                              if (!_model.isPushOn) {
+                                return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    await FfCustomPushNotificationsRecord
+                                        .collection
+                                        .doc()
+                                        .set(
+                                            createFfCustomPushNotificationsRecordData(
+                                          tag: '',
+                                          isRepeat: false,
+                                          repeatInterval: '',
+                                          status: 'started',
+                                          targetAudience: 'All',
+                                          userRefs: currentUserReference?.id,
+                                          variable: '',
+                                          parameterData: '',
+                                          notificationTitle:
+                                              '${FFLocalizations.of(context).getVariableText(
+                                            ruText: 'Курс',
+                                            enText: 'Course',
+                                          )}\"${FFLocalizations.of(context).getVariableText(
+                                            ruText: widget.courseInfo?.title,
+                                            enText: widget.courseInfo?.titleEng,
+                                          )}\"${FFLocalizations.of(context).getVariableText(
+                                            ruText: ' теперь доступен!',
+                                            enText: 'is avaliable now!',
+                                          )}',
+                                          notificationText:
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            ruText: 'Зайди, чтобы проверить!',
+                                            enText: 'Click to check!',
+                                          ),
+                                          condition: '',
+                                          conditionValue: '',
+                                          initialPageName: 'studyPage',
+                                          timestamp: getCurrentTimestamp,
+                                          scheduledTime:
+                                              widget.courseInfo?.startDate,
+                                          notificationImageUrl: '',
+                                        ));
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 52.0,
+                                    decoration: BoxDecoration(
+                                      gradient: const LinearGradient(
+                                        colors: [
+                                          Color(0xFF9747FF),
+                                          Color(0xFFF1618E),
+                                          Color(0xFFFE710B)
+                                        ],
+                                        stops: [0.0, 0.4, 1.0],
+                                        begin: AlignmentDirectional(1.0, 0.34),
+                                        end: AlignmentDirectional(-1.0, -0.34),
                                       ),
-                                ),
-                              ),
-                            ),
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Align(
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          '6fzep0g2' /* Напомнить об открытии продаж */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Evolventa',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts: false,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                return Container(
+                                  width: double.infinity,
+                                  height: 52.0,
+                                  decoration: BoxDecoration(
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  child: Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'wwbhgqk2' /* Вы подписались на уведомления */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Evolventa',
+                                            color: const Color(0x67FFFFFF),
+                                            fontSize: 15.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.bold,
+                                            useGoogleFonts: false,
+                                          ),
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
                           ),
                         ),
                     ],

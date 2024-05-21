@@ -12,6 +12,7 @@ class FFIcons {
   static const String _isensorydop12Family = 'Isensorydop12';
   static const String _dmtAppBarFamily = 'DmtAppBar';
   static const String _dmtLockFamily = 'DmtLock';
+  static const String _dmtAddonsFamily = 'DmtAddons';
 
   // DMTIcons
   static const IconData kedit1 = IconData(0xe900, fontFamily: _dMTIconsFamily);
@@ -95,4 +96,9 @@ class FFIcons {
   // dmtLock
   static const IconData klockLevels =
       IconData(0xe900, fontFamily: _dmtLockFamily);
+
+  // dmtAddons
+  static const IconData kitsok = IconData(0xe900, fontFamily: _dmtAddonsFamily);
+  static const IconData krightDMTnew =
+      IconData(0xe901, fontFamily: _dmtAddonsFamily);
 }

@@ -103,6 +103,12 @@ class UsersRecord extends FirestoreRecord {
   List<DocumentReference> get completeLessons => _completeLessons ?? const [];
   bool hasCompleteLessons() => _completeLessons != null;
 
+  // "purchasedCourses_dates" field.
+  List<PurchasedCourseStruct>? _purchasedCoursesDates;
+  List<PurchasedCourseStruct> get purchasedCoursesDates =>
+      _purchasedCoursesDates ?? const [];
+  bool hasPurchasedCoursesDates() => _purchasedCoursesDates != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -122,6 +128,10 @@ class UsersRecord extends FirestoreRecord {
     _purchasedStudyPacks = getDataList(snapshotData['purchasedStudyPacks']);
     _purchasedLevels = getDataList(snapshotData['purchasedLevels']);
     _completeLessons = getDataList(snapshotData['completeLessons']);
+    _purchasedCoursesDates = getStructList(
+      snapshotData['purchasedCourses_dates'],
+      PurchasedCourseStruct.fromMap,
+    );
   }
 
   static CollectionReference get collection =>
@@ -208,7 +218,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
             e1?.purchasedMeditationsPacks, e2?.purchasedMeditationsPacks) &&
         listEquality.equals(e1?.purchasedStudyPacks, e2?.purchasedStudyPacks) &&
         listEquality.equals(e1?.purchasedLevels, e2?.purchasedLevels) &&
-        listEquality.equals(e1?.completeLessons, e2?.completeLessons);
+        listEquality.equals(e1?.completeLessons, e2?.completeLessons) &&
+        listEquality.equals(
+            e1?.purchasedCoursesDates, e2?.purchasedCoursesDates);
   }
 
   @override
@@ -229,7 +241,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.purchasedMeditationsPacks,
         e?.purchasedStudyPacks,
         e?.purchasedLevels,
-        e?.completeLessons
+        e?.completeLessons,
+        e?.purchasedCoursesDates
       ]);
 
   @override

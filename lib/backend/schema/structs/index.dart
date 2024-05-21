@@ -4,4 +4,5 @@ export 'stories_struct.dart';
 export 'completed_lesson_struct.dart';
 export 'lesson_content_struct.dart';
 export 'meditation_audio_struct.dart';
+export 'purchased_course_struct.dart';
 export 'purchased_levels_struct.dart';
