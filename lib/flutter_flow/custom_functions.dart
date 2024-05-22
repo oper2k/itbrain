@@ -238,3 +238,42 @@ BooksPagesRecord listShuffleBooks(List<BooksPagesRecord> books) {
   books.shuffle(math.Random());
   return books[0];
 }
+
+double? progress(
+  double? fact,
+  double? plan,
+) {
+  if (plan == null || plan.isNaN || fact == null || fact.isNaN) {
+    return 0;
+  }
+
+  double result = fact / plan;
+
+  // Проверяем, является ли результат NaN
+  if (result.isNaN) {
+    return 0;
+  }
+
+  if (result > 1) {
+    return 1 * 100;
+  }
+
+  return result * 100;
+}
+
+int viewedAndAllLessons(
+  List<String>? viewedLessons,
+  List<String>? allLessons,
+) {
+  // Напиши функцию которая найдет совпадения между списками и вернет их количество
+  int count = 0;
+  if (viewedLessons == null || allLessons == null) {
+    return count;
+  }
+  for (final lesson in allLessons) {
+    if (viewedLessons.contains(lesson)) {
+      count++;
+    }
+  }
+  return count;
+}

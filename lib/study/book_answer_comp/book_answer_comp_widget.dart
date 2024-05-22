@@ -242,16 +242,12 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
               children: [
                 Align(
                   alignment: const AlignmentDirectional(0.0, -1.0),
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 100.0),
-                    child: CachedNetworkImage(
-                      fadeInDuration: const Duration(milliseconds: 500),
-                      fadeOutDuration: const Duration(milliseconds: 500),
-                      imageUrl: widget.book!.photoCover,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
+                  child: CachedNetworkImage(
+                    fadeInDuration: const Duration(milliseconds: 500),
+                    fadeOutDuration: const Duration(milliseconds: 500),
+                    imageUrl: widget.book!.photoCover,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
                   ),
                 ),
                 Align(

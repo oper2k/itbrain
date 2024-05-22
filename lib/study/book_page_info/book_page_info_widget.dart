@@ -135,7 +135,6 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                         fadeOutDuration: const Duration(milliseconds: 500),
                         imageUrl: widget.pageInfo!.photo,
                         width: double.infinity,
-                        height: 360.0,
                         fit: BoxFit.cover,
                       ),
                     ),

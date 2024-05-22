@@ -151,8 +151,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                           child: Stack(
                             alignment: const AlignmentDirectional(0.0, -1.0),
                             children: [
-                              Image.asset(
-                                'assets/images/Frame_12202.webp',
+                              Image.network(
+                                widget.meditationCategory!.cetegoryCover,
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 fit: BoxFit.cover,
                               ),

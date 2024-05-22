@@ -65,16 +65,14 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
         body: StreamBuilder<List<LessonsRecord>>(
           stream: queryLessonsRecord(
             queryBuilder: (lessonsRecord) => lessonsRecord
-                .where(Filter.or(
-                  Filter(
-                    'course',
-                    isEqualTo: widget.courseInfo?.reference,
-                  ),
-                  Filter(
-                    'lang',
-                    isEqualTo: FFLocalizations.of(context).languageCode,
-                  ),
-                ))
+                .where(
+                  'course',
+                  isEqualTo: widget.courseInfo?.reference,
+                )
+                .where(
+                  'lang',
+                  isEqualTo: FFLocalizations.of(context).languageCode,
+                )
                 .orderBy('order', descending: true),
           ),
           builder: (context, snapshot) {
@@ -118,7 +116,7 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                               CachedNetworkImage(
                                 fadeInDuration: const Duration(milliseconds: 500),
                                 fadeOutDuration: const Duration(milliseconds: 500),
-                                imageUrl: widget.courseInfo!.cover,
+                                imageUrl: widget.courseInfo!.courseInfoImage,
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 fit: BoxFit.cover,
                               ),
@@ -176,7 +174,7 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                             alignment: const AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  4.0, 24.0, 4.0, 0.0),
+                                  0.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getVariableText(
                                   ruText: widget.courseInfo?.title,
@@ -253,7 +251,7 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 22.0, 0.0, 32.0),
+                                0.0, 16.0, 0.0, 32.0),
                             child: Builder(
                               builder: (context) {
                                 final lessons =

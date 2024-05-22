@@ -3,10 +3,10 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/main_pages/meditation_player_info/meditation_player_info_widget.dart';
 import '/profile/is_deleted_once/is_deleted_once_widget.dart';
 import '/profile/is_downloaded_once/is_downloaded_once_widget.dart';
 import '/profile/is_not_downloaded/is_not_downloaded_widget.dart';
-import '/profile/meditation_player_info/meditation_player_info_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -114,53 +114,66 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                       ),
                     ),
                   ),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        enableDrag: false,
-                        context: context,
-                        builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: MeditationPlayerInfoWidget(
-                              playerInfo: widget.meditationList!,
-                              index: FFAppState().playerIndex,
+                  if ((widget.meditationList?[FFAppState().playerIndex]
+                                  .playerTitle !=
+                              null &&
+                          widget.meditationList?[FFAppState().playerIndex]
+                                  .playerTitle !=
+                              '') &&
+                      (widget.meditationList?[FFAppState().playerIndex]
+                                  .playerText !=
+                              null &&
+                          widget.meditationList?[FFAppState().playerIndex]
+                                  .playerText !=
+                              ''))
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          enableDrag: false,
+                          context: context,
+                          builder: (context) {
+                            return Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: MeditationPlayerInfoWidget(
+                                playerInfo: widget.meditationList!,
+                                index: FFAppState().playerIndex,
+                              ),
+                            );
+                          },
+                        ).then((value) => safeSetState(() {}));
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            FFLocalizations.of(context).getText(
+                              'rj969l7a' /* Описание */,
                             ),
-                          );
-                        },
-                      ).then((value) => safeSetState(() {}));
-                    },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            'rj969l7a' /* Описание */,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Evolventa',
+                                  color: FlutterFlowTheme.of(context).accent1,
+                                  fontSize: 15.0,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: false,
+                                  lineHeight: 1.2,
+                                ),
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Evolventa',
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                    fontSize: 15.0,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: false,
-                                    lineHeight: 1.2,
-                                  ),
-                        ),
-                        Icon(
-                          FFIcons.k9,
-                          color: FlutterFlowTheme.of(context).accent1,
-                          size: 24.0,
-                        ),
-                      ].divide(const SizedBox(width: 4.0)),
+                          Icon(
+                            FFIcons.k9,
+                            color: FlutterFlowTheme.of(context).accent1,
+                            size: 24.0,
+                          ),
+                        ].divide(const SizedBox(width: 4.0)),
+                      ),
                     ),
-                  ),
                 ].divide(const SizedBox(width: 16.0)),
               ),
             ),
@@ -303,7 +316,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                         FFIcons.k5,
                         color: FFAppState().playerIndex > 0
                             ? FlutterFlowTheme.of(context).primaryText
-                            : FlutterFlowTheme.of(context).secondaryText,
+                            : FlutterFlowTheme.of(context).secondaryBackground,
                         size: 24.0,
                       ),
                       onPressed: () async {

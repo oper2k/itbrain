@@ -67,16 +67,15 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: StreamBuilder<List<LessonsRecord>>(
           stream: queryLessonsRecord(
-            queryBuilder: (lessonsRecord) => lessonsRecord.where(Filter.or(
-              Filter(
-                'level',
-                isEqualTo: widget.levels?.reference,
-              ),
-              Filter(
-                'lang',
-                isEqualTo: FFLocalizations.of(context).languageCode,
-              ),
-            )),
+            queryBuilder: (lessonsRecord) => lessonsRecord
+                .where(
+                  'level',
+                  isEqualTo: widget.levels?.reference,
+                )
+                .where(
+                  'lang',
+                  isEqualTo: FFLocalizations.of(context).languageCode,
+                ),
           ),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
@@ -155,36 +154,45 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                 alignment: const AlignmentDirectional(1.0, 0.0),
                                 child: AuthUserStreamWidget(
                                   builder: (context) => Text(
-                                    '${FFLocalizations.of(context).getVariableText(
-                                      ruText: 'Пройдено',
-                                      enText: 'Finished',
-                                    )} ${valueOrDefault<String>(
-                                      formatNumber(
-                                        (valueOrDefault<int>(
-                                                  (currentUserDocument
-                                                              ?.completeLessons
-                                                              .toList() ??
-                                                          [])
-                                                      .length,
-                                                  0,
-                                                ) /
+                                    valueOrDefault<String>(
+                                      '${FFLocalizations.of(context).getVariableText(
+                                        ruText: 'Пройдено',
+                                        enText: 'Finished',
+                                      )} ${valueOrDefault<String>(
+                                        formatNumber(
+                                          functions.progress(
+                                              functions
+                                                  .viewedAndAllLessons(
+                                                      (currentUserDocument
+                                                                  ?.completeLessons
+                                                                  .toList() ??
+                                                              [])
+                                                          .map((e) => e.id)
+                                                          .toList(),
+                                                      containerLessonsRecordList
+                                                          .map((e) =>
+                                                              e.reference.id)
+                                                          .toList())
+                                                  .toDouble(),
+                                              valueOrDefault<double>(
                                                 containerLessonsRecordList
                                                     .where((e) =>
-                                                        (e.level ==
-                                                            widget.levels
-                                                                ?.reference) &&
-                                                        (e.course ==
-                                                            widget.study
-                                                                ?.reference))
+                                                        e.level ==
+                                                        widget
+                                                            .levels?.reference)
                                                     .toList()
-                                                    .length) *
-                                            100,
-                                        formatType: FormatType.custom,
-                                        format: '',
-                                        locale: '',
-                                      ),
-                                      '0',
-                                    )}%',
+                                                    .length
+                                                    .toDouble(),
+                                                0.0,
+                                              )),
+                                          formatType: FormatType.custom,
+                                          format: '',
+                                          locale: '',
+                                        ),
+                                        '0',
+                                      )}%',
+                                      '0%',
+                                    ),
                                     textAlign: TextAlign.end,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
