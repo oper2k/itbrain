@@ -262,11 +262,15 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                                         30.0,
                                                                         0.0),
                                                             child: Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                widget.course
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getVariableText(
+                                                                ruText: widget
+                                                                    .course
                                                                     ?.title,
-                                                                '0',
+                                                                enText: widget
+                                                                    .course
+                                                                    ?.titleEng,
                                                               ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)

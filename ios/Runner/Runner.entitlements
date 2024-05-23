@@ -6,7 +6,7 @@
     <string>development</string>
     <key>com.apple.developer.associated-domains</key>
     <array>
-      <string>applinks:dmtmeditation.page.link</string>
+      <string>applinks:it-brain.app</string>
     </array>
 </dict>
 </plist>

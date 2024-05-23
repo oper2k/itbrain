@@ -193,40 +193,45 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                             lineHeight: 1.29,
                                           ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 4.0, 0.0, 0.0),
-                                      child: Text(
-                                        '${valueOrDefault<String>(
-                                          widget.meditationCategories?.count
-                                              .toString(),
-                                          '0',
-                                        )}${valueOrDefault<String>(
-                                          FFLocalizations.of(context)
-                                              .getVariableText(
-                                            ruText: ' Аудиозаписей',
-                                            enText: ' audios',
-                                          ),
-                                          ' 0',
-                                        )}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Evolventa',
-                                              color: widget
-                                                      .meditationCategories!
-                                                      .soon
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .secondaryText
-                                                  : FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              fontSize: 15.0,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: false,
-                                              lineHeight: 1.2,
+                                    if (widget.meditationCategories
+                                            ?.showAudioCount ??
+                                        true)
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 4.0, 0.0, 0.0),
+                                        child: Text(
+                                          '${valueOrDefault<String>(
+                                            widget.meditationCategories?.count
+                                                .toString(),
+                                            '0',
+                                          )}${valueOrDefault<String>(
+                                            FFLocalizations.of(context)
+                                                .getVariableText(
+                                              ruText: ' Аудиозаписей',
+                                              enText: ' audios',
                                             ),
+                                            ' 0',
+                                          )}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Evolventa',
+                                                color: widget
+                                                        .meditationCategories!
+                                                        .soon
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: false,
+                                                lineHeight: 1.2,
+                                              ),
+                                        ),
                                       ),
-                                    ),
                                   ],
                                 ),
                               ),

@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'book_page_info_model.dart';
 export 'book_page_info_model.dart';
 
@@ -164,18 +165,10 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                   alignment: const AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                    child: Text(
-                      valueOrDefault<String>(
-                        widget.pageInfo?.mainText,
-                        '0',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Evolventa',
-                            fontSize: 17.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.normal,
-                            useGoogleFonts: false,
-                          ),
+                    child: MarkdownBody(
+                      data: widget.pageInfo!.mainText,
+                      selectable: true,
+                      onTapLink: (_, url, __) => launchURL(url!),
                     ),
                   ),
                 ),

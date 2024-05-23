@@ -495,7 +495,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'jzorskdy': {
       'ru': 'Видео',
-      'en': '',
+      'en': 'Videos',
     },
     'frx0mzd2': {
       'ru': 'Послание дня',
@@ -689,7 +689,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '58i4w14h': {
       'ru': 'Home',
-      'en': '',
+      'en': 'Home',
     },
   },
   // confirmEmailProfile
@@ -765,7 +765,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'bugr0nhk': {
       'ru': 'Обучение',
-      'en': '',
+      'en': 'Study',
     },
   },
   // studyInfoPage
@@ -780,11 +780,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'wwbhgqk2': {
       'ru': 'Вы подписались на уведомления',
-      'en': '',
+      'en': 'You have subscribed to notifications',
     },
     '58i4w14h': {
       'ru': 'Home',
-      'en': '',
+      'en': 'Home',
     },
   },
   // studyLevels
@@ -806,7 +806,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'tysk2a96': {
       'ru': 'Перейти на следующий уровень',
-      'en': '',
+      'en': 'Go to next level',
     },
     '4kdyliml': {
       'ru': 'Home',
@@ -817,47 +817,48 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'm0jw9buc': {
       'ru': 'Обучение',
-      'en': '',
+      'en': 'Study',
     },
   },
   // bookPageInfo
   {
     'q343b0bi': {
       'ru': 'Home',
-      'en': '',
+      'en': 'Home',
     },
   },
   // allVideos
   {
     'xbqqs07l': {
       'ru': 'Видео',
-      'en': '',
+      'en': 'Video',
     },
     'p0ndhkva': {
       'ru': 'С канала \"Расшифровка генома человечности\"',
-      'en': '',
+      'en': 'From the channel \"Decoding the Human Genome\"',
     },
     'p5qgl4l7': {
       'ru': 'Home',
-      'en': '',
+      'en': 'Home',
     },
   },
   // lessonsAllCodes
   {
     'uucso3rn': {
       'ru': 'Собрали все аудио с курса в одном месте для вашего удобства',
-      'en': '',
+      'en':
+          'We have collected all the audio from the course in one place for your convenience.',
     },
     'f3bthe0z': {
       'ru': 'Home',
-      'en': '',
+      'en': 'Home',
     },
   },
   // bookTimer
   {
     'z425erss': {
       'ru': 'Подбираем твою страницу на сегодня',
-      'en': '',
+      'en': 'We are selecting your page for today',
     },
     'ctd01cm1': {
       'ru': 'Home',
@@ -872,7 +873,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'lmm0mjsw': {
       'ru': 'Не забудьте проверить папку «Спам» и другие.',
-      'en': '',
+      'en': 'Don\'t forget about \"Spam\" folder',
     },
     'mteqd617': {
       'ru': 'Отлично!',
@@ -1011,7 +1012,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'jvntpdkz': {
       'ru': 'БЕСПЛАТНО',
-      'en': '',
+      'en': 'FREE',
     },
   },
   // thanksForBuying
@@ -1286,7 +1287,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3jhy5596': {
       'ru': 'Обучение',
-      'en': 'Education',
+      'en': 'Study',
     },
     'ljdwndwc': {
       'ru': 'Профиль',
@@ -1297,11 +1298,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'm9ih9mtc': {
       'ru': 'Главная',
-      'en': 'home',
+      'en': 'Home',
     },
     'ztl340rp': {
       'ru': 'Обучение',
-      'en': 'Education',
+      'en': 'Study',
     },
     '9h7ymcdk': {
       'ru': 'Профиль',
@@ -1338,14 +1339,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '81k519jd': {
       'ru': 'Подбираем твою страницу на сегодня',
-      'en': '',
+      'en': 'We are selecting your page for today',
     },
   },
   // meditationPackInfo
   {
     'yegekz55': {
       'ru': 'Закрыть',
-      'en': '',
+      'en': 'Close',
     },
   },
   // Miscellaneous

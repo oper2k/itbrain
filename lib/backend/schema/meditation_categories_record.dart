@@ -100,6 +100,11 @@ class MeditationCategoriesRecord extends FirestoreRecord {
   bool get free => _free ?? false;
   bool hasFree() => _free != null;
 
+  // "showAudioCount" field.
+  bool? _showAudioCount;
+  bool get showAudioCount => _showAudioCount ?? false;
+  bool hasShowAudioCount() => _showAudioCount != null;
+
   void _initializeFields() {
     _nameCategory = snapshotData['nameCategory'] as String?;
     _descriptionCategory = snapshotData['descriptionCategory'] as String?;
@@ -119,6 +124,7 @@ class MeditationCategoriesRecord extends FirestoreRecord {
     _sort = castToType<int>(snapshotData['sort']);
     _soon = snapshotData['soon'] as bool?;
     _free = snapshotData['free'] as bool?;
+    _showAudioCount = snapshotData['showAudioCount'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -175,6 +181,7 @@ Map<String, dynamic> createMeditationCategoriesRecordData({
   int? sort,
   bool? soon,
   bool? free,
+  bool? showAudioCount,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -195,6 +202,7 @@ Map<String, dynamic> createMeditationCategoriesRecordData({
       'sort': sort,
       'soon': soon,
       'free': free,
+      'showAudioCount': showAudioCount,
     }.withoutNulls,
   );
 
@@ -223,7 +231,8 @@ class MeditationCategoriesRecordDocumentEquality
         e1?.count == e2?.count &&
         e1?.sort == e2?.sort &&
         e1?.soon == e2?.soon &&
-        e1?.free == e2?.free;
+        e1?.free == e2?.free &&
+        e1?.showAudioCount == e2?.showAudioCount;
   }
 
   @override
@@ -244,7 +253,8 @@ class MeditationCategoriesRecordDocumentEquality
         e?.count,
         e?.sort,
         e?.soon,
-        e?.free
+        e?.free,
+        e?.showAudioCount
       ]);
 
   @override
