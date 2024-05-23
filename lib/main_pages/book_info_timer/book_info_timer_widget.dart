@@ -5,7 +5,6 @@ import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'book_info_timer_model.dart';
 export 'book_info_timer_model.dart';
 
@@ -38,12 +37,14 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.instantTimer = InstantTimer.periodic(
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 100),
         callback: (timer) async {
           setState(() {
             _model.progress = _model.progress + 0.1;
           });
           if (_model.progress >= 1.0) {
+            _model.instantTimer?.cancel();
+            Navigator.pop(context);
             _model.allPages = await queryBooksPagesRecordOnce(
               queryBuilder: (booksPagesRecord) => booksPagesRecord.where(
                 'book',
@@ -62,10 +63,15 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
               extra: <String, dynamic>{
                 'pageInfo':
                     functions.listShuffleBooks(_model.allPages!.toList()),
+                kTransitionInfoKey: const TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.fade,
+                  duration: Duration(milliseconds: 0),
+                ),
               },
             );
-
-            Navigator.pop(context);
+          } else {
+            return;
           }
         },
         startImmediately: true,
@@ -165,18 +171,6 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
                   ),
                 ),
               ],
-            ),
-          ),
-          Align(
-            alignment: const AlignmentDirectional(1.0, -1.0),
-            child: CircularPercentIndicator(
-              percent: 0.0,
-              radius: 0.0,
-              lineWidth: 12.0,
-              animation: false,
-              animateFromLastPercent: true,
-              progressColor: Colors.transparent,
-              backgroundColor: Colors.transparent,
             ),
           ),
         ],

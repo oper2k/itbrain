@@ -927,12 +927,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       child: StreamBuilder<List<VideosRecord>>(
                                         stream: queryVideosRecord(
                                           queryBuilder: (videosRecord) =>
-                                              videosRecord.where(
-                                            'lang',
-                                            isEqualTo:
-                                                FFLocalizations.of(context)
-                                                    .languageCode,
-                                          ),
+                                              videosRecord
+                                                  .where(
+                                                    'lang',
+                                                    isEqualTo:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .languageCode,
+                                                  )
+                                                  .orderBy('order'),
                                         ),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.

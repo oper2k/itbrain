@@ -218,6 +218,12 @@ final parametersBuilderMap =
               data, 'courseInfo', StudyCategoriesRecord.fromSnapshot),
         },
       ),
+  'bookTimer': (data) async => ParameterData(
+        allParams: {
+          'book': await getDocumentParameter<BookInfoRecord>(
+              data, 'book', BookInfoRecord.fromSnapshot),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

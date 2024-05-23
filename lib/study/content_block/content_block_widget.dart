@@ -178,7 +178,9 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
             model: _model.createdByModel,
             updateCallback: () => setState(() {}),
             updateOnChange: true,
-            child: const CreatedByWidget(),
+            child: CreatedByWidget(
+              photo: widget.level!.createdByPhoto,
+            ),
           );
         } else if (widget.level?.type == ContentType.title) {
           return Text(

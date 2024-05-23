@@ -109,7 +109,7 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
                   ),
                   Container(
                     width: 40.0,
-                    height: 44.0,
+                    height: 40.0,
                     decoration: const BoxDecoration(),
                   ),
                 ],

@@ -853,6 +853,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
+  // bookTimer
+  {
+    'z425erss': {
+      'ru': 'Подбираем твою страницу на сегодня',
+      'en': '',
+    },
+    'ctd01cm1': {
+      'ru': 'Home',
+      'en': '',
+    },
+  },
   // confirmed
   {
     '9oilinzf': {

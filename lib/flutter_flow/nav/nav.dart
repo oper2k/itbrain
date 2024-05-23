@@ -395,6 +395,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.Document,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'bookTimer',
+          path: '/bookTimer',
+          asyncParams: {
+            'book': getDoc(['bookInfo'], BookInfoRecord.fromSnapshot),
+          },
+          builder: (context, params) => BookTimerWidget(
+            book: params.getParam(
+              'book',
+              ParamType.Document,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

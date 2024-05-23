@@ -205,34 +205,49 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                   ),
                                 ),
                               ),
-                              Align(
-                                alignment: const AlignmentDirectional(1.0, 0.0),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 8.0, 0.0, 0.0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getVariableText(
-                                      ruText: widget.levels?.title,
-                                      enText: widget.levels?.titleEng,
-                                    ),
-                                    textAlign: TextAlign.end,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Evolventa',
-                                          fontSize: 28.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          useGoogleFonts: false,
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    110.0, 0.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 0.0, 0.0),
+                                          child: Text(
+                                            FFLocalizations.of(context)
+                                                .getVariableText(
+                                              ruText: widget.levels?.title,
+                                              enText: widget.levels?.titleEng,
+                                            ),
+                                            textAlign: TextAlign.end,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Evolventa',
+                                                  fontSize: 28.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
                                         ),
-                                  ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               Align(
                                 alignment: const AlignmentDirectional(1.0, 0.0),
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 8.0, 0.0, 0.0),
+                                      30.0, 8.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getVariableText(
                                       ruText: widget.levels?.description,

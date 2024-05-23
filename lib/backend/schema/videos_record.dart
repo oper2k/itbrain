@@ -5,6 +5,7 @@ import 'package:collection/collection.dart';
 import '/backend/schema/util/firestore_util.dart';
 
 import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class VideosRecord extends FirestoreRecord {
   VideosRecord._(
@@ -49,6 +50,11 @@ class VideosRecord extends FirestoreRecord {
   String get lang => _lang ?? '';
   bool hasLang() => _lang != null;
 
+  // "order" field.
+  int? _order;
+  int get order => _order ?? 0;
+  bool hasOrder() => _order != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _videoUrl = snapshotData['video_url'] as String?;
@@ -57,6 +63,7 @@ class VideosRecord extends FirestoreRecord {
     _durationEng = snapshotData['durationEng'] as String?;
     _videoCover = snapshotData['videoCover'] as String?;
     _lang = snapshotData['lang'] as String?;
+    _order = castToType<int>(snapshotData['order']);
   }
 
   static CollectionReference get collection =>
@@ -100,6 +107,7 @@ Map<String, dynamic> createVideosRecordData({
   String? durationEng,
   String? videoCover,
   String? lang,
+  int? order,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -110,6 +118,7 @@ Map<String, dynamic> createVideosRecordData({
       'durationEng': durationEng,
       'videoCover': videoCover,
       'lang': lang,
+      'order': order,
     }.withoutNulls,
   );
 
@@ -127,7 +136,8 @@ class VideosRecordDocumentEquality implements Equality<VideosRecord> {
         e1?.titleEng == e2?.titleEng &&
         e1?.durationEng == e2?.durationEng &&
         e1?.videoCover == e2?.videoCover &&
-        e1?.lang == e2?.lang;
+        e1?.lang == e2?.lang &&
+        e1?.order == e2?.order;
   }
 
   @override
@@ -138,7 +148,8 @@ class VideosRecordDocumentEquality implements Equality<VideosRecord> {
         e?.titleEng,
         e?.durationEng,
         e?.videoCover,
-        e?.lang
+        e?.lang,
+        e?.order
       ]);
 
   @override

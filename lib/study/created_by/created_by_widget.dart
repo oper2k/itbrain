@@ -5,7 +5,12 @@ import 'created_by_model.dart';
 export 'created_by_model.dart';
 
 class CreatedByWidget extends StatefulWidget {
-  const CreatedByWidget({super.key});
+  const CreatedByWidget({
+    super.key,
+    required this.photo,
+  });
+
+  final String? photo;
 
   @override
   State<CreatedByWidget> createState() => _CreatedByWidgetState();

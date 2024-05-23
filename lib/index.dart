@@ -50,3 +50,4 @@ export '/study/book_page_info/book_page_info_widget.dart'
 export '/main_pages/all_videos/all_videos_widget.dart' show AllVideosWidget;
 export '/study/lessons_all_codes/lessons_all_codes_widget.dart'
     show LessonsAllCodesWidget;
+export '/study/book_timer/book_timer_widget.dart' show BookTimerWidget;

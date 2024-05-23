@@ -36,6 +36,7 @@ class LessonContentStruct extends FFFirebaseStruct {
     String? textEng,
     String? audioDescription,
     String? audioDescriptionEng,
+    String? createdByPhoto,
     String? lang,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _photo = photo,
@@ -63,6 +64,7 @@ class LessonContentStruct extends FFFirebaseStruct {
         _textEng = textEng,
         _audioDescription = audioDescription,
         _audioDescriptionEng = audioDescriptionEng,
+        _createdByPhoto = createdByPhoto,
         _lang = lang,
         super(firestoreUtilData);
 
@@ -217,6 +219,12 @@ class LessonContentStruct extends FFFirebaseStruct {
   set audioDescriptionEng(String? val) => _audioDescriptionEng = val;
   bool hasAudioDescriptionEng() => _audioDescriptionEng != null;
 
+  // "createdByPhoto" field.
+  String? _createdByPhoto;
+  String get createdByPhoto => _createdByPhoto ?? '';
+  set createdByPhoto(String? val) => _createdByPhoto = val;
+  bool hasCreatedByPhoto() => _createdByPhoto != null;
+
   // "lang" field.
   String? _lang;
   String get lang => _lang ?? '';
@@ -250,6 +258,7 @@ class LessonContentStruct extends FFFirebaseStruct {
         textEng: data['textEng'] as String?,
         audioDescription: data['audioDescription'] as String?,
         audioDescriptionEng: data['audioDescriptionEng'] as String?,
+        createdByPhoto: data['createdByPhoto'] as String?,
         lang: data['lang'] as String?,
       );
 
@@ -283,6 +292,7 @@ class LessonContentStruct extends FFFirebaseStruct {
         'textEng': _textEng,
         'audioDescription': _audioDescription,
         'audioDescriptionEng': _audioDescriptionEng,
+        'createdByPhoto': _createdByPhoto,
         'lang': _lang,
       }.withoutNulls;
 
@@ -386,6 +396,10 @@ class LessonContentStruct extends FFFirebaseStruct {
         ),
         'audioDescriptionEng': serializeParam(
           _audioDescriptionEng,
+          ParamType.String,
+        ),
+        'createdByPhoto': serializeParam(
+          _createdByPhoto,
           ParamType.String,
         ),
         'lang': serializeParam(
@@ -521,6 +535,11 @@ class LessonContentStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        createdByPhoto: deserializeParam(
+          data['createdByPhoto'],
+          ParamType.String,
+          false,
+        ),
         lang: deserializeParam(
           data['lang'],
           ParamType.String,
@@ -559,6 +578,7 @@ class LessonContentStruct extends FFFirebaseStruct {
         textEng == other.textEng &&
         audioDescription == other.audioDescription &&
         audioDescriptionEng == other.audioDescriptionEng &&
+        createdByPhoto == other.createdByPhoto &&
         lang == other.lang;
   }
 
@@ -589,6 +609,7 @@ class LessonContentStruct extends FFFirebaseStruct {
         textEng,
         audioDescription,
         audioDescriptionEng,
+        createdByPhoto,
         lang
       ]);
 }
@@ -619,6 +640,7 @@ LessonContentStruct createLessonContentStruct({
   String? textEng,
   String? audioDescription,
   String? audioDescriptionEng,
+  String? createdByPhoto,
   String? lang,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
@@ -651,6 +673,7 @@ LessonContentStruct createLessonContentStruct({
       textEng: textEng,
       audioDescription: audioDescription,
       audioDescriptionEng: audioDescriptionEng,
+      createdByPhoto: createdByPhoto,
       lang: lang,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,

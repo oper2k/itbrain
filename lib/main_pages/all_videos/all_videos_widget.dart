@@ -135,7 +135,15 @@ class _AllVideosWidgetState extends State<AllVideosWidget> {
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: StreamBuilder<List<VideosRecord>>(
-                      stream: queryVideosRecord(),
+                      stream: queryVideosRecord(
+                        queryBuilder: (videosRecord) => videosRecord
+                            .where(
+                              'lang',
+                              isEqualTo:
+                                  FFLocalizations.of(context).languageCode,
+                            )
+                            .orderBy('order'),
+                      ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {

@@ -62,7 +62,7 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.safePop();
+                        context.pushNamed('HomePage');
                       },
                       child: Container(
                         width: 40.0,

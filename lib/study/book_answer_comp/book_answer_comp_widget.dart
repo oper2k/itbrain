@@ -1,7 +1,6 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/main_pages/book_info_timer/book_info_timer_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'book_answer_comp_model.dart';
@@ -174,21 +173,24 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        enableDrag: false,
-                                        context: context,
-                                        builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: BookInfoTimerWidget(
-                                              book: widget.book!,
-                                            ),
-                                          );
+                                      context.pushNamed(
+                                        'bookTimer',
+                                        queryParameters: {
+                                          'book': serializeParam(
+                                            widget.book,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'book': widget.book,
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
                                         },
-                                      ).then((value) => safeSetState(() {}));
+                                      );
                                     },
                                     child: Container(
                                       width: double.infinity,
