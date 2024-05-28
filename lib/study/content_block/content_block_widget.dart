@@ -80,9 +80,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
             updateCallback: () => setState(() {}),
             updateOnChange: true,
             child: StudyImageWidget(
-              image: FFLocalizations.of(context).languageCode == 'en'
-                  ? widget.level!.photoEng
-                  : widget.level!.photo,
+              image: widget.level!.photo,
             ),
           );
         } else if (widget.level?.type == ContentType.audio) {
@@ -120,14 +118,8 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
               updateCallback: () => setState(() {}),
               updateOnChange: true,
               child: StudyAudioWidget(
-                title: FFLocalizations.of(context).getVariableText(
-                  ruText: widget.level?.audioTitle,
-                  enText: widget.level?.audioTitleEng,
-                ),
-                duration: FFLocalizations.of(context).getVariableText(
-                  ruText: widget.level?.audioDuration,
-                  enText: widget.level?.audioDurationEng,
-                ),
+                title: widget.level!.audioTitle,
+                duration: widget.level!.audioDuration,
               ),
             ),
           );
@@ -184,9 +176,9 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
           );
         } else if (widget.level?.type == ContentType.title) {
           return Text(
-            FFLocalizations.of(context).getVariableText(
-              ruText: widget.level?.title,
-              enText: widget.level?.titleEng,
+            valueOrDefault<String>(
+              widget.level?.title,
+              '0',
             ),
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Evolventa',
@@ -214,9 +206,9 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
               ),
               Expanded(
                 child: Text(
-                  FFLocalizations.of(context).getVariableText(
-                    ruText: widget.level?.textAutorName,
-                    enText: widget.level?.textAutorNameEng,
+                  valueOrDefault<String>(
+                    widget.level?.textAutorName,
+                    '0',
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Evolventa',
@@ -235,14 +227,8 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
             updateCallback: () => setState(() {}),
             updateOnChange: true,
             child: TaskBookCompWidget(
-              title: FFLocalizations.of(context).getVariableText(
-                ruText: widget.level?.bookTitle,
-                enText: widget.level?.bookTitleEng,
-              ),
-              description: FFLocalizations.of(context).getVariableText(
-                ruText: widget.level?.bookText,
-                enText: widget.level?.bookTextEng,
-              ),
+              title: widget.level!.bookTitle,
+              description: widget.level!.bookText,
             ),
           );
         } else if (widget.level?.showDivider ?? false) {

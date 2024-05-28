@@ -95,10 +95,7 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
                   ),
                   Expanded(
                     child: Text(
-                      '${widget.lesson?.count.toString()}. ${FFLocalizations.of(context).getVariableText(
-                        ruText: widget.lesson?.title,
-                        enText: widget.lesson?.titleEng,
-                      )}',
+                      '${widget.lesson?.count.toString()}. ${widget.lesson?.title}',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Evolventa',
@@ -119,8 +116,14 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Builder(
                     builder: (context) {
-                      final contentBlock =
-                          widget.lesson?.content.toList() ?? [];
+                      final contentBlock = widget.lesson?.content
+                              .where((e) =>
+                                  e.lang ==
+                                  FFLocalizations.of(context).languageCode)
+                              .toList()
+                              .sortedList((e) => e.order)
+                              .toList() ??
+                          [];
                       return ListView.separated(
                         padding: const EdgeInsets.fromLTRB(
                           0,

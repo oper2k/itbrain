@@ -1,9 +1,11 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/navbar/navbar_study/navbar_study_widget.dart';
 import '/study/study_comp/study_comp_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'study_page_model.dart';
 export 'study_page_model.dart';
 
@@ -14,15 +16,33 @@ class StudyPageWidget extends StatefulWidget {
   State<StudyPageWidget> createState() => _StudyPageWidgetState();
 }
 
-class _StudyPageWidgetState extends State<StudyPageWidget> {
+class _StudyPageWidgetState extends State<StudyPageWidget>
+    with TickerProviderStateMixin {
   late StudyPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => StudyPageModel());
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 820.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -163,7 +183,7 @@ class _StudyPageWidgetState extends State<StudyPageWidget> {
                     ),
                   ),
                 ],
-              ),
+              ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
             ),
             Align(
               alignment: const AlignmentDirectional(0.0, 1.0),

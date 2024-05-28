@@ -251,7 +251,7 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                     fadeInDuration: const Duration(milliseconds: 500),
                     fadeOutDuration: const Duration(milliseconds: 500),
                     imageUrl: widget.meditationCategories!.categoryPhoto,
-                    width: 147.0,
+                    width: 148.0,
                     height: 148.0,
                     fit: BoxFit.cover,
                   ),

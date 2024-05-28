@@ -51,8 +51,8 @@ class _CreatedByWidgetState extends State<CreatedByWidget> {
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),
-          child: Image.asset(
-            'assets/images/Group_10538.webp',
+          child: Image.network(
+            widget.photo!,
             fit: BoxFit.cover,
           ),
         ),

@@ -80,16 +80,6 @@ class LessonsRecord extends FirestoreRecord {
   String get audioDescription => _audioDescription ?? '';
   bool hasAudioDescription() => _audioDescription != null;
 
-  // "playerTitle" field.
-  String? _playerTitle;
-  String get playerTitle => _playerTitle ?? '';
-  bool hasPlayerTitle() => _playerTitle != null;
-
-  // "playerText" field.
-  String? _playerText;
-  String get playerText => _playerText ?? '';
-  bool hasPlayerText() => _playerText != null;
-
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _count = castToType<int>(snapshotData['count']);
@@ -107,8 +97,6 @@ class LessonsRecord extends FirestoreRecord {
     _audioTitle = snapshotData['audioTitle'] as String?;
     _audioDuration = snapshotData['audioDuration'] as String?;
     _audioDescription = snapshotData['audioDescription'] as String?;
-    _playerTitle = snapshotData['playerTitle'] as String?;
-    _playerText = snapshotData['playerText'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -158,8 +146,6 @@ Map<String, dynamic> createLessonsRecordData({
   String? audioTitle,
   String? audioDuration,
   String? audioDescription,
-  String? playerTitle,
-  String? playerText,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -175,8 +161,6 @@ Map<String, dynamic> createLessonsRecordData({
       'audioTitle': audioTitle,
       'audioDuration': audioDuration,
       'audioDescription': audioDescription,
-      'playerTitle': playerTitle,
-      'playerText': playerText,
     }.withoutNulls,
   );
 
@@ -201,9 +185,7 @@ class LessonsRecordDocumentEquality implements Equality<LessonsRecord> {
         e1?.order == e2?.order &&
         e1?.audioTitle == e2?.audioTitle &&
         e1?.audioDuration == e2?.audioDuration &&
-        e1?.audioDescription == e2?.audioDescription &&
-        e1?.playerTitle == e2?.playerTitle &&
-        e1?.playerText == e2?.playerText;
+        e1?.audioDescription == e2?.audioDescription;
   }
 
   @override
@@ -220,9 +202,7 @@ class LessonsRecordDocumentEquality implements Equality<LessonsRecord> {
         e?.order,
         e?.audioTitle,
         e?.audioDuration,
-        e?.audioDescription,
-        e?.playerTitle,
-        e?.playerText
+        e?.audioDescription
       ]);
 
   @override
