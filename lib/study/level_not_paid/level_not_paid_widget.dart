@@ -78,7 +78,7 @@ class _LevelNotPaidWidgetState extends State<LevelNotPaidWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'xa645yp4' /* Уровень не приобретен */,
+                        'xa645yp4' /* Уровень недоступегн */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Evolventa',
@@ -96,8 +96,9 @@ class _LevelNotPaidWidgetState extends State<LevelNotPaidWidget> {
                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'x8qumqus' /* Вы можете купить его прямо сей... */,
+                        'x8qumqus' /* Чтобы перейти на этот уровень ... */,
                       ),
+                      textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Evolventa',
                             color: FlutterFlowTheme.of(context).secondaryText,
@@ -139,7 +140,7 @@ class _LevelNotPaidWidgetState extends State<LevelNotPaidWidget> {
                         alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
-                            'a4pg3pvq' /* Перейти к покупке */,
+                            'a4pg3pvq' /* Узнать подробнее */,
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(

@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'meditation_info_widget.dart' show MeditationInfoWidget;
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ class MeditationInfoModel extends FlutterFlowModel<MeditationInfoWidget> {
   bool? isDeleted;
   // Stores action output result for [Custom Action - downloadUrl] action in DownloadAllBtn widget.
   bool? isDownload;
+  // Stores action output result for [Backend Call - Create Document] action in Container widget.
+  FfCustomPushNotificationsRecord? meditationPackNotify;
 
   @override
   void initState(BuildContext context) {}

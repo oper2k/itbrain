@@ -30,11 +30,6 @@ class LessonsRecord extends FirestoreRecord {
   List<LessonContentStruct> get content => _content ?? const [];
   bool hasContent() => _content != null;
 
-  // "open_date" field.
-  DateTime? _openDate;
-  DateTime? get openDate => _openDate;
-  bool hasOpenDate() => _openDate != null;
-
   // "titleEng" field.
   String? _titleEng;
   String get titleEng => _titleEng ?? '';
@@ -80,6 +75,11 @@ class LessonsRecord extends FirestoreRecord {
   String get audioDescription => _audioDescription ?? '';
   bool hasAudioDescription() => _audioDescription != null;
 
+  // "open_date" field.
+  DateTime? _openDate;
+  DateTime? get openDate => _openDate;
+  bool hasOpenDate() => _openDate != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _count = castToType<int>(snapshotData['count']);
@@ -87,7 +87,6 @@ class LessonsRecord extends FirestoreRecord {
       snapshotData['content'],
       LessonContentStruct.fromMap,
     );
-    _openDate = snapshotData['open_date'] as DateTime?;
     _titleEng = snapshotData['titleEng'] as String?;
     _level = snapshotData['level'] as DocumentReference?;
     _course = snapshotData['course'] as DocumentReference?;
@@ -97,6 +96,7 @@ class LessonsRecord extends FirestoreRecord {
     _audioTitle = snapshotData['audioTitle'] as String?;
     _audioDuration = snapshotData['audioDuration'] as String?;
     _audioDescription = snapshotData['audioDescription'] as String?;
+    _openDate = snapshotData['open_date'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -136,7 +136,6 @@ class LessonsRecord extends FirestoreRecord {
 Map<String, dynamic> createLessonsRecordData({
   String? title,
   int? count,
-  DateTime? openDate,
   String? titleEng,
   DocumentReference? level,
   DocumentReference? course,
@@ -146,12 +145,12 @@ Map<String, dynamic> createLessonsRecordData({
   String? audioTitle,
   String? audioDuration,
   String? audioDescription,
+  DateTime? openDate,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'title': title,
       'count': count,
-      'open_date': openDate,
       'titleEng': titleEng,
       'level': level,
       'course': course,
@@ -161,6 +160,7 @@ Map<String, dynamic> createLessonsRecordData({
       'audioTitle': audioTitle,
       'audioDuration': audioDuration,
       'audioDescription': audioDescription,
+      'open_date': openDate,
     }.withoutNulls,
   );
 
@@ -176,7 +176,6 @@ class LessonsRecordDocumentEquality implements Equality<LessonsRecord> {
     return e1?.title == e2?.title &&
         e1?.count == e2?.count &&
         listEquality.equals(e1?.content, e2?.content) &&
-        e1?.openDate == e2?.openDate &&
         e1?.titleEng == e2?.titleEng &&
         e1?.level == e2?.level &&
         e1?.course == e2?.course &&
@@ -185,7 +184,8 @@ class LessonsRecordDocumentEquality implements Equality<LessonsRecord> {
         e1?.order == e2?.order &&
         e1?.audioTitle == e2?.audioTitle &&
         e1?.audioDuration == e2?.audioDuration &&
-        e1?.audioDescription == e2?.audioDescription;
+        e1?.audioDescription == e2?.audioDescription &&
+        e1?.openDate == e2?.openDate;
   }
 
   @override
@@ -193,7 +193,6 @@ class LessonsRecordDocumentEquality implements Equality<LessonsRecord> {
         e?.title,
         e?.count,
         e?.content,
-        e?.openDate,
         e?.titleEng,
         e?.level,
         e?.course,
@@ -202,7 +201,8 @@ class LessonsRecordDocumentEquality implements Equality<LessonsRecord> {
         e?.order,
         e?.audioTitle,
         e?.audioDuration,
-        e?.audioDescription
+        e?.audioDescription,
+        e?.openDate
       ]);
 
   @override

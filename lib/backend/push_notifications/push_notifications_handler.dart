@@ -77,7 +77,7 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
           color: FlutterFlowTheme.of(context).thirdBackground,
           child: Center(
             child: Image.asset(
-              'assets/images/Frame_881233527.png',
+              'assets/images/Splash.png',
               width: 150.0,
               height: 150.0,
               fit: BoxFit.cover,

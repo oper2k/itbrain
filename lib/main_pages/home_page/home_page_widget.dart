@@ -223,7 +223,17 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed('profileCabinet');
+                                    context.pushNamed(
+                                      'profileCabinet',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: const TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
+                                    );
                                   },
                                   child: Builder(
                                     builder: (context) {
@@ -761,23 +771,20 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                if (!listViewMeditationCategoriesRecord
-                                                    .soon) {
-                                                  context.pushNamed(
-                                                    'meditationInfo',
-                                                    queryParameters: {
-                                                      'meditationCategory':
-                                                          serializeParam(
+                                                context.pushNamed(
+                                                  'meditationInfo',
+                                                  queryParameters: {
+                                                    'meditationCategory':
+                                                        serializeParam(
+                                                      listViewMeditationCategoriesRecord,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'meditationCategory':
                                                         listViewMeditationCategoriesRecord,
-                                                        ParamType.Document,
-                                                      ),
-                                                    }.withoutNulls,
-                                                    extra: <String, dynamic>{
-                                                      'meditationCategory':
-                                                          listViewMeditationCategoriesRecord,
-                                                    },
-                                                  );
-                                                }
+                                                  },
+                                                );
                                               },
                                               child: wrapWithModel(
                                                 model: _model

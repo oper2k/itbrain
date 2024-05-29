@@ -105,6 +105,16 @@ class MeditationCategoriesRecord extends FirestoreRecord {
   bool get showAudioCount => _showAudioCount ?? false;
   bool hasShowAudioCount() => _showAudioCount != null;
 
+  // "start_date" field.
+  DateTime? _startDate;
+  DateTime? get startDate => _startDate;
+  bool hasStartDate() => _startDate != null;
+
+  // "isPresale" field.
+  bool? _isPresale;
+  bool get isPresale => _isPresale ?? false;
+  bool hasIsPresale() => _isPresale != null;
+
   void _initializeFields() {
     _nameCategory = snapshotData['nameCategory'] as String?;
     _descriptionCategory = snapshotData['descriptionCategory'] as String?;
@@ -125,6 +135,8 @@ class MeditationCategoriesRecord extends FirestoreRecord {
     _soon = snapshotData['soon'] as bool?;
     _free = snapshotData['free'] as bool?;
     _showAudioCount = snapshotData['showAudioCount'] as bool?;
+    _startDate = snapshotData['start_date'] as DateTime?;
+    _isPresale = snapshotData['isPresale'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -182,6 +194,8 @@ Map<String, dynamic> createMeditationCategoriesRecordData({
   bool? soon,
   bool? free,
   bool? showAudioCount,
+  DateTime? startDate,
+  bool? isPresale,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -203,6 +217,8 @@ Map<String, dynamic> createMeditationCategoriesRecordData({
       'soon': soon,
       'free': free,
       'showAudioCount': showAudioCount,
+      'start_date': startDate,
+      'isPresale': isPresale,
     }.withoutNulls,
   );
 
@@ -232,7 +248,9 @@ class MeditationCategoriesRecordDocumentEquality
         e1?.sort == e2?.sort &&
         e1?.soon == e2?.soon &&
         e1?.free == e2?.free &&
-        e1?.showAudioCount == e2?.showAudioCount;
+        e1?.showAudioCount == e2?.showAudioCount &&
+        e1?.startDate == e2?.startDate &&
+        e1?.isPresale == e2?.isPresale;
   }
 
   @override
@@ -254,7 +272,9 @@ class MeditationCategoriesRecordDocumentEquality
         e?.sort,
         e?.soon,
         e?.free,
-        e?.showAudioCount
+        e?.showAudioCount,
+        e?.startDate,
+        e?.isPresale
       ]);
 
   @override

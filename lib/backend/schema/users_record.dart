@@ -109,6 +109,11 @@ class UsersRecord extends FirestoreRecord {
       _purchasedCoursesDates ?? const [];
   bool hasPurchasedCoursesDates() => _purchasedCoursesDates != null;
 
+  // "added_in_push" field.
+  List<DocumentReference>? _addedInPush;
+  List<DocumentReference> get addedInPush => _addedInPush ?? const [];
+  bool hasAddedInPush() => _addedInPush != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -132,6 +137,7 @@ class UsersRecord extends FirestoreRecord {
       snapshotData['purchasedCourses_dates'],
       PurchasedCourseStruct.fromMap,
     );
+    _addedInPush = getDataList(snapshotData['added_in_push']);
   }
 
   static CollectionReference get collection =>
@@ -220,7 +226,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         listEquality.equals(e1?.purchasedLevels, e2?.purchasedLevels) &&
         listEquality.equals(e1?.completeLessons, e2?.completeLessons) &&
         listEquality.equals(
-            e1?.purchasedCoursesDates, e2?.purchasedCoursesDates);
+            e1?.purchasedCoursesDates, e2?.purchasedCoursesDates) &&
+        listEquality.equals(e1?.addedInPush, e2?.addedInPush);
   }
 
   @override
@@ -242,7 +249,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.purchasedStudyPacks,
         e?.purchasedLevels,
         e?.completeLessons,
-        e?.purchasedCoursesDates
+        e?.purchasedCoursesDates,
+        e?.addedInPush
       ]);
 
   @override

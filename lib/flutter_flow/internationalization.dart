@@ -726,8 +726,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'more',
     },
     'vnfzb2oi': {
+      'ru': 'Вы подписались на уведомления',
+      'en': 'You have subscribed to notifications',
+    },
+    '2kma94hw': {
+      'ru': 'Напомнить об открытии продаж',
+      'en': '',
+    },
+    'lspc264o': {
       'ru': 'Узнать больше и купить',
-      'en': 'Find out more and buy',
+      'en': '',
     },
     'pt4kxvdz': {
       'ru': 'Home',
@@ -1209,16 +1217,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // levelNotPaid
   {
     'xa645yp4': {
-      'ru': 'Уровень не приобретен',
-      'en': 'Level not purchased',
+      'ru': 'Уровень недоступегн',
+      'en': 'Level not available',
     },
     'x8qumqus': {
-      'ru': 'Вы можете купить его прямо сейчас',
-      'en': 'You can buy it right now',
+      'ru': 'Чтобы перейти на этот уровень вам нужно пройти предыдущий',
+      'en': 'To go to this level you need to complete the previous one',
     },
     'a4pg3pvq': {
-      'ru': 'Перейти к покупке',
-      'en': 'Purchase',
+      'ru': 'Узнать подробнее',
+      'en': 'Find out more',
     },
   },
   // soon
