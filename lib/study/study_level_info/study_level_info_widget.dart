@@ -243,29 +243,6 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                   ],
                                 ),
                               ),
-                              Align(
-                                alignment: const AlignmentDirectional(1.0, 0.0),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      30.0, 8.0, 0.0, 0.0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getVariableText(
-                                      ruText: widget.levels?.description,
-                                      enText: widget.levels?.descrEng,
-                                    ),
-                                    textAlign: TextAlign.end,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Evolventa',
-                                          fontSize: 17.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.normal,
-                                          useGoogleFonts: false,
-                                        ),
-                                  ),
-                                ),
-                              ),
                               Expanded(
                                 child: Builder(
                                   builder: (context) {
@@ -275,7 +252,7 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                     return ListView.separated(
                                       padding: const EdgeInsets.fromLTRB(
                                         0,
-                                        52.0,
+                                        72.0,
                                         0,
                                         0,
                                       ),
@@ -434,7 +411,7 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                                           children: [
                                                             Expanded(
                                                               child: Text(
-                                                                '${lessonsItem.count.toString()}.${lessonsItem.title}',
+                                                                '${lessonsItem.count.toString()} ${lessonsItem.title}',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
