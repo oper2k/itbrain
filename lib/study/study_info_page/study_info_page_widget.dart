@@ -225,7 +225,7 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                         alignment: const AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              4.0, 24.0, 4.0, 0.0),
+                              0.0, 8.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getVariableText(
                               ruText: widget.courseInfo?.title,
@@ -252,22 +252,26 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                           Expanded(
                             child: Align(
                               alignment: const AlignmentDirectional(-1.0, 0.0),
-                              child: Text(
-                                FFLocalizations.of(context).getVariableText(
-                                  ruText: widget.courseInfo?.description,
-                                  enText: widget.courseInfo?.descrEng,
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 8.0, 0.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getVariableText(
+                                    ruText: widget.courseInfo?.courseText,
+                                    enText: widget.courseInfo?.courseTextEng,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Evolventa',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        fontSize: 17.0,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: false,
+                                        lineHeight: 1.29,
+                                      ),
                                 ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Evolventa',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      fontSize: 17.0,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: false,
-                                      lineHeight: 1.29,
-                                    ),
                               ),
                             ),
                           ),

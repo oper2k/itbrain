@@ -73,7 +73,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
               Image.asset(
                 'assets/images/image_28.webp',
                 width: double.infinity,
-                height: 400.0,
+                height: MediaQuery.sizeOf(context).height * 0.5,
                 fit: BoxFit.cover,
               ),
               Align(

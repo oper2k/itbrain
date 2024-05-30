@@ -108,7 +108,16 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('HomePage');
+                            context.pushNamed(
+                              'HomePage',
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: const TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.fade,
+                                  duration: Duration(milliseconds: 0),
+                                ),
+                              },
+                            );
                           },
                           child: Container(
                             width: 40.0,

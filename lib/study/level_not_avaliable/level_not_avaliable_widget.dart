@@ -1,19 +1,30 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'level_not_paid_model.dart';
-export 'level_not_paid_model.dart';
+import 'level_not_avaliable_model.dart';
+export 'level_not_avaliable_model.dart';
 
-class LevelNotPaidWidget extends StatefulWidget {
-  const LevelNotPaidWidget({super.key});
+class LevelNotAvaliableWidget extends StatefulWidget {
+  const LevelNotAvaliableWidget({
+    super.key,
+    required this.levelInfo,
+    bool? showButton,
+    required this.url,
+  }) : showButton = showButton ?? false;
+
+  final LevelsRecord? levelInfo;
+  final bool showButton;
+  final String? url;
 
   @override
-  State<LevelNotPaidWidget> createState() => _LevelNotPaidWidgetState();
+  State<LevelNotAvaliableWidget> createState() =>
+      _LevelNotAvaliableWidgetState();
 }
 
-class _LevelNotPaidWidgetState extends State<LevelNotPaidWidget> {
-  late LevelNotPaidModel _model;
+class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
+  late LevelNotAvaliableModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -24,7 +35,7 @@ class _LevelNotPaidWidgetState extends State<LevelNotPaidWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LevelNotPaidModel());
+    _model = createModel(context, () => LevelNotAvaliableModel());
   }
 
   @override
@@ -42,7 +53,12 @@ class _LevelNotPaidWidgetState extends State<LevelNotPaidWidget> {
         width: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).thirdBackground,
-          borderRadius: BorderRadius.circular(24.0),
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(0.0),
+            bottomRight: Radius.circular(0.0),
+            topLeft: Radius.circular(24.0),
+            topRight: Radius.circular(24.0),
+          ),
         ),
         child: Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
@@ -78,7 +94,7 @@ class _LevelNotPaidWidgetState extends State<LevelNotPaidWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'xa645yp4' /* Уровень недоступегн */,
+                        'xa645yp4' /* Уровень недоступен */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Evolventa',
@@ -110,51 +126,55 @@ class _LevelNotPaidWidgetState extends State<LevelNotPaidWidget> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 104.0, 0.0, 0.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      height: 52.0,
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color(0xFF9747FF),
-                            Color(0xFFF1618E),
-                            Color(0xFFFE710B)
-                          ],
-                          stops: [0.0, 0.4, 1.0],
-                          begin: AlignmentDirectional(1.0, 0.34),
-                          end: AlignmentDirectional(-1.0, -0.34),
-                        ),
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            'a4pg3pvq' /* Узнать подробнее */,
+                if (widget.showButton)
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 104.0, 0.0, 0.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        await launchURL(widget.url!);
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 52.0,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [
+                              Color(0xFF9747FF),
+                              Color(0xFFF1618E),
+                              Color(0xFFFE710B)
+                            ],
+                            stops: [0.0, 0.4, 1.0],
+                            begin: AlignmentDirectional(1.0, 0.34),
+                            end: AlignmentDirectional(-1.0, -0.34),
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Evolventa',
-                                    fontSize: 15.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
-                                    useGoogleFonts: false,
-                                  ),
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: Align(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'a4pg3pvq' /* Узнать подробнее */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Evolventa',
+                                  fontSize: 15.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.bold,
+                                  useGoogleFonts: false,
+                                ),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
           ),

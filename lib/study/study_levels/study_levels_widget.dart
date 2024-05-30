@@ -2,7 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/study/level_not_paid/level_not_paid_widget.dart';
+import '/study/level_not_avaliable/level_not_avaliable_widget.dart';
 import '/study/progress_bar/progress_bar_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
@@ -403,39 +403,194 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                           },
                                                         );
                                                       } else {
-                                                        await showModalBottomSheet(
-                                                          isScrollControlled:
-                                                              true,
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          enableDrag: false,
-                                                          context: context,
-                                                          builder: (context) {
-                                                            return GestureDetector(
-                                                              onTap: () => _model
-                                                                      .unfocusNode
-                                                                      .canRequestFocus
-                                                                  ? FocusScope.of(
-                                                                          context)
-                                                                      .requestFocus(
-                                                                          _model
+                                                        if ((currentUserDocument
+                                                                    ?.purchasedLevels
+                                                                    .toList() ??
+                                                                [])
+                                                            .contains(containerLevelsRecordList[
+                                                                    valueOrDefault<
+                                                                        int>(
+                                                          (int index) {
+                                                            return (index -
+                                                                        1) ==
+                                                                    -1
+                                                                ? 0
+                                                                : index - 1;
+                                                          }(levelsIndex),
+                                                          0,
+                                                        )]
+                                                                .reference)) {
+                                                          if ((currentUserDocument
+                                                                      ?.completedLevels
+                                                                      .toList() ??
+                                                                  [])
+                                                              .contains(containerLevelsRecordList[
+                                                                      valueOrDefault<
+                                                                          int>(
+                                                            (int index) {
+                                                              return (index -
+                                                                          1) ==
+                                                                      -1
+                                                                  ? 0
+                                                                  : index - 1;
+                                                            }(levelsIndex),
+                                                            0,
+                                                          )]
+                                                                  .reference)) {
+                                                            await showModalBottomSheet(
+                                                              isScrollControlled:
+                                                                  true,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              enableDrag: false,
+                                                              context: context,
+                                                              builder:
+                                                                  (context) {
+                                                                return GestureDetector(
+                                                                  onTap: () => _model
+                                                                          .unfocusNode
+                                                                          .canRequestFocus
+                                                                      ? FocusScope.of(
+                                                                              context)
+                                                                          .requestFocus(_model
                                                                               .unfocusNode)
-                                                                  : FocusScope.of(
-                                                                          context)
-                                                                      .unfocus(),
-                                                              child: Padding(
-                                                                padding: MediaQuery
-                                                                    .viewInsetsOf(
-                                                                        context),
-                                                                child:
-                                                                    const LevelNotPaidWidget(),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ).then((value) =>
-                                                            safeSetState(
-                                                                () {}));
+                                                                      : FocusScope.of(
+                                                                              context)
+                                                                          .unfocus(),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: MediaQuery
+                                                                        .viewInsetsOf(
+                                                                            context),
+                                                                    child:
+                                                                        LevelNotAvaliableWidget(
+                                                                      levelInfo:
+                                                                          levelsItem,
+                                                                      showButton:
+                                                                          true,
+                                                                      url: containerLevelsRecordList[
+                                                                              valueOrDefault<int>(
+                                                                        (int
+                                                                            index) {
+                                                                          return (index - 1) == -1
+                                                                              ? 0
+                                                                              : index - 1;
+                                                                        }(levelsIndex),
+                                                                        0,
+                                                                      )]
+                                                                          .getCourseUrl,
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                safeSetState(
+                                                                    () {}));
+                                                          } else {
+                                                            await showModalBottomSheet(
+                                                              isScrollControlled:
+                                                                  true,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              enableDrag: false,
+                                                              context: context,
+                                                              builder:
+                                                                  (context) {
+                                                                return GestureDetector(
+                                                                  onTap: () => _model
+                                                                          .unfocusNode
+                                                                          .canRequestFocus
+                                                                      ? FocusScope.of(
+                                                                              context)
+                                                                          .requestFocus(_model
+                                                                              .unfocusNode)
+                                                                      : FocusScope.of(
+                                                                              context)
+                                                                          .unfocus(),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: MediaQuery
+                                                                        .viewInsetsOf(
+                                                                            context),
+                                                                    child:
+                                                                        LevelNotAvaliableWidget(
+                                                                      levelInfo:
+                                                                          levelsItem,
+                                                                      showButton:
+                                                                          false,
+                                                                      url: containerLevelsRecordList[
+                                                                              valueOrDefault<int>(
+                                                                        (int
+                                                                            index) {
+                                                                          return (index - 1) == -1
+                                                                              ? 0
+                                                                              : index - 1;
+                                                                        }(levelsIndex),
+                                                                        0,
+                                                                      )]
+                                                                          .getCourseUrl,
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                safeSetState(
+                                                                    () {}));
+                                                          }
+                                                        } else {
+                                                          await showModalBottomSheet(
+                                                            isScrollControlled:
+                                                                true,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            enableDrag: false,
+                                                            context: context,
+                                                            builder: (context) {
+                                                              return GestureDetector(
+                                                                onTap: () => _model
+                                                                        .unfocusNode
+                                                                        .canRequestFocus
+                                                                    ? FocusScope.of(
+                                                                            context)
+                                                                        .requestFocus(_model
+                                                                            .unfocusNode)
+                                                                    : FocusScope.of(
+                                                                            context)
+                                                                        .unfocus(),
+                                                                child: Padding(
+                                                                  padding: MediaQuery
+                                                                      .viewInsetsOf(
+                                                                          context),
+                                                                  child:
+                                                                      LevelNotAvaliableWidget(
+                                                                    levelInfo:
+                                                                        levelsItem,
+                                                                    showButton:
+                                                                        true,
+                                                                    url: containerLevelsRecordList[
+                                                                            valueOrDefault<int>(
+                                                                      (int
+                                                                          index) {
+                                                                        return (index - 1) ==
+                                                                                -1
+                                                                            ? 0
+                                                                            : index -
+                                                                                1;
+                                                                      }(levelsIndex),
+                                                                      0,
+                                                                    )]
+                                                                        .getCourseUrl,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
+                                                          ).then((value) =>
+                                                              safeSetState(
+                                                                  () {}));
+                                                        }
                                                       }
                                                     },
                                                     child: Row(

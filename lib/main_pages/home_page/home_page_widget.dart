@@ -88,6 +88,30 @@ class _HomePageWidgetState extends State<HomePageWidget>
     });
 
     animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 820.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'rowOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 820.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
       'columnOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -123,46 +147,47 @@ class _HomePageWidgetState extends State<HomePageWidget>
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          body: FutureBuilder<List<StoriesRecord>>(
-            future: queryStoriesRecordOnce(
-              queryBuilder: (storiesRecord) => storiesRecord
-                  .where(
-                    'lang',
-                    isEqualTo: FFLocalizations.of(context).languageCode,
-                  )
-                  .orderBy('index'),
-            ),
-            builder: (context, snapshot) {
-              // Customize what your widget looks like when it's loading.
-              if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).tertiary,
+          body: Stack(
+            children: [
+              FutureBuilder<List<StoriesRecord>>(
+                future: queryStoriesRecordOnce(
+                  queryBuilder: (storiesRecord) => storiesRecord
+                      .where(
+                        'lang',
+                        isEqualTo: FFLocalizations.of(context).languageCode,
+                      )
+                      .orderBy('index'),
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).tertiary,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                  List<StoriesRecord> containerStoriesRecordList =
+                      snapshot.data!;
+                  return Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    height: MediaQuery.sizeOf(context).height * 1.0,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: Image.asset(
+                          'assets/images/Frame_11818.png',
+                        ).image,
                       ),
                     ),
-                  ),
-                );
-              }
-              List<StoriesRecord> containerStoriesRecordList = snapshot.data!;
-              return Container(
-                width: MediaQuery.sizeOf(context).width * 1.0,
-                height: MediaQuery.sizeOf(context).height * 1.0,
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: Image.asset(
-                      'assets/images/Frame_11818.png',
-                    ).image,
-                  ),
-                ),
-                child: Stack(
-                  children: [
-                    SingleChildScrollView(
+                    child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -308,7 +333,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   ),
                                 ),
                               ],
-                            ),
+                            ).animateOnPageLoad(
+                                animationsMap['rowOnPageLoadAnimation']!),
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
@@ -798,7 +824,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                 updateOnChange: true,
                                                 child: MeditationCompWidget(
                                                   key: Key(
-                                                    'Key1vu_${listViewIndex.toString()}',
+                                                    'Keyr1a_${listViewIndex.toString()}',
                                                   ),
                                                   meditationCategories:
                                                       listViewMeditationCategoriesRecord,
@@ -859,7 +885,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     listViewIndex];
                                             return BookAnswerCompWidget(
                                               key: Key(
-                                                  'Key3bt_${listViewIndex}_of_${listViewBookInfoRecordList.length}'),
+                                                  'Keyyg1_${listViewIndex}_of_${listViewBookInfoRecordList.length}'),
                                               book: listViewBookInfoRecord,
                                             );
                                           },
@@ -1014,7 +1040,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           child:
                                                               SmallVideoCompWidget(
                                                             key: Key(
-                                                                'Keydjd_${videosIndex}_of_${videos.length}'),
+                                                                'Key6i6_${videosIndex}_of_${videos.length}'),
                                                             video: videosItem,
                                                           ),
                                                         ),
@@ -1165,25 +1191,22 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   ),
                                 ].addToEnd(const SizedBox(height: 100.0)),
                               ),
-                            ),
+                            ).animateOnPageLoad(
+                                animationsMap['columnOnPageLoadAnimation']!),
                           ),
                         ].addToStart(const SizedBox(height: 50.0)),
                       ),
-                    ).animateOnPageLoad(
-                        animationsMap['columnOnPageLoadAnimation']!),
-                    Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: wrapWithModel(
-                        model: _model.navbarHomeModel,
-                        updateCallback: () => setState(() {}),
-                        updateOnChange: true,
-                        child: const NavbarHomeWidget(),
-                      ),
                     ),
-                  ],
-                ),
-              );
-            },
+                  ).animateOnPageLoad(
+                      animationsMap['containerOnPageLoadAnimation']!);
+                },
+              ),
+              wrapWithModel(
+                model: _model.navbarHomeModel,
+                updateCallback: () => setState(() {}),
+                child: const NavbarHomeWidget(),
+              ),
+            ],
           ),
         ),
       ),

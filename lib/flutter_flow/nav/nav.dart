@@ -356,10 +356,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/contentPage',
           asyncParams: {
             'lesson': getDoc(['lessons'], LessonsRecord.fromSnapshot),
+            'level': getDoc(['levels'], LevelsRecord.fromSnapshot),
           },
           builder: (context, params) => ContentPageWidget(
             lesson: params.getParam(
               'lesson',
+              ParamType.Document,
+            ),
+            isLastLesson: params.getParam(
+              'isLastLesson',
+              ParamType.bool,
+            ),
+            level: params.getParam(
+              'level',
               ParamType.Document,
             ),
           ),

@@ -267,40 +267,81 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                 ),
                               ),
                               Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 52.0, 0.0, 0.0),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final lessons = containerLessonsRecordList
-                                          .sortedList((e) => e.order)
-                                          .toList();
-                                      return ListView.separated(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: lessons.length,
-                                        separatorBuilder: (_, __) =>
-                                            const SizedBox(height: 12.0),
-                                        itemBuilder: (context, lessonsIndex) {
-                                          final lessonsItem =
-                                              lessons[lessonsIndex];
-                                          return Visibility(
-                                            visible: functions.isLessonAvailable(
-                                                getCurrentTimestamp,
-                                                (currentUserDocument
-                                                            ?.purchasedCoursesDates
-                                                            .toList() ??
-                                                        [])
-                                                    .where((e) =>
-                                                        e.courseRef ==
-                                                        widget.study?.reference)
-                                                    .toList()
-                                                    .first
-                                                    .purchasedDate!,
-                                                lessonsItem.order),
-                                            child: AuthUserStreamWidget(
-                                              builder: (context) => Builder(
+                                child: Builder(
+                                  builder: (context) {
+                                    final lessons = containerLessonsRecordList
+                                        .sortedList((e) => e.order)
+                                        .toList();
+                                    return ListView.separated(
+                                      padding: const EdgeInsets.fromLTRB(
+                                        0,
+                                        52.0,
+                                        0,
+                                        0,
+                                      ),
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: lessons.length,
+                                      separatorBuilder: (_, __) =>
+                                          const SizedBox(height: 12.0),
+                                      itemBuilder: (context, lessonsIndex) {
+                                        final lessonsItem =
+                                            lessons[lessonsIndex];
+                                        return Visibility(
+                                          visible: functions.isLessonAvailable(
+                                              getCurrentTimestamp,
+                                              (currentUserDocument
+                                                          ?.purchasedCoursesDates
+                                                          .toList() ??
+                                                      [])
+                                                  .where((e) =>
+                                                      e.courseRef ==
+                                                      widget.study?.reference)
+                                                  .toList()
+                                                  .first
+                                                  .purchasedDate!,
+                                              lessonsItem.order),
+                                          child: AuthUserStreamWidget(
+                                            builder: (context) => InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'contentPage',
+                                                  queryParameters: {
+                                                    'lesson': serializeParam(
+                                                      lessonsItem,
+                                                      ParamType.Document,
+                                                    ),
+                                                    'isLastLesson':
+                                                        serializeParam(
+                                                      lessonsIndex ==
+                                                              valueOrDefault<
+                                                                  int>(
+                                                                containerLessonsRecordList
+                                                                        .length -
+                                                                    1,
+                                                                0,
+                                                              )
+                                                          ? true
+                                                          : false,
+                                                      ParamType.bool,
+                                                    ),
+                                                    'level': serializeParam(
+                                                      widget.levels,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'lesson': lessonsItem,
+                                                    'level': widget.levels,
+                                                  },
+                                                );
+                                              },
+                                              child: Builder(
                                                 builder: (context) {
                                                   if ((currentUserDocument
                                                               ?.completeLessons
@@ -308,177 +349,116 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                                           [])
                                                       .contains(lessonsItem
                                                           .reference)) {
-                                                    return InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        context.pushNamed(
-                                                          'contentPage',
-                                                          queryParameters: {
-                                                            'lesson':
-                                                                serializeParam(
-                                                              lessonsItem,
-                                                              ParamType
-                                                                  .Document,
-                                                            ),
-                                                          }.withoutNulls,
-                                                          extra: <String,
-                                                              dynamic>{
-                                                            'lesson':
-                                                                lessonsItem,
-                                                          },
-                                                        );
-                                                      },
-                                                      child: Container(
-                                                        width: double.infinity,
-                                                        height: 65.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              const Color(0x10FFFFFF),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      20.0),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      20.0,
-                                                                      0.0,
-                                                                      20.0,
-                                                                      0.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            children: [
-                                                              Expanded(
-                                                                child: Text(
-                                                                  '${lessonsItem.count.toString()}.${lessonsItem.title}',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Evolventa',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryText,
-                                                                        fontSize:
-                                                                            17.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            false,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Icon(
-                                                                FFIcons.kitsok,
-                                                                color: FlutterFlowTheme.of(
+                                                    return Container(
+                                                      width: double.infinity,
+                                                      height: 65.0,
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            const Color(0x10FFFFFF),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20.0),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    20.0,
+                                                                    0.0,
+                                                                    20.0,
+                                                                    0.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Expanded(
+                                                              child: Text(
+                                                                '${lessonsItem.count.toString()}.${lessonsItem.title}',
+                                                                style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryText,
-                                                                size: 24.0,
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Evolventa',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      fontSize:
+                                                                          17.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
                                                               ),
-                                                            ],
-                                                          ),
+                                                            ),
+                                                            Icon(
+                                                              FFIcons.kitsok,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 24.0,
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
                                                     );
                                                   } else {
-                                                    return InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        context.pushNamed(
-                                                          'contentPage',
-                                                          queryParameters: {
-                                                            'lesson':
-                                                                serializeParam(
-                                                              lessonsItem,
-                                                              ParamType
-                                                                  .Document,
-                                                            ),
-                                                          }.withoutNulls,
-                                                          extra: <String,
-                                                              dynamic>{
-                                                            'lesson':
-                                                                lessonsItem,
-                                                          },
-                                                        );
-                                                      },
-                                                      child: Container(
-                                                        width: double.infinity,
-                                                        height: 65.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              const Color(0x1EFFFFFF),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      20.0),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      20.0,
-                                                                      0.0,
-                                                                      20.0,
-                                                                      0.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            children: [
-                                                              Expanded(
-                                                                child: Text(
-                                                                  '${lessonsItem.count.toString()}.${lessonsItem.title}',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Evolventa',
-                                                                        fontSize:
-                                                                            17.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            false,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Icon(
-                                                                FFIcons
-                                                                    .krightDMTnew,
-                                                                color: FlutterFlowTheme.of(
+                                                    return Container(
+                                                      width: double.infinity,
+                                                      height: 65.0,
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            const Color(0x1EFFFFFF),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20.0),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    20.0,
+                                                                    0.0,
+                                                                    20.0,
+                                                                    0.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Expanded(
+                                                              child: Text(
+                                                                '${lessonsItem.count.toString()}.${lessonsItem.title}',
+                                                                style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryText,
-                                                                size: 24.0,
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Evolventa',
+                                                                      fontSize:
+                                                                          17.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
                                                               ),
-                                                            ],
-                                                          ),
+                                                            ),
+                                                            Icon(
+                                                              FFIcons
+                                                                  .krightDMTnew,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 24.0,
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
                                                     );
@@ -486,11 +466,11 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                                 },
                                               ),
                                             ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
                                 ),
                               ),
                             ].addToEnd(const SizedBox(height: 46.0)),

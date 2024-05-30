@@ -114,6 +114,11 @@ class UsersRecord extends FirestoreRecord {
   List<DocumentReference> get addedInPush => _addedInPush ?? const [];
   bool hasAddedInPush() => _addedInPush != null;
 
+  // "completed_levels" field.
+  List<DocumentReference>? _completedLevels;
+  List<DocumentReference> get completedLevels => _completedLevels ?? const [];
+  bool hasCompletedLevels() => _completedLevels != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -138,6 +143,7 @@ class UsersRecord extends FirestoreRecord {
       PurchasedCourseStruct.fromMap,
     );
     _addedInPush = getDataList(snapshotData['added_in_push']);
+    _completedLevels = getDataList(snapshotData['completed_levels']);
   }
 
   static CollectionReference get collection =>
@@ -227,7 +233,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         listEquality.equals(e1?.completeLessons, e2?.completeLessons) &&
         listEquality.equals(
             e1?.purchasedCoursesDates, e2?.purchasedCoursesDates) &&
-        listEquality.equals(e1?.addedInPush, e2?.addedInPush);
+        listEquality.equals(e1?.addedInPush, e2?.addedInPush) &&
+        listEquality.equals(e1?.completedLevels, e2?.completedLevels);
   }
 
   @override
@@ -250,7 +257,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.purchasedLevels,
         e?.completeLessons,
         e?.purchasedCoursesDates,
-        e?.addedInPush
+        e?.addedInPush,
+        e?.completedLevels
       ]);
 
   @override

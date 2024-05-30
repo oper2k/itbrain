@@ -107,6 +107,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                   widget.book?.description,
                                   '0',
                                 ),
+                                textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(

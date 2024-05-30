@@ -12,9 +12,13 @@ class ContentPageWidget extends StatefulWidget {
   const ContentPageWidget({
     super.key,
     required this.lesson,
-  });
+    bool? isLastLesson,
+    required this.level,
+  }) : isLastLesson = isLastLesson ?? false;
 
   final LessonsRecord? lesson;
+  final bool isLastLesson;
+  final LevelsRecord? level;
 
   @override
   State<ContentPageWidget> createState() => _ContentPageWidgetState();
@@ -34,14 +38,27 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (!(currentUserDocument?.completeLessons.toList() ?? [])
           .contains(widget.lesson?.reference)) {
-        await currentUserReference!.update({
-          ...mapToFirestore(
-            {
-              'completeLessons':
-                  FieldValue.arrayUnion([widget.lesson?.reference]),
-            },
-          ),
-        });
+        if (widget.isLastLesson) {
+          await currentUserReference!.update({
+            ...mapToFirestore(
+              {
+                'completeLessons':
+                    FieldValue.arrayUnion([widget.lesson?.reference]),
+                'completed_levels':
+                    FieldValue.arrayUnion([widget.level?.reference]),
+              },
+            ),
+          });
+        } else {
+          await currentUserReference!.update({
+            ...mapToFirestore(
+              {
+                'completeLessons':
+                    FieldValue.arrayUnion([widget.lesson?.reference]),
+              },
+            ),
+          });
+        }
       }
     });
   }

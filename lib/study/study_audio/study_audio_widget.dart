@@ -89,7 +89,7 @@ class _StudyAudioWidgetState extends State<StudyAudioWidget> {
                       widget.title,
                       '0',
                     ).maybeHandleOverflow(
-                      maxChars: 20,
+                      maxChars: 30,
                       replacement: '…',
                     ),
                     maxLines: 2,

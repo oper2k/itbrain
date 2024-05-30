@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'level_not_paid_widget.dart' show LevelNotPaidWidget;
+import 'level_not_avaliable_widget.dart' show LevelNotAvaliableWidget;
 import 'package:flutter/material.dart';
 
-class LevelNotPaidModel extends FlutterFlowModel<LevelNotPaidWidget> {
+class LevelNotAvaliableModel extends FlutterFlowModel<LevelNotAvaliableWidget> {
   @override
   void initState(BuildContext context) {}
 

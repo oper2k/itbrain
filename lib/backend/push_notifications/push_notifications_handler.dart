@@ -203,6 +203,9 @@ final parametersBuilderMap =
         allParams: {
           'lesson': await getDocumentParameter<LessonsRecord>(
               data, 'lesson', LessonsRecord.fromSnapshot),
+          'isLastLesson': getParameter<bool>(data, 'isLastLesson'),
+          'level': await getDocumentParameter<LevelsRecord>(
+              data, 'level', LevelsRecord.fromSnapshot),
         },
       ),
   'bookPageInfo': (data) async => ParameterData(

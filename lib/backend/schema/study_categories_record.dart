@@ -79,6 +79,16 @@ class StudyCategoriesRecord extends FirestoreRecord {
   String get courseInfoImage => _courseInfoImage ?? '';
   bool hasCourseInfoImage() => _courseInfoImage != null;
 
+  // "course_text" field.
+  String? _courseText;
+  String get courseText => _courseText ?? '';
+  bool hasCourseText() => _courseText != null;
+
+  // "course_text_eng" field.
+  String? _courseTextEng;
+  String get courseTextEng => _courseTextEng ?? '';
+  bool hasCourseTextEng() => _courseTextEng != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _description = snapshotData['description'] as String?;
@@ -93,6 +103,8 @@ class StudyCategoriesRecord extends FirestoreRecord {
     _courseUrl = snapshotData['course_url'] as String?;
     _courseEngUrl = snapshotData['course_eng_url'] as String?;
     _courseInfoImage = snapshotData['course_info_image'] as String?;
+    _courseText = snapshotData['course_text'] as String?;
+    _courseTextEng = snapshotData['course_text_eng'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -143,6 +155,8 @@ Map<String, dynamic> createStudyCategoriesRecordData({
   String? courseUrl,
   String? courseEngUrl,
   String? courseInfoImage,
+  String? courseText,
+  String? courseTextEng,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -159,6 +173,8 @@ Map<String, dynamic> createStudyCategoriesRecordData({
       'course_url': courseUrl,
       'course_eng_url': courseEngUrl,
       'course_info_image': courseInfoImage,
+      'course_text': courseText,
+      'course_text_eng': courseTextEng,
     }.withoutNulls,
   );
 
@@ -183,7 +199,9 @@ class StudyCategoriesRecordDocumentEquality
         e1?.durationEng == e2?.durationEng &&
         e1?.courseUrl == e2?.courseUrl &&
         e1?.courseEngUrl == e2?.courseEngUrl &&
-        e1?.courseInfoImage == e2?.courseInfoImage;
+        e1?.courseInfoImage == e2?.courseInfoImage &&
+        e1?.courseText == e2?.courseText &&
+        e1?.courseTextEng == e2?.courseTextEng;
   }
 
   @override
@@ -200,7 +218,9 @@ class StudyCategoriesRecordDocumentEquality
         e?.durationEng,
         e?.courseUrl,
         e?.courseEngUrl,
-        e?.courseInfoImage
+        e?.courseInfoImage,
+        e?.courseText,
+        e?.courseTextEng
       ]);
 
   @override

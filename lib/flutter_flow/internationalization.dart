@@ -437,7 +437,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'jkqcishr': {
       'ru': 'Добавить фото',
-      'en': '',
+      'en': 'Add photo',
     },
     'fjhfuyy7': {
       'ru': 'Имя',
@@ -712,7 +712,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'd9f6lqf8': {
       'ru': 'Не забудьте проверить папку «Спам» и другие.',
-      'en': '',
+      'en': 'Don\'t forget to check \"spam\" folder and etc.',
     },
     'bbc0tz24': {
       'ru': 'Home',
@@ -731,15 +731,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2kma94hw': {
       'ru': 'Напомнить об открытии продаж',
-      'en': '',
+      'en': 'Remind about the opening of sales',
     },
     'lspc264o': {
       'ru': 'Узнать больше и купить',
-      'en': '',
+      'en': 'Find out more and buy',
     },
     'pt4kxvdz': {
       'ru': 'Home',
-      'en': '',
+      'en': 'Home',
     },
   },
   // searchPageNew
@@ -870,7 +870,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ctd01cm1': {
       'ru': 'Home',
-      'en': '',
+      'en': 'Home',
     },
   },
   // confirmed
@@ -996,16 +996,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'xos9ms57': {
       'ru': 'Совет дня',
-      'en': '',
+      'en': 'Tip of the day',
     },
     '02vja42i': {
       'ru':
           'Сегодня займись собой. Это действительно важно, уделить на это время',
-      'en': '',
+      'en':
+          'Take care of yourself today. It\'s really important to take the time to do this.',
     },
     '6ocxw9gx': {
       'ru': 'Спасибо',
-      'en': '',
+      'en': 'Thank you',
     },
   },
   // meditationComp
@@ -1214,10 +1215,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Go to course',
     },
   },
-  // levelNotPaid
+  // levelNotAvaliable
   {
     'xa645yp4': {
-      'ru': 'Уровень недоступегн',
+      'ru': 'Уровень недоступен',
       'en': 'Level not available',
     },
     'x8qumqus': {
@@ -1237,14 +1238,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'n6wmgyxh': {
       'ru': 'Понятно',
-      'en': '',
+      'en': 'Ok',
     },
   },
   // createdBy
   {
     'j9hq13ek': {
-      'ru': 'С любовью',
-      'en': 'With love',
+      'ru': 'С любовью,',
+      'en': 'With love,',
     },
     'tq7bhxlu': {
       'ru': 'Камаллая',

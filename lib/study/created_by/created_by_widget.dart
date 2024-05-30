@@ -64,7 +64,7 @@ class _CreatedByWidgetState extends State<CreatedByWidget> {
             children: [
               Text(
                 FFLocalizations.of(context).getText(
-                  'j9hq13ek' /* С любовью */,
+                  'j9hq13ek' /* С любовью, */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Evolventa',

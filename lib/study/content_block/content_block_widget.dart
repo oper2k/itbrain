@@ -158,10 +158,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
           );
         } else if (widget.level?.type == ContentType.text) {
           return MarkdownBody(
-            data: FFLocalizations.of(context).getVariableText(
-              ruText: widget.level?.text,
-              enText: widget.level?.textEng,
-            ),
+            data: widget.level!.text,
             selectable: false,
             onTapLink: (_, url, __) => launchURL(url!),
           ).animateOnPageLoad(animationsMap['markdownOnPageLoadAnimation']!);
