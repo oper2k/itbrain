@@ -31,13 +31,12 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().LastAffirmationDate = dateTimeFormat(
-          'd/M/y',
-          getCurrentTimestamp,
-          locale: FFLocalizations.of(context).languageCode,
-        );
-      });
+      FFAppState().LastAffirmationDate = dateTimeFormat(
+        'd/M/y',
+        getCurrentTimestamp,
+        locale: FFLocalizations.of(context).languageCode,
+      );
+      setState(() {});
     });
   }
 

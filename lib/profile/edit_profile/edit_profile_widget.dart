@@ -301,10 +301,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 }
                               }
 
-                              setState(() {
-                                FFAppState().imageProfileBlurHash =
-                                    _model.uploadedLocalFile.blurHash!;
-                              });
+                              FFAppState().imageProfileBlurHash =
+                                  _model.uploadedLocalFile.blurHash!;
+                              setState(() {});
                             },
                             child: Row(
                               mainAxisSize: MainAxisSize.max,

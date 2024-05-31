@@ -78,6 +78,9 @@ class _LessonAudioWidgetState extends State<LessonAudioWidget> {
                 valueOrDefault<String>(
                   widget.lessons?.audioTitle,
                   '0',
+                ).maybeHandleOverflow(
+                  maxChars: 18,
+                  replacement: '…',
                 ),
                 maxLines: 2,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(

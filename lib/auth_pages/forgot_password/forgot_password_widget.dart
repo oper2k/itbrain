@@ -315,9 +315,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       if (_model.emailTextController.text != '') {
-                        setState(() {
-                          _model.showEmailError = false;
-                        });
+                        _model.showEmailError = false;
+                        setState(() {});
                         if (_model.emailTextController.text.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -355,9 +354,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                           },
                         ).then((value) => safeSetState(() {}));
                       } else {
-                        setState(() {
-                          _model.showEmailError = true;
-                        });
+                        _model.showEmailError = true;
+                        setState(() {});
                         return;
                       }
                     },

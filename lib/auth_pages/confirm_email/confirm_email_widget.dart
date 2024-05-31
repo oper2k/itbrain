@@ -36,9 +36,8 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
         duration: const Duration(milliseconds: 1000),
         callback: (timer) async {
           if (currentUserEmailVerified) {
-            setState(() {
-              _model.emailVerified = true;
-            });
+            _model.emailVerified = true;
+            setState(() {});
             _model.instantTimer?.cancel();
             if (currentUserEmailVerified) {
               context.pushNamed(
@@ -56,9 +55,8 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
               return;
             }
           } else {
-            setState(() {
-              _model.emailVerified = false;
-            });
+            _model.emailVerified = false;
+            setState(() {});
             return;
           }
         },
@@ -256,9 +254,8 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                                   if (shouldUpdate) setState(() {});
                                 },
                                 onEnded: () async {
-                                  setState(() {
-                                    _model.showNewCode = true;
-                                  });
+                                  _model.showNewCode = true;
+                                  setState(() {});
                                 },
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
@@ -280,9 +277,8 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                           return FFButtonWidget(
                             onPressed: () async {
                               await authManager.sendEmailVerification();
-                              setState(() {
-                                _model.showNewCode = false;
-                              });
+                              _model.showNewCode = false;
+                              setState(() {});
                               _model.timerController.onResetTimer();
                             },
                             text: FFLocalizations.of(context).getText(

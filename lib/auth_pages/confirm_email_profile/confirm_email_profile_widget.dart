@@ -37,9 +37,8 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
         duration: const Duration(milliseconds: 300),
         callback: (timer) async {
           if (currentUserEmailVerified) {
-            setState(() {
-              _model.emailVerified = true;
-            });
+            _model.emailVerified = true;
+            setState(() {});
             _model.instantTimer?.cancel();
             if (currentUserEmailVerified) {
               context.goNamed('editProfile');
@@ -60,9 +59,8 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
               );
             }
           } else {
-            setState(() {
-              _model.emailVerified = false;
-            });
+            _model.emailVerified = false;
+            setState(() {});
             return;
           }
         },
@@ -260,9 +258,8 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
                                   if (shouldUpdate) setState(() {});
                                 },
                                 onEnded: () async {
-                                  setState(() {
-                                    _model.showNewCode = true;
-                                  });
+                                  _model.showNewCode = true;
+                                  setState(() {});
                                 },
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
@@ -284,9 +281,8 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
                           return FFButtonWidget(
                             onPressed: () async {
                               await authManager.sendEmailVerification();
-                              setState(() {
-                                _model.showNewCode = false;
-                              });
+                              _model.showNewCode = false;
+                              setState(() {});
                               _model.timerController.onResetTimer();
 
                               _model.timerController.onStartTimer();

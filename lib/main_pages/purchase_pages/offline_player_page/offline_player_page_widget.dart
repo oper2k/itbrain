@@ -41,9 +41,8 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
       await actions.playOrPause(
         'p1',
       );
-      setState(() {
-        FFAppState().positionMS = 0;
-      });
+      FFAppState().positionMS = 0;
+      setState(() {});
     });
   }
 
@@ -396,10 +395,9 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                                   await actions.playOrPause(
                                                     'p1',
                                                   );
-                                                  setState(() {
-                                                    FFAppState()
-                                                        .isAudioPlaying = false;
-                                                  });
+                                                  FFAppState().isAudioPlaying =
+                                                      false;
+                                                  setState(() {});
                                                 },
                                               );
                                             } else {
@@ -413,10 +411,9 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                                   await actions.playOrPause(
                                                     'p1',
                                                   );
-                                                  setState(() {
-                                                    FFAppState()
-                                                        .isAudioPlaying = true;
-                                                  });
+                                                  FFAppState().isAudioPlaying =
+                                                      true;
+                                                  setState(() {});
                                                 },
                                                 child: Container(
                                                   width: 64.0,

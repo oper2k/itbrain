@@ -161,9 +161,8 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                               '_model.textController',
                                               const Duration(milliseconds: 300),
                                               () async {
-                                                setState(() {
-                                                  _model.searchOk = true;
-                                                });
+                                                _model.searchOk = true;
+                                                setState(() {});
                                                 await queryMeditationsRecordOnce()
                                                     .then(
                                                       (records) => _model
@@ -609,10 +608,8 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                           [])
                                                       .contains(resultsItem
                                                           .meditationCategory)) {
-                                                    setState(() {
-                                                      FFAppState().positionMS =
-                                                          0;
-                                                    });
+                                                    FFAppState().positionMS = 0;
+                                                    setState(() {});
 
                                                     await currentUserReference!
                                                         .update({
@@ -684,9 +681,8 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                     return;
                                                   }
                                                 } else {
-                                                  setState(() {
-                                                    FFAppState().positionMS = 0;
-                                                  });
+                                                  FFAppState().positionMS = 0;
+                                                  setState(() {});
 
                                                   context.pushNamed(
                                                     'playerPage',

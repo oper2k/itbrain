@@ -89,6 +89,11 @@ class StudyCategoriesRecord extends FirestoreRecord {
   String get courseTextEng => _courseTextEng ?? '';
   bool hasCourseTextEng() => _courseTextEng != null;
 
+  // "showNotificationButton" field.
+  bool? _showNotificationButton;
+  bool get showNotificationButton => _showNotificationButton ?? false;
+  bool hasShowNotificationButton() => _showNotificationButton != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _description = snapshotData['description'] as String?;
@@ -105,6 +110,7 @@ class StudyCategoriesRecord extends FirestoreRecord {
     _courseInfoImage = snapshotData['course_info_image'] as String?;
     _courseText = snapshotData['course_text'] as String?;
     _courseTextEng = snapshotData['course_text_eng'] as String?;
+    _showNotificationButton = snapshotData['showNotificationButton'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -157,6 +163,7 @@ Map<String, dynamic> createStudyCategoriesRecordData({
   String? courseInfoImage,
   String? courseText,
   String? courseTextEng,
+  bool? showNotificationButton,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -175,6 +182,7 @@ Map<String, dynamic> createStudyCategoriesRecordData({
       'course_info_image': courseInfoImage,
       'course_text': courseText,
       'course_text_eng': courseTextEng,
+      'showNotificationButton': showNotificationButton,
     }.withoutNulls,
   );
 
@@ -201,7 +209,8 @@ class StudyCategoriesRecordDocumentEquality
         e1?.courseEngUrl == e2?.courseEngUrl &&
         e1?.courseInfoImage == e2?.courseInfoImage &&
         e1?.courseText == e2?.courseText &&
-        e1?.courseTextEng == e2?.courseTextEng;
+        e1?.courseTextEng == e2?.courseTextEng &&
+        e1?.showNotificationButton == e2?.showNotificationButton;
   }
 
   @override
@@ -220,7 +229,8 @@ class StudyCategoriesRecordDocumentEquality
         e?.courseEngUrl,
         e?.courseInfoImage,
         e?.courseText,
-        e?.courseTextEng
+        e?.courseTextEng,
+        e?.showNotificationButton
       ]);
 
   @override

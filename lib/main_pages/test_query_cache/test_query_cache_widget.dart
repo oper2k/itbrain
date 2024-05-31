@@ -43,10 +43,9 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
         FFAppState().clearBuyPackCacheCache();
         FFAppState().clearHistoryCacheCache();
       } else {
-        setState(() {
-          FFAppState().isOffline = true;
-          FFAppState().isAppLoaded = true;
-        });
+        FFAppState().isOffline = true;
+        FFAppState().isAppLoaded = true;
+        setState(() {});
         return;
       }
     });

@@ -39,9 +39,8 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
       _model.instantTimer = InstantTimer.periodic(
         duration: const Duration(milliseconds: 100),
         callback: (timer) async {
-          setState(() {
-            _model.progress = _model.progress + 0.1;
-          });
+          _model.progress = _model.progress + 0.1;
+          setState(() {});
           if (_model.progress >= 1.0) {
             _model.instantTimer?.cancel();
             Navigator.pop(context);

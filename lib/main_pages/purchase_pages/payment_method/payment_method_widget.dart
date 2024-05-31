@@ -128,10 +128,9 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      setState(() {
-                        _model.buySite = true;
-                        _model.buyApp = false;
-                      });
+                      _model.buySite = true;
+                      _model.buyApp = false;
+                      setState(() {});
                     },
                     child: Container(
                       width: double.infinity,
@@ -207,10 +206,9 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      setState(() {
-                        _model.buySite = false;
-                        _model.buyApp = true;
-                      });
+                      _model.buySite = false;
+                      _model.buyApp = true;
+                      setState(() {});
                     },
                     child: Container(
                       width: double.infinity,

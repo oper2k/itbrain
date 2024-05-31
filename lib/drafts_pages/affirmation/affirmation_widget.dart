@@ -32,10 +32,9 @@ class _AffirmationWidgetState extends State<AffirmationWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        FFAppState().lastDateShowAffirmation = getCurrentTimestamp;
-        FFAppState().lastShowAffirmation = widget.currentAffirmation?.reference;
-      });
+      FFAppState().lastDateShowAffirmation = getCurrentTimestamp;
+      FFAppState().lastShowAffirmation = widget.currentAffirmation?.reference;
+      setState(() {});
     });
 
     _model.textController ??= TextEditingController();

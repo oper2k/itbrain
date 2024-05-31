@@ -491,15 +491,13 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       if (_model.emailTextController.text != '') {
-                        setState(() {
-                          _model.showEmailError = false;
-                        });
+                        _model.showEmailError = false;
+                        setState(() {});
                         if ((_model.passwordTextController.text != '') &&
                             functions.passCheck(
                                 _model.passwordTextController.text)!) {
-                          setState(() {
-                            _model.showPassError = false;
-                          });
+                          _model.showPassError = false;
+                          setState(() {});
                           GoRouter.of(context).prepareAuthEvent();
 
                           final user = await authManager.signInWithEmail(
@@ -513,17 +511,15 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
 
                           context.pushNamedAuth('HomePage', context.mounted);
                         } else {
-                          setState(() {
-                            _model.showPassError = true;
-                          });
+                          _model.showPassError = true;
+                          setState(() {});
                           return;
                         }
 
                         return;
                       } else {
-                        setState(() {
-                          _model.showEmailError = true;
-                        });
+                        _model.showEmailError = true;
+                        setState(() {});
                         return;
                       }
                     },

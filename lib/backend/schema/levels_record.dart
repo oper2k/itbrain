@@ -59,6 +59,11 @@ class LevelsRecord extends FirestoreRecord {
   String get descrEng => _descrEng ?? '';
   bool hasDescrEng() => _descrEng != null;
 
+  // "getCourse_urlEng" field.
+  String? _getCourseUrlEng;
+  String get getCourseUrlEng => _getCourseUrlEng ?? '';
+  bool hasGetCourseUrlEng() => _getCourseUrlEng != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _count = snapshotData['count'] as String?;
@@ -69,6 +74,7 @@ class LevelsRecord extends FirestoreRecord {
     _getCourseUrl = snapshotData['getCourse_url'] as String?;
     _titleEng = snapshotData['titleEng'] as String?;
     _descrEng = snapshotData['descrEng'] as String?;
+    _getCourseUrlEng = snapshotData['getCourse_urlEng'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -114,6 +120,7 @@ Map<String, dynamic> createLevelsRecordData({
   String? getCourseUrl,
   String? titleEng,
   String? descrEng,
+  String? getCourseUrlEng,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -126,6 +133,7 @@ Map<String, dynamic> createLevelsRecordData({
       'getCourse_url': getCourseUrl,
       'titleEng': titleEng,
       'descrEng': descrEng,
+      'getCourse_urlEng': getCourseUrlEng,
     }.withoutNulls,
   );
 
@@ -145,7 +153,8 @@ class LevelsRecordDocumentEquality implements Equality<LevelsRecord> {
         e1?.getCourseOffer == e2?.getCourseOffer &&
         e1?.getCourseUrl == e2?.getCourseUrl &&
         e1?.titleEng == e2?.titleEng &&
-        e1?.descrEng == e2?.descrEng;
+        e1?.descrEng == e2?.descrEng &&
+        e1?.getCourseUrlEng == e2?.getCourseUrlEng;
   }
 
   @override
@@ -158,7 +167,8 @@ class LevelsRecordDocumentEquality implements Equality<LevelsRecord> {
         e?.getCourseOffer,
         e?.getCourseUrl,
         e?.titleEng,
-        e?.descrEng
+        e?.descrEng,
+        e?.getCourseUrlEng
       ]);
 
   @override

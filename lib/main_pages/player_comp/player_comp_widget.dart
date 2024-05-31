@@ -241,8 +241,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                           title: widget
                               .meditationList?[FFAppState().playerIndex].title,
                           duration: 20,
-                          image: widget
-                              .meditationList?[FFAppState().playerIndex].image,
+                          image:
+                              'https://firebasestorage.googleapis.com/v0/b/dmt-meditations.appspot.com/o/2024-05-22%2015.21.15.jpg?alt=media&token=b2096faf-81ce-451b-9d33-9e5d1d74ef2b',
                           audioPath: widget
                               .meditationList?[FFAppState().playerIndex]
                               .audioPath,
@@ -333,6 +333,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                             widget.meditationList![FFAppState().playerIndex]
                                 .audioPath,
                           );
+
                           setState(() {});
                           return;
                         } else {
@@ -366,9 +367,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                       await actions.playOrPause(
                                         'p1',
                                       );
-                                      setState(() {
-                                        FFAppState().isAudioPlaying = false;
-                                      });
+                                      FFAppState().isAudioPlaying = false;
+                                      setState(() {});
                                     },
                                   ),
                                 );
@@ -382,9 +382,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                     await actions.playOrPause(
                                       'p1',
                                     );
-                                    setState(() {
-                                      FFAppState().isAudioPlaying = true;
-                                    });
+                                    FFAppState().isAudioPlaying = true;
+                                    setState(() {});
                                   },
                                   child: Container(
                                     width: 64.0,
@@ -454,6 +453,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                 widget.meditationList![FFAppState().playerIndex]
                                     .audioPath,
                               );
+
                               setState(() {});
                             },
                           );
@@ -656,55 +656,54 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                       );
                                     }
                                     if (_model.isDownload!) {
-                                      setState(() {
-                                        FFAppState()
-                                            .updateDownloadedTracksAtIndex(
-                                          valueOrDefault<int>(
-                                                FFAppState()
-                                                    .downloadedTracks
-                                                    .length,
-                                                1,
-                                              ) -
+                                      FFAppState()
+                                          .updateDownloadedTracksAtIndex(
+                                        valueOrDefault<int>(
+                                              FFAppState()
+                                                  .downloadedTracks
+                                                  .length,
                                               1,
-                                          (e) => e
-                                            ..name = widget
-                                                .meditationList?[
-                                                    FFAppState().playerIndex]
-                                                .title
-                                            ..description = widget
-                                                .meditationList?[
-                                                    FFAppState().playerIndex]
-                                                .description
-                                            ..audioPath = widget
-                                                .meditationList?[
-                                                    FFAppState().playerIndex]
-                                                .audioPath
-                                            ..isPaid = widget
-                                                .meditationList?[
-                                                    FFAppState().playerIndex]
-                                                .isPaid
-                                            ..duration = widget
-                                                .meditationList?[
-                                                    FFAppState().playerIndex]
-                                                .duration
-                                            ..type = widget
-                                                .meditationList?[
-                                                    FFAppState().playerIndex]
-                                                .type
-                                            ..nameEng = widget
-                                                .meditationList?[
-                                                    FFAppState().playerIndex]
-                                                .titleEng
-                                            ..descriptionName = widget
-                                                .meditationList?[
-                                                    FFAppState().playerIndex]
-                                                .descriptionEng
-                                            ..durationEng = widget
-                                                .meditationList?[
-                                                    FFAppState().playerIndex]
-                                                .durationEng,
-                                        );
-                                      });
+                                            ) -
+                                            1,
+                                        (e) => e
+                                          ..name = widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .title
+                                          ..description = widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .description
+                                          ..audioPath = widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .audioPath
+                                          ..isPaid = widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .isPaid
+                                          ..duration = widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .duration
+                                          ..type = widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .type
+                                          ..nameEng = widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .titleEng
+                                          ..descriptionName = widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .descriptionEng
+                                          ..durationEng = widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .durationEng,
+                                      );
+                                      setState(() {});
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,
@@ -775,9 +774,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                     },
                                   ),
                                 });
-                                setState(() {
-                                  _model.isLiked = false;
-                                });
+                                _model.isLiked = false;
+                                setState(() {});
                               },
                               child: Container(
                                 width: 32.0,
@@ -810,9 +808,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                     },
                                   ),
                                 });
-                                setState(() {
-                                  _model.isLiked = true;
-                                });
+                                _model.isLiked = true;
+                                setState(() {});
                               },
                               child: Container(
                                 width: 32.0,

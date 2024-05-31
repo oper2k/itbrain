@@ -268,11 +268,10 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                                   .downloadedTracks
                                                                   .toList()),
                                                         );
-                                                        setState(() {
-                                                          _model.iterationIndex =
-                                                              _model.iterationIndex +
-                                                                  1;
-                                                        });
+                                                        _model.iterationIndex =
+                                                            _model.iterationIndex +
+                                                                1;
+                                                        setState(() {});
                                                       }
                                                       await showModalBottomSheet(
                                                         isScrollControlled:
@@ -306,10 +305,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                       ).then((value) =>
                                                           safeSetState(() {}));
 
-                                                      setState(() {
-                                                        _model.iterationIndex =
-                                                            0;
-                                                      });
+                                                      _model.iterationIndex = 0;
+                                                      setState(() {});
 
                                                       setState(() {});
                                                     },
@@ -359,10 +356,9 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
-                                                      setState(() {
-                                                        _model.downloadProgress =
-                                                            5;
-                                                      });
+                                                      _model.downloadProgress =
+                                                          5;
+                                                      setState(() {});
                                                       while (_model
                                                               .iterationIndex <
                                                           containerMeditationsRecordList
@@ -453,23 +449,20 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                                       .durationEng,
                                                           );
                                                         }
-                                                        setState(() {
-                                                          _model.iterationIndex =
-                                                              _model.iterationIndex +
-                                                                  1;
-                                                          _model
-                                                              .downloadProgress = (100 /
-                                                                  containerMeditationsRecordList
-                                                                      .length)
-                                                              .round();
-                                                        });
-                                                      }
-                                                      setState(() {
                                                         _model.iterationIndex =
-                                                            0;
+                                                            _model.iterationIndex +
+                                                                1;
                                                         _model.downloadProgress =
-                                                            100;
-                                                      });
+                                                            (100 /
+                                                                    containerMeditationsRecordList
+                                                                        .length)
+                                                                .round();
+                                                        setState(() {});
+                                                      }
+                                                      _model.iterationIndex = 0;
+                                                      _model.downloadProgress =
+                                                          100;
+                                                      setState(() {});
                                                       await showModalBottomSheet(
                                                         isScrollControlled:
                                                             true,
@@ -1161,16 +1154,14 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                             [])
                                                         .contains(meditationsItem
                                                             .meditationCategory)) {
-                                                      setState(() {
-                                                        FFAppState()
-                                                            .positionMS = 0;
-                                                        FFAppState()
-                                                                .playerIndex =
-                                                            valueOrDefault<int>(
-                                                          meditationsIndex,
-                                                          0,
-                                                        );
-                                                      });
+                                                      FFAppState().positionMS =
+                                                          0;
+                                                      FFAppState().playerIndex =
+                                                          valueOrDefault<int>(
+                                                        meditationsIndex,
+                                                        0,
+                                                      );
+                                                      setState(() {});
                                                       await actions.stopMusic(
                                                         'p1',
                                                       );
@@ -1212,12 +1203,10 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                       return;
                                                     }
                                                   } else {
-                                                    setState(() {
-                                                      FFAppState().positionMS =
-                                                          0;
-                                                      FFAppState().playerIndex =
-                                                          meditationsIndex;
-                                                    });
+                                                    FFAppState().positionMS = 0;
+                                                    FFAppState().playerIndex =
+                                                        meditationsIndex;
+                                                    setState(() {});
                                                     await actions.stopMusic(
                                                       'p1',
                                                     );

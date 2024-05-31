@@ -570,20 +570,17 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                       if ((_model.cardNumberTextController.text != '') ||
                           functions.cardNumberCheck(
                               _model.cardNumberTextController.text)!) {
-                        setState(() {
-                          _model.showCardNumberError = false;
-                        });
+                        _model.showCardNumberError = false;
+                        setState(() {});
                         if (functions.cardDateEndCheck(
                             _model.dateEndTextController.text,
                             getCurrentTimestamp)) {
-                          setState(() {
-                            _model.chowDateEndError = false;
-                          });
+                          _model.chowDateEndError = false;
+                          setState(() {});
                           if (functions.cvvCheck(
                               int.tryParse(_model.cvcTextController.text))!) {
-                            setState(() {
-                              _model.showCVVerror = false;
-                            });
+                            _model.showCVVerror = false;
+                            setState(() {});
                             await showModalBottomSheet(
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
@@ -603,23 +600,20 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                               },
                             ).then((value) => safeSetState(() {}));
                           } else {
-                            setState(() {
-                              _model.showCVVerror = false;
-                            });
+                            _model.showCVVerror = false;
+                            setState(() {});
                             return;
                           }
 
                           return;
                         } else {
-                          setState(() {
-                            _model.chowDateEndError = true;
-                          });
+                          _model.chowDateEndError = true;
+                          setState(() {});
                           return;
                         }
                       } else {
-                        setState(() {
-                          _model.showCardNumberError = true;
-                        });
+                        _model.showCardNumberError = true;
+                        setState(() {});
                         return;
                       }
                     },

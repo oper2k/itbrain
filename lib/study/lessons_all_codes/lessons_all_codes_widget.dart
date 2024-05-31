@@ -254,8 +254,9 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                 0.0, 16.0, 0.0, 32.0),
                             child: Builder(
                               builder: (context) {
-                                final lessons =
-                                    containerLessonsRecordList.toList();
+                                final lessons = containerLessonsRecordList
+                                    .sortedList((e) => e.order)
+                                    .toList();
                                 return ListView.separated(
                                   padding: EdgeInsets.zero,
                                   primary: false,
@@ -294,10 +295,9 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                                 containerLessonsRecordList
                                                     .toList(),
                                               );
-                                              setState(() {
-                                                FFAppState().playerIndex =
-                                                    lessonsIndex;
-                                              });
+                                              FFAppState().playerIndex =
+                                                  lessonsIndex;
+                                              setState(() {});
 
                                               context.pushNamed(
                                                 'playerPage',

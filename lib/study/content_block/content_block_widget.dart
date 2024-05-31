@@ -93,9 +93,8 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
               _model.meditations = await actions.convertLessonToMeditation(
                 widget.level!,
               );
-              setState(() {
-                FFAppState().playerIndex = 0;
-              });
+              FFAppState().playerIndex = 0;
+              setState(() {});
 
               context.pushNamed(
                 'playerPage',

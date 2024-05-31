@@ -284,81 +284,91 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                           child: Builder(
                             builder: (context) {
                               if (!_model.isPushOn) {
-                                return InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    await FfCustomPushNotificationsRecord
-                                        .collection
-                                        .doc()
-                                        .set(
-                                            createFfCustomPushNotificationsRecordData(
-                                          tag: '',
-                                          isRepeat: false,
-                                          repeatInterval: '',
-                                          status: 'started',
-                                          targetAudience: 'All',
-                                          userRefs: currentUserReference?.id,
-                                          variable: '',
-                                          parameterData: '',
-                                          notificationTitle:
-                                              '${FFLocalizations.of(context).getVariableText(
-                                            ruText: 'Курс',
-                                            enText: 'Course',
-                                          )}\"${FFLocalizations.of(context).getVariableText(
-                                            ruText: widget.courseInfo?.title,
-                                            enText: widget.courseInfo?.titleEng,
-                                          )}\"${FFLocalizations.of(context).getVariableText(
-                                            ruText: ' теперь доступен!',
-                                            enText: 'is avaliable now!',
-                                          )}',
-                                          notificationText:
-                                              FFLocalizations.of(context)
-                                                  .getVariableText(
-                                            ruText: 'Зайди, чтобы проверить!',
-                                            enText: 'Click to check!',
-                                          ),
-                                          condition: '',
-                                          conditionValue: '',
-                                          initialPageName: 'studyPage',
-                                          timestamp: getCurrentTimestamp,
-                                          scheduledTime:
-                                              widget.courseInfo?.startDate,
-                                          notificationImageUrl: '',
-                                        ));
-                                  },
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 52.0,
-                                    decoration: BoxDecoration(
-                                      gradient: const LinearGradient(
-                                        colors: [
-                                          Color(0xFF9747FF),
-                                          Color(0xFFF1618E),
-                                          Color(0xFFFE710B)
-                                        ],
-                                        stops: [0.0, 0.4, 1.0],
-                                        begin: AlignmentDirectional(1.0, 0.34),
-                                        end: AlignmentDirectional(-1.0, -0.34),
-                                      ),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          '6fzep0g2' /* Напомнить об открытии продаж */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Evolventa',
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              useGoogleFonts: false,
+                                return Visibility(
+                                  visible: widget
+                                          .courseInfo?.showNotificationButton ??
+                                      true,
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await FfCustomPushNotificationsRecord
+                                          .collection
+                                          .doc()
+                                          .set(
+                                              createFfCustomPushNotificationsRecordData(
+                                            tag: '',
+                                            isRepeat: false,
+                                            repeatInterval: '',
+                                            status: 'started',
+                                            targetAudience: 'All',
+                                            userRefs: currentUserReference?.id,
+                                            variable: '',
+                                            parameterData: '',
+                                            notificationTitle:
+                                                '${FFLocalizations.of(context).getVariableText(
+                                              ruText: 'Курс',
+                                              enText: 'Course',
+                                            )}\"${FFLocalizations.of(context).getVariableText(
+                                              ruText: widget.courseInfo?.title,
+                                              enText:
+                                                  widget.courseInfo?.titleEng,
+                                            )}\"${FFLocalizations.of(context).getVariableText(
+                                              ruText: ' теперь доступен!',
+                                              enText: 'is avaliable now!',
+                                            )}',
+                                            notificationText:
+                                                FFLocalizations.of(context)
+                                                    .getVariableText(
+                                              ruText: 'Зайди, чтобы проверить!',
+                                              enText: 'Click to check!',
                                             ),
+                                            condition: '',
+                                            conditionValue: '',
+                                            initialPageName: 'studyPage',
+                                            timestamp: getCurrentTimestamp,
+                                            scheduledTime:
+                                                widget.courseInfo?.startDate,
+                                            notificationImageUrl: '',
+                                          ));
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 52.0,
+                                      decoration: BoxDecoration(
+                                        gradient: const LinearGradient(
+                                          colors: [
+                                            Color(0xFF9747FF),
+                                            Color(0xFFF1618E),
+                                            Color(0xFFFE710B)
+                                          ],
+                                          stops: [0.0, 0.4, 1.0],
+                                          begin:
+                                              AlignmentDirectional(1.0, 0.34),
+                                          end:
+                                              AlignmentDirectional(-1.0, -0.34),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            '6fzep0g2' /* Напомнить об открытии продаж */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Evolventa',
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                useGoogleFonts: false,
+                                              ),
+                                        ),
                                       ),
                                     ),
                                   ),

@@ -705,30 +705,26 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               onTap: () async {
                                 var shouldSetState = false;
                                 if (_model.emailTextController.text != '') {
-                                  setState(() {
-                                    _model.showEmailError = false;
-                                  });
+                                  _model.showEmailError = false;
+                                  setState(() {});
                                   if ((_model.passwordTextController.text !=
                                               '') &&
                                       functions.passCheck(_model
                                           .passwordTextController.text)!) {
-                                    setState(() {
-                                      _model.showPassError = false;
-                                    });
+                                    _model.showPassError = false;
+                                    setState(() {});
                                     if ((_model.confirmPassTextController
                                                     .text !=
                                                 '') &&
                                         functions.passCheck(_model
                                             .confirmPassTextController.text)!) {
-                                      setState(() {
-                                        _model.showConfirmPassError = false;
-                                      });
+                                      _model.showConfirmPassError = false;
+                                      setState(() {});
                                       if (_model.passwordTextController.text ==
                                           _model
                                               .confirmPassTextController.text) {
-                                        setState(() {
-                                          _model.showMatchError = false;
-                                        });
+                                        _model.showMatchError = false;
+                                        setState(() {});
                                         _model.users =
                                             await queryUsersRecordCount(
                                           queryBuilder: (usersRecord) =>
@@ -741,9 +737,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         );
                                         shouldSetState = true;
                                         if (_model.users! > 0) {
-                                          setState(() {
-                                            _model.showDocExistsError = true;
-                                          });
+                                          _model.showDocExistsError = true;
+                                          setState(() {});
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,
@@ -772,9 +767,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           if (shouldSetState) setState(() {});
                                           return;
                                         } else {
-                                          setState(() {
-                                            _model.showDocExistsError = false;
-                                          });
+                                          _model.showDocExistsError = false;
+                                          setState(() {});
                                           GoRouter.of(context)
                                               .prepareAuthEvent();
                                           if (_model.passwordTextController
@@ -823,30 +817,26 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           return;
                                         }
                                       } else {
-                                        setState(() {
-                                          _model.showMatchError = true;
-                                        });
+                                        _model.showMatchError = true;
+                                        setState(() {});
                                         if (shouldSetState) setState(() {});
                                         return;
                                       }
                                     } else {
-                                      setState(() {
-                                        _model.showConfirmPassError = true;
-                                      });
+                                      _model.showConfirmPassError = true;
+                                      setState(() {});
                                       if (shouldSetState) setState(() {});
                                       return;
                                     }
                                   } else {
-                                    setState(() {
-                                      _model.showPassError = true;
-                                    });
+                                    _model.showPassError = true;
+                                    setState(() {});
                                     if (shouldSetState) setState(() {});
                                     return;
                                   }
                                 } else {
-                                  setState(() {
-                                    _model.showEmailError = true;
-                                  });
+                                  _model.showEmailError = true;
+                                  setState(() {});
                                   if (shouldSetState) setState(() {});
                                   return;
                                 }
@@ -1459,18 +1449,15 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 if (_model.nameTextController.text != '') {
-                                  setState(() {
-                                    _model.showNameError = false;
-                                  });
+                                  _model.showNameError = false;
+                                  setState(() {});
                                   if (_model.surnameTextController.text != '') {
-                                    setState(() {
-                                      _model.showSurnameError = false;
-                                    });
+                                    _model.showSurnameError = false;
+                                    setState(() {});
                                     if (_model.phoneNumberTextController.text !=
                                             '') {
-                                      setState(() {
-                                        _model.showPhoneError = false;
-                                      });
+                                      _model.showPhoneError = false;
+                                      setState(() {});
 
                                       await currentUserReference!
                                           .update(createUsersRecordData(
@@ -1488,21 +1475,18 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       );
                                       return;
                                     } else {
-                                      setState(() {
-                                        _model.showPhoneError = true;
-                                      });
+                                      _model.showPhoneError = true;
+                                      setState(() {});
                                       return;
                                     }
                                   } else {
-                                    setState(() {
-                                      _model.showSurnameError = true;
-                                    });
+                                    _model.showSurnameError = true;
+                                    setState(() {});
                                     return;
                                   }
                                 } else {
-                                  setState(() {
-                                    _model.showNameError = true;
-                                  });
+                                  _model.showNameError = true;
+                                  setState(() {});
                                   return;
                                 }
                               },
@@ -1823,13 +1807,12 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                         }
                                                       }
 
-                                                      setState(() {
-                                                        FFAppState()
-                                                                .imageProfileBlurHash =
-                                                            _model
-                                                                .uploadedLocalFile
-                                                                .blurHash!;
-                                                      });
+                                                      FFAppState()
+                                                              .imageProfileBlurHash =
+                                                          _model
+                                                              .uploadedLocalFile
+                                                              .blurHash!;
+                                                      setState(() {});
                                                     } else {
                                                       await requestPermission(
                                                           photoLibraryPermission);

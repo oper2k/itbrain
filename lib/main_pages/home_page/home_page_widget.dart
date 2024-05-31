@@ -79,10 +79,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
         FFAppState().clearBuyPackCacheCache();
         FFAppState().clearHistoryCacheCache();
       } else {
-        setState(() {
-          FFAppState().isOffline = true;
-          FFAppState().isAppLoaded = true;
-        });
+        FFAppState().isOffline = true;
+        FFAppState().isAppLoaded = true;
+        setState(() {});
         return;
       }
     });
