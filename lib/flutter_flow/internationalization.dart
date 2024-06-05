@@ -725,13 +725,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'eщё',
       'en': 'more',
     },
-    'vnfzb2oi': {
-      'ru': 'Вы подписались на уведомления',
-      'en': 'You have subscribed to notifications',
-    },
     '2kma94hw': {
       'ru': 'Напомнить об открытии продаж',
       'en': 'Remind about the opening of sales',
+    },
+    'khaivu00': {
+      'ru': 'Вы подписались на уведомления',
+      'en': 'You have subscribed to notifications',
+    },
+    'kya3o4nc': {
+      'ru': 'Узнать подробнее',
+      'en': 'You are subscribed to notifications',
     },
     'lspc264o': {
       'ru': 'Узнать больше и купить',
@@ -769,7 +773,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '9f6fcpg0': {
       'ru': 'от приложения IT BRAIN',
-      'en': 'from IT BRAIN',
+      'en': 'with IT BRAIN',
     },
     'bugr0nhk': {
       'ru': 'Обучение',
@@ -803,7 +807,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ptvcl6lu': {
       'ru': 'Слушать все коды',
-      'en': 'Listen all codes',
+      'en': 'Listen to all codes',
     },
     '6khoust6': {
       'ru': 'Home',
@@ -841,10 +845,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Видео',
       'en': 'Video',
     },
-    'p0ndhkva': {
-      'ru': 'С канала \"Расшифровка генома человечности\"',
-      'en': 'From the channel \"Decoding the Human Genome\"',
-    },
     'p5qgl4l7': {
       'ru': 'Home',
       'en': 'Home',
@@ -853,9 +853,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // lessonsAllCodes
   {
     'uucso3rn': {
-      'ru': 'Собрали все аудио с курса в одном месте для вашего удобства',
+      'ru':
+          'Для вашего удобства, мы собрали все доступные вам коды Золотого Генома в одном месте без дополнительных встреч. Однако, чтобы ничего не упустить, очень важно внимательно прослушивать все встречи и читать всю информацию в каждом уроке.',
       'en':
-          'We have collected all the audio from the course in one place for your convenience.',
+          'For your convenience, we have collected all the Golden Genome codes available to you in one place without additional meetings. However, to ensure you don\'t miss anything, it is very important to listen carefully to all meetings and read all the information in each lesson.',
     },
     'f3bthe0z': {
       'ru': 'Home',
@@ -866,7 +867,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'z425erss': {
       'ru': 'Подбираем твою страницу на сегодня',
-      'en': 'We are selecting your page for today',
+      'en':
+          'We\'re selecting a page for contemplation and receiving the answer',
     },
     'ctd01cm1': {
       'ru': 'Home',
@@ -1222,12 +1224,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Level not available',
     },
     'x8qumqus': {
+      'ru': 'Чтобы перейти на этот уровень вам нужно его приобрести',
+      'en': 'To get to this level you need to purchase it',
+    },
+    '84r0d9xt': {
       'ru': 'Чтобы перейти на этот уровень вам нужно пройти предыдущий',
-      'en': 'To go to this level you need to complete the previous one',
+      'en': 'To proceed to this level, you need to complete the previous one ',
     },
     'a4pg3pvq': {
       'ru': 'Узнать подробнее',
       'en': 'Find out more',
+    },
+    'yegekz55': {
+      'ru': 'Закрыть',
+      'en': 'Close',
     },
   },
   // soon
@@ -1353,7 +1363,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // meditationPackInfo
   {
-    'yegekz55': {
+    'xaggtplq': {
       'ru': 'Закрыть',
       'en': 'Close',
     },

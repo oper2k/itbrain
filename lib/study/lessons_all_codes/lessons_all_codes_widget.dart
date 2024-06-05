@@ -206,7 +206,7 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'uucso3rn' /* Собрали все аудио с курса в од... */,
+                                        'uucso3rn' /* Для вашего удобства, мы собрал... */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -269,18 +269,20 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                     final lessonsItem = lessons[lessonsIndex];
                                     return Visibility(
                                       visible: functions.isLessonAvailable(
-                                          getCurrentTimestamp,
-                                          (currentUserDocument
-                                                      ?.purchasedCoursesDates
-                                                      .toList() ??
-                                                  [])
-                                              .where((e) =>
-                                                  e.courseRef ==
-                                                  widget.courseInfo?.reference)
-                                              .toList()
-                                              .first
-                                              .purchasedDate!,
-                                          lessonsItem.order),
+                                              getCurrentTimestamp,
+                                              (currentUserDocument
+                                                          ?.purchasedCoursesDates
+                                                          .toList() ??
+                                                      [])
+                                                  .where((e) =>
+                                                      e.courseRef ==
+                                                      widget.courseInfo
+                                                          ?.reference)
+                                                  .toList()
+                                                  .first
+                                                  .purchasedDate!,
+                                              lessonsItem.order) &&
+                                          (lessonsItem.mainAudio != ''),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => Container(
                                           decoration: const BoxDecoration(),

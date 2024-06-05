@@ -114,17 +114,23 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                       ),
                     ),
                   ),
-                  if ((widget.meditationList?[FFAppState().playerIndex]
-                                  .playerTitle !=
-                              null &&
-                          widget.meditationList?[FFAppState().playerIndex]
-                                  .playerTitle !=
+                  if ((FFLocalizations.of(context).getVariableText(
+                                ruText: widget
+                                    .meditationList?[FFAppState().playerIndex]
+                                    .playerTitle,
+                                enText: widget
+                                    .meditationList?[FFAppState().playerIndex]
+                                    .playerTitleEng,
+                              ) !=
                               '') &&
-                      (widget.meditationList?[FFAppState().playerIndex]
-                                  .playerText !=
-                              null &&
-                          widget.meditationList?[FFAppState().playerIndex]
-                                  .playerText !=
+                      (FFLocalizations.of(context).getVariableText(
+                                ruText: widget
+                                    .meditationList?[FFAppState().playerIndex]
+                                    .playerText,
+                                enText: widget
+                                    .meditationList?[FFAppState().playerIndex]
+                                    .playerTextEng,
+                              ) !=
                               ''))
                     InkWell(
                       splashColor: Colors.transparent,
@@ -197,25 +203,37 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                     ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
-              child: Text(
-                FFLocalizations.of(context).getVariableText(
-                  ruText: widget
-                      .meditationList?[FFAppState().playerIndex].description,
-                  enText: widget.meditationList?[FFAppState().playerIndex]
-                      .descriptionEng,
+            if ((widget.meditationList?[FFAppState().playerIndex]
+                            .description !=
+                        null &&
+                    widget.meditationList?[FFAppState().playerIndex]
+                            .description !=
+                        '') &&
+                (widget.meditationList?[FFAppState().playerIndex]
+                            .descriptionEng !=
+                        null &&
+                    widget.meditationList?[FFAppState().playerIndex]
+                            .descriptionEng !=
+                        ''))
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
+                child: Text(
+                  FFLocalizations.of(context).getVariableText(
+                    ruText: widget
+                        .meditationList?[FFAppState().playerIndex].description,
+                    enText: widget.meditationList?[FFAppState().playerIndex]
+                        .descriptionEng,
+                  ),
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Evolventa',
+                        fontSize: 15.0,
+                        letterSpacing: 0.0,
+                        useGoogleFonts: false,
+                        lineHeight: 1.2,
+                      ),
                 ),
-                textAlign: TextAlign.center,
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Evolventa',
-                      fontSize: 15.0,
-                      letterSpacing: 0.0,
-                      useGoogleFonts: false,
-                      lineHeight: 1.2,
-                    ),
               ),
-            ),
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(24.0, 48.0, 24.0, 0.0),
               child: SizedBox(

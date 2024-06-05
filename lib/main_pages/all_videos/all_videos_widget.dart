@@ -111,25 +111,6 @@ class _AllVideosWidgetState extends State<AllVideosWidget> {
                     ),
                   ),
                 ),
-                Align(
-                  alignment: const AlignmentDirectional(-1.0, 0.0),
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'p0ndhkva' /* С канала "Расшифровка генома ч... */,
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Evolventa',
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            fontSize: 17.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.normal,
-                            useGoogleFonts: false,
-                          ),
-                    ),
-                  ),
-                ),
                 Expanded(
                   child: Padding(
                     padding:

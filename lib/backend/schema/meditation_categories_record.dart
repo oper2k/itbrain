@@ -115,6 +115,11 @@ class MeditationCategoriesRecord extends FirestoreRecord {
   bool get isPresale => _isPresale ?? false;
   bool hasIsPresale() => _isPresale != null;
 
+  // "showNotifyButton" field.
+  bool? _showNotifyButton;
+  bool get showNotifyButton => _showNotifyButton ?? false;
+  bool hasShowNotifyButton() => _showNotifyButton != null;
+
   void _initializeFields() {
     _nameCategory = snapshotData['nameCategory'] as String?;
     _descriptionCategory = snapshotData['descriptionCategory'] as String?;
@@ -137,6 +142,7 @@ class MeditationCategoriesRecord extends FirestoreRecord {
     _showAudioCount = snapshotData['showAudioCount'] as bool?;
     _startDate = snapshotData['start_date'] as DateTime?;
     _isPresale = snapshotData['isPresale'] as bool?;
+    _showNotifyButton = snapshotData['showNotifyButton'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -196,6 +202,7 @@ Map<String, dynamic> createMeditationCategoriesRecordData({
   bool? showAudioCount,
   DateTime? startDate,
   bool? isPresale,
+  bool? showNotifyButton,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -219,6 +226,7 @@ Map<String, dynamic> createMeditationCategoriesRecordData({
       'showAudioCount': showAudioCount,
       'start_date': startDate,
       'isPresale': isPresale,
+      'showNotifyButton': showNotifyButton,
     }.withoutNulls,
   );
 
@@ -250,7 +258,8 @@ class MeditationCategoriesRecordDocumentEquality
         e1?.free == e2?.free &&
         e1?.showAudioCount == e2?.showAudioCount &&
         e1?.startDate == e2?.startDate &&
-        e1?.isPresale == e2?.isPresale;
+        e1?.isPresale == e2?.isPresale &&
+        e1?.showNotifyButton == e2?.showNotifyButton;
   }
 
   @override
@@ -274,7 +283,8 @@ class MeditationCategoriesRecordDocumentEquality
         e?.free,
         e?.showAudioCount,
         e?.startDate,
-        e?.isPresale
+        e?.isPresale,
+        e?.showNotifyButton
       ]);
 
   @override

@@ -64,10 +64,12 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: StreamBuilder<List<LevelsRecord>>(
           stream: queryLevelsRecord(
-            queryBuilder: (levelsRecord) => levelsRecord.where(
-              'course_ref',
-              isEqualTo: widget.course?.reference,
-            ),
+            queryBuilder: (levelsRecord) => levelsRecord
+                .where(
+                  'course_ref',
+                  isEqualTo: widget.course?.reference,
+                )
+                .orderBy('count'),
           ),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
@@ -343,7 +345,6 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                           builder: (context) {
                                             final levels =
                                                 containerLevelsRecordList
-                                                    .sortedList((e) => e.count)
                                                     .toList();
                                             return SingleChildScrollView(
                                               child: Column(
@@ -403,194 +404,148 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                           },
                                                         );
                                                       } else {
-                                                        if ((currentUserDocument
-                                                                    ?.purchasedLevels
-                                                                    .toList() ??
-                                                                [])
-                                                            .contains(containerLevelsRecordList[
-                                                                    valueOrDefault<
-                                                                        int>(
+                                                        _model.isPreviusPurchased =
+                                                            (currentUserDocument
+                                                                        ?.purchasedLevels
+                                                                        .toList() ??
+                                                                    [])
+                                                                .contains(containerLevelsRecordList[
+                                                                        valueOrDefault<
+                                                                            int>(
                                                           (int index) {
-                                                            return (index -
-                                                                        1) ==
-                                                                    -1
+                                                            return index == 0
                                                                 ? 0
                                                                 : index - 1;
                                                           }(levelsIndex),
                                                           0,
                                                         )]
-                                                                .reference)) {
-                                                          if ((currentUserDocument
-                                                                      ?.completedLevels
-                                                                      .toList() ??
-                                                                  [])
-                                                              .contains(containerLevelsRecordList[
-                                                                      valueOrDefault<
-                                                                          int>(
-                                                            (int index) {
-                                                              return (index -
-                                                                          1) ==
-                                                                      -1
-                                                                  ? 0
-                                                                  : index - 1;
-                                                            }(levelsIndex),
-                                                            0,
-                                                          )]
-                                                                  .reference)) {
-                                                            await showModalBottomSheet(
-                                                              isScrollControlled:
-                                                                  true,
-                                                              backgroundColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              enableDrag: false,
-                                                              context: context,
-                                                              builder:
-                                                                  (context) {
-                                                                return GestureDetector(
-                                                                  onTap: () => _model
-                                                                          .unfocusNode
-                                                                          .canRequestFocus
-                                                                      ? FocusScope.of(
-                                                                              context)
-                                                                          .requestFocus(_model
+                                                                    .reference);
+                                                        _model.isPreviusCompleted =
+                                                            (currentUserDocument
+                                                                        ?.completedLevels
+                                                                        .toList() ??
+                                                                    [])
+                                                                .contains(containerLevelsRecordList[
+                                                                        valueOrDefault<
+                                                                            int>(
+                                                          (int index) {
+                                                            return index == 0
+                                                                ? 0
+                                                                : index - 1;
+                                                          }(levelsIndex),
+                                                          0,
+                                                        )]
+                                                                    .reference);
+                                                        _model.previusLevelTitle =
+                                                            containerLevelsRecordList[
+                                                                    valueOrDefault<
+                                                                        int>(
+                                                          (int index) {
+                                                            return index == 0
+                                                                ? 0
+                                                                : index - 1;
+                                                          }(levelsIndex),
+                                                          0,
+                                                        )]
+                                                                .title;
+                                                        setState(() {});
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
                                                                               .unfocusNode)
-                                                                      : FocusScope.of(
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    LevelNotAvaliableWidget(
+                                                                  levelInfo:
+                                                                      levelsItem,
+                                                                  showButton:
+                                                                      () {
+                                                                    if (_model.isPreviusPurchased &&
+                                                                        !_model
+                                                                            .isPreviusCompleted) {
+                                                                      return false;
+                                                                    } else if (_model
+                                                                            .isPreviusPurchased &&
+                                                                        _model
+                                                                            .isPreviusCompleted &&
+                                                                        !(currentUserDocument?.purchasedLevels.toList() ??
+                                                                                [])
+                                                                            .contains(levelsItem.reference)) {
+                                                                      return true;
+                                                                    } else {
+                                                                      return false;
+                                                                    }
+                                                                  }(),
+                                                                  url: !(currentUserDocument?.purchasedLevels.toList() ??
+                                                                              [])
+                                                                          .contains(containerLevelsRecordList[valueOrDefault<
+                                                                                  int>(
+                                                                    (int
+                                                                        index) {
+                                                                      return (index - 1) ==
+                                                                              -1
+                                                                          ? 0
+                                                                          : index -
+                                                                              1;
+                                                                    }(levelsIndex),
+                                                                    0,
+                                                                  )]
+                                                                              .reference)
+                                                                      ? FFLocalizations.of(
                                                                               context)
-                                                                          .unfocus(),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: MediaQuery
-                                                                        .viewInsetsOf(
-                                                                            context),
-                                                                    child:
-                                                                        LevelNotAvaliableWidget(
-                                                                      levelInfo:
-                                                                          levelsItem,
-                                                                      showButton:
-                                                                          true,
-                                                                      url: containerLevelsRecordList[
-                                                                              valueOrDefault<int>(
-                                                                        (int
-                                                                            index) {
-                                                                          return (index - 1) == -1
-                                                                              ? 0
-                                                                              : index - 1;
-                                                                        }(levelsIndex),
-                                                                        0,
-                                                                      )]
-                                                                          .getCourseUrl,
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                safeSetState(
-                                                                    () {}));
-                                                          } else {
-                                                            await showModalBottomSheet(
-                                                              isScrollControlled:
-                                                                  true,
-                                                              backgroundColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              enableDrag: false,
-                                                              context: context,
-                                                              builder:
-                                                                  (context) {
-                                                                return GestureDetector(
-                                                                  onTap: () => _model
-                                                                          .unfocusNode
-                                                                          .canRequestFocus
-                                                                      ? FocusScope.of(
+                                                                          .getVariableText(
+                                                                          ruText: containerLevelsRecordList[valueOrDefault<int>(
+                                                                            (int
+                                                                                index) {
+                                                                              return index == 0 ? 0 : index - 1;
+                                                                            }(levelsIndex),
+                                                                            0,
+                                                                          )]
+                                                                              .getCourseUrl,
+                                                                          enText: containerLevelsRecordList[valueOrDefault<int>(
+                                                                            (int
+                                                                                index) {
+                                                                              return index == 0 ? 0 : index - 1;
+                                                                            }(levelsIndex),
+                                                                            0,
+                                                                          )]
+                                                                              .getCourseUrlEng,
+                                                                        )
+                                                                      : FFLocalizations.of(
                                                                               context)
-                                                                          .requestFocus(_model
-                                                                              .unfocusNode)
-                                                                      : FocusScope.of(
-                                                                              context)
-                                                                          .unfocus(),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: MediaQuery
-                                                                        .viewInsetsOf(
-                                                                            context),
-                                                                    child:
-                                                                        LevelNotAvaliableWidget(
-                                                                      levelInfo:
-                                                                          levelsItem,
-                                                                      showButton:
-                                                                          false,
-                                                                      url: containerLevelsRecordList[
-                                                                              valueOrDefault<int>(
-                                                                        (int
-                                                                            index) {
-                                                                          return (index - 1) == -1
-                                                                              ? 0
-                                                                              : index - 1;
-                                                                        }(levelsIndex),
-                                                                        0,
-                                                                      )]
-                                                                          .getCourseUrl,
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                safeSetState(
-                                                                    () {}));
-                                                          }
-                                                        } else {
-                                                          await showModalBottomSheet(
-                                                            isScrollControlled:
-                                                                true,
-                                                            backgroundColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            enableDrag: false,
-                                                            context: context,
-                                                            builder: (context) {
-                                                              return GestureDetector(
-                                                                onTap: () => _model
-                                                                        .unfocusNode
-                                                                        .canRequestFocus
-                                                                    ? FocusScope.of(
-                                                                            context)
-                                                                        .requestFocus(_model
-                                                                            .unfocusNode)
-                                                                    : FocusScope.of(
-                                                                            context)
-                                                                        .unfocus(),
-                                                                child: Padding(
-                                                                  padding: MediaQuery
-                                                                      .viewInsetsOf(
-                                                                          context),
-                                                                  child:
-                                                                      LevelNotAvaliableWidget(
-                                                                    levelInfo:
-                                                                        levelsItem,
-                                                                    showButton:
-                                                                        true,
-                                                                    url: containerLevelsRecordList[
-                                                                            valueOrDefault<int>(
-                                                                      (int
-                                                                          index) {
-                                                                        return (index - 1) ==
-                                                                                -1
-                                                                            ? 0
-                                                                            : index -
-                                                                                1;
-                                                                      }(levelsIndex),
-                                                                      0,
-                                                                    )]
-                                                                        .getCourseUrl,
-                                                                  ),
+                                                                          .getVariableText(
+                                                                          ruText:
+                                                                              levelsItem.getCourseUrl,
+                                                                          enText:
+                                                                              levelsItem.getCourseUrlEng,
+                                                                        ),
                                                                 ),
-                                                              );
-                                                            },
-                                                          ).then((value) =>
-                                                              safeSetState(
-                                                                  () {}));
-                                                        }
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            safeSetState(
+                                                                () {}));
                                                       }
                                                     },
                                                     child: Row(

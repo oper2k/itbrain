@@ -50,6 +50,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
             getCurrentTimestamp,
             locale: FFLocalizations.of(context).languageCode,
           )) {
+        _model.affirmation = await actions.getRandomAffirmationReference();
+        FFAppState().lastShowAffirmation = _model.affirmation?.reference;
+        setState(() {});
         await showModalBottomSheet(
           isScrollControlled: true,
           backgroundColor: Colors.transparent,
@@ -61,7 +64,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   : FocusScope.of(context).unfocus(),
               child: Padding(
                 padding: MediaQuery.viewInsetsOf(context),
-                child: const AffirmationCompWidget(),
+                child: AffirmationCompWidget(
+                  affirmation: _model.affirmation!,
+                ),
               ),
             );
           },
@@ -1055,139 +1060,136 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 24.0, 20.0, 0.0),
-                                    child:
-                                        StreamBuilder<List<AffirmationRecord>>(
-                                      stream: queryAffirmationRecord(
-                                        singleRecord: true,
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiary,
+                                  if (FFAppState().lastShowAffirmation != null)
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 24.0, 20.0, 0.0),
+                                      child: StreamBuilder<AffirmationRecord>(
+                                        stream: AffirmationRecord.getDocument(
+                                            FFAppState().lastShowAffirmation!),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiary,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          final containerAffirmationRecord =
+                                              snapshot.data!;
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                context: context,
+                                                builder: (context) {
+                                                  return GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child: Padding(
+                                                      padding: MediaQuery
+                                                          .viewInsetsOf(
+                                                              context),
+                                                      child:
+                                                          AffirmationCompWidget(
+                                                        affirmation:
+                                                            containerAffirmationRecord,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then((value) =>
+                                                  safeSetState(() {}));
+                                            },
+                                            child: Container(
+                                              width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .buttonColor2,
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(16.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Icon(
+                                                      FFIcons.kyoga,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent1,
+                                                      size: 24.0,
+                                                    ),
+                                                    Expanded(
+                                                      child: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'frx0mzd2' /* Послание дня */,
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Evolventa',
+                                                              fontSize: 16.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  false,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                    Icon(
+                                                      Icons.chevron_right,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      size: 24.0,
+                                                    ),
+                                                  ].divide(
+                                                      const SizedBox(width: 8.0)),
                                                 ),
                                               ),
                                             ),
                                           );
-                                        }
-                                        List<AffirmationRecord>
-                                            containerAffirmationRecordList =
-                                            snapshot.data!;
-                                        // Return an empty Container when the item does not exist.
-                                        if (snapshot.data!.isEmpty) {
-                                          return Container();
-                                        }
-                                        final containerAffirmationRecord =
-                                            containerAffirmationRecordList
-                                                    .isNotEmpty
-                                                ? containerAffirmationRecordList
-                                                    .first
-                                                : null;
-                                        return InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              context: context,
-                                              builder: (context) {
-                                                return GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child: Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child:
-                                                        const AffirmationCompWidget(),
-                                                  ),
-                                                );
-                                              },
-                                            ).then(
-                                                (value) => safeSetState(() {}));
-                                          },
-                                          child: Container(
-                                            width: double.infinity,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .buttonColor2,
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
-                                            ),
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(16.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Icon(
-                                                    FFIcons.kyoga,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .accent1,
-                                                    size: 24.0,
-                                                  ),
-                                                  Expanded(
-                                                    child: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'frx0mzd2' /* Послание дня */,
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Evolventa',
-                                                            fontSize: 16.0,
-                                                            letterSpacing: 0.0,
-                                                            useGoogleFonts:
-                                                                false,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                  Icon(
-                                                    Icons.chevron_right,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 24.0,
-                                                  ),
-                                                ].divide(const SizedBox(width: 8.0)),
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      },
+                                        },
+                                      ),
                                     ),
-                                  ),
                                 ].addToEnd(const SizedBox(height: 100.0)),
                               ),
                             ).animateOnPageLoad(

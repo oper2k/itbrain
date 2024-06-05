@@ -53,7 +53,12 @@ class _MeditationPackInfoWidgetState extends State<MeditationPackInfoWidget> {
           width: double.infinity,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).thirdBackground,
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(0.0),
+              bottomRight: Radius.circular(0.0),
+              topLeft: Radius.circular(24.0),
+              topRight: Radius.circular(24.0),
+            ),
           ),
           child: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),

@@ -112,7 +112,10 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
                   ),
                   Expanded(
                     child: Text(
-                      '${widget.lesson?.count.toString()}. ${widget.lesson?.title}',
+                      valueOrDefault<String>(
+                        widget.lesson?.title,
+                        '0',
+                      ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Evolventa',

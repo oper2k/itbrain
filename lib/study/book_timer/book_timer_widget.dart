@@ -33,7 +33,7 @@ class _BookTimerWidgetState extends State<BookTimerWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.instantTimer = InstantTimer.periodic(
-        duration: const Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 10),
         callback: (timer) async {
           _model.progress = _model.progress + 0.01;
           setState(() {});

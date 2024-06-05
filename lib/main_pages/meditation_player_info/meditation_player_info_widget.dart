@@ -1,8 +1,10 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'meditation_player_info_model.dart';
 export 'meditation_player_info_model.dart';
@@ -22,9 +24,11 @@ class MeditationPlayerInfoWidget extends StatefulWidget {
       _MeditationPlayerInfoWidgetState();
 }
 
-class _MeditationPlayerInfoWidgetState
-    extends State<MeditationPlayerInfoWidget> {
+class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
+    with TickerProviderStateMixin {
   late MeditationPlayerInfoModel _model;
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -36,6 +40,22 @@ class _MeditationPlayerInfoWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => MeditationPlayerInfoModel());
+
+    animationsMap.addAll({
+      'markdownOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          TintEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 0.0.ms,
+            color: Colors.white,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -53,7 +73,12 @@ class _MeditationPlayerInfoWidgetState
         width: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).thirdBackground,
-          borderRadius: BorderRadius.circular(24.0),
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(0.0),
+            bottomRight: Radius.circular(0.0),
+            topLeft: Radius.circular(24.0),
+            topRight: Radius.circular(24.0),
+          ),
         ),
         child: Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
@@ -111,7 +136,8 @@ class _MeditationPlayerInfoWidgetState
                       ),
                       selectable: true,
                       onTapLink: (_, url, __) => launchURL(url!),
-                    ),
+                    ).animateOnPageLoad(
+                        animationsMap['markdownOnPageLoadAnimation']!),
                   ),
                 ),
                 Padding(

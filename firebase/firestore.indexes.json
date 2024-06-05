@@ -29,6 +29,24 @@
       ]
     },
     {
+      "collectionGroup": "meditations",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "meditationCategory",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "lang",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "order",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "levels",
       "queryScope": "COLLECTION",
       "fields": [

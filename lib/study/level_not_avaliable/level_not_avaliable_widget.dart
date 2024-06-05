@@ -108,73 +108,144 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
                 ),
                 Align(
                   alignment: const AlignmentDirectional(0.0, 0.0),
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'x8qumqus' /* Чтобы перейти на этот уровень ... */,
-                      ),
-                      textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Evolventa',
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            fontSize: 17.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.normal,
-                            useGoogleFonts: false,
-                          ),
-                    ),
-                  ),
-                ),
-                if (widget.showButton)
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 104.0, 0.0, 0.0),
-                    child: InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        await launchURL(widget.url!);
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        width: double.infinity,
-                        height: 52.0,
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color(0xFF9747FF),
-                              Color(0xFFF1618E),
-                              Color(0xFFFE710B)
-                            ],
-                            stops: [0.0, 0.4, 1.0],
-                            begin: AlignmentDirectional(1.0, 0.34),
-                            end: AlignmentDirectional(-1.0, -0.34),
-                          ),
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Builder(
+                    builder: (context) {
+                      if (widget.showButton) {
+                        return Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 8.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'a4pg3pvq' /* Узнать подробнее */,
+                              'x8qumqus' /* Чтобы перейти на этот уровень ... */,
                             ),
+                            textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Evolventa',
-                                  fontSize: 15.0,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontSize: 17.0,
                                   letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.normal,
                                   useGoogleFonts: false,
                                 ),
                           ),
-                        ),
-                      ),
-                    ),
+                        );
+                      } else {
+                        return Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 8.0, 0.0, 0.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              '84r0d9xt' /* Чтобы перейти на этот уровень ... */,
+                            ),
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Evolventa',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontSize: 17.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.normal,
+                                  useGoogleFonts: false,
+                                ),
+                          ),
+                        );
+                      }
+                    },
                   ),
+                ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 104.0, 0.0, 0.0),
+                  child: Builder(
+                    builder: (context) {
+                      if (widget.showButton) {
+                        return InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await launchURL(widget.url!);
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 52.0,
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [
+                                  Color(0xFF9747FF),
+                                  Color(0xFFF1618E),
+                                  Color(0xFFFE710B)
+                                ],
+                                stops: [0.0, 0.4, 1.0],
+                                begin: AlignmentDirectional(1.0, 0.34),
+                                end: AlignmentDirectional(-1.0, -0.34),
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'a4pg3pvq' /* Узнать подробнее */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Evolventa',
+                                      fontSize: 15.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        );
+                      } else {
+                        return InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 52.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).alternate,
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            child: Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'yegekz55' /* Закрыть */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Evolventa',
+                                      fontSize: 15.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                ),
               ],
             ),
           ),

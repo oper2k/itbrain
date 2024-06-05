@@ -16,3 +16,5 @@ export 'yes_create_screenshots.dart' show yesCreateScreenshots;
 export 'delete_files.dart' show deleteFiles;
 export 'launch_review.dart' show launchReview;
 export 'convert_lesson_to_meditation.dart' show convertLessonToMeditation;
+export 'get_random_affirmation_reference.dart'
+    show getRandomAffirmationReference;

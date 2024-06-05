@@ -5,6 +5,7 @@ import 'package:collection/collection.dart';
 import '/backend/schema/util/firestore_util.dart';
 
 import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class AffirmationRecord extends FirestoreRecord {
   AffirmationRecord._(
@@ -44,6 +45,11 @@ class AffirmationRecord extends FirestoreRecord {
   DateTime? get date => _date;
   bool hasDate() => _date != null;
 
+  // "index" field.
+  int? _index;
+  int get index => _index ?? 0;
+  bool hasIndex() => _index != null;
+
   void _initializeFields() {
     _affirmationTitle = snapshotData['affirmationTitle'] as String?;
     _affirmationSubTitle = snapshotData['affirmationSubTitle'] as String?;
@@ -51,6 +57,7 @@ class AffirmationRecord extends FirestoreRecord {
     _affirmationTitleEng = snapshotData['affirmationTitle_eng'] as String?;
     _affirmationSubTitleEng = snapshotData['affirmationSubTitleEng'] as String?;
     _date = snapshotData['date'] as DateTime?;
+    _index = castToType<int>(snapshotData['index']);
   }
 
   static CollectionReference get collection =>
@@ -94,6 +101,7 @@ Map<String, dynamic> createAffirmationRecordData({
   String? affirmationTitleEng,
   String? affirmationSubTitleEng,
   DateTime? date,
+  int? index,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -103,6 +111,7 @@ Map<String, dynamic> createAffirmationRecordData({
       'affirmationTitle_eng': affirmationTitleEng,
       'affirmationSubTitleEng': affirmationSubTitleEng,
       'date': date,
+      'index': index,
     }.withoutNulls,
   );
 
@@ -119,7 +128,8 @@ class AffirmationRecordDocumentEquality implements Equality<AffirmationRecord> {
         e1?.affirmationImage == e2?.affirmationImage &&
         e1?.affirmationTitleEng == e2?.affirmationTitleEng &&
         e1?.affirmationSubTitleEng == e2?.affirmationSubTitleEng &&
-        e1?.date == e2?.date;
+        e1?.date == e2?.date &&
+        e1?.index == e2?.index;
   }
 
   @override
@@ -129,7 +139,8 @@ class AffirmationRecordDocumentEquality implements Equality<AffirmationRecord> {
         e?.affirmationImage,
         e?.affirmationTitleEng,
         e?.affirmationSubTitleEng,
-        e?.date
+        e?.date,
+        e?.index
       ]);
 
   @override

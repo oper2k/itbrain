@@ -11,6 +11,12 @@ class StudyLevelsModel extends FlutterFlowModel<StudyLevelsWidget> {
 
   int? downloadProgress = 0;
 
+  bool isPreviusPurchased = false;
+
+  bool isPreviusCompleted = false;
+
+  String? previusLevelTitle;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

@@ -103,7 +103,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                   .where(
                     'lang',
                     isEqualTo: FFLocalizations.of(context).languageCode,
-                  ),
+                  )
+                  .orderBy('order'),
             ),
           ),
           builder: (context, snapshot) {
@@ -609,7 +610,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                             ),
                                             '0',
                                           ).maybeHandleOverflow(
-                                            maxChars: 145,
+                                            maxChars: 170,
                                             replacement: '…',
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -750,239 +751,326 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                               ],
                             ),
                           ),
-                          Stack(
-                            children: [
-                              Builder(
-                                builder: (context) {
-                                  if (widget.meditationCategory?.soon ??
-                                      false) {
-                                    return Builder(
-                                      builder: (context) {
-                                        if ((currentUserDocument?.addedInPush
-                                                    .toList() ??
-                                                [])
-                                            .contains(widget.meditationCategory
-                                                ?.reference)) {
-                                          return Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 32.0, 0.0, 0.0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 52.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              child: Align(
-                                                alignment: const AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'vnfzb2oi' /* Вы подписались на уведомления */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Evolventa',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        useGoogleFonts: false,
+                          Builder(
+                            builder: (context) {
+                              if (widget.meditationCategory?.soon ?? false) {
+                                return Builder(
+                                  builder: (context) {
+                                    if (widget.meditationCategory
+                                            ?.showNotifyButton ??
+                                        false) {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          if (!(currentUserDocument?.addedInPush
+                                                      .toList() ??
+                                                  [])
+                                              .contains(widget
+                                                  .meditationCategory
+                                                  ?.reference))
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 32.0, 0.0, 0.0),
+                                              child: AuthUserStreamWidget(
+                                                builder: (context) => InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    var ffCustomPushNotificationsRecordReference =
+                                                        FfCustomPushNotificationsRecord
+                                                            .collection
+                                                            .doc();
+                                                    await ffCustomPushNotificationsRecordReference
+                                                        .set(
+                                                            createFfCustomPushNotificationsRecordData(
+                                                      tag: '',
+                                                      isRepeat: false,
+                                                      repeatInterval: '',
+                                                      status: 'started',
+                                                      targetAudience: 'All',
+                                                      userRefs:
+                                                          currentUserReference
+                                                              ?.id,
+                                                      variable: '',
+                                                      parameterData: '',
+                                                      notificationTitle:
+                                                          '${FFLocalizations.of(context).getVariableText(
+                                                        ruText: 'Проект',
+                                                        enText: 'Project',
+                                                      )}\"${FFLocalizations.of(context).getVariableText(
+                                                        ruText: widget
+                                                            .meditationCategory
+                                                            ?.nameCategory,
+                                                        enText: widget
+                                                            .meditationCategory
+                                                            ?.nameCategoryEng,
+                                                      )}\"${FFLocalizations.of(context).getVariableText(
+                                                        ruText:
+                                                            ' теперь доступен!',
+                                                        enText:
+                                                            'is avaliable now!',
+                                                      )}',
+                                                      notificationText:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
+                                                        ruText:
+                                                            'Зайди, чтобы проверить!',
+                                                        enText:
+                                                            'Click to check!',
                                                       ),
+                                                      condition: '',
+                                                      conditionValue: '',
+                                                      initialPageName:
+                                                          'HomePage',
+                                                      timestamp:
+                                                          getCurrentTimestamp,
+                                                      scheduledTime: widget
+                                                          .meditationCategory
+                                                          ?.startDate,
+                                                      notificationImageUrl: '',
+                                                    ));
+                                                    _model.meditationPackNotify =
+                                                        FfCustomPushNotificationsRecord
+                                                            .getDocumentFromData(
+                                                                createFfCustomPushNotificationsRecordData(
+                                                                  tag: '',
+                                                                  isRepeat:
+                                                                      false,
+                                                                  repeatInterval:
+                                                                      '',
+                                                                  status:
+                                                                      'started',
+                                                                  targetAudience:
+                                                                      'All',
+                                                                  userRefs:
+                                                                      currentUserReference
+                                                                          ?.id,
+                                                                  variable: '',
+                                                                  parameterData:
+                                                                      '',
+                                                                  notificationTitle:
+                                                                      '${FFLocalizations.of(context).getVariableText(
+                                                                    ruText:
+                                                                        'Проект',
+                                                                    enText:
+                                                                        'Project',
+                                                                  )}\"${FFLocalizations.of(context).getVariableText(
+                                                                    ruText: widget
+                                                                        .meditationCategory
+                                                                        ?.nameCategory,
+                                                                    enText: widget
+                                                                        .meditationCategory
+                                                                        ?.nameCategoryEng,
+                                                                  )}\"${FFLocalizations.of(context).getVariableText(
+                                                                    ruText:
+                                                                        ' теперь доступен!',
+                                                                    enText:
+                                                                        'is avaliable now!',
+                                                                  )}',
+                                                                  notificationText:
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getVariableText(
+                                                                    ruText:
+                                                                        'Зайди, чтобы проверить!',
+                                                                    enText:
+                                                                        'Click to check!',
+                                                                  ),
+                                                                  condition: '',
+                                                                  conditionValue:
+                                                                      '',
+                                                                  initialPageName:
+                                                                      'HomePage',
+                                                                  timestamp:
+                                                                      getCurrentTimestamp,
+                                                                  scheduledTime: widget
+                                                                      .meditationCategory
+                                                                      ?.startDate,
+                                                                  notificationImageUrl:
+                                                                      '',
+                                                                ),
+                                                                ffCustomPushNotificationsRecordReference);
+
+                                                    await currentUserReference!
+                                                        .update({
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'added_in_push':
+                                                              FieldValue
+                                                                  .arrayUnion([
+                                                            widget
+                                                                .meditationCategory
+                                                                ?.reference
+                                                          ]),
+                                                        },
+                                                      ),
+                                                    });
+                                                    await Future.delayed(
+                                                        const Duration(
+                                                            milliseconds: 500));
+
+                                                    setState(() {});
+                                                  },
+                                                  child: Container(
+                                                    width: double.infinity,
+                                                    height: 52.0,
+                                                    decoration: BoxDecoration(
+                                                      gradient: const LinearGradient(
+                                                        colors: [
+                                                          Color(0xFF9747FF),
+                                                          Color(0xFFF1618E),
+                                                          Color(0xFFFE710B)
+                                                        ],
+                                                        stops: [0.0, 0.4, 1.0],
+                                                        begin:
+                                                            AlignmentDirectional(
+                                                                1.0, 0.34),
+                                                        end:
+                                                            AlignmentDirectional(
+                                                                -1.0, -0.34),
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                    ),
+                                                    child: Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '2kma94hw' /* Напомнить об открытии продаж */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Evolventa',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          );
-                                        } else {
-                                          return Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 32.0, 0.0, 0.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                var ffCustomPushNotificationsRecordReference =
-                                                    FfCustomPushNotificationsRecord
-                                                        .collection
-                                                        .doc();
-                                                await ffCustomPushNotificationsRecordReference
-                                                    .set(
-                                                        createFfCustomPushNotificationsRecordData(
-                                                  tag: '',
-                                                  isRepeat: false,
-                                                  repeatInterval: '',
-                                                  status: 'started',
-                                                  targetAudience: 'All',
-                                                  userRefs:
-                                                      currentUserReference?.id,
-                                                  variable: '',
-                                                  parameterData: '',
-                                                  notificationTitle:
-                                                      '${FFLocalizations.of(context).getVariableText(
-                                                    ruText: 'Проект',
-                                                    enText: 'Project',
-                                                  )}\"${FFLocalizations.of(context).getVariableText(
-                                                    ruText: widget
-                                                        .meditationCategory
-                                                        ?.nameCategory,
-                                                    enText: widget
-                                                        .meditationCategory
-                                                        ?.nameCategoryEng,
-                                                  )}\"${FFLocalizations.of(context).getVariableText(
-                                                    ruText: ' теперь доступен!',
-                                                    enText: 'is avaliable now!',
-                                                  )}',
-                                                  notificationText:
+                                          if ((currentUserDocument?.addedInPush
+                                                      .toList() ??
+                                                  [])
+                                              .contains(widget
+                                                  .meditationCategory
+                                                  ?.reference))
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 32.0, 0.0, 0.0),
+                                              child: AuthUserStreamWidget(
+                                                builder: (context) => Container(
+                                                  width: double.infinity,
+                                                  height: 52.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                  ),
+                                                  child: Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Text(
                                                       FFLocalizations.of(
                                                               context)
-                                                          .getVariableText(
-                                                    ruText:
-                                                        'Зайди, чтобы проверить!',
-                                                    enText: 'Click to check!',
-                                                  ),
-                                                  condition: '',
-                                                  conditionValue: '',
-                                                  initialPageName: 'HomePage',
-                                                  timestamp:
-                                                      getCurrentTimestamp,
-                                                  scheduledTime: widget
-                                                      .meditationCategory
-                                                      ?.startDate,
-                                                  notificationImageUrl: '',
-                                                ));
-                                                _model.meditationPackNotify =
-                                                    FfCustomPushNotificationsRecord
-                                                        .getDocumentFromData(
-                                                            createFfCustomPushNotificationsRecordData(
-                                                              tag: '',
-                                                              isRepeat: false,
-                                                              repeatInterval:
-                                                                  '',
-                                                              status: 'started',
-                                                              targetAudience:
-                                                                  'All',
-                                                              userRefs:
-                                                                  currentUserReference
-                                                                      ?.id,
-                                                              variable: '',
-                                                              parameterData: '',
-                                                              notificationTitle:
-                                                                  '${FFLocalizations.of(context).getVariableText(
-                                                                ruText:
-                                                                    'Проект',
-                                                                enText:
-                                                                    'Project',
-                                                              )}\"${FFLocalizations.of(context).getVariableText(
-                                                                ruText: widget
-                                                                    .meditationCategory
-                                                                    ?.nameCategory,
-                                                                enText: widget
-                                                                    .meditationCategory
-                                                                    ?.nameCategoryEng,
-                                                              )}\"${FFLocalizations.of(context).getVariableText(
-                                                                ruText:
-                                                                    ' теперь доступен!',
-                                                                enText:
-                                                                    'is avaliable now!',
-                                                              )}',
-                                                              notificationText:
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getVariableText(
-                                                                ruText:
-                                                                    'Зайди, чтобы проверить!',
-                                                                enText:
-                                                                    'Click to check!',
-                                                              ),
-                                                              condition: '',
-                                                              conditionValue:
-                                                                  '',
-                                                              initialPageName:
-                                                                  'HomePage',
-                                                              timestamp:
-                                                                  getCurrentTimestamp,
-                                                              scheduledTime: widget
-                                                                  .meditationCategory
-                                                                  ?.startDate,
-                                                              notificationImageUrl:
-                                                                  '',
-                                                            ),
-                                                            ffCustomPushNotificationsRecordReference);
-
-                                                await currentUserReference!
-                                                    .update({
-                                                  ...mapToFirestore(
-                                                    {
-                                                      'added_in_push':
-                                                          FieldValue
-                                                              .arrayUnion([
-                                                        widget
-                                                            .meditationCategory
-                                                            ?.reference
-                                                      ]),
-                                                    },
-                                                  ),
-                                                });
-                                                await Future.delayed(
-                                                    const Duration(
-                                                        milliseconds: 500));
-                                                await launchURL(
-                                                    FFLocalizations.of(context)
-                                                        .getVariableText(
-                                                  ruText: widget
-                                                      .meditationCategory
-                                                      ?.getCourseUrl,
-                                                  enText: widget
-                                                      .meditationCategory
-                                                      ?.getCourseUrlEng,
-                                                ));
-
-                                                setState(() {});
-                                              },
-                                              child: Container(
-                                                width: double.infinity,
-                                                height: 52.0,
-                                                decoration: BoxDecoration(
-                                                  gradient: const LinearGradient(
-                                                    colors: [
-                                                      Color(0xFF9747FF),
-                                                      Color(0xFFF1618E),
-                                                      Color(0xFFFE710B)
-                                                    ],
-                                                    stops: [0.0, 0.4, 1.0],
-                                                    begin: AlignmentDirectional(
-                                                        1.0, 0.34),
-                                                    end: AlignmentDirectional(
-                                                        -1.0, -0.34),
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                ),
-                                                child: Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      '2kma94hw' /* Напомнить об открытии продаж */,
+                                                          .getText(
+                                                        'khaivu00' /* Вы подписались на уведомления */,
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Evolventa',
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            useGoogleFonts:
+                                                                false,
+                                                          ),
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      );
+                                    } else {
+                                      return Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 32.0, 0.0, 0.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            await launchURL(
+                                                FFLocalizations.of(context)
+                                                    .getVariableText(
+                                              ruText: widget.meditationCategory
+                                                  ?.getCourseUrl,
+                                              enText: widget.meditationCategory
+                                                  ?.getCourseUrlEng,
+                                            ));
+                                          },
+                                          child: Container(
+                                            width: double.infinity,
+                                            height: 52.0,
+                                            decoration: BoxDecoration(
+                                              gradient: const LinearGradient(
+                                                colors: [
+                                                  Color(0xFF9747FF),
+                                                  Color(0xFFF1618E),
+                                                  Color(0xFFFE710B)
+                                                ],
+                                                stops: [0.0, 0.4, 1.0],
+                                                begin: AlignmentDirectional(
+                                                    1.0, 0.34),
+                                                end: AlignmentDirectional(
+                                                    -1.0, -0.34),
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            child: Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'kya3o4nc' /* Узнать подробнее */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily:
@@ -992,77 +1080,74 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                               FontWeight.bold,
                                                           useGoogleFonts: false,
                                                         ),
-                                                  ),
-                                                ),
                                               ),
                                             ),
-                                          );
-                                        }
-                                      },
-                                    );
-                                  } else {
-                                    return Visibility(
-                                      visible: ((!(currentUserDocument
-                                                              ?.purchasedMeditationsPacks
-                                                              .toList() ??
-                                                          [])
-                                                      .contains(widget
-                                                          .meditationCategory
-                                                          ?.reference) &&
-                                                  !FFAppState().isOffline) &&
-                                              !widget
-                                                  .meditationCategory!.free) &&
-                                          !widget.meditationCategory!.soon,
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 32.0, 0.0, 0.0),
-                                        child: AuthUserStreamWidget(
-                                          builder: (context) => InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              await launchURL(
-                                                  FFLocalizations.of(context)
-                                                      .getVariableText(
-                                                ruText: widget
-                                                    .meditationCategory
-                                                    ?.getCourseUrl,
-                                                enText: widget
-                                                    .meditationCategory
-                                                    ?.getCourseUrlEng,
-                                              ));
-                                            },
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 52.0,
-                                              decoration: BoxDecoration(
-                                                gradient: const LinearGradient(
-                                                  colors: [
-                                                    Color(0xFF9747FF),
-                                                    Color(0xFFF1618E),
-                                                    Color(0xFFFE710B)
-                                                  ],
-                                                  stops: [0.0, 0.4, 1.0],
-                                                  begin: AlignmentDirectional(
-                                                      1.0, 0.34),
-                                                  end: AlignmentDirectional(
-                                                      -1.0, -0.34),
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                  },
+                                );
+                              } else {
+                                return Visibility(
+                                  visible: ((!(currentUserDocument
+                                                          ?.purchasedMeditationsPacks
+                                                          .toList() ??
+                                                      [])
+                                                  .contains(widget
+                                                      .meditationCategory
+                                                      ?.reference) &&
+                                              !FFAppState().isOffline) &&
+                                          !widget.meditationCategory!.free) &&
+                                      !widget.meditationCategory!.soon,
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 32.0, 0.0, 0.0),
+                                    child: AuthUserStreamWidget(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await launchURL(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            ruText: widget.meditationCategory
+                                                ?.getCourseUrl,
+                                            enText: widget.meditationCategory
+                                                ?.getCourseUrlEng,
+                                          ));
+                                        },
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 52.0,
+                                          decoration: BoxDecoration(
+                                            gradient: const LinearGradient(
+                                              colors: [
+                                                Color(0xFF9747FF),
+                                                Color(0xFFF1618E),
+                                                Color(0xFFFE710B)
+                                              ],
+                                              stops: [0.0, 0.4, 1.0],
+                                              begin: AlignmentDirectional(
+                                                  1.0, 0.34),
+                                              end: AlignmentDirectional(
+                                                  -1.0, -0.34),
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Align(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'lspc264o' /* Узнать больше и купить */,
                                               ),
-                                              child: Align(
-                                                alignment: const AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'lspc264o' /* Узнать больше и купить */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
+                                              style:
+                                                  FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Evolventa',
@@ -1071,17 +1156,15 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                             FontWeight.bold,
                                                         useGoogleFonts: false,
                                                       ),
-                                                ),
-                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    );
-                                  }
-                                },
-                              ),
-                            ],
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
                           ),
                           if (containerMeditationsRecordList.isNotEmpty)
                             Align(

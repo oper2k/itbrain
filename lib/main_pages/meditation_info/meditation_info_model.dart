@@ -19,7 +19,7 @@ class MeditationInfoModel extends FlutterFlowModel<MeditationInfoWidget> {
   bool? isDeleted;
   // Stores action output result for [Custom Action - downloadUrl] action in DownloadAllBtn widget.
   bool? isDownload;
-  // Stores action output result for [Backend Call - Create Document] action in Container widget.
+  // Stores action output result for [Backend Call - Create Document] action in soon_showNotify_notAdded widget.
   FfCustomPushNotificationsRecord? meditationPackNotify;
 
   @override
