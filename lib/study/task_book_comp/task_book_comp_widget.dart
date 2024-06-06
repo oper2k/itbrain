@@ -84,7 +84,7 @@ class _TaskBookCompWidgetState extends State<TaskBookCompWidget> {
                       widget.description,
                       '0',
                     ).maybeHandleOverflow(
-                      maxChars: 300,
+                      maxChars: 350,
                       replacement: '…',
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(

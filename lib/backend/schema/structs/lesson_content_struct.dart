@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
-import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -12,7 +11,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 class LessonContentStruct extends FFFirebaseStruct {
   LessonContentStruct({
     String? photo,
-    ContentType? type,
     bool? showDivider,
     String? text,
     String? audio,
@@ -28,9 +26,9 @@ class LessonContentStruct extends FFFirebaseStruct {
     String? audioDescription,
     String? createdByPhoto,
     String? lang,
+    String? type,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _photo = photo,
-        _type = type,
         _showDivider = showDivider,
         _text = text,
         _audio = audio,
@@ -46,6 +44,7 @@ class LessonContentStruct extends FFFirebaseStruct {
         _audioDescription = audioDescription,
         _createdByPhoto = createdByPhoto,
         _lang = lang,
+        _type = type,
         super(firestoreUtilData);
 
   // "photo" field.
@@ -53,12 +52,6 @@ class LessonContentStruct extends FFFirebaseStruct {
   String get photo => _photo ?? '';
   set photo(String? val) => _photo = val;
   bool hasPhoto() => _photo != null;
-
-  // "type" field.
-  ContentType? _type;
-  ContentType? get type => _type;
-  set type(ContentType? val) => _type = val;
-  bool hasType() => _type != null;
 
   // "showDivider" field.
   bool? _showDivider;
@@ -151,10 +144,15 @@ class LessonContentStruct extends FFFirebaseStruct {
   set lang(String? val) => _lang = val;
   bool hasLang() => _lang != null;
 
+  // "type" field.
+  String? _type;
+  String get type => _type ?? '';
+  set type(String? val) => _type = val;
+  bool hasType() => _type != null;
+
   static LessonContentStruct fromMap(Map<String, dynamic> data) =>
       LessonContentStruct(
         photo: data['photo'] as String?,
-        type: deserializeEnum<ContentType>(data['type']),
         showDivider: data['showDivider'] as bool?,
         text: data['text'] as String?,
         audio: data['audio'] as String?,
@@ -170,6 +168,7 @@ class LessonContentStruct extends FFFirebaseStruct {
         audioDescription: data['audioDescription'] as String?,
         createdByPhoto: data['createdByPhoto'] as String?,
         lang: data['lang'] as String?,
+        type: data['type'] as String?,
       );
 
   static LessonContentStruct? maybeFromMap(dynamic data) => data is Map
@@ -178,7 +177,6 @@ class LessonContentStruct extends FFFirebaseStruct {
 
   Map<String, dynamic> toMap() => {
         'photo': _photo,
-        'type': _type?.serialize(),
         'showDivider': _showDivider,
         'text': _text,
         'audio': _audio,
@@ -194,6 +192,7 @@ class LessonContentStruct extends FFFirebaseStruct {
         'audioDescription': _audioDescription,
         'createdByPhoto': _createdByPhoto,
         'lang': _lang,
+        'type': _type,
       }.withoutNulls;
 
   @override
@@ -201,10 +200,6 @@ class LessonContentStruct extends FFFirebaseStruct {
         'photo': serializeParam(
           _photo,
           ParamType.String,
-        ),
-        'type': serializeParam(
-          _type,
-          ParamType.Enum,
         ),
         'showDivider': serializeParam(
           _showDivider,
@@ -266,6 +261,10 @@ class LessonContentStruct extends FFFirebaseStruct {
           _lang,
           ParamType.String,
         ),
+        'type': serializeParam(
+          _type,
+          ParamType.String,
+        ),
       }.withoutNulls;
 
   static LessonContentStruct fromSerializableMap(Map<String, dynamic> data) =>
@@ -273,11 +272,6 @@ class LessonContentStruct extends FFFirebaseStruct {
         photo: deserializeParam(
           data['photo'],
           ParamType.String,
-          false,
-        ),
-        type: deserializeParam<ContentType>(
-          data['type'],
-          ParamType.Enum,
           false,
         ),
         showDivider: deserializeParam(
@@ -355,6 +349,11 @@ class LessonContentStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        type: deserializeParam(
+          data['type'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -364,7 +363,6 @@ class LessonContentStruct extends FFFirebaseStruct {
   bool operator ==(Object other) {
     return other is LessonContentStruct &&
         photo == other.photo &&
-        type == other.type &&
         showDivider == other.showDivider &&
         text == other.text &&
         audio == other.audio &&
@@ -379,13 +377,13 @@ class LessonContentStruct extends FFFirebaseStruct {
         textEng == other.textEng &&
         audioDescription == other.audioDescription &&
         createdByPhoto == other.createdByPhoto &&
-        lang == other.lang;
+        lang == other.lang &&
+        type == other.type;
   }
 
   @override
   int get hashCode => const ListEquality().hash([
         photo,
-        type,
         showDivider,
         text,
         audio,
@@ -400,13 +398,13 @@ class LessonContentStruct extends FFFirebaseStruct {
         textEng,
         audioDescription,
         createdByPhoto,
-        lang
+        lang,
+        type
       ]);
 }
 
 LessonContentStruct createLessonContentStruct({
   String? photo,
-  ContentType? type,
   bool? showDivider,
   String? text,
   String? audio,
@@ -422,6 +420,7 @@ LessonContentStruct createLessonContentStruct({
   String? audioDescription,
   String? createdByPhoto,
   String? lang,
+  String? type,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -429,7 +428,6 @@ LessonContentStruct createLessonContentStruct({
 }) =>
     LessonContentStruct(
       photo: photo,
-      type: type,
       showDivider: showDivider,
       text: text,
       audio: audio,
@@ -445,6 +443,7 @@ LessonContentStruct createLessonContentStruct({
       audioDescription: audioDescription,
       createdByPhoto: createdByPhoto,
       lang: lang,
+      type: type,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

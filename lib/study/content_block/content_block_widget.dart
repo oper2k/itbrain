@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/backend/schema/enums/enums.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -74,7 +73,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
   Widget build(BuildContext context) {
     return Builder(
       builder: (context) {
-        if (widget.level?.type == ContentType.image) {
+        if (widget.level?.type == 'image') {
           return wrapWithModel(
             model: _model.studyImageModel,
             updateCallback: () => setState(() {}),
@@ -83,7 +82,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
               image: widget.level!.photo,
             ),
           );
-        } else if (widget.level?.type == ContentType.audio) {
+        } else if (widget.level?.type == 'audio') {
           return InkWell(
             splashColor: Colors.transparent,
             focusColor: Colors.transparent,
@@ -122,7 +121,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
               ),
             ),
           );
-        } else if (widget.level?.type == ContentType.button) {
+        } else if (widget.level?.type == 'button') {
           return Container(
             width: double.infinity,
             height: 52.0,
@@ -155,13 +154,13 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
               ),
             ),
           );
-        } else if (widget.level?.type == ContentType.text) {
+        } else if (widget.level?.type == 'text') {
           return MarkdownBody(
             data: widget.level!.text,
             selectable: false,
             onTapLink: (_, url, __) => launchURL(url!),
           ).animateOnPageLoad(animationsMap['markdownOnPageLoadAnimation']!);
-        } else if (widget.level?.type == ContentType.createdBy) {
+        } else if (widget.level?.type == 'createdBy') {
           return wrapWithModel(
             model: _model.createdByModel,
             updateCallback: () => setState(() {}),
@@ -170,7 +169,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
               photo: widget.level!.createdByPhoto,
             ),
           );
-        } else if (widget.level?.type == ContentType.title) {
+        } else if (widget.level?.type == 'title') {
           return Text(
             valueOrDefault<String>(
               widget.level?.title,
@@ -184,7 +183,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
                   useGoogleFonts: false,
                 ),
           );
-        } else if (widget.level?.type == ContentType.autorBlock) {
+        } else if (widget.level?.type == 'autorBlock') {
           return Row(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -217,7 +216,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
               ),
             ].divide(const SizedBox(width: 12.0)),
           );
-        } else if (widget.level?.type == ContentType.book) {
+        } else if (widget.level?.type == 'book') {
           return wrapWithModel(
             model: _model.taskBookCompModel,
             updateCallback: () => setState(() {}),
