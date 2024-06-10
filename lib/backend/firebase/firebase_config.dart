@@ -10,8 +10,8 @@ Future initFirebase() async {
             projectId: "dmt-meditations",
             storageBucket: "dmt-meditations.appspot.com",
             messagingSenderId: "537811175722",
-            appId: "1:537811175722:web:700c5d6d7d45a38da67653",
-            measurementId: "G-L7Q17G5FCT"));
+            appId: "1:537811175722:web:c89d91b5e0646c29a67653",
+            measurementId: "G-WGRTCBW9W8"));
   } else {
     await Firebase.initializeApp();
   }
