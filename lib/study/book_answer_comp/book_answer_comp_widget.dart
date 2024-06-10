@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'book_answer_comp_model.dart';
@@ -174,15 +175,32 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      _model.allPages =
+                                          await queryBooksPagesRecordOnce(
+                                        queryBuilder: (booksPagesRecord) =>
+                                            booksPagesRecord.where(
+                                          'book',
+                                          isEqualTo: widget.book?.reference,
+                                        ),
+                                      );
+
                                       context.pushNamed(
                                         'bookTimer',
                                         queryParameters: {
+                                          'bookPages': serializeParam(
+                                            functions.listShuffleBooks(
+                                                _model.allPages!.toList()),
+                                            ParamType.Document,
+                                          ),
                                           'book': serializeParam(
                                             widget.book,
                                             ParamType.Document,
                                           ),
                                         }.withoutNulls,
                                         extra: <String, dynamic>{
+                                          'bookPages':
+                                              functions.listShuffleBooks(
+                                                  _model.allPages!.toList()),
                                           'book': widget.book,
                                           kTransitionInfoKey: const TransitionInfo(
                                             hasTransition: true,
@@ -192,6 +210,8 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                           ),
                                         },
                                       );
+
+                                      setState(() {});
                                     },
                                     child: Container(
                                       width: double.infinity,

@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -368,19 +369,24 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                       valueOrDefault<String>(
                                         '${valueOrDefault<String>(
                                           formatNumber(
-                                            ((currentUserDocument
-                                                                ?.completeLessons
-                                                                .toList() ??
-                                                            [])
-                                                        .length /
-                                                    containerLessonsRecordList
-                                                        .where((e) =>
-                                                            e.course ==
-                                                            widget.course
-                                                                ?.reference)
-                                                        .toList()
-                                                        .length) *
-                                                100,
+                                            functions.progress(
+                                                (currentUserDocument
+                                                            ?.completeLessons
+                                                            .toList() ??
+                                                        [])
+                                                    .length
+                                                    .toDouble(),
+                                                valueOrDefault<double>(
+                                                  containerLessonsRecordList
+                                                      .where((e) =>
+                                                          e.course ==
+                                                          widget.course
+                                                              ?.reference)
+                                                      .toList()
+                                                      .length
+                                                      .toDouble(),
+                                                  0.0,
+                                                )),
                                             formatType: FormatType.custom,
                                             format: '',
                                             locale: '',
@@ -413,16 +419,26 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                   Expanded(
                                     child: LinearPercentIndicator(
                                       percent: valueOrDefault<double>(
-                                        (currentUserDocument?.completeLessons
-                                                        .toList() ??
-                                                    [])
-                                                .length /
-                                            containerLessonsRecordList
-                                                .where((e) =>
-                                                    e.course ==
-                                                    widget.course?.reference)
-                                                .toList()
-                                                .length,
+                                        functions.progressFull(
+                                            valueOrDefault<double>(
+                                              (currentUserDocument
+                                                          ?.completeLessons
+                                                          .toList() ??
+                                                      [])
+                                                  .length
+                                                  .toDouble(),
+                                              0.0,
+                                            ),
+                                            valueOrDefault<double>(
+                                              containerLessonsRecordList
+                                                  .where((e) =>
+                                                      e.course ==
+                                                      widget.course?.reference)
+                                                  .toList()
+                                                  .length
+                                                  .toDouble(),
+                                              0.0,
+                                            )),
                                         0.0,
                                       ),
                                       lineHeight: 6.0,

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/study/created_by/created_by_widget.dart';
 import '/study/divider/divider_widget.dart';
 import '/study/study_audio/study_audio_widget.dart';
+import '/study/study_file/study_file_widget.dart';
 import '/study/study_image/study_image_widget.dart';
 import '/study/task_book_comp/task_book_comp_widget.dart';
 import 'content_block_widget.dart' show ContentBlockWidget;
@@ -23,6 +24,8 @@ class ContentBlockModel extends FlutterFlowModel<ContentBlockWidget> {
   late TaskBookCompModel taskBookCompModel;
   // Model for divider component.
   late DividerModel dividerModel;
+  // Model for studyFile component.
+  late StudyFileModel studyFileModel;
 
   @override
   void initState(BuildContext context) {
@@ -31,6 +34,7 @@ class ContentBlockModel extends FlutterFlowModel<ContentBlockWidget> {
     createdByModel = createModel(context, () => CreatedByModel());
     taskBookCompModel = createModel(context, () => TaskBookCompModel());
     dividerModel = createModel(context, () => DividerModel());
+    studyFileModel = createModel(context, () => StudyFileModel());
   }
 
   @override
@@ -40,5 +44,6 @@ class ContentBlockModel extends FlutterFlowModel<ContentBlockWidget> {
     createdByModel.dispose();
     taskBookCompModel.dispose();
     dividerModel.dispose();
+    studyFileModel.dispose();
   }
 }

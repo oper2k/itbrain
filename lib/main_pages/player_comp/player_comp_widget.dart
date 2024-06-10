@@ -186,11 +186,9 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(24.0, 32.0, 24.0, 0.0),
               child: Text(
-                FFLocalizations.of(context).getVariableText(
-                  ruText:
-                      widget.meditationList?[FFAppState().playerIndex].title,
-                  enText: widget
-                      .meditationList?[FFAppState().playerIndex].titleEng,
+                valueOrDefault<String>(
+                  widget.meditationList?[FFAppState().playerIndex].title,
+                  '0',
                 ),
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -203,26 +201,17 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                     ),
               ),
             ),
-            if ((widget.meditationList?[FFAppState().playerIndex]
-                            .description !=
-                        null &&
-                    widget.meditationList?[FFAppState().playerIndex]
-                            .description !=
-                        '') &&
-                (widget.meditationList?[FFAppState().playerIndex]
-                            .descriptionEng !=
-                        null &&
-                    widget.meditationList?[FFAppState().playerIndex]
-                            .descriptionEng !=
-                        ''))
+            if (widget.meditationList?[FFAppState().playerIndex].description !=
+                    null &&
+                widget.meditationList?[FFAppState().playerIndex].description !=
+                    '')
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
                 child: Text(
-                  FFLocalizations.of(context).getVariableText(
-                    ruText: widget
+                  valueOrDefault<String>(
+                    widget
                         .meditationList?[FFAppState().playerIndex].description,
-                    enText: widget.meditationList?[FFAppState().playerIndex]
-                        .descriptionEng,
+                    '0',
                   ),
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(

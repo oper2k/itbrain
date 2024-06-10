@@ -77,6 +77,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
       }
 
       await Future.delayed(const Duration(milliseconds: 1000));
+      await actions.lockOrientation();
       _model.isIOnline = await actions.checkInternetConnection();
       if (_model.isIOnline!) {
         FFAppState().clearListViewCacheCache();
@@ -739,106 +740,163 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 0.0, 0.0),
-                                    child: StreamBuilder<
-                                        List<MeditationCategoriesRecord>>(
-                                      stream: FFAppState().listViewCache(
-                                        requestFn: () =>
-                                            queryMeditationCategoriesRecord(
-                                          queryBuilder:
-                                              (meditationCategoriesRecord) =>
-                                                  meditationCategoriesRecord
-                                                      .orderBy('sort'),
-                                        ),
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiary,
-                                                ),
+                                  StreamBuilder<List<ShowAppleRecord>>(
+                                    stream: queryShowAppleRecord(
+                                      singleRecord: true,
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .tertiary,
                                               ),
                                             ),
-                                          );
-                                        }
-                                        List<MeditationCategoriesRecord>
-                                            listViewMeditationCategoriesRecordList =
-                                            snapshot.data!;
-                                        if (listViewMeditationCategoriesRecordList
-                                            .isEmpty) {
-                                          return const SizedBox(
-                                            height: 500.0,
-                                            child: OfflineModeWidget(),
-                                          );
-                                        }
-                                        return ListView.builder(
-                                          padding: EdgeInsets.zero,
-                                          primary: false,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount:
-                                              listViewMeditationCategoriesRecordList
-                                                  .length,
-                                          itemBuilder:
-                                              (context, listViewIndex) {
-                                            final listViewMeditationCategoriesRecord =
-                                                listViewMeditationCategoriesRecordList[
-                                                    listViewIndex];
-                                            return InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  'meditationInfo',
-                                                  queryParameters: {
-                                                    'meditationCategory':
-                                                        serializeParam(
-                                                      listViewMeditationCategoriesRecord,
-                                                      ParamType.Document,
-                                                    ),
-                                                  }.withoutNulls,
-                                                  extra: <String, dynamic>{
-                                                    'meditationCategory':
-                                                        listViewMeditationCategoriesRecord,
-                                                  },
-                                                );
-                                              },
-                                              child: wrapWithModel(
-                                                model: _model
-                                                    .meditationCompModels
-                                                    .getModel(
-                                                  listViewIndex.toString(),
-                                                  listViewIndex,
-                                                ),
-                                                updateCallback: () =>
-                                                    setState(() {}),
-                                                updateOnChange: true,
-                                                child: MeditationCompWidget(
-                                                  key: Key(
-                                                    'Keyr1a_${listViewIndex.toString()}',
-                                                  ),
-                                                  meditationCategories:
-                                                      listViewMeditationCategoriesRecord,
-                                                ),
-                                              ),
-                                            );
-                                          },
+                                          ),
                                         );
-                                      },
-                                    ),
+                                      }
+                                      List<ShowAppleRecord>
+                                          containerShowAppleRecordList =
+                                          snapshot.data!;
+                                      final containerShowAppleRecord =
+                                          containerShowAppleRecordList
+                                                  .isNotEmpty
+                                              ? containerShowAppleRecordList
+                                                  .first
+                                              : null;
+                                      return Container(
+                                        decoration: const BoxDecoration(),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 0.0, 0.0),
+                                          child: StreamBuilder<
+                                              List<MeditationCategoriesRecord>>(
+                                            stream: FFAppState().listViewCache(
+                                              requestFn: () =>
+                                                  queryMeditationCategoriesRecord(
+                                                queryBuilder:
+                                                    (meditationCategoriesRecord) =>
+                                                        meditationCategoriesRecord
+                                                            .orderBy('sort'),
+                                              ),
+                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 50.0,
+                                                    height: 50.0,
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      valueColor:
+                                                          AlwaysStoppedAnimation<
+                                                              Color>(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .tertiary,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                              List<MeditationCategoriesRecord>
+                                                  listViewMeditationCategoriesRecordList =
+                                                  snapshot.data!;
+                                              if (listViewMeditationCategoriesRecordList
+                                                  .isEmpty) {
+                                                return const SizedBox(
+                                                  height: 500.0,
+                                                  child: OfflineModeWidget(),
+                                                );
+                                              }
+                                              return ListView.builder(
+                                                padding: EdgeInsets.zero,
+                                                primary: false,
+                                                shrinkWrap: true,
+                                                scrollDirection: Axis.vertical,
+                                                itemCount:
+                                                    listViewMeditationCategoriesRecordList
+                                                        .length,
+                                                itemBuilder:
+                                                    (context, listViewIndex) {
+                                                  final listViewMeditationCategoriesRecord =
+                                                      listViewMeditationCategoriesRecordList[
+                                                          listViewIndex];
+                                                  return Visibility(
+                                                    visible: (!containerShowAppleRecord!
+                                                                .isShow &&
+                                                            listViewMeditationCategoriesRecord
+                                                                .isPaid) ||
+                                                        (!containerShowAppleRecord
+                                                                .isShow &&
+                                                            !listViewMeditationCategoriesRecord
+                                                                .soon) ||
+                                                        containerShowAppleRecord
+                                                            .isShow,
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        context.pushNamed(
+                                                          'meditationInfo',
+                                                          queryParameters: {
+                                                            'meditationCategory':
+                                                                serializeParam(
+                                                              listViewMeditationCategoriesRecord,
+                                                              ParamType
+                                                                  .Document,
+                                                            ),
+                                                          }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            'meditationCategory':
+                                                                listViewMeditationCategoriesRecord,
+                                                          },
+                                                        );
+                                                      },
+                                                      child: wrapWithModel(
+                                                        model: _model
+                                                            .meditationCompModels
+                                                            .getModel(
+                                                          listViewIndex
+                                                              .toString(),
+                                                          listViewIndex,
+                                                        ),
+                                                        updateCallback: () =>
+                                                            setState(() {}),
+                                                        updateOnChange: true,
+                                                        child:
+                                                            MeditationCompWidget(
+                                                          key: Key(
+                                                            'Keyr1a_${listViewIndex.toString()}',
+                                                          ),
+                                                          meditationCategories:
+                                                              listViewMeditationCategoriesRecord,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      );
+                                    },
                                   ),
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(

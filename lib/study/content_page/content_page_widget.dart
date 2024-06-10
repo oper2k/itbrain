@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/study/content_block/content_block_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'content_page_model.dart';
@@ -36,6 +37,7 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.lockOrientation();
       if (!(currentUserDocument?.completeLessons.toList() ?? [])
           .contains(widget.lesson?.reference)) {
         if (widget.isLastLesson) {

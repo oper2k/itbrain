@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -31,6 +32,7 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await authManager.refreshUser();
+      await actions.lockOrientation();
       _model.timerController.onStartTimer();
       await authManager.sendEmailVerification();
       _model.instantTimer = InstantTimer.periodic(

@@ -43,6 +43,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.yesCreateScreenshots();
+      await actions.lockOrientation();
     });
 
     animationsMap.addAll({
@@ -875,120 +876,168 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                   ),
                                 ),
                               ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 16.0, 0.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  await revenue_cat.restorePurchases();
-                                  _model.orders = await queryOrdersRecordOnce(
-                                    queryBuilder: (ordersRecord) =>
-                                        ordersRecord.where(
-                                      'client_email',
-                                      isEqualTo: currentUserEmail,
+                            StreamBuilder<List<ShowAppleRecord>>(
+                              stream: queryShowAppleRecord(
+                                singleRecord: true,
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).tertiary,
+                                        ),
+                                      ),
                                     ),
                                   );
-                                  if (_model.orders!.isNotEmpty) {
-                                    _model.meditations =
-                                        await queryMeditationCategoriesRecordOnce(
-                                      queryBuilder:
-                                          (meditationCategoriesRecord) =>
-                                              meditationCategoriesRecord
-                                                  .whereIn(
-                                                      'getcourse_offer',
-                                                      _model.orders
-                                                          ?.map((e) => e
-                                                              .purchasedProduct)
-                                                          .toList()),
-                                    );
-
-                                    await currentUserReference!.update({
-                                      ...mapToFirestore(
-                                        {
-                                          'purchasedMeditationsPacks': _model
-                                              .meditations
-                                              ?.map((e) => e.reference)
-                                              .toList(),
-                                        },
-                                      ),
-                                    });
-                                  }
-                                  await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    enableDrag: false,
-                                    context: context,
-                                    builder: (context) {
-                                      return GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: const CheckPurchasesWidget(),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => safeSetState(() {}));
-
-                                  setState(() {});
-                                },
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .buttonColor2,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(16.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          FFIcons.kbag2,
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent1,
-                                          size: 24.0,
-                                        ),
-                                        Expanded(
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '6j51rwq2' /* Восстановить покупки */,
+                                }
+                                List<ShowAppleRecord>
+                                    containerShowAppleRecordList =
+                                    snapshot.data!;
+                                final containerShowAppleRecord =
+                                    containerShowAppleRecordList.isNotEmpty
+                                        ? containerShowAppleRecordList.first
+                                        : null;
+                                return Container(
+                                  decoration: const BoxDecoration(),
+                                  child: Visibility(
+                                    visible: containerShowAppleRecord?.isShow ??
+                                        true,
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 16.0, 0.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await revenue_cat.restorePurchases();
+                                          _model.orders =
+                                              await queryOrdersRecordOnce(
+                                            queryBuilder: (ordersRecord) =>
+                                                ordersRecord.where(
+                                              'client_email',
+                                              isEqualTo: currentUserEmail,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Evolventa',
-                                                  fontSize: 16.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
+                                          );
+                                          if (_model.orders!.isNotEmpty) {
+                                            _model.meditations =
+                                                await queryMeditationCategoriesRecordOnce(
+                                              queryBuilder:
+                                                  (meditationCategoriesRecord) =>
+                                                      meditationCategoriesRecord
+                                                          .whereIn(
+                                                              'getcourse_offer',
+                                                              _model.orders
+                                                                  ?.map((e) => e
+                                                                      .purchasedProduct)
+                                                                  .toList()),
+                                            );
+
+                                            await currentUserReference!.update({
+                                              ...mapToFirestore(
+                                                {
+                                                  'purchasedMeditationsPacks':
+                                                      _model.meditations
+                                                          ?.map((e) =>
+                                                              e.reference)
+                                                          .toList(),
+                                                },
+                                              ),
+                                            });
+                                          }
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            enableDrag: false,
+                                            context: context,
+                                            builder: (context) {
+                                              return GestureDetector(
+                                                onTap: () => _model.unfocusNode
+                                                        .canRequestFocus
+                                                    ? FocusScope.of(context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode)
+                                                    : FocusScope.of(context)
+                                                        .unfocus(),
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: const CheckPurchasesWidget(),
                                                 ),
+                                              );
+                                            },
+                                          ).then(
+                                              (value) => safeSetState(() {}));
+
+                                          setState(() {});
+                                        },
+                                        child: Container(
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .buttonColor2,
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(16.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Icon(
+                                                  FFIcons.kbag2,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent1,
+                                                  size: 24.0,
+                                                ),
+                                                Expanded(
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '6j51rwq2' /* Восстановить покупки */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Evolventa',
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Icon(
+                                                  Icons.chevron_right,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24.0,
+                                                ),
+                                              ].divide(const SizedBox(width: 8.0)),
+                                            ),
                                           ),
                                         ),
-                                        Icon(
-                                          Icons.chevron_right,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
-                                        ),
-                                      ].divide(const SizedBox(width: 8.0)),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ),
+                                );
+                              },
                             ),
                           ].addToEnd(const SizedBox(height: 100.0)),
                         ),

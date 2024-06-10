@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/study/created_by/created_by_widget.dart';
 import '/study/divider/divider_widget.dart';
 import '/study/study_audio/study_audio_widget.dart';
+import '/study/study_file/study_file_widget.dart';
 import '/study/study_image/study_image_widget.dart';
 import '/study/task_book_comp/task_book_comp_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
@@ -231,6 +232,25 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
             model: _model.dividerModel,
             updateCallback: () => setState(() {}),
             child: const DividerWidget(),
+          );
+        } else if (widget.level?.type == 'file') {
+          return InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              await launchURL(widget.level!.fileUrl);
+            },
+            child: wrapWithModel(
+              model: _model.studyFileModel,
+              updateCallback: () => setState(() {}),
+              updateOnChange: true,
+              child: StudyFileWidget(
+                title: widget.level!.fileName,
+                duration: widget.level!.fileDescription,
+              ),
+            ),
           );
         } else {
           return Container(

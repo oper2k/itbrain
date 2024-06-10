@@ -409,9 +409,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'bookTimer',
           path: '/bookTimer',
           asyncParams: {
+            'bookPages': getDoc(['booksPages'], BooksPagesRecord.fromSnapshot),
             'book': getDoc(['bookInfo'], BookInfoRecord.fromSnapshot),
           },
           builder: (context, params) => BookTimerWidget(
+            bookPages: params.getParam(
+              'bookPages',
+              ParamType.Document,
+            ),
             book: params.getParam(
               'book',
               ParamType.Document,

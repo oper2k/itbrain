@@ -26,6 +26,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.yesCreateScreenshots();
+      await actions.lockOrientation();
       setDarkModeSetting(context, ThemeMode.dark);
       setAppLanguage(context, FFLocalizations.of(context).languageCode);
     });

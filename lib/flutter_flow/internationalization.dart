@@ -152,6 +152,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'DEBUG PAGE',
       'en': '',
     },
+    '4lbrw25u': {
+      'ru': 'Hello World',
+      'en': '',
+    },
+    '6cldlft8': {
+      'ru': 'Hello World',
+      'en': '',
+    },
+    'l6nb8lzq': {
+      'ru': 'Hello World',
+      'en': '',
+    },
     '0lkrb0sc': {
       'ru': 'Home',
       'en': 'Home',
@@ -735,7 +747,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'kya3o4nc': {
       'ru': 'Узнать подробнее',
-      'en': 'You are subscribed to notifications',
+      'en': 'Learn More',
     },
     'lspc264o': {
       'ru': 'Узнать больше и купить',

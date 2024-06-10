@@ -47,6 +47,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.yesCreateScreenshots();
+      await actions.lockOrientation();
       unawaited(
         () async {
           await actions.stopMusic(

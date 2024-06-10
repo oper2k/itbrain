@@ -81,28 +81,43 @@ class _DebugPageWidgetState extends State<DebugPageWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsets.all(40.0),
-            child: Builder(
-              builder: (context) {
-                final item = widget.meditaionsList?.toList() ?? [];
-                return Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: List.generate(item.length, (itemIndex) {
-                    final itemItem = item[itemIndex];
-                    return Text(
-                      valueOrDefault<String>(
-                        itemItem.title,
-                        '-_-',
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  FFLocalizations.of(context).getText(
+                    '4lbrw25u' /* Hello World */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Evolventa',
+                        letterSpacing: 0.0,
+                        useGoogleFonts: false,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Evolventa',
-                            letterSpacing: 0.0,
-                            useGoogleFonts: false,
-                          ),
-                    );
-                  }),
-                );
-              },
+                ),
+                Text(
+                  FFLocalizations.of(context).getText(
+                    '6cldlft8' /* Hello World */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Evolventa',
+                        letterSpacing: 0.0,
+                        useGoogleFonts: false,
+                      ),
+                ),
+                Text(
+                  FFLocalizations.of(context).getText(
+                    'l6nb8lzq' /* Hello World */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Evolventa',
+                        color: FlutterFlowTheme.of(context).secondary,
+                        letterSpacing: 0.0,
+                        useGoogleFonts: false,
+                      ),
+                ),
+              ],
             ),
           ),
         ),

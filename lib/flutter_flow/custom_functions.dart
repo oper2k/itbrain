@@ -261,6 +261,28 @@ double? progress(
   return result * 100;
 }
 
+double? progressFull(
+  double? fact,
+  double? plan,
+) {
+  if (plan == null || plan.isNaN || fact == null || fact.isNaN) {
+    return 0;
+  }
+
+  double result = fact / plan;
+
+  // Проверяем, является ли результат NaN
+  if (result.isNaN) {
+    return 0;
+  }
+
+  if (result > 1) {
+    return 1;
+  }
+
+  return result;
+}
+
 int viewedAndAllLessons(
   List<String>? viewedLessons,
   List<String>? allLessons,

@@ -20,6 +20,7 @@ import 'schema/lessons_record.dart';
 import 'schema/videos_record.dart';
 import 'schema/book_info_record.dart';
 import 'schema/books_pages_record.dart';
+import 'schema/show_apple_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -43,6 +44,7 @@ export 'schema/lessons_record.dart';
 export 'schema/videos_record.dart';
 export 'schema/book_info_record.dart';
 export 'schema/books_pages_record.dart';
+export 'schema/show_apple_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -596,6 +598,43 @@ Future<List<BooksPagesRecord>> queryBooksPagesRecordOnce({
     queryCollectionOnce(
       BooksPagesRecord.collection,
       BooksPagesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ShowAppleRecords (as a Stream and as a Future).
+Future<int> queryShowAppleRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ShowAppleRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ShowAppleRecord>> queryShowAppleRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ShowAppleRecord.collection,
+      ShowAppleRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ShowAppleRecord>> queryShowAppleRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ShowAppleRecord.collection,
+      ShowAppleRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

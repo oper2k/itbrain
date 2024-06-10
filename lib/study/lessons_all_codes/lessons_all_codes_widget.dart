@@ -36,6 +36,8 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.yesCreateScreenshots();
+      await actions.lockOrientation();
       unawaited(
         () async {
           await actions.stopMusic(
@@ -73,7 +75,7 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                   'lang',
                   isEqualTo: FFLocalizations.of(context).languageCode,
                 )
-                .orderBy('order', descending: true),
+                .orderBy('order'),
           ),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
@@ -254,9 +256,8 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                 0.0, 16.0, 0.0, 32.0),
                             child: Builder(
                               builder: (context) {
-                                final lessons = containerLessonsRecordList
-                                    .sortedList((e) => e.order)
-                                    .toList();
+                                final lessons =
+                                    containerLessonsRecordList.toList();
                                 return ListView.separated(
                                   padding: EdgeInsets.zero,
                                   primary: false,

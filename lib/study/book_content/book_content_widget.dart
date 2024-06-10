@@ -158,21 +158,29 @@ class _BookContentWidgetState extends State<BookContentWidget>
                   ],
                 ),
                 Expanded(
-                  child: Align(
-                    alignment: const AlignmentDirectional(-1.0, -1.0),
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                      child: MarkdownBody(
-                        data: valueOrDefault<String>(
-                          widget.content?.bookText,
-                          '0',
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Align(
+                          alignment: const AlignmentDirectional(-1.0, -1.0),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 24.0, 0.0, 0.0),
+                            child: MarkdownBody(
+                              data: valueOrDefault<String>(
+                                widget.content?.bookText,
+                                '0',
+                              ),
+                              selectable: false,
+                              onTapLink: (_, url, __) => launchURL(url!),
+                            ).animateOnActionTrigger(
+                              animationsMap[
+                                  'markdownOnActionTriggerAnimation']!,
+                            ),
+                          ),
                         ),
-                        selectable: false,
-                        onTapLink: (_, url, __) => launchURL(url!),
-                      ).animateOnActionTrigger(
-                        animationsMap['markdownOnActionTriggerAnimation']!,
-                      ),
+                      ],
                     ),
                   ),
                 ),

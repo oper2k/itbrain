@@ -43,6 +43,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.yesCreateScreenshots();
+      await actions.lockOrientation();
     });
 
     if (!isWeb) {

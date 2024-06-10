@@ -116,12 +116,12 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                           type: PageTransitionType.fade,
                           child: FlutterFlowExpandedImageView(
                             image: CachedNetworkImage(
-                              fadeInDuration: const Duration(milliseconds: 500),
-                              fadeOutDuration: const Duration(milliseconds: 500),
+                              fadeInDuration: const Duration(milliseconds: 0),
+                              fadeOutDuration: const Duration(milliseconds: 0),
                               imageUrl: widget.pageInfo!.photo,
                               fit: BoxFit.contain,
                             ),
-                            allowRotation: false,
+                            allowRotation: true,
                             tag: widget.pageInfo!.photo,
                             useHeroAnimation: true,
                           ),
@@ -132,8 +132,8 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                       tag: widget.pageInfo!.photo,
                       transitionOnUserGestures: true,
                       child: CachedNetworkImage(
-                        fadeInDuration: const Duration(milliseconds: 500),
-                        fadeOutDuration: const Duration(milliseconds: 500),
+                        fadeInDuration: const Duration(milliseconds: 0),
+                        fadeOutDuration: const Duration(milliseconds: 0),
                         imageUrl: widget.pageInfo!.photo,
                         width: double.infinity,
                         fit: BoxFit.cover,

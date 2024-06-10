@@ -25,6 +25,9 @@ class LessonContentStruct extends FFFirebaseStruct {
     String? textEng,
     String? audioDescription,
     String? createdByPhoto,
+    String? fileName,
+    String? fileDescription,
+    String? fileUrl,
     String? lang,
     String? type,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
@@ -43,6 +46,9 @@ class LessonContentStruct extends FFFirebaseStruct {
         _textEng = textEng,
         _audioDescription = audioDescription,
         _createdByPhoto = createdByPhoto,
+        _fileName = fileName,
+        _fileDescription = fileDescription,
+        _fileUrl = fileUrl,
         _lang = lang,
         _type = type,
         super(firestoreUtilData);
@@ -138,6 +144,24 @@ class LessonContentStruct extends FFFirebaseStruct {
   set createdByPhoto(String? val) => _createdByPhoto = val;
   bool hasCreatedByPhoto() => _createdByPhoto != null;
 
+  // "fileName" field.
+  String? _fileName;
+  String get fileName => _fileName ?? '';
+  set fileName(String? val) => _fileName = val;
+  bool hasFileName() => _fileName != null;
+
+  // "fileDescription" field.
+  String? _fileDescription;
+  String get fileDescription => _fileDescription ?? '';
+  set fileDescription(String? val) => _fileDescription = val;
+  bool hasFileDescription() => _fileDescription != null;
+
+  // "fileUrl" field.
+  String? _fileUrl;
+  String get fileUrl => _fileUrl ?? '';
+  set fileUrl(String? val) => _fileUrl = val;
+  bool hasFileUrl() => _fileUrl != null;
+
   // "lang" field.
   String? _lang;
   String get lang => _lang ?? '';
@@ -167,6 +191,9 @@ class LessonContentStruct extends FFFirebaseStruct {
         textEng: data['textEng'] as String?,
         audioDescription: data['audioDescription'] as String?,
         createdByPhoto: data['createdByPhoto'] as String?,
+        fileName: data['fileName'] as String?,
+        fileDescription: data['fileDescription'] as String?,
+        fileUrl: data['fileUrl'] as String?,
         lang: data['lang'] as String?,
         type: data['type'] as String?,
       );
@@ -191,6 +218,9 @@ class LessonContentStruct extends FFFirebaseStruct {
         'textEng': _textEng,
         'audioDescription': _audioDescription,
         'createdByPhoto': _createdByPhoto,
+        'fileName': _fileName,
+        'fileDescription': _fileDescription,
+        'fileUrl': _fileUrl,
         'lang': _lang,
         'type': _type,
       }.withoutNulls;
@@ -255,6 +285,18 @@ class LessonContentStruct extends FFFirebaseStruct {
         ),
         'createdByPhoto': serializeParam(
           _createdByPhoto,
+          ParamType.String,
+        ),
+        'fileName': serializeParam(
+          _fileName,
+          ParamType.String,
+        ),
+        'fileDescription': serializeParam(
+          _fileDescription,
+          ParamType.String,
+        ),
+        'fileUrl': serializeParam(
+          _fileUrl,
           ParamType.String,
         ),
         'lang': serializeParam(
@@ -344,6 +386,21 @@ class LessonContentStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        fileName: deserializeParam(
+          data['fileName'],
+          ParamType.String,
+          false,
+        ),
+        fileDescription: deserializeParam(
+          data['fileDescription'],
+          ParamType.String,
+          false,
+        ),
+        fileUrl: deserializeParam(
+          data['fileUrl'],
+          ParamType.String,
+          false,
+        ),
         lang: deserializeParam(
           data['lang'],
           ParamType.String,
@@ -377,6 +434,9 @@ class LessonContentStruct extends FFFirebaseStruct {
         textEng == other.textEng &&
         audioDescription == other.audioDescription &&
         createdByPhoto == other.createdByPhoto &&
+        fileName == other.fileName &&
+        fileDescription == other.fileDescription &&
+        fileUrl == other.fileUrl &&
         lang == other.lang &&
         type == other.type;
   }
@@ -398,6 +458,9 @@ class LessonContentStruct extends FFFirebaseStruct {
         textEng,
         audioDescription,
         createdByPhoto,
+        fileName,
+        fileDescription,
+        fileUrl,
         lang,
         type
       ]);
@@ -419,6 +482,9 @@ LessonContentStruct createLessonContentStruct({
   String? textEng,
   String? audioDescription,
   String? createdByPhoto,
+  String? fileName,
+  String? fileDescription,
+  String? fileUrl,
   String? lang,
   String? type,
   Map<String, dynamic> fieldValues = const {},
@@ -442,6 +508,9 @@ LessonContentStruct createLessonContentStruct({
       textEng: textEng,
       audioDescription: audioDescription,
       createdByPhoto: createdByPhoto,
+      fileName: fileName,
+      fileDescription: fileDescription,
+      fileUrl: fileUrl,
       lang: lang,
       type: type,
       firestoreUtilData: FirestoreUtilData(

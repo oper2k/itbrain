@@ -26,6 +26,7 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.yesCreateScreenshots();
+      await actions.lockOrientation();
     });
   }
 

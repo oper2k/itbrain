@@ -223,6 +223,8 @@ final parametersBuilderMap =
       ),
   'bookTimer': (data) async => ParameterData(
         allParams: {
+          'bookPages': await getDocumentParameter<BooksPagesRecord>(
+              data, 'bookPages', BooksPagesRecord.fromSnapshot),
           'book': await getDocumentParameter<BookInfoRecord>(
               data, 'book', BookInfoRecord.fromSnapshot),
         },
