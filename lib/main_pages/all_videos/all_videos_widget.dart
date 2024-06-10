@@ -1,13 +1,10 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/study/video_comp/video_comp_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'all_videos_model.dart';
 export 'all_videos_model.dart';
 
@@ -64,7 +61,7 @@ class _AllVideosWidgetState extends State<AllVideosWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 46.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 46.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -83,9 +80,9 @@ class _AllVideosWidgetState extends State<AllVideosWidget> {
                       child: Container(
                         width: 40.0,
                         height: 44.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
                           child: Icon(
                             FFIcons.kleft2,
                             color: FlutterFlowTheme.of(context).primaryText,
@@ -97,10 +94,10 @@ class _AllVideosWidgetState extends State<AllVideosWidget> {
                   ],
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  alignment: const AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'xbqqs07l' /* Видео */,
@@ -118,7 +115,7 @@ class _AllVideosWidgetState extends State<AllVideosWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: StreamBuilder<List<VideosRecord>>(
                       stream: queryVideosRecord(
                         queryBuilder: (videosRecord) => videosRecord
@@ -151,7 +148,7 @@ class _AllVideosWidgetState extends State<AllVideosWidget> {
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           itemCount: listViewVideosRecordList.length,
-                          separatorBuilder: (_, __) => SizedBox(height: 24.0),
+                          separatorBuilder: (_, __) => const SizedBox(height: 24.0),
                           itemBuilder: (context, listViewIndex) {
                             final listViewVideosRecord =
                                 listViewVideosRecordList[listViewIndex];
@@ -164,7 +161,7 @@ class _AllVideosWidgetState extends State<AllVideosWidget> {
                                 await launchURL(listViewVideosRecord.videoUrl);
                               },
                               child: Container(
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: VideoCompWidget(
                                   key: Key(
                                       'Keyjeg_${listViewIndex}_of_${listViewVideosRecordList.length}'),

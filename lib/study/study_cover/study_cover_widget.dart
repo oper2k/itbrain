@@ -2,8 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'study_cover_model.dart';
 export 'study_cover_model.dart';
 
@@ -48,8 +46,8 @@ class _StudyCoverWidgetState extends State<StudyCoverWidget> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20.0),
         child: CachedNetworkImage(
-          fadeInDuration: Duration(milliseconds: 500),
-          fadeOutDuration: Duration(milliseconds: 500),
+          fadeInDuration: const Duration(milliseconds: 500),
+          fadeOutDuration: const Duration(milliseconds: 500),
           imageUrl: 'https://picsum.photos/seed/400/600',
           fit: BoxFit.cover,
         ),

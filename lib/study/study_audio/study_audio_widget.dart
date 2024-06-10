@@ -2,8 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'study_audio_model.dart';
 export 'study_audio_model.dart';
 
@@ -52,7 +50,7 @@ class _StudyAudioWidgetState extends State<StudyAudioWidget> {
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -67,10 +65,10 @@ class _StudyAudioWidgetState extends State<StudyAudioWidget> {
                     shape: BoxShape.circle,
                   ),
                   child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
                       child: FaIcon(
                         FontAwesomeIcons.play,
                         color: FlutterFlowTheme.of(context).tertiary,
@@ -115,10 +113,10 @@ class _StudyAudioWidgetState extends State<StudyAudioWidget> {
                           lineHeight: 1.2,
                         ),
                   ),
-                ].divide(SizedBox(height: 4.0)),
+                ].divide(const SizedBox(height: 4.0)),
               ),
             ),
-          ].divide(SizedBox(width: 8.0)),
+          ].divide(const SizedBox(width: 8.0)),
         ),
       ),
     );

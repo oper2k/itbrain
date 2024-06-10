@@ -2,13 +2,9 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:provider/provider.dart';
 import 'book_page_info_model.dart';
 export 'book_page_info_model.dart';
 
@@ -52,7 +48,7 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 46.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 46.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -72,9 +68,9 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                       child: Container(
                         width: 40.0,
                         height: 44.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
                           child: Icon(
                             FFIcons.kclose2,
                             color: FlutterFlowTheme.of(context).primaryText,
@@ -102,12 +98,12 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                     Container(
                       width: 40.0,
                       height: 44.0,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                     ),
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 54.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 54.0, 0.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -120,8 +116,8 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                           type: PageTransitionType.fade,
                           child: FlutterFlowExpandedImageView(
                             image: CachedNetworkImage(
-                              fadeInDuration: Duration(milliseconds: 0),
-                              fadeOutDuration: Duration(milliseconds: 0),
+                              fadeInDuration: const Duration(milliseconds: 0),
+                              fadeOutDuration: const Duration(milliseconds: 0),
                               imageUrl: widget.pageInfo!.photo,
                               fit: BoxFit.contain,
                             ),
@@ -136,8 +132,8 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                       tag: widget.pageInfo!.photo,
                       transitionOnUserGestures: true,
                       child: CachedNetworkImage(
-                        fadeInDuration: Duration(milliseconds: 0),
-                        fadeOutDuration: Duration(milliseconds: 0),
+                        fadeInDuration: const Duration(milliseconds: 0),
+                        fadeOutDuration: const Duration(milliseconds: 0),
                         imageUrl: widget.pageInfo!.photo,
                         width: double.infinity,
                         fit: BoxFit.cover,
@@ -146,10 +142,10 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  alignment: const AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                     child: Text(
                       valueOrDefault<String>(
                         widget.pageInfo?.textTitle,
@@ -166,9 +162,9 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  alignment: const AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: MarkdownBody(
                       data: widget.pageInfo!.mainText,
                       selectable: true,

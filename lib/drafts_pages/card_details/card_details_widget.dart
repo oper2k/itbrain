@@ -1,13 +1,10 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main_pages/purchase_pages/thanks_for_buying/thanks_for_buying_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'card_details_model.dart';
 export 'card_details_model.dart';
 
@@ -68,7 +65,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 46.0, 20.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 46.0, 20.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -87,9 +84,9 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                       child: Container(
                         width: 40.0,
                         height: 44.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
                           child: Icon(
                             FFIcons.kleft2,
                             color: FlutterFlowTheme.of(context).primaryText,
@@ -101,10 +98,10 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                   ],
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  alignment: const AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'mhc5jm2i' /* Введите данные карты */,
@@ -122,10 +119,10 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  alignment: const AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: Container(
                       height: 58.0,
                       decoration: BoxDecoration(
@@ -147,16 +144,16 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                         ),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               14.0, 0.0, 14.0, 0.0),
                           child: TextFormField(
                             controller: _model.cardNumberTextController,
                             focusNode: _model.cardNumberFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
                               '_model.cardNumberTextController',
-                              Duration(milliseconds: 500),
+                              const Duration(milliseconds: 500),
                               () => setState(() {}),
                             ),
                             autofocus: false,
@@ -223,10 +220,10 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                 ),
                 if (_model.showCardNumberError)
                   Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    alignment: const AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'a20uhjw9' /* Поле должно содержать 16 симво... */,
@@ -243,7 +240,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                     ),
                   ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -254,7 +251,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              alignment: const AlignmentDirectional(-1.0, 0.0),
                               child: Container(
                                 height: 58.0,
                                 decoration: BoxDecoration(
@@ -278,16 +275,16 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                   ),
                                 ),
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         14.0, 0.0, 14.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.dateEndTextController,
                                       focusNode: _model.dateEndFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.dateEndTextController',
-                                        Duration(milliseconds: 500),
+                                        const Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
                                       autofocus: false,
@@ -360,9 +357,9 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                             ),
                             if (_model.chowDateEndError)
                               Align(
-                                alignment: AlignmentDirectional(-1.0, 0.0),
+                                alignment: const AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 6.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -391,7 +388,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              alignment: const AlignmentDirectional(-1.0, 0.0),
                               child: Container(
                                 height: 58.0,
                                 decoration: BoxDecoration(
@@ -415,16 +412,16 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                   ),
                                 ),
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         14.0, 0.0, 14.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.cvcTextController,
                                       focusNode: _model.cvcFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.cvcTextController',
-                                        Duration(milliseconds: 500),
+                                        const Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
                                       autofocus: false,
@@ -497,9 +494,9 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                             ),
                             if (_model.showCVVerror)
                               Align(
-                                alignment: AlignmentDirectional(-1.0, 0.0),
+                                alignment: const AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 6.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -522,16 +519,16 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                           ],
                         ),
                       ),
-                    ].divide(SizedBox(width: 12.0)),
+                    ].divide(const SizedBox(width: 12.0)),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(-1.0, 0.0),
+                      alignment: const AlignmentDirectional(-1.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'dtzghv4i' /* Сумма */,
@@ -546,7 +543,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-1.0, 0.0),
+                      alignment: const AlignmentDirectional(-1.0, 0.0),
                       child: Text(
                         revenue_cat.offerings!.current!.lifetime!.storeProduct
                             .priceString,
@@ -563,15 +560,14 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 46.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 46.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      if ((_model.cardNumberTextController.text != null &&
-                              _model.cardNumberTextController.text != '') ||
+                      if ((_model.cardNumberTextController.text != '') ||
                           functions.cardNumberCheck(
                               _model.cardNumberTextController.text)!) {
                         _model.showCardNumberError = false;
@@ -598,7 +594,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                                           : FocusScope.of(context).unfocus(),
                                   child: Padding(
                                     padding: MediaQuery.viewInsetsOf(context),
-                                    child: ThanksForBuyingWidget(),
+                                    child: const ThanksForBuyingWidget(),
                                   ),
                                 );
                               },
@@ -625,7 +621,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                       width: double.infinity,
                       height: 52.0,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           colors: [
                             Color(0xFF9747FF),
                             Color(0xFFF1618E),
@@ -638,7 +634,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'iv8rypsd' /* Оплатить */,

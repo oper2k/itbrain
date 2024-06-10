@@ -1,14 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'book_answer_comp_model.dart';
 export 'book_answer_comp_model.dart';
 
@@ -54,39 +49,39 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
           return Container(
             width: double.infinity,
             height: 255.0,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.transparent,
             ),
             child: Stack(
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: CachedNetworkImage(
-                    fadeInDuration: Duration(milliseconds: 500),
-                    fadeOutDuration: Duration(milliseconds: 500),
+                    fadeInDuration: const Duration(milliseconds: 500),
+                    fadeOutDuration: const Duration(milliseconds: 500),
                     imageUrl: widget.book!.photoCover,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: const AlignmentDirectional(0.0, 1.0),
                   child: Container(
                     width: double.infinity,
                     height: 211.0,
                     decoration: BoxDecoration(
-                      color: Color(0x1FFFFFFF),
+                      color: const Color(0x1FFFFFFF),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               valueOrDefault<String>(
                                 widget.book?.title,
@@ -104,9 +99,9 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
@@ -129,7 +124,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -154,7 +149,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             '7qa5ez4q' /* О книге */,
@@ -207,7 +202,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                               functions.listShuffleBooks(
                                                   _model.allPages!.toList()),
                                           'book': widget.book,
-                                          kTransitionInfoKey: TransitionInfo(
+                                          kTransitionInfoKey: const TransitionInfo(
                                             hasTransition: true,
                                             transitionType:
                                                 PageTransitionType.fade,
@@ -229,7 +224,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'anmfdwwt' /* Получить ответ */,
@@ -248,7 +243,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                     ),
                                   ),
                                 ),
-                              ].divide(SizedBox(width: 7.0)),
+                              ].divide(const SizedBox(width: 7.0)),
                             ),
                           ),
                         ],
@@ -263,39 +258,39 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
           return Container(
             width: double.infinity,
             height: 270.0,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.transparent,
             ),
             child: Stack(
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: CachedNetworkImage(
-                    fadeInDuration: Duration(milliseconds: 500),
-                    fadeOutDuration: Duration(milliseconds: 500),
+                    fadeInDuration: const Duration(milliseconds: 500),
+                    fadeOutDuration: const Duration(milliseconds: 500),
                     imageUrl: widget.book!.photoCover,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: const AlignmentDirectional(0.0, 1.0),
                   child: Container(
                     width: double.infinity,
                     height: 211.0,
                     decoration: BoxDecoration(
-                      color: Color(0x1FFFFFFF),
+                      color: const Color(0x1FFFFFFF),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               valueOrDefault<String>(
                                 widget.book?.title,
@@ -314,9 +309,9 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
@@ -339,7 +334,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -370,7 +365,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 5.0, 0.0),
                                             child: Icon(
                                               FFIcons.kshare3,
@@ -382,7 +377,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -433,7 +428,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 5.0, 0.0),
                                             child: Icon(
                                               FFIcons.kheadphones,
@@ -445,7 +440,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                           ),
                                           Align(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -469,7 +464,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                     ),
                                   ),
                                 ),
-                              ].divide(SizedBox(width: 7.0)),
+                              ].divide(const SizedBox(width: 7.0)),
                             ),
                           ),
                         ],

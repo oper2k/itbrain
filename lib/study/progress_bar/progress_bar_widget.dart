@@ -1,9 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:provider/provider.dart';
 import 'progress_bar_model.dart';
 export 'progress_bar_model.dart';
 
@@ -41,7 +39,7 @@ class _ProgressBarWidgetState extends State<ProgressBarWidget> {
     return Container(
       width: 24.0,
       height: 24.0,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
       ),
       child: CircularPercentIndicator(

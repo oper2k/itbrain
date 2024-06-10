@@ -2,15 +2,11 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main_pages/purchase_pages/thanks_for_buying/thanks_for_buying_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'payment_method_model.dart';
 export 'payment_method_model.dart';
 
@@ -71,7 +67,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 46.0, 20.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 46.0, 20.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -90,9 +86,9 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                       child: Container(
                         width: 40.0,
                         height: 44.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
                           child: Icon(
                             FFIcons.kleft2,
                             color: FlutterFlowTheme.of(context).primaryText,
@@ -104,10 +100,10 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                   ],
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  alignment: const AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'nrs5rjh1' /* Выберите способ оплаты */,
@@ -125,7 +121,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -149,7 +145,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -196,14 +192,14 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                                 ),
                               ),
                             ),
-                          ].divide(SizedBox(width: 8.0)),
+                          ].divide(const SizedBox(width: 8.0)),
                         ),
                       ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -227,7 +223,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -274,19 +270,19 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                                 ),
                               ),
                             ),
-                          ].divide(SizedBox(width: 8.0)),
+                          ].divide(const SizedBox(width: 8.0)),
                         ),
                       ),
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(-1.0, 0.0),
+                      alignment: const AlignmentDirectional(-1.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'shvjkfc8' /* Сумма */,
@@ -301,11 +297,11 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-1.0, 0.0),
+                      alignment: const AlignmentDirectional(-1.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getVariableText(
                           ruText: '${valueOrDefault<String>(
-                            widget.category?.coastOfPack?.toString(),
+                            widget.category?.coastOfPack.toString(),
                             '0',
                           )} ₽',
                           enText: '${valueOrDefault<String>(
@@ -326,7 +322,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 46.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 46.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -349,7 +345,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                                 color: FlutterFlowTheme.of(context).primaryText,
                               ),
                             ),
-                            duration: Duration(milliseconds: 2600),
+                            duration: const Duration(milliseconds: 2600),
                             backgroundColor:
                                 FlutterFlowTheme.of(context).thirdBackground,
                           ),
@@ -379,7 +375,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                                     : FocusScope.of(context).unfocus(),
                                 child: Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
-                                  child: ThanksForBuyingWidget(),
+                                  child: const ThanksForBuyingWidget(),
                                 ),
                               );
                             },
@@ -395,7 +391,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                                       FlutterFlowTheme.of(context).primaryText,
                                 ),
                               ),
-                              duration: Duration(milliseconds: 4000),
+                              duration: const Duration(milliseconds: 4000),
                               backgroundColor:
                                   FlutterFlowTheme.of(context).thirdBackground,
                             ),
@@ -409,7 +405,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                       width: double.infinity,
                       height: 52.0,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           colors: [
                             Color(0xFF9747FF),
                             Color(0xFFF1618E),
@@ -422,7 +418,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'u2j4xhii' /* Перейти к оплате */,

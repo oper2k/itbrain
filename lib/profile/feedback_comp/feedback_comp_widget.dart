@@ -4,12 +4,10 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/profile/confirmed_feedback/confirmed_feedback_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'feedback_comp_model.dart';
 export 'feedback_comp_model.dart';
 
@@ -49,7 +47,7 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -57,7 +55,7 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
           borderRadius: BorderRadius.circular(24.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -83,7 +81,7 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     '48k4wst9' /* Напишите, что не нравится */,
@@ -98,7 +96,7 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 12.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     '62p8lzo3' /* Мы прислушиваемся к каждому от... */,
@@ -116,9 +114,9 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -131,16 +129,16 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                         width: 1.0,
                       ),
                     ),
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(14.0, 0.0, 14.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(14.0, 0.0, 14.0, 0.0),
                       child: TextFormField(
                         controller: _model.feedbackTextController,
                         focusNode: _model.feedbackFocusNode,
                         onChanged: (_) => EasyDebounce.debounce(
                           '_model.feedbackTextController',
-                          Duration(milliseconds: 500),
+                          const Duration(milliseconds: 500),
                           () => setState(() {}),
                         ),
                         autofocus: false,
@@ -182,7 +180,7 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                           focusedBorder: InputBorder.none,
                           errorBorder: InputBorder.none,
                           focusedErrorBorder: InputBorder.none,
-                          contentPadding: EdgeInsetsDirectional.fromSTEB(
+                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 17.0, 0.0, 17.0),
                           suffixIcon:
                               _model.feedbackTextController!.text.isNotEmpty
@@ -227,31 +225,34 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 79.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 79.0, 0.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    if (_model.feedbackTextController.text != null &&
-                        _model.feedbackTextController.text != '') {
+                    if (_model.feedbackTextController.text != '') {
                       await FeedbacksRecord.collection
                           .doc()
                           .set(createFeedbacksRecordData(
                             text: _model.feedbackTextController.text,
                             userCreator: currentUserReference,
                           ));
+                      await actions.launchReview(
+                        FFAppConstants.appleId,
+                        FFAppConstants.googleID,
+                      );
                       Navigator.pop(context);
                       await showModalBottomSheet(
                         isScrollControlled: true,
-                        backgroundColor: Color(0xCC1E071C),
+                        backgroundColor: const Color(0xCC1E071C),
                         enableDrag: false,
                         context: context,
                         builder: (context) {
                           return Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: ConfirmedFeedbackWidget(),
+                            child: const ConfirmedFeedbackWidget(),
                           );
                         },
                       ).then((value) => safeSetState(() {}));
@@ -263,7 +264,7 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                     width: double.infinity,
                     height: 52.0,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         colors: [
                           Color(0xFF9747FF),
                           Color(0xFFF1618E),
@@ -276,7 +277,7 @@ class _FeedbackCompWidgetState extends State<FeedbackCompWidget> {
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'zxvth5hs' /* Отправить отзыв */,

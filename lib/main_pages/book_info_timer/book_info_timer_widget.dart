@@ -1,15 +1,10 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/instant_timer.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'book_info_timer_model.dart';
 export 'book_info_timer_model.dart';
 
@@ -42,7 +37,7 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.instantTimer = InstantTimer.periodic(
-        duration: Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 100),
         callback: (timer) async {
           _model.progress = _model.progress + 0.1;
           setState(() {});
@@ -67,7 +62,7 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
               extra: <String, dynamic>{
                 'pageInfo':
                     functions.listShuffleBooks(_model.allPages!.toList()),
-                kTransitionInfoKey: TransitionInfo(
+                kTransitionInfoKey: const TransitionInfo(
                   hasTransition: true,
                   transitionType: PageTransitionType.fade,
                   duration: Duration(milliseconds: 0),
@@ -107,13 +102,13 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
       child: Stack(
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 46.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 46.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(-1.0, -1.0),
+                  alignment: const AlignmentDirectional(-1.0, -1.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -125,9 +120,9 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
                     child: Container(
                       width: 40.0,
                       height: 40.0,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Align(
-                        alignment: AlignmentDirectional(-1.0, -1.0),
+                        alignment: const AlignmentDirectional(-1.0, -1.0),
                         child: Icon(
                           FFIcons.kclose2,
                           color: FlutterFlowTheme.of(context).primaryText,
@@ -138,7 +133,7 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Text(
                     '${valueOrDefault<String>(
                       formatNumber(
@@ -159,7 +154,7 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       '81k519jd' /* Подбираем твою страницу на сег... */,

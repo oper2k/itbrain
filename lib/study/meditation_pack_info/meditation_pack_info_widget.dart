@@ -3,8 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'meditation_pack_info_model.dart';
 export 'meditation_pack_info_model.dart';
 
@@ -48,14 +46,14 @@ class _MeditationPackInfoWidgetState extends State<MeditationPackInfoWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).thirdBackground,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(24.0),
@@ -63,7 +61,7 @@ class _MeditationPackInfoWidgetState extends State<MeditationPackInfoWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -90,7 +88,7 @@ class _MeditationPackInfoWidgetState extends State<MeditationPackInfoWidget> {
                     ],
                   ),
                   Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    alignment: const AlignmentDirectional(-1.0, 0.0),
                     child: Text(
                       valueOrDefault<String>(
                         widget.title,
@@ -106,10 +104,10 @@ class _MeditationPackInfoWidgetState extends State<MeditationPackInfoWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(-1.0, -1.0),
+                    alignment: const AlignmentDirectional(-1.0, -1.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: MarkdownBody(
                         data: widget.text!,
                         selectable: true,
@@ -119,7 +117,7 @@ class _MeditationPackInfoWidgetState extends State<MeditationPackInfoWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 34.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 34.0, 0.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -136,7 +134,7 @@ class _MeditationPackInfoWidgetState extends State<MeditationPackInfoWidget> {
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               'yegekz55' /* Закрыть */,
