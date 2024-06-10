@@ -3,10 +3,13 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'book_content_model.dart';
 export 'book_content_model.dart';
 
@@ -42,7 +45,7 @@ class _BookContentWidgetState extends State<BookContentWidget>
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (animationsMap['markdownOnActionTriggerAnimation'] != null) {
-        animationsMap['markdownOnActionTriggerAnimation']!.controller
+        await animationsMap['markdownOnActionTriggerAnimation']!.controller
           ..reset()
           ..repeat();
       }
@@ -57,7 +60,7 @@ class _BookContentWidgetState extends State<BookContentWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 0.0.ms,
-            color: const Color(0xFF2F0A4C),
+            color: Color(0xFF2F0A4C),
             begin: 0.0,
             end: 1.0,
           ),
@@ -82,12 +85,12 @@ class _BookContentWidgetState extends State<BookContentWidget>
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 64.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 64.0, 0.0, 0.0),
         child: Container(
           width: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Color(0xFFE8C697),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -97,7 +100,7 @@ class _BookContentWidgetState extends State<BookContentWidget>
             ),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -111,7 +114,7 @@ class _BookContentWidgetState extends State<BookContentWidget>
                       borderWidth: 0.0,
                       buttonSize: 38.0,
                       fillColor: Colors.transparent,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.close_sharp,
                         color: Colors.transparent,
                         size: 22.0,
@@ -122,7 +125,7 @@ class _BookContentWidgetState extends State<BookContentWidget>
                     ),
                     Expanded(
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           valueOrDefault<String>(
                             widget.content?.bookTitle,
@@ -131,7 +134,7 @@ class _BookContentWidgetState extends State<BookContentWidget>
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Evolventa',
-                                    color: const Color(0xFF2F0A4C),
+                                    color: Color(0xFF2F0A4C),
                                     fontSize: 24.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -145,8 +148,8 @@ class _BookContentWidgetState extends State<BookContentWidget>
                       borderRadius: 20.0,
                       borderWidth: 0.0,
                       buttonSize: 38.0,
-                      fillColor: const Color(0x1F2F0A4C),
-                      icon: const Icon(
+                      fillColor: Color(0x1F2F0A4C),
+                      icon: Icon(
                         Icons.close_sharp,
                         color: Color(0xFF2F0A4C),
                         size: 22.0,
@@ -163,9 +166,9 @@ class _BookContentWidgetState extends State<BookContentWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, -1.0),
+                          alignment: AlignmentDirectional(-1.0, -1.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 24.0, 0.0, 0.0),
                             child: MarkdownBody(
                               data: valueOrDefault<String>(
@@ -185,7 +188,7 @@ class _BookContentWidgetState extends State<BookContentWidget>
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -198,11 +201,11 @@ class _BookContentWidgetState extends State<BookContentWidget>
                       width: double.infinity,
                       height: 52.0,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF2F0A4C),
+                        color: Color(0xFF2F0A4C),
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'mcqju336' /* Закрыть */,

@@ -12,12 +12,15 @@ import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/permissions_util.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
 import 'sign_up_page_model.dart';
@@ -115,7 +118,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
               ).image,
             ),
           ),
-          child: SizedBox(
+          child: Container(
             width: double.infinity,
             height: 500.0,
             child: PageView(
@@ -125,7 +128,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                       0,
                       min(
                           valueOrDefault<int>(
-                            widget.pageParameter ?? 0,
+                            widget.pageParameter != null
+                                ? widget.pageParameter
+                                : 0,
                             0,
                           ),
                           2))),
@@ -135,7 +140,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           20.0, 44.0, 20.0, 46.0),
                       child: SingleChildScrollView(
                         child: Column(
@@ -157,10 +162,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                   child: Container(
                                     width: 40.0,
                                     height: 44.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Icon(
                                         Icons.chevron_left,
                                         color: FlutterFlowTheme.of(context)
@@ -179,9 +184,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                   ),
                                   options: FFButtonOptions(
                                     height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: Colors.transparent,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -197,7 +202,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           lineHeight: 1.6,
                                         ),
                                     elevation: 0.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 0.0,
                                     ),
@@ -207,9 +212,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               ],
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -228,9 +233,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -250,15 +255,15 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   height: 58.0,
                                   decoration: BoxDecoration(
                                     color: _model.showEmailError
-                                        ? const Color(0x1FFF3F3F)
+                                        ? Color(0x1FFF3F3F)
                                         : FlutterFlowTheme.of(context)
                                             .alternate,
                                     borderRadius: BorderRadius.circular(12.0),
@@ -270,14 +275,14 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         14.0, 0.0, 14.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.emailTextController,
                                       focusNode: _model.emailFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.emailTextController',
-                                        const Duration(milliseconds: 500),
+                                        Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
                                       autofocus: false,
@@ -364,9 +369,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                             ),
                             if (_model.showEmailError)
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 6.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -387,16 +392,16 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 ),
                               ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Container(
                                   height: 58.0,
                                   decoration: BoxDecoration(
                                     color: _model.showPassError ||
                                             _model.showMatchError
-                                        ? const Color(0x1FFF3F3F)
+                                        ? Color(0x1FFF3F3F)
                                         : FlutterFlowTheme.of(context)
                                             .alternate,
                                     borderRadius: BorderRadius.circular(12.0),
@@ -409,14 +414,14 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         14.0, 0.0, 14.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.passwordTextController,
                                       focusNode: _model.passwordFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.passwordTextController',
-                                        const Duration(milliseconds: 500),
+                                        Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
                                       autofocus: false,
@@ -497,9 +502,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                             ),
                             if (_model.showPassError)
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 6.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -520,16 +525,16 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 ),
                               ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Container(
                                   height: 58.0,
                                   decoration: BoxDecoration(
                                     color: _model.showConfirmPassError ||
                                             _model.showMatchError
-                                        ? const Color(0x1FFF3F3F)
+                                        ? Color(0x1FFF3F3F)
                                         : FlutterFlowTheme.of(context)
                                             .alternate,
                                     borderRadius: BorderRadius.circular(12.0),
@@ -542,7 +547,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         14.0, 0.0, 14.0, 0.0),
                                     child: TextFormField(
                                       controller:
@@ -550,7 +555,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       focusNode: _model.confirmPassFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.confirmPassTextController',
-                                        const Duration(milliseconds: 500),
+                                        Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
                                       autofocus: false,
@@ -635,9 +640,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               children: [
                                 if (_model.showConfirmPassError)
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 6.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -660,9 +665,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                   ),
                                 if (_model.showMatchError)
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 6.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -694,9 +699,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                         : _isKeyboardVisible))
                       Expanded(
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 46.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -704,17 +709,23 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                var shouldSetState = false;
-                                if (_model.emailTextController.text != '') {
+                                var _shouldSetState = false;
+                                if (_model.emailTextController.text != null &&
+                                    _model.emailTextController.text != '') {
                                   _model.showEmailError = false;
                                   setState(() {});
                                   if ((_model.passwordTextController.text !=
+                                              null &&
+                                          _model.passwordTextController.text !=
                                               '') &&
                                       functions.passCheck(_model
                                           .passwordTextController.text)!) {
                                     _model.showPassError = false;
                                     setState(() {});
                                     if ((_model.confirmPassTextController
+                                                    .text !=
+                                                null &&
+                                            _model.confirmPassTextController
                                                     .text !=
                                                 '') &&
                                         functions.passCheck(_model
@@ -736,7 +747,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                     .emailTextController.text),
                                           ),
                                         );
-                                        shouldSetState = true;
+                                        _shouldSetState = true;
                                         if (_model.users! > 0) {
                                           _model.showDocExistsError = true;
                                           setState(() {});
@@ -758,14 +769,14 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                   padding:
                                                       MediaQuery.viewInsetsOf(
                                                           context),
-                                                  child: const DocExistsWidget(),
+                                                  child: DocExistsWidget(),
                                                 ),
                                               );
                                             },
                                           ).then(
                                               (value) => safeSetState(() {}));
 
-                                          if (shouldSetState) setState(() {});
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         } else {
                                           _model.showDocExistsError = false;
@@ -814,41 +825,41 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           context.pushNamedAuth(
                                               'confirmEmail', context.mounted);
 
-                                          if (shouldSetState) setState(() {});
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         }
                                       } else {
                                         _model.showMatchError = true;
                                         setState(() {});
-                                        if (shouldSetState) setState(() {});
+                                        if (_shouldSetState) setState(() {});
                                         return;
                                       }
                                     } else {
                                       _model.showConfirmPassError = true;
                                       setState(() {});
-                                      if (shouldSetState) setState(() {});
+                                      if (_shouldSetState) setState(() {});
                                       return;
                                     }
                                   } else {
                                     _model.showPassError = true;
                                     setState(() {});
-                                    if (shouldSetState) setState(() {});
+                                    if (_shouldSetState) setState(() {});
                                     return;
                                   }
                                 } else {
                                   _model.showEmailError = true;
                                   setState(() {});
-                                  if (shouldSetState) setState(() {});
+                                  if (_shouldSetState) setState(() {});
                                   return;
                                 }
 
-                                if (shouldSetState) setState(() {});
+                                if (_shouldSetState) setState(() {});
                               },
                               child: Container(
                                 width: double.infinity,
                                 height: 52.0,
                                 decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
+                                  gradient: LinearGradient(
                                     colors: [
                                       Color(0xFF9747FF),
                                       Color(0xFFF1618E),
@@ -861,7 +872,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
                                       '0hn1n0c5' /* Зарегистрироваться */,
@@ -889,7 +900,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 0.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -906,17 +917,17 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                   onTap: () async {
                                     await _model.pageViewController
                                         ?.previousPage(
-                                      duration: const Duration(milliseconds: 300),
+                                      duration: Duration(milliseconds: 300),
                                       curve: Curves.ease,
                                     );
                                   },
                                   child: Container(
                                     width: 40.0,
                                     height: 44.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Icon(
                                         Icons.chevron_left,
                                         color: FlutterFlowTheme.of(context)
@@ -929,9 +940,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               ],
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -950,9 +961,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -972,9 +983,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -995,15 +1006,15 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: Container(
                                   height: 58.0,
                                   decoration: BoxDecoration(
                                     color: _model.showNameError
-                                        ? const Color(0x1FFF3F3F)
+                                        ? Color(0x1FFF3F3F)
                                         : FlutterFlowTheme.of(context)
                                             .alternate,
                                     borderRadius: BorderRadius.circular(12.0),
@@ -1015,14 +1026,14 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         14.0, 0.0, 14.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.nameTextController,
                                       focusNode: _model.nameFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.nameTextController',
-                                        const Duration(milliseconds: 500),
+                                        Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
                                       autofocus: false,
@@ -1112,9 +1123,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                             ),
                             if (_model.showNameError)
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 6.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -1135,15 +1146,15 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 ),
                               ),
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Container(
                                   height: 58.0,
                                   decoration: BoxDecoration(
                                     color: _model.showSurnameError
-                                        ? const Color(0x1FFF3F3F)
+                                        ? Color(0x1FFF3F3F)
                                         : FlutterFlowTheme.of(context)
                                             .alternate,
                                     borderRadius: BorderRadius.circular(12.0),
@@ -1156,14 +1167,14 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         14.0, 0.0, 14.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.surnameTextController,
                                       focusNode: _model.surnameFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.surnameTextController',
-                                        const Duration(milliseconds: 500),
+                                        Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
                                       autofocus: false,
@@ -1254,9 +1265,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                             ),
                             if (_model.showSurnameError)
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 6.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -1277,15 +1288,15 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 ),
                               ),
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Container(
                                   height: 58.0,
                                   decoration: BoxDecoration(
                                     color: _model.showPhoneError
-                                        ? const Color(0x1FFF3F3F)
+                                        ? Color(0x1FFF3F3F)
                                         : FlutterFlowTheme.of(context)
                                             .alternate,
                                     borderRadius: BorderRadius.circular(12.0),
@@ -1298,7 +1309,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         14.0, 0.0, 14.0, 0.0),
                                     child: TextFormField(
                                       controller:
@@ -1306,7 +1317,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                       focusNode: _model.phoneNumberFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.phoneNumberTextController',
-                                        const Duration(milliseconds: 500),
+                                        Duration(milliseconds: 500),
                                         () => setState(() {}),
                                       ),
                                       autofocus: false,
@@ -1408,9 +1419,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                             ),
                             if (_model.showPhoneError)
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 6.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -1439,9 +1450,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                         : _isKeyboardVisible))
                       Expanded(
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 1.0),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 46.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
@@ -1449,13 +1460,18 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                if (_model.nameTextController.text != '') {
+                                if (_model.nameTextController.text != null &&
+                                    _model.nameTextController.text != '') {
                                   _model.showNameError = false;
                                   setState(() {});
-                                  if (_model.surnameTextController.text != '') {
+                                  if (_model.surnameTextController.text !=
+                                          null &&
+                                      _model.surnameTextController.text != '') {
                                     _model.showSurnameError = false;
                                     setState(() {});
                                     if (_model.phoneNumberTextController.text !=
+                                            null &&
+                                        _model.phoneNumberTextController.text !=
                                             '') {
                                       _model.showPhoneError = false;
                                       setState(() {});
@@ -1471,7 +1487,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                             .phoneNumberTextController.text,
                                       ));
                                       await _model.pageViewController?.nextPage(
-                                        duration: const Duration(milliseconds: 300),
+                                        duration: Duration(milliseconds: 300),
                                         curve: Curves.ease,
                                       );
                                       return;
@@ -1495,7 +1511,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 width: double.infinity,
                                 height: 52.0,
                                 decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
+                                  gradient: LinearGradient(
                                     colors: [
                                       Color(0xFF9747FF),
                                       Color(0xFFF1618E),
@@ -1508,9 +1524,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 14.0, 12.0, 14.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
@@ -1540,7 +1556,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                   children: [
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 44.0, 20.0, 0.0),
                         child: SingleChildScrollView(
                           child: Column(
@@ -1559,17 +1575,17 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     onTap: () async {
                                       await _model.pageViewController
                                           ?.previousPage(
-                                        duration: const Duration(milliseconds: 300),
+                                        duration: Duration(milliseconds: 300),
                                         curve: Curves.ease,
                                       );
                                     },
                                     child: Container(
                                       width: 40.0,
                                       height: 44.0,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
+                                            AlignmentDirectional(-1.0, 0.0),
                                         child: Icon(
                                           FFIcons.kleft2,
                                           color: FlutterFlowTheme.of(context)
@@ -1582,9 +1598,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 ],
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -1603,9 +1619,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -1625,9 +1641,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
@@ -1648,20 +1664,21 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 42.0, 0.0, 0.0),
-                                  child: SizedBox(
+                                  child: Container(
                                     width: 174.0,
                                     child: Stack(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       children: [
-                                        if (_model.uploadedFileUrl == '')
+                                        if (_model.uploadedFileUrl == null ||
+                                            _model.uploadedFileUrl == '')
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            child: SizedBox(
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: Container(
                                               width: 174.0,
                                               height: 174.0,
                                               child: custom_widgets
@@ -1680,9 +1697,11 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           ),
                                         Builder(
                                           builder: (context) {
-                                            if (_model.uploadedFileUrl == '') {
+                                            if (_model.uploadedFileUrl ==
+                                                    null ||
+                                                _model.uploadedFileUrl == '') {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: FFButtonWidget(
                                                   onPressed: () async {
@@ -1820,7 +1839,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                     }
                                                   },
                                                   text: '',
-                                                  icon: const Icon(
+                                                  icon: Icon(
                                                     Icons.add,
                                                     size: 24.0,
                                                   ),
@@ -1828,11 +1847,11 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                     width: 169.0,
                                                     height: 169.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsets.all(70.0),
+                                                        EdgeInsets.all(70.0),
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .alternate,
@@ -1847,7 +1866,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                           useGoogleFonts: false,
                                                         ),
                                                     elevation: 0.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 0.0,
                                                     ),
@@ -1860,11 +1879,11 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                               );
                                             } else {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Stack(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           1.0, -1.0),
                                                   children: [
                                                     ClipRRect(
@@ -1893,7 +1912,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               1.0, -1.0),
                                                       child:
                                                           FlutterFlowIconButton(
@@ -1939,7 +1958,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -1962,7 +1981,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 12.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 12.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           await currentUserReference!
@@ -1977,9 +1996,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                         ),
                         options: FFButtonOptions(
                           width: double.infinity,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 24.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: Colors.transparent,
                           textStyle:
@@ -1992,7 +2011,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     useGoogleFonts: false,
                                   ),
                           elevation: 0.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 0.0,
                           ),
@@ -2002,7 +2021,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 46.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 46.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -2020,7 +2039,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                           width: double.infinity,
                           height: 52.0,
                           decoration: BoxDecoration(
-                            gradient: const LinearGradient(
+                            gradient: LinearGradient(
                               colors: [
                                 Color(0xFF9747FF),
                                 Color(0xFFF1618E),
@@ -2033,9 +2052,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 14.0, 12.0, 14.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(

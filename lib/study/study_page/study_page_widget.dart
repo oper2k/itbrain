@@ -2,12 +2,16 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/navbar/navbar_study/navbar_study_widget.dart';
 import '/study/study_comp/study_comp_widget.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'study_page_model.dart';
 export 'study_page_model.dart';
 
@@ -91,15 +95,15 @@ class _StudyPageWidgetState extends State<StudyPageWidget>
                 List<StudyCategoriesRecord> containerStudyCategoriesRecordList =
                     snapshot.data!;
                 return Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 44.0, 24.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 44.0, 24.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, -1.0),
+                          alignment: AlignmentDirectional(-1.0, -1.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               'zdr2ssm7' /* Обучение */,
@@ -116,7 +120,7 @@ class _StudyPageWidgetState extends State<StudyPageWidget>
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               '9f6fcpg0' /* от приложения IT BRAIN */,
@@ -137,7 +141,7 @@ class _StudyPageWidgetState extends State<StudyPageWidget>
                         if (containerStudyCategoriesRecordList.isNotEmpty)
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 0.0),
                               child: Builder(
                                 builder: (context) {
@@ -145,7 +149,7 @@ class _StudyPageWidgetState extends State<StudyPageWidget>
                                       containerStudyCategoriesRecordList
                                           .toList();
                                   return ListView.separated(
-                                    padding: const EdgeInsets.fromLTRB(
+                                    padding: EdgeInsets.fromLTRB(
                                       0,
                                       0,
                                       0,
@@ -155,12 +159,12 @@ class _StudyPageWidgetState extends State<StudyPageWidget>
                                     scrollDirection: Axis.vertical,
                                     itemCount: containerVar.length,
                                     separatorBuilder: (_, __) =>
-                                        const SizedBox(height: 20.0),
+                                        SizedBox(height: 20.0),
                                     itemBuilder: (context, containerVarIndex) {
                                       final containerVarItem =
                                           containerVar[containerVarIndex];
                                       return Container(
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: StudyCompWidget(
                                           key: Key(
                                               'Keyffs_${containerVarIndex}_of_${containerVar.length}'),
@@ -181,12 +185,12 @@ class _StudyPageWidgetState extends State<StudyPageWidget>
               },
             ),
             Align(
-              alignment: const AlignmentDirectional(0.0, 1.0),
+              alignment: AlignmentDirectional(0.0, 1.0),
               child: wrapWithModel(
                 model: _model.navbarStudyModel,
                 updateCallback: () => setState(() {}),
                 updateOnChange: true,
-                child: const NavbarStudyWidget(),
+                child: NavbarStudyWidget(),
               ),
             ),
           ],

@@ -2,12 +2,16 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import 'dart:math' as math;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'study_info_page_model.dart';
 export 'study_info_page_model.dart';
 
@@ -66,7 +70,7 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
         body: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Color(0xFF370C59),
           ),
           child: SingleChildScrollView(
@@ -75,27 +79,27 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: ClipRRect(
                     child: Container(
                       width: double.infinity,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         color: Colors.transparent,
                       ),
                       child: Stack(
-                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         children: [
                           CachedNetworkImage(
-                            fadeInDuration: const Duration(milliseconds: 500),
-                            fadeOutDuration: const Duration(milliseconds: 500),
+                            fadeInDuration: Duration(milliseconds: 500),
+                            fadeOutDuration: Duration(milliseconds: 500),
                             imageUrl: widget.courseInfo!.courseInfoImage,
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             fit: BoxFit.cover,
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.0, -0.92),
+                            alignment: AlignmentDirectional(0.0, -0.92),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 44.0, 20.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -113,10 +117,10 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                                     child: Container(
                                       width: 40.0,
                                       height: 44.0,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
+                                            AlignmentDirectional(-1.0, 0.0),
                                         child: Icon(
                                           FFIcons.kleft2,
                                           color: FlutterFlowTheme.of(context)
@@ -137,7 +141,7 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -148,7 +152,7 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                         children: [
                           Expanded(
                             child: Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
                                   FFLocalizations.of(context).getVariableText(
@@ -173,9 +177,9 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                           ),
                           if (widget.courseInfo?.soon ?? true)
                             Align(
-                              alignment: const AlignmentDirectional(1.0, -1.0),
+                              alignment: AlignmentDirectional(1.0, -1.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 6.0, 0.0),
                                 child: Transform.rotate(
                                   angle: 4.0 * (math.pi / 180),
@@ -183,7 +187,7 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                                     width: 62.0,
                                     height: 24.0,
                                     decoration: BoxDecoration(
-                                      gradient: const LinearGradient(
+                                      gradient: LinearGradient(
                                         colors: [
                                           Color(0xFF9747FF),
                                           Color(0xFFF1618E),
@@ -196,9 +200,9 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 2.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
@@ -220,12 +224,12 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                                 ),
                               ),
                             ),
-                        ].divide(const SizedBox(width: 4.0)),
+                        ].divide(SizedBox(width: 4.0)),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getVariableText(
@@ -252,9 +256,9 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                         children: [
                           Expanded(
                             child: Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getVariableText(
@@ -276,11 +280,11 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                               ),
                             ),
                           ),
-                        ].divide(const SizedBox(width: 4.0)),
+                        ].divide(SizedBox(width: 4.0)),
                       ),
                       if (widget.courseInfo?.soon ?? true)
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 32.0, 0.0, 0.0),
                           child: Builder(
                             builder: (context) {
@@ -339,7 +343,7 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                                       width: double.infinity,
                                       height: 52.0,
                                       decoration: BoxDecoration(
-                                        gradient: const LinearGradient(
+                                        gradient: LinearGradient(
                                           colors: [
                                             Color(0xFF9747FF),
                                             Color(0xFFF1618E),
@@ -356,7 +360,7 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             '6fzep0g2' /* Напомнить об открытии продаж */,
@@ -384,7 +388,7 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         'wwbhgqk2' /* Вы подписались на уведомления */,
@@ -393,7 +397,7 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Evolventa',
-                                            color: const Color(0x67FFFFFF),
+                                            color: Color(0x67FFFFFF),
                                             fontSize: 15.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,

@@ -1,9 +1,11 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'affirmation_model.dart';
 export 'affirmation_model.dart';
@@ -84,7 +86,7 @@ class _AffirmationWidgetState extends State<AffirmationWidget> {
                         child: Material(
                           color: Colors.transparent,
                           elevation: 0.0,
-                          shape: const RoundedRectangleBorder(
+                          shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(96.0),
                               bottomRight: Radius.circular(0.0),
@@ -96,8 +98,8 @@ class _AffirmationWidgetState extends State<AffirmationWidget> {
                             width: 219.0,
                             height: 56.0,
                             decoration: BoxDecoration(
-                              color: const Color(0x15FFFFFF),
-                              borderRadius: const BorderRadius.only(
+                              color: Color(0x15FFFFFF),
+                              borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(96.0),
                                 bottomRight: Radius.circular(0.0),
                                 topLeft: Radius.circular(96.0),
@@ -109,7 +111,7 @@ class _AffirmationWidgetState extends State<AffirmationWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -122,14 +124,14 @@ class _AffirmationWidgetState extends State<AffirmationWidget> {
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 8.0, 0.0),
                                       child: TextFormField(
                                         controller: _model.textController,
                                         focusNode: _model.textFieldFocusNode,
                                         onChanged: (_) => EasyDebounce.debounce(
                                           '_model.textController',
-                                          const Duration(milliseconds: 300),
+                                          Duration(milliseconds: 300),
                                           () => setState(() {}),
                                         ),
                                         autofocus: true,
@@ -182,7 +184,7 @@ class _AffirmationWidgetState extends State<AffirmationWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                         child: Material(
                           color: Colors.transparent,
                           elevation: 0.0,
@@ -195,7 +197,7 @@ class _AffirmationWidgetState extends State<AffirmationWidget> {
                               ),
                             ),
                             child: Stack(
-                              alignment: const AlignmentDirectional(1.0, 0.0),
+                              alignment: AlignmentDirectional(1.0, 0.0),
                               children: [
                                 Image.asset(
                                   'assets/images/Subtract.webp',
@@ -204,7 +206,7 @@ class _AffirmationWidgetState extends State<AffirmationWidget> {
                                   fit: BoxFit.cover,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 15.5, 0.0),
                                   child: Icon(
                                     FFIcons.kclose2,

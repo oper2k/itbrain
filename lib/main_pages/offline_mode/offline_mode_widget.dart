@@ -1,6 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'offline_mode_model.dart';
 export 'offline_mode_model.dart';
 
@@ -36,13 +38,13 @@ class _OfflineModeWidgetState extends State<OfflineModeWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Align(
-            alignment: const AlignmentDirectional(0.0, 0.0),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset(
@@ -54,7 +56,7 @@ class _OfflineModeWidgetState extends State<OfflineModeWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
             child: Text(
               FFLocalizations.of(context).getText(
                 'ms40mrix' /* Офлайн - режим */,
@@ -69,7 +71,7 @@ class _OfflineModeWidgetState extends State<OfflineModeWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
             child: Text(
               FFLocalizations.of(context).getText(
                 '1894hy5w' /* Тут пока пусто, потому что вы ... */,

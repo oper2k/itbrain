@@ -1,10 +1,13 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main_pages/meditations/meditations_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'buy_pack_model.dart';
 export 'buy_pack_model.dart';
 
@@ -92,7 +95,7 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 46.0, 20.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 46.0, 20.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -112,9 +115,9 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                           child: Container(
                             width: 40.0,
                             height: 44.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Icon(
                                 FFIcons.kleft2,
                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -126,10 +129,10 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                       ],
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(-1.0, 0.0),
+                      alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             '1mqgvry8' /* Покупка пака */,
@@ -146,10 +149,10 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(-1.0, 0.0),
+                      alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getVariableText(
                             ruText: widget.meditationCategory?.nameCategory,
@@ -168,10 +171,10 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(-1.0, 0.0),
+                      alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(4.0, 28.0, 4.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(4.0, 28.0, 4.0, 0.0),
                         child: Text(
                           '${FFLocalizations.of(context).getVariableText(
                             ruText: 'Вы получите полный доступ к этому паку с ',
@@ -201,9 +204,9 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                     ),
                     Expanded(
                       child: Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               4.0, 20.0, 4.0, 0.0),
                           child: Builder(
                             builder: (context) {
@@ -216,17 +219,17 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                                 scrollDirection: Axis.vertical,
                                 itemCount: meditations.length,
                                 separatorBuilder: (_, __) =>
-                                    const SizedBox(height: 36.0),
+                                    SizedBox(height: 36.0),
                                 itemBuilder: (context, meditationsIndex) {
                                   final meditationsItem =
                                       meditations[meditationsIndex];
                                   return Container(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Align(
                                       alignment:
-                                          const AlignmentDirectional(0.0, -1.0),
+                                          AlignmentDirectional(0.0, -1.0),
                                       child: MeditationsWidget(
                                         key: Key(
                                             'Keya8c_${meditationsIndex}_of_${meditations.length}'),
@@ -242,16 +245,16 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 22.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   'z5n995ut' /* Сумма */,
@@ -268,11 +271,11 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getVariableText(
                                   ruText:
-                                      '${widget.meditationCategory?.coastOfPack.toString()} ₽',
+                                      '${widget.meditationCategory?.coastOfPack?.toString()} ₽',
                                   enText:
                                       '${widget.meditationCategory?.coastOfPackEng} \$',
                                 ),
@@ -294,7 +297,7 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 34.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 34.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -318,7 +321,7 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                           width: double.infinity,
                           height: 52.0,
                           decoration: BoxDecoration(
-                            gradient: const LinearGradient(
+                            gradient: LinearGradient(
                               colors: [
                                 Color(0xFF9747FF),
                                 Color(0xFFF1618E),
@@ -331,7 +334,7 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 'wj08bxya' /* Далее */,

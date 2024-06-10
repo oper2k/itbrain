@@ -1,6 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'thanks_for_buying_model.dart';
 export 'thanks_for_buying_model.dart';
 
@@ -46,15 +48,15 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Spacer(),
+            Spacer(),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
               child: Icon(
                 FFIcons.kheadphones,
                 color: FlutterFlowTheme.of(context).primaryText,
@@ -62,7 +64,7 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: Text(
                 FFLocalizations.of(context).getText(
                   'l1euzcsg' /* Спасибо за покупку */,
@@ -77,7 +79,7 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: Text(
                 FFLocalizations.of(context).getText(
                   '7tg1x2jk' /* Ваш платеж пока обрабатывается */,
@@ -92,9 +94,9 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
                     ),
               ),
             ),
-            const Spacer(),
+            Spacer(),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 34.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 34.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -104,7 +106,7 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
                   context.goNamed(
                     'HomePage',
                     extra: <String, dynamic>{
-                      kTransitionInfoKey: const TransitionInfo(
+                      kTransitionInfoKey: TransitionInfo(
                         hasTransition: true,
                         transitionType: PageTransitionType.fade,
                         duration: Duration(milliseconds: 0),
@@ -116,7 +118,7 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
                   width: double.infinity,
                   height: 52.0,
                   decoration: BoxDecoration(
-                    gradient: const LinearGradient(
+                    gradient: LinearGradient(
                       colors: [
                         Color(0xFF9747FF),
                         Color(0xFFF1618E),
@@ -129,7 +131,7 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         '647mfzjl' /* На главную */,

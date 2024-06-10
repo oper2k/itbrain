@@ -1,9 +1,16 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'confirm_email_widget.dart' show ConfirmEmailWidget;
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ConfirmEmailModel extends FlutterFlowModel<ConfirmEmailWidget> {
   ///  Local state fields for this page.

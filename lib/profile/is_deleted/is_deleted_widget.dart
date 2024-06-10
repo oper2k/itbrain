@@ -2,6 +2,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'is_deleted_model.dart';
 export 'is_deleted_model.dart';
 
@@ -37,7 +39,7 @@ class _IsDeletedWidgetState extends State<IsDeletedWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -45,7 +47,7 @@ class _IsDeletedWidgetState extends State<IsDeletedWidget> {
           borderRadius: BorderRadius.circular(24.0),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -71,14 +73,14 @@ class _IsDeletedWidgetState extends State<IsDeletedWidget> {
                 ],
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'vs0509ee' /* Медитации удалены */,
@@ -110,7 +112,7 @@ class _IsDeletedWidgetState extends State<IsDeletedWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 49.0, 0.0, 46.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 49.0, 0.0, 46.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -130,7 +132,7 @@ class _IsDeletedWidgetState extends State<IsDeletedWidget> {
                             ),
                           ),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 '1i4xluc2' /* Хорошо */,

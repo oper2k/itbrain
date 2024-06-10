@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'video_comp_model.dart';
 export 'video_comp_model.dart';
 
@@ -48,17 +50,17 @@ class _VideoCompWidgetState extends State<VideoCompWidget> {
         ClipRRect(
           borderRadius: BorderRadius.circular(12.0),
           child: CachedNetworkImage(
-            fadeInDuration: const Duration(milliseconds: 500),
-            fadeOutDuration: const Duration(milliseconds: 500),
+            fadeInDuration: Duration(milliseconds: 500),
+            fadeOutDuration: Duration(milliseconds: 500),
             imageUrl: widget.video!.videoCover,
             width: double.infinity,
             fit: BoxFit.cover,
           ),
         ),
         Align(
-          alignment: const AlignmentDirectional(-1.0, 0.0),
+          alignment: AlignmentDirectional(-1.0, 0.0),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
             child: Text(
               FFLocalizations.of(context).getVariableText(
                 ruText: widget.video?.title,
@@ -75,9 +77,9 @@ class _VideoCompWidgetState extends State<VideoCompWidget> {
           ),
         ),
         Align(
-          alignment: const AlignmentDirectional(-1.0, 0.0),
+          alignment: AlignmentDirectional(-1.0, 0.0),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
             child: Text(
               FFLocalizations.of(context).getVariableText(
                 ruText: widget.video?.duration,

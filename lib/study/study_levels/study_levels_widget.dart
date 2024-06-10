@@ -2,12 +2,15 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/study/level_not_avaliable/level_not_avaliable_widget.dart';
 import '/study/progress_bar/progress_bar_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'study_levels_model.dart';
 export 'study_levels_model.dart';
 
@@ -91,7 +94,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
             return Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Color(0xFF370C59),
               ),
               child: StreamBuilder<List<LessonsRecord>>(
@@ -119,7 +122,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                   List<LessonsRecord> containerLessonsRecordList =
                       snapshot.data!;
                   return Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -127,7 +130,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                           child: Stack(
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 44.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -136,15 +139,15 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                     Stack(
                                       children: [
                                         Container(
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -0.92),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 12.0),
                                                   child: Row(
@@ -170,10 +173,10 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                           width: 40.0,
                                                           height: 44.0,
                                                           decoration:
-                                                              const BoxDecoration(),
+                                                              BoxDecoration(),
                                                           child: Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Icon(
                                                               FFIcons.kleft2,
@@ -190,7 +193,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: AuthUserStreamWidget(
                                                   builder: (context) => Text(
@@ -202,7 +205,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                         (valueOrDefault<int>(
                                                                   (currentUserDocument
                                                                               ?.completeLessons
-                                                                              .toList() ??
+                                                                              ?.toList() ??
                                                                           [])
                                                                       .length,
                                                                   0,
@@ -241,10 +244,10 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 130.0, 0.0),
                                                   child: Row(
@@ -254,11 +257,11 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                       Expanded(
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   -1.0, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         8.0,
@@ -304,10 +307,10 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, 0.0),
+                                              AlignmentDirectional(1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 16.0, 0.0, 0.0),
                                             child: Image.asset(
                                               'assets/images/telegram-cloud-document-4-5791884542503557378_1.webp',
@@ -321,7 +324,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
                                           'm5f4vain' /* Уровни */,
@@ -330,7 +333,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Evolventa',
-                                              color: const Color(0xB3FFFFFF),
+                                              color: Color(0xB3FFFFFF),
                                               fontSize: 20.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
@@ -340,7 +343,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                     ),
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 32.0, 20.0, 0.0),
                                         child: Builder(
                                           builder: (context) {
@@ -371,7 +374,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                     onTap: () async {
                                                       if ((currentUserDocument
                                                                   ?.purchasedLevels
-                                                                  .toList() ??
+                                                                  ?.toList() ??
                                                               [])
                                                           .contains(levelsItem
                                                               .reference)) {
@@ -408,7 +411,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                         _model.isPreviusPurchased =
                                                             (currentUserDocument
                                                                         ?.purchasedLevels
-                                                                        .toList() ??
+                                                                        ?.toList() ??
                                                                     [])
                                                                 .contains(containerLevelsRecordList[
                                                                         valueOrDefault<
@@ -424,7 +427,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                         _model.isPreviusCompleted =
                                                             (currentUserDocument
                                                                         ?.completedLevels
-                                                                        .toList() ??
+                                                                        ?.toList() ??
                                                                     [])
                                                                 .contains(containerLevelsRecordList[
                                                                         valueOrDefault<
@@ -489,7 +492,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                                             .isPreviusPurchased &&
                                                                         _model
                                                                             .isPreviusCompleted &&
-                                                                        !(currentUserDocument?.purchasedLevels.toList() ??
+                                                                        !(currentUserDocument?.purchasedLevels?.toList() ??
                                                                                 [])
                                                                             .contains(levelsItem.reference)) {
                                                                       return true;
@@ -497,7 +500,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                                       return false;
                                                                     }
                                                                   }(),
-                                                                  url: !(currentUserDocument?.purchasedLevels.toList() ??
+                                                                  url: !(currentUserDocument?.purchasedLevels?.toList() ??
                                                                               [])
                                                                           .contains(containerLevelsRecordList[valueOrDefault<
                                                                                   int>(
@@ -558,7 +561,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                       children: [
                                                         Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   -1.0, -1.0),
                                                           child: Column(
                                                             mainAxisSize:
@@ -570,7 +573,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                             children: [
                                                               if ((currentUserDocument
                                                                           ?.purchasedLevels
-                                                                          .toList() ??
+                                                                          ?.toList() ??
                                                                       [])
                                                                   .contains(
                                                                       levelsItem
@@ -585,7 +588,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                                 ),
                                                               if (!(currentUserDocument
                                                                           ?.purchasedLevels
-                                                                          .toList() ??
+                                                                          ?.toList() ??
                                                                       [])
                                                                   .contains(
                                                                       levelsItem
@@ -625,7 +628,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       12.0,
                                                                       0.0,
@@ -719,7 +722,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -744,11 +747,11 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                               width: double.infinity,
                               height: 52.0,
                               decoration: BoxDecoration(
-                                color: const Color(0x1EFFFFFF),
+                                color: Color(0x1EFFFFFF),
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               child: Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
                                     'ptvcl6lu' /* Слушать все коды */,
@@ -767,7 +770,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                             ),
                           ),
                         ),
-                      ].addToEnd(const SizedBox(height: 46.0)),
+                      ].addToEnd(SizedBox(height: 46.0)),
                     ),
                   );
                 },

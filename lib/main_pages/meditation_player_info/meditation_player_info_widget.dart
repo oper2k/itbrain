@@ -3,9 +3,13 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'meditation_player_info_model.dart';
 export 'meditation_player_info_model.dart';
 
@@ -68,12 +72,12 @@ class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).thirdBackground,
-          borderRadius: const BorderRadius.only(
+          borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
             topLeft: Radius.circular(24.0),
@@ -81,7 +85,7 @@ class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
           ),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
+          padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -108,11 +112,11 @@ class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
                   ],
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                  alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getVariableText(
-                      ruText: widget.playerInfo?[widget.index!].playerTitle,
-                      enText: widget.playerInfo?[widget.index!].playerTitleEng,
+                      ruText: widget.playerInfo?[widget.index!]?.playerTitle,
+                      enText: widget.playerInfo?[widget.index!]?.playerTitleEng,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Evolventa',
@@ -124,15 +128,15 @@ class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                  alignment: AlignmentDirectional(-1.0, -1.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: MarkdownBody(
                       data: FFLocalizations.of(context).getVariableText(
-                        ruText: widget.playerInfo?[widget.index!].playerText,
+                        ruText: widget.playerInfo?[widget.index!]?.playerText,
                         enText:
-                            widget.playerInfo?[widget.index!].playerTextEng,
+                            widget.playerInfo?[widget.index!]?.playerTextEng,
                       ),
                       selectable: true,
                       onTapLink: (_, url, __) => launchURL(url!),
@@ -141,7 +145,7 @@ class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 101.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 101.0, 0.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -154,7 +158,7 @@ class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
                       width: double.infinity,
                       height: 52.0,
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           colors: [
                             Color(0xFF9747FF),
                             Color(0xFFF1618E),
@@ -167,7 +171,7 @@ class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'gt5fm4k8' /* Понятно! */,

@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/study/book_content/book_content_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'task_book_comp_model.dart';
 export 'task_book_comp_model.dart';
 
@@ -49,16 +51,16 @@ class _TaskBookCompWidgetState extends State<TaskBookCompWidget> {
       width: double.infinity,
       height: 272.0,
       decoration: BoxDecoration(
-        color: const Color(0xFFE8C697),
+        color: Color(0xFFE8C697),
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 24.0),
+        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 24.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
               child: Text(
                 valueOrDefault<String>(
                   widget.title,
@@ -66,7 +68,7 @@ class _TaskBookCompWidgetState extends State<TaskBookCompWidget> {
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Evolventa',
-                      color: const Color(0xFF2F0A4C),
+                      color: Color(0xFF2F0A4C),
                       fontSize: 20.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
@@ -76,9 +78,9 @@ class _TaskBookCompWidgetState extends State<TaskBookCompWidget> {
             ),
             Expanded(
               child: Align(
-                alignment: const AlignmentDirectional(-1.0, -1.0),
+                alignment: AlignmentDirectional(-1.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: Text(
                     valueOrDefault<String>(
                       widget.description,
@@ -89,7 +91,7 @@ class _TaskBookCompWidgetState extends State<TaskBookCompWidget> {
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Evolventa',
-                          color: const Color(0xFF2F0A4C),
+                          color: Color(0xFF2F0A4C),
                           fontSize: 13.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.normal,
@@ -127,14 +129,14 @@ class _TaskBookCompWidgetState extends State<TaskBookCompWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'xqiyd1e9' /* Еще */,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Evolventa',
-                            color: const Color(0xFF541882),
+                            color: Color(0xFF541882),
                             fontSize: 15.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.bold,
@@ -142,7 +144,7 @@ class _TaskBookCompWidgetState extends State<TaskBookCompWidget> {
                           ),
                     ),
                   ),
-                  const FaIcon(
+                  FaIcon(
                     FontAwesomeIcons.angleRight,
                     color: Color(0xFF541882),
                     size: 20.0,

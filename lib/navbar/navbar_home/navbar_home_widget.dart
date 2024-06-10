@@ -2,6 +2,8 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'navbar_home_model.dart';
 export 'navbar_home_model.dart';
 
@@ -37,21 +39,21 @@ class _NavbarHomeWidgetState extends State<NavbarHomeWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         height: 84.0,
         decoration: BoxDecoration(
-          color: const Color(0xFF2F0A4C),
+          color: Color(0xFF2F0A4C),
           border: Border.all(
-            color: const Color(0x1FFFFFFF),
+            color: Color(0x1FFFFFFF),
             width: 1.0,
           ),
         ),
         child: Align(
-          alignment: const AlignmentDirectional(0.0, -1.0),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(42.0, 7.0, 42.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(42.0, 7.0, 42.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -61,7 +63,7 @@ class _NavbarHomeWidgetState extends State<NavbarHomeWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Icon(
                         FFIcons.kdmtHome,
                         color: FlutterFlowTheme.of(context).primaryText,
@@ -70,7 +72,7 @@ class _NavbarHomeWidgetState extends State<NavbarHomeWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'u27gmzx6' /* Главная */,
@@ -111,9 +113,9 @@ class _NavbarHomeWidgetState extends State<NavbarHomeWidget> {
                             ? containerShowAppleRecordList.first
                             : null;
                     return Container(
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Visibility(
-                        visible: containerShowAppleRecord?.isShow2 ?? true,
+                        visible: containerShowAppleRecord?.isShow ?? true,
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -123,7 +125,7 @@ class _NavbarHomeWidgetState extends State<NavbarHomeWidget> {
                             context.pushNamed(
                               'studyPage',
                               extra: <String, dynamic>{
-                                kTransitionInfoKey: const TransitionInfo(
+                                kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
                                   transitionType: PageTransitionType.fade,
                                   duration: Duration(milliseconds: 0),
@@ -142,7 +144,7 @@ class _NavbarHomeWidgetState extends State<NavbarHomeWidget> {
                                 size: 24.0,
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 4.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
@@ -176,7 +178,7 @@ class _NavbarHomeWidgetState extends State<NavbarHomeWidget> {
                     context.pushNamed(
                       'profileCabinet',
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: const TransitionInfo(
+                        kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.fade,
                           duration: Duration(milliseconds: 0),
@@ -195,7 +197,7 @@ class _NavbarHomeWidgetState extends State<NavbarHomeWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'vf4c1plt' /* Профиль */,

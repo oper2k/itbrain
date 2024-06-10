@@ -5,7 +5,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 import 'study_comp_model.dart';
 export 'study_comp_model.dart';
 
@@ -52,23 +54,23 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
             width: double.infinity,
             height: 190.0,
             decoration: BoxDecoration(
-              color: const Color(0x15FFFFFF),
+              color: Color(0x15FFFFFF),
               borderRadius: BorderRadius.circular(24.0),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 20.0),
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 20.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getVariableText(
                               ruText: widget.course?.title,
@@ -87,9 +89,9 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getVariableText(
@@ -115,7 +117,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                     ),
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -138,9 +140,9 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                       child: Stack(
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 1.0),
+                            alignment: AlignmentDirectional(0.0, 1.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 20.0, 0.0),
                               child: Container(
                                 width: double.infinity,
@@ -150,7 +152,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
                                       'z9pynuek' /* Узнать подробнее */,
@@ -170,9 +172,9 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(1.0, -1.0),
+                            alignment: AlignmentDirectional(1.0, -1.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 6.0, 0.0),
                               child: Transform.rotate(
                                 angle: 4.0 * (math.pi / 180),
@@ -180,7 +182,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                   width: 62.0,
                                   height: 24.0,
                                   decoration: BoxDecoration(
-                                    gradient: const LinearGradient(
+                                    gradient: LinearGradient(
                                       colors: [
                                         Color(0xFF9747FF),
                                         Color(0xFFF1618E),
@@ -193,9 +195,9 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 2.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
@@ -225,7 +227,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
               ),
             ),
           );
-        } else if ((currentUserDocument?.purchasedStudyPacks.toList() ?? [])
+        } else if ((currentUserDocument?.purchasedStudyPacks?.toList() ?? [])
             .contains(widget.course?.reference)) {
           return StreamBuilder<List<LessonsRecord>>(
             stream: queryLessonsRecord(
@@ -254,7 +256,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                 width: double.infinity,
                 height: 327.0,
                 decoration: BoxDecoration(
-                  color: const Color(0x15FFFFFF),
+                  color: Color(0x15FFFFFF),
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: Image.network(
@@ -265,19 +267,19 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                 ),
                 child: Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 20.0),
+                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 20.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
                                   FFLocalizations.of(context).getVariableText(
@@ -299,9 +301,9 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: Text(
                                   valueOrDefault<String>(
@@ -334,12 +336,12 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 6.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -347,7 +349,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         '2hzh15uf' /* Просмотрено */,
@@ -364,7 +366,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(1.0, 0.0),
+                                    alignment: AlignmentDirectional(1.0, 0.0),
                                     child: Text(
                                       valueOrDefault<String>(
                                         '${valueOrDefault<String>(
@@ -372,7 +374,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                             functions.progress(
                                                 (currentUserDocument
                                                             ?.completeLessons
-                                                            .toList() ??
+                                                            ?.toList() ??
                                                         [])
                                                     .length
                                                     .toDouble(),
@@ -411,7 +413,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 12.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -423,7 +425,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                             valueOrDefault<double>(
                                               (currentUserDocument
                                                           ?.completeLessons
-                                                          .toList() ??
+                                                          ?.toList() ??
                                                       [])
                                                   .length
                                                   .toDouble(),
@@ -447,8 +449,8 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                       progressColor:
                                           FlutterFlowTheme.of(context)
                                               .primaryText,
-                                      backgroundColor: const Color(0x67FFFFFF),
-                                      barRadius: const Radius.circular(10.0),
+                                      backgroundColor: Color(0x67FFFFFF),
+                                      barRadius: Radius.circular(10.0),
                                       padding: EdgeInsets.zero,
                                     ),
                                   ),
@@ -456,7 +458,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 1.0),
+                              alignment: AlignmentDirectional(0.0, 1.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -480,7 +482,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                   width: double.infinity,
                                   height: 42.0,
                                   decoration: BoxDecoration(
-                                    gradient: const LinearGradient(
+                                    gradient: LinearGradient(
                                       colors: [
                                         Color(0xFF9747FF),
                                         Color(0xFFF1618E),
@@ -493,7 +495,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         'fs07da0s' /* Перейти в курс */,
@@ -526,7 +528,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
             width: double.infinity,
             height: 327.0,
             decoration: BoxDecoration(
-              color: const Color(0x15FFFFFF),
+              color: Color(0x15FFFFFF),
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: Image.network(
@@ -536,19 +538,19 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
               borderRadius: BorderRadius.circular(24.0),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 20.0),
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 0.0, 20.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getVariableText(
                               ruText: widget.course?.title,
@@ -566,9 +568,9 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getVariableText(
@@ -593,14 +595,14 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                     ),
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                       child: Stack(
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 1.0),
+                            alignment: AlignmentDirectional(0.0, 1.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -617,7 +619,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                 width: double.infinity,
                                 height: 42.0,
                                 decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
+                                  gradient: LinearGradient(
                                     colors: [
                                       Color(0xFF9747FF),
                                       Color(0xFFF1618E),
@@ -630,7 +632,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
                                       'tnq0fkkt' /* Узнать подробнее */,

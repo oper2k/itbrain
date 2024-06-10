@@ -3,24 +3,27 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/util/schema_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class ShowAppleRecord extends FirestoreRecord {
   ShowAppleRecord._(
-    super.reference,
-    super.data,
-  ) {
+    DocumentReference reference,
+    Map<String, dynamic> data,
+  ) : super(reference, data) {
     _initializeFields();
   }
 
-  // "isShow2" field.
-  bool? _isShow2;
-  bool get isShow2 => _isShow2 ?? false;
-  bool hasIsShow2() => _isShow2 != null;
+  // "isShow" field.
+  bool? _isShow;
+  bool get isShow => _isShow ?? false;
+  bool hasIsShow() => _isShow != null;
 
   void _initializeFields() {
-    _isShow2 = snapshotData['isShow2'] as bool?;
+    _isShow = snapshotData['isShow'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -58,11 +61,11 @@ class ShowAppleRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createShowAppleRecordData({
-  bool? isShow2,
+  bool? isShow,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'isShow2': isShow2,
+      'isShow': isShow,
     }.withoutNulls,
   );
 
@@ -74,11 +77,11 @@ class ShowAppleRecordDocumentEquality implements Equality<ShowAppleRecord> {
 
   @override
   bool equals(ShowAppleRecord? e1, ShowAppleRecord? e2) {
-    return e1?.isShow2 == e2?.isShow2;
+    return e1?.isShow == e2?.isShow;
   }
 
   @override
-  int hash(ShowAppleRecord? e) => const ListEquality().hash([e?.isShow2]);
+  int hash(ShowAppleRecord? e) => const ListEquality().hash([e?.isShow]);
 
   @override
   bool isValidKey(Object? o) => o is ShowAppleRecord;

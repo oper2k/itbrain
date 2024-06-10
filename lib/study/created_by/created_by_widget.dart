@@ -1,6 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'created_by_model.dart';
 export 'created_by_model.dart';
 
@@ -48,7 +50,7 @@ class _CreatedByWidgetState extends State<CreatedByWidget> {
           width: 56.0,
           height: 56.0,
           clipBehavior: Clip.antiAlias,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             shape: BoxShape.circle,
           ),
           child: Image.network(
@@ -57,7 +59,7 @@ class _CreatedByWidgetState extends State<CreatedByWidget> {
           ),
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,

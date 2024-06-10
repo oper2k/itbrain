@@ -1,11 +1,14 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/instant_timer.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'book_timer_model.dart';
 export 'book_timer_model.dart';
 
@@ -37,7 +40,7 @@ class _BookTimerWidgetState extends State<BookTimerWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.lockOrientation();
       _model.instantTimer = InstantTimer.periodic(
-        duration: const Duration(milliseconds: 10),
+        duration: Duration(milliseconds: 10),
         callback: (timer) async {
           _model.progress = _model.progress + 0.01;
           setState(() {});
@@ -54,7 +57,7 @@ class _BookTimerWidgetState extends State<BookTimerWidget> {
               }.withoutNulls,
               extra: <String, dynamic>{
                 'pageInfo': widget.bookPages,
-                kTransitionInfoKey: const TransitionInfo(
+                kTransitionInfoKey: TransitionInfo(
                   hasTransition: true,
                   transitionType: PageTransitionType.fade,
                   duration: Duration(milliseconds: 0),
@@ -91,8 +94,8 @@ class _BookTimerWidgetState extends State<BookTimerWidget> {
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: CachedNetworkImage(
-                fadeInDuration: const Duration(milliseconds: 500),
-                fadeOutDuration: const Duration(milliseconds: 500),
+                fadeInDuration: Duration(milliseconds: 500),
+                fadeOutDuration: Duration(milliseconds: 500),
                 imageUrl: widget.bookPages!.photo,
                 width: 300.0,
                 height: 200.0,
@@ -115,13 +118,13 @@ class _BookTimerWidgetState extends State<BookTimerWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 46.0),
+                        EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 46.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, -1.0),
+                          alignment: AlignmentDirectional(-1.0, -1.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -133,9 +136,9 @@ class _BookTimerWidgetState extends State<BookTimerWidget> {
                             child: Container(
                               width: 40.0,
                               height: 40.0,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Align(
-                                alignment: const AlignmentDirectional(-1.0, -1.0),
+                                alignment: AlignmentDirectional(-1.0, -1.0),
                                 child: Icon(
                                   FFIcons.kclose2,
                                   color:
@@ -147,7 +150,7 @@ class _BookTimerWidgetState extends State<BookTimerWidget> {
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             '${valueOrDefault<String>(
                               formatNumber(
@@ -170,7 +173,7 @@ class _BookTimerWidgetState extends State<BookTimerWidget> {
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               'z425erss' /* Подбираем твою страницу на сег... */,

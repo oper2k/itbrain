@@ -9,10 +9,14 @@ import '/study/study_audio/study_audio_widget.dart';
 import '/study/study_file/study_file_widget.dart';
 import '/study/study_image/study_image_widget.dart';
 import '/study/task_book_comp/task_book_comp_widget.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'content_block_model.dart';
 export 'content_block_model.dart';
 
@@ -127,7 +131,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
             width: double.infinity,
             height: 52.0,
             decoration: BoxDecoration(
-              gradient: const LinearGradient(
+              gradient: LinearGradient(
                 colors: [
                   Color(0xFF9747FF),
                   Color(0xFFF1618E),
@@ -140,7 +144,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Text(
                 FFLocalizations.of(context).getText(
                   'oxsl9hph' /* Посмотреть ответы (коды) */,
@@ -192,7 +196,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
                 width: 40.0,
                 height: 40.0,
                 clipBehavior: Clip.antiAlias,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
                 ),
                 child: Image.network(
@@ -215,7 +219,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
                       ),
                 ),
               ),
-            ].divide(const SizedBox(width: 12.0)),
+            ].divide(SizedBox(width: 12.0)),
           );
         } else if (widget.level?.type == 'book') {
           return wrapWithModel(
@@ -231,7 +235,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
           return wrapWithModel(
             model: _model.dividerModel,
             updateCallback: () => setState(() {}),
-            child: const DividerWidget(),
+            child: DividerWidget(),
           );
         } else if (widget.level?.type == 'file') {
           return InkWell(

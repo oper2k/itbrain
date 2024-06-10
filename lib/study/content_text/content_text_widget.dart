@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'content_text_model.dart';
 export 'content_text_model.dart';
 
@@ -43,12 +45,12 @@ class _ContentTextWidgetState extends State<ContentTextWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).thirdBackground,
-          borderRadius: const BorderRadius.only(
+          borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
             topLeft: Radius.circular(24.0),
@@ -56,7 +58,7 @@ class _ContentTextWidgetState extends State<ContentTextWidget> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
+          padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -67,7 +69,7 @@ class _ContentTextWidgetState extends State<ContentTextWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -75,7 +77,7 @@ class _ContentTextWidgetState extends State<ContentTextWidget> {
                             width: 40.0,
                             height: 40.0,
                             clipBehavior: Clip.antiAlias,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               shape: BoxShape.circle,
                             ),
                             child: Image.network(
@@ -101,7 +103,7 @@ class _ContentTextWidgetState extends State<ContentTextWidget> {
                                   ),
                             ),
                           ),
-                        ].divide(const SizedBox(width: 12.0)),
+                        ].divide(SizedBox(width: 12.0)),
                       ),
                     ),
                   ),
@@ -123,14 +125,14 @@ class _ContentTextWidgetState extends State<ContentTextWidget> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(-1.0, -1.0),
+                        alignment: AlignmentDirectional(-1.0, -1.0),
                         child: Text(
                           valueOrDefault<String>(
                             widget.content?.text,
@@ -151,7 +153,7 @@ class _ContentTextWidgetState extends State<ContentTextWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -164,11 +166,11 @@ class _ContentTextWidgetState extends State<ContentTextWidget> {
                     width: double.infinity,
                     height: 52.0,
                     decoration: BoxDecoration(
-                      color: const Color(0x1EFFFFFF),
+                      color: Color(0x1EFFFFFF),
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           't5i17ne7' /* Закрыть */,

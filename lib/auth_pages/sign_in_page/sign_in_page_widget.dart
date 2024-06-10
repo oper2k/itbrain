@@ -9,6 +9,8 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'sign_in_page_model.dart';
 export 'sign_in_page_model.dart';
 
@@ -86,7 +88,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 46.0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 44.0, 20.0, 46.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -105,9 +107,9 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                       child: Container(
                         width: 40.0,
                         height: 44.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Icon(
                             FFIcons.kleft2,
                             color: FlutterFlowTheme.of(context).accent1,
@@ -126,9 +128,9 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                       options: FFButtonOptions(
                         height: 40.0,
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: Colors.transparent,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -141,7 +143,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                   lineHeight: 1.6,
                                 ),
                         elevation: 0.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 0.0,
                         ),
@@ -151,9 +153,9 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                   ],
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                  alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'd84hva83' /* Вход */,
@@ -170,10 +172,10 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                  alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'jt0fm1wh' /* Введите email и пароль, указан... */,
@@ -190,15 +192,15 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                  alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: Container(
                       height: 58.0,
                       decoration: BoxDecoration(
                         color: _model.showEmailError
-                            ? const Color(0x1EFF3F3F)
+                            ? Color(0x1EFF3F3F)
                             : FlutterFlowTheme.of(context).alternate,
                         borderRadius: BorderRadius.circular(12.0),
                         border: Border.all(
@@ -208,16 +210,16 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                         ),
                       ),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               14.0, 0.0, 14.0, 0.0),
                           child: TextFormField(
                             controller: _model.emailTextController,
                             focusNode: _model.emailFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
                               '_model.emailTextController',
-                              const Duration(milliseconds: 500),
+                              Duration(milliseconds: 500),
                               () => setState(() {}),
                             ),
                             autofocus: false,
@@ -299,10 +301,10 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                 ),
                 if (_model.showEmailError)
                   Align(
-                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                    alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'senye59q' /* Поле не заполнено */,
@@ -319,15 +321,15 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                     ),
                   ),
                 Align(
-                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                  alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: Container(
                       height: 58.0,
                       decoration: BoxDecoration(
                         color: _model.showPassError
-                            ? const Color(0x1EFF3F3F)
+                            ? Color(0x1EFF3F3F)
                             : FlutterFlowTheme.of(context).alternate,
                         borderRadius: BorderRadius.circular(12.0),
                         border: Border.all(
@@ -337,14 +339,14 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             14.0, 0.0, 14.0, 0.0),
                         child: TextFormField(
                           controller: _model.passwordTextController,
                           focusNode: _model.passwordFocusNode,
                           onChanged: (_) => EasyDebounce.debounce(
                             '_model.passwordTextController',
-                            const Duration(milliseconds: 500),
+                            Duration(milliseconds: 500),
                             () => setState(() {}),
                           ),
                           autofocus: false,
@@ -423,10 +425,10 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                 ),
                 if (_model.showPassError)
                   Align(
-                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                    alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'm4g6vdrg' /* Минимум 6 символов */,
@@ -443,10 +445,10 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                     ),
                   ),
                 Align(
-                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                  alignment: AlignmentDirectional(-1.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         context.pushNamed('forgotPassword');
@@ -457,9 +459,9 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                       options: FFButtonOptions(
                         height: 40.0,
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: Colors.transparent,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -472,7 +474,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                                   lineHeight: 1.6,
                                 ),
                         elevation: 0.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 0.0,
                         ),
@@ -481,7 +483,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                     ),
                   ),
                 ),
-                const Spacer(),
+                Spacer(),
                 if (!(isWeb
                     ? MediaQuery.viewInsetsOf(context).bottom > 0
                     : _isKeyboardVisible))
@@ -491,10 +493,12 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      if (_model.emailTextController.text != '') {
+                      if (_model.emailTextController.text != null &&
+                          _model.emailTextController.text != '') {
                         _model.showEmailError = false;
                         setState(() {});
-                        if ((_model.passwordTextController.text != '') &&
+                        if ((_model.passwordTextController.text != null &&
+                                _model.passwordTextController.text != '') &&
                             functions.passCheck(
                                 _model.passwordTextController.text)!) {
                           _model.showPassError = false;
@@ -528,7 +532,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                       width: double.infinity,
                       height: 52.0,
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(
+                        gradient: LinearGradient(
                           colors: [
                             Color(0xFF9747FF),
                             Color(0xFFF1618E),
@@ -541,7 +545,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'pluoll38' /* Войти */,

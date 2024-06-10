@@ -1,7 +1,13 @@
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main_pages/purchase_pages/thanks_for_buying/thanks_for_buying_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'payment_page_widget.dart' show PaymentPageWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class PaymentPageModel extends FlutterFlowModel<PaymentPageWidget> {
   ///  Local state fields for this page.

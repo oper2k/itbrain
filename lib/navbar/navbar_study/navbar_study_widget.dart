@@ -1,6 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'navbar_study_model.dart';
 export 'navbar_study_model.dart';
 
@@ -36,21 +38,21 @@ class _NavbarStudyWidgetState extends State<NavbarStudyWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         height: 84.0,
         decoration: BoxDecoration(
-          color: const Color(0xFF2F0A4C),
+          color: Color(0xFF2F0A4C),
           border: Border.all(
-            color: const Color(0x1FFFFFFF),
+            color: Color(0x1FFFFFFF),
             width: 1.0,
           ),
         ),
         child: Align(
-          alignment: const AlignmentDirectional(0.0, -1.0),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(42.0, 7.0, 42.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(42.0, 7.0, 42.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,7 +66,7 @@ class _NavbarStudyWidgetState extends State<NavbarStudyWidget> {
                     context.pushNamed(
                       'HomePage',
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: const TransitionInfo(
+                        kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.fade,
                           duration: Duration(milliseconds: 0),
@@ -77,7 +79,7 @@ class _NavbarStudyWidgetState extends State<NavbarStudyWidget> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: Icon(
                           FFIcons.kdmtHome,
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -86,7 +88,7 @@ class _NavbarStudyWidgetState extends State<NavbarStudyWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'm9ih9mtc' /* Главная */,
@@ -117,7 +119,7 @@ class _NavbarStudyWidgetState extends State<NavbarStudyWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
                           'ztl340rp' /* Обучение */,
@@ -142,7 +144,7 @@ class _NavbarStudyWidgetState extends State<NavbarStudyWidget> {
                     context.pushNamed(
                       'profileCabinet',
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: const TransitionInfo(
+                        kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.fade,
                           duration: Duration(milliseconds: 0),
@@ -161,7 +163,7 @@ class _NavbarStudyWidgetState extends State<NavbarStudyWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             '9h7ymcdk' /* Профиль */,

@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/study/lesson_audio/lesson_audio_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
@@ -9,6 +10,8 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'lessons_all_codes_model.dart';
 export 'lessons_all_codes_model.dart';
 
@@ -96,7 +99,7 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
             return Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Color(0xFF370C59),
               ),
               child: SingleChildScrollView(
@@ -105,27 +108,27 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: ClipRRect(
                         child: Container(
                           width: double.infinity,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Colors.transparent,
                           ),
                           child: Stack(
-                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            alignment: AlignmentDirectional(0.0, -1.0),
                             children: [
                               CachedNetworkImage(
-                                fadeInDuration: const Duration(milliseconds: 500),
-                                fadeOutDuration: const Duration(milliseconds: 500),
+                                fadeInDuration: Duration(milliseconds: 500),
+                                fadeOutDuration: Duration(milliseconds: 500),
                                 imageUrl: widget.courseInfo!.courseInfoImage,
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 fit: BoxFit.cover,
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, -0.92),
+                                alignment: AlignmentDirectional(0.0, -0.92),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 44.0, 20.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -143,10 +146,10 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                         child: Container(
                                           width: 40.0,
                                           height: 44.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Icon(
                                               FFIcons.kleft2,
                                               color:
@@ -168,14 +171,14 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 24.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getVariableText(
@@ -202,9 +205,9 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                             children: [
                               Expanded(
                                 child: Align(
-                                  alignment: const AlignmentDirectional(-1.0, 0.0),
+                                  alignment: AlignmentDirectional(-1.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
@@ -225,12 +228,12 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(width: 4.0)),
+                            ].divide(SizedBox(width: 4.0)),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 28.0, 0.0, 0.0),
                               child: Text(
                                 '${containerLessonsRecordList.length.toString()}${FFLocalizations.of(context).getVariableText(
@@ -252,7 +255,7 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 32.0),
                             child: Builder(
                               builder: (context) {
@@ -265,7 +268,7 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                   scrollDirection: Axis.vertical,
                                   itemCount: lessons.length,
                                   separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 36.0),
+                                      SizedBox(height: 36.0),
                                   itemBuilder: (context, lessonsIndex) {
                                     final lessonsItem = lessons[lessonsIndex];
                                     return Visibility(
@@ -273,7 +276,7 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                               getCurrentTimestamp,
                                               (currentUserDocument
                                                           ?.purchasedCoursesDates
-                                                          .toList() ??
+                                                          ?.toList() ??
                                                       [])
                                                   .where((e) =>
                                                       e.courseRef ==
@@ -283,10 +286,11 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                                   .first
                                                   .purchasedDate!,
                                               lessonsItem.order) &&
-                                          (lessonsItem.mainAudio != ''),
+                                          (lessonsItem.mainAudio != null &&
+                                              lessonsItem.mainAudio != ''),
                                       child: AuthUserStreamWidget(
                                         builder: (context) => Container(
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,

@@ -1,6 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'confirmed_model.dart';
 export 'confirmed_model.dart';
 
@@ -53,16 +55,16 @@ class _ConfirmedWidgetState extends State<ConfirmedWidget> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 46.0),
+        padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 46.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            const Spacer(),
+            Spacer(),
             Container(
               width: 104.0,
               height: 104.0,
               clipBehavior: Clip.antiAlias,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
               ),
               child: Image.asset(
@@ -71,7 +73,7 @@ class _ConfirmedWidgetState extends State<ConfirmedWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
               child: Text(
                 FFLocalizations.of(context).getText(
                   '9oilinzf' /* Перейди по ссылке
@@ -89,7 +91,7 @@ class _ConfirmedWidgetState extends State<ConfirmedWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: Text(
                 FFLocalizations.of(context).getVariableText(
                   ruText: 'Отправили его на ${widget.email}',
@@ -106,9 +108,9 @@ class _ConfirmedWidgetState extends State<ConfirmedWidget> {
                     ),
               ),
             ),
-            const Spacer(),
+            Spacer(),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
               child: Text(
                 FFLocalizations.of(context).getText(
                   'lmm0mjsw' /* Не забудьте проверить папку «С... */,
@@ -137,7 +139,7 @@ class _ConfirmedWidgetState extends State<ConfirmedWidget> {
                 width: double.infinity,
                 height: 52.0,
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
+                  gradient: LinearGradient(
                     colors: [
                       Color(0xFF9747FF),
                       Color(0xFFF1618E),
@@ -150,7 +152,7 @@ class _ConfirmedWidgetState extends State<ConfirmedWidget> {
                   borderRadius: BorderRadius.circular(12.0),
                 ),
                 child: Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'mteqd617' /* Отлично! */,

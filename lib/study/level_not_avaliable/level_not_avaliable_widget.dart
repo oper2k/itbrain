@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'level_not_avaliable_model.dart';
 export 'level_not_avaliable_model.dart';
 
@@ -12,7 +14,7 @@ class LevelNotAvaliableWidget extends StatefulWidget {
     required this.levelInfo,
     bool? showButton,
     required this.url,
-  }) : showButton = showButton ?? false;
+  }) : this.showButton = showButton ?? false;
 
   final LevelsRecord? levelInfo;
   final bool showButton;
@@ -48,12 +50,12 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).thirdBackground,
-          borderRadius: const BorderRadius.only(
+          borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
             topLeft: Radius.circular(24.0),
@@ -61,7 +63,7 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
+          padding: EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 46.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -88,10 +90,10 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
                   ],
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
                         'xa645yp4' /* Уровень недоступен */,
@@ -107,12 +109,12 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
                   ),
                 ),
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Builder(
                     builder: (context) {
                       if (widget.showButton) {
                         return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
@@ -134,7 +136,7 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
                         );
                       } else {
                         return Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
@@ -159,7 +161,7 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 104.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 104.0, 0.0, 0.0),
                   child: Builder(
                     builder: (context) {
                       if (widget.showButton) {
@@ -176,7 +178,7 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
                             width: double.infinity,
                             height: 52.0,
                             decoration: BoxDecoration(
-                              gradient: const LinearGradient(
+                              gradient: LinearGradient(
                                 colors: [
                                   Color(0xFF9747FF),
                                   Color(0xFFF1618E),
@@ -189,7 +191,7 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   'a4pg3pvq' /* Узнать подробнее */,
@@ -224,7 +226,7 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   'yegekz55' /* Закрыть */,
