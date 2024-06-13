@@ -170,7 +170,7 @@ class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
                         alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
-                            'gt5fm4k8' /* Понятно! */,
+                            'gt5fm4k8' /* Закрыть */,
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(

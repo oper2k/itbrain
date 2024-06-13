@@ -81,7 +81,7 @@ class _IsDownloadedOnceWidgetState extends State<IsDownloadedOnceWidget> {
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'v05k2h0x' /* Медитация загружена */,
+                          'v05k2h0x' /* Аудио загружено */,
                         ),
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -95,7 +95,7 @@ class _IsDownloadedOnceWidgetState extends State<IsDownloadedOnceWidget> {
                     ),
                     Text(
                       FFLocalizations.of(context).getText(
-                        'vgp08p6k' /* Медитация успешно загружена! */,
+                        'vgp08p6k' /* Аудио успешно загружены */,
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -133,7 +133,7 @@ class _IsDownloadedOnceWidgetState extends State<IsDownloadedOnceWidget> {
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
-                                'uwbu1gpd' /* Хорошо */,
+                                'uwbu1gpd' /* Закрыть */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium

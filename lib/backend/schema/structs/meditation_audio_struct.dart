@@ -59,130 +59,155 @@ class MeditationAudioStruct extends FFFirebaseStruct {
   String? _name;
   String get name => _name ?? '';
   set name(String? val) => _name = val;
+
   bool hasName() => _name != null;
 
   // "description" field.
   String? _description;
   String get description => _description ?? '';
   set description(String? val) => _description = val;
+
   bool hasDescription() => _description != null;
 
   // "audioPath" field.
   String? _audioPath;
   String get audioPath => _audioPath ?? '';
   set audioPath(String? val) => _audioPath = val;
+
   bool hasAudioPath() => _audioPath != null;
 
   // "isDownload" field.
   bool? _isDownload;
   bool get isDownload => _isDownload ?? false;
   set isDownload(bool? val) => _isDownload = val;
+
   bool hasIsDownload() => _isDownload != null;
 
   // "positionMS" field.
   int? _positionMS;
   int get positionMS => _positionMS ?? 0;
   set positionMS(int? val) => _positionMS = val;
-  void incrementPositionMS(int amount) => _positionMS = positionMS + amount;
+
+  void incrementPositionMS(int amount) => positionMS = positionMS + amount;
+
   bool hasPositionMS() => _positionMS != null;
 
   // "durationMS" field.
   int? _durationMS;
   int get durationMS => _durationMS ?? 0;
   set durationMS(int? val) => _durationMS = val;
-  void incrementDurationMS(int amount) => _durationMS = durationMS + amount;
+
+  void incrementDurationMS(int amount) => durationMS = durationMS + amount;
+
   bool hasDurationMS() => _durationMS != null;
 
   // "localImagePath" field.
   String? _localImagePath;
   String get localImagePath => _localImagePath ?? '';
   set localImagePath(String? val) => _localImagePath = val;
+
   bool hasLocalImagePath() => _localImagePath != null;
 
   // "progress" field.
   double? _progress;
   double get progress => _progress ?? 0.0;
   set progress(double? val) => _progress = val;
-  void incrementProgress(double amount) => _progress = progress + amount;
+
+  void incrementProgress(double amount) => progress = progress + amount;
+
   bool hasProgress() => _progress != null;
 
   // "localAudioPath" field.
   String? _localAudioPath;
   String get localAudioPath => _localAudioPath ?? '';
   set localAudioPath(String? val) => _localAudioPath = val;
+
   bool hasLocalAudioPath() => _localAudioPath != null;
 
   // "type" field.
   String? _type;
   String get type => _type ?? '';
   set type(String? val) => _type = val;
+
   bool hasType() => _type != null;
 
   // "isPaid" field.
   bool? _isPaid;
   bool get isPaid => _isPaid ?? false;
   set isPaid(bool? val) => _isPaid = val;
+
   bool hasIsPaid() => _isPaid != null;
 
   // "order" field.
   int? _order;
   int get order => _order ?? 0;
   set order(int? val) => _order = val;
-  void incrementOrder(int amount) => _order = order + amount;
+
+  void incrementOrder(int amount) => order = order + amount;
+
   bool hasOrder() => _order != null;
 
   // "created_date" field.
   DateTime? _createdDate;
   DateTime? get createdDate => _createdDate;
   set createdDate(DateTime? val) => _createdDate = val;
+
   bool hasCreatedDate() => _createdDate != null;
 
   // "duration" field.
   String? _duration;
   String get duration => _duration ?? '';
   set duration(String? val) => _duration = val;
+
   bool hasDuration() => _duration != null;
 
   // "id" field.
   String? _id;
   String get id => _id ?? '';
   set id(String? val) => _id = val;
+
   bool hasId() => _id != null;
 
   // "photo" field.
   String? _photo;
   String get photo => _photo ?? '';
   set photo(String? val) => _photo = val;
+
   bool hasPhoto() => _photo != null;
 
   // "category" field.
   String? _category;
   String get category => _category ?? '';
   set category(String? val) => _category = val;
+
   bool hasCategory() => _category != null;
 
   // "name_eng" field.
   String? _nameEng;
   String get nameEng => _nameEng ?? '';
   set nameEng(String? val) => _nameEng = val;
+
   bool hasNameEng() => _nameEng != null;
 
   // "description_name" field.
   String? _descriptionName;
   String get descriptionName => _descriptionName ?? '';
   set descriptionName(String? val) => _descriptionName = val;
+
   bool hasDescriptionName() => _descriptionName != null;
 
   // "duration_eng" field.
   String? _durationEng;
   String get durationEng => _durationEng ?? '';
   set durationEng(String? val) => _durationEng = val;
+
   bool hasDurationEng() => _durationEng != null;
 
   // "meditationCategorg" field.
   DocumentReference? _meditationCategorg;
   DocumentReference? get meditationCategorg => _meditationCategorg;
   set meditationCategorg(DocumentReference? val) => _meditationCategorg = val;
+
   bool hasMeditationCategorg() => _meditationCategorg != null;
 
   static MeditationAudioStruct fromMap(Map<String, dynamic> data) =>

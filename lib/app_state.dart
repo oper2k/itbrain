@@ -143,27 +143,27 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToDownloadingTracks(MeditationAudioStruct value) {
-    _downloadingTracks.add(value);
+    downloadingTracks.add(value);
   }
 
   void removeFromDownloadingTracks(MeditationAudioStruct value) {
-    _downloadingTracks.remove(value);
+    downloadingTracks.remove(value);
   }
 
   void removeAtIndexFromDownloadingTracks(int index) {
-    _downloadingTracks.removeAt(index);
+    downloadingTracks.removeAt(index);
   }
 
   void updateDownloadingTracksAtIndex(
     int index,
     MeditationAudioStruct Function(MeditationAudioStruct) updateFn,
   ) {
-    _downloadingTracks[index] = updateFn(_downloadingTracks[index]);
+    downloadingTracks[index] = updateFn(_downloadingTracks[index]);
   }
 
   void insertAtIndexInDownloadingTracks(
       int index, MeditationAudioStruct value) {
-    _downloadingTracks.insert(index, value);
+    downloadingTracks.insert(index, value);
   }
 
   List<MeditationAudioStruct> _downloadedTracks = [];
@@ -175,19 +175,19 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToDownloadedTracks(MeditationAudioStruct value) {
-    _downloadedTracks.add(value);
+    downloadedTracks.add(value);
     prefs.setStringList('ff_downloadedTracks',
         _downloadedTracks.map((x) => x.serialize()).toList());
   }
 
   void removeFromDownloadedTracks(MeditationAudioStruct value) {
-    _downloadedTracks.remove(value);
+    downloadedTracks.remove(value);
     prefs.setStringList('ff_downloadedTracks',
         _downloadedTracks.map((x) => x.serialize()).toList());
   }
 
   void removeAtIndexFromDownloadedTracks(int index) {
-    _downloadedTracks.removeAt(index);
+    downloadedTracks.removeAt(index);
     prefs.setStringList('ff_downloadedTracks',
         _downloadedTracks.map((x) => x.serialize()).toList());
   }
@@ -196,14 +196,13 @@ class FFAppState extends ChangeNotifier {
     int index,
     MeditationAudioStruct Function(MeditationAudioStruct) updateFn,
   ) {
-    _downloadedTracks[index] = updateFn(_downloadedTracks[index]);
+    downloadedTracks[index] = updateFn(_downloadedTracks[index]);
     prefs.setStringList('ff_downloadedTracks',
         _downloadedTracks.map((x) => x.serialize()).toList());
   }
 
-  void insertAtIndexInDownloadedTracks(
-      int index, MeditationAudioStruct value) {
-    _downloadedTracks.insert(index, value);
+  void insertAtIndexInDownloadedTracks(int index, MeditationAudioStruct value) {
+    downloadedTracks.insert(index, value);
     prefs.setStringList('ff_downloadedTracks',
         _downloadedTracks.map((x) => x.serialize()).toList());
   }
@@ -216,19 +215,19 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToSearchHistory(DocumentReference value) {
-    _searchHistory.add(value);
+    searchHistory.add(value);
     prefs.setStringList(
         'ff_searchHistory', _searchHistory.map((x) => x.path).toList());
   }
 
   void removeFromSearchHistory(DocumentReference value) {
-    _searchHistory.remove(value);
+    searchHistory.remove(value);
     prefs.setStringList(
         'ff_searchHistory', _searchHistory.map((x) => x.path).toList());
   }
 
   void removeAtIndexFromSearchHistory(int index) {
-    _searchHistory.removeAt(index);
+    searchHistory.removeAt(index);
     prefs.setStringList(
         'ff_searchHistory', _searchHistory.map((x) => x.path).toList());
   }
@@ -237,13 +236,13 @@ class FFAppState extends ChangeNotifier {
     int index,
     DocumentReference Function(DocumentReference) updateFn,
   ) {
-    _searchHistory[index] = updateFn(_searchHistory[index]);
+    searchHistory[index] = updateFn(_searchHistory[index]);
     prefs.setStringList(
         'ff_searchHistory', _searchHistory.map((x) => x.path).toList());
   }
 
   void insertAtIndexInSearchHistory(int index, DocumentReference value) {
-    _searchHistory.insert(index, value);
+    searchHistory.insert(index, value);
     prefs.setStringList(
         'ff_searchHistory', _searchHistory.map((x) => x.path).toList());
   }
@@ -274,7 +273,7 @@ class FFAppState extends ChangeNotifier {
 
   void updateCurrentOfflineSongStruct(
       Function(MeditationAudioStruct) updateFn) {
-    updateFn(_currentOfflineSong);
+    updateFn(currentOfflineSong);
   }
 
   bool _isAppLoaded = false;

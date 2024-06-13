@@ -229,10 +229,15 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
             .contains(widget.course?.reference)) {
           return StreamBuilder<List<LessonsRecord>>(
             stream: queryLessonsRecord(
-              queryBuilder: (lessonsRecord) => lessonsRecord.where(
-                'course',
-                isEqualTo: widget.course?.reference,
-              ),
+              queryBuilder: (lessonsRecord) => lessonsRecord
+                  .where(
+                    'course',
+                    isEqualTo: widget.course?.reference,
+                  )
+                  .where(
+                    'lang',
+                    isEqualTo: FFLocalizations.of(context).languageCode,
+                  ),
             ),
             builder: (context, snapshot) {
               // Customize what your widget looks like when it's loading.
@@ -252,7 +257,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
               List<LessonsRecord> containerLessonsRecordList = snapshot.data!;
               return Container(
                 width: double.infinity,
-                height: 327.0,
+                height: MediaQuery.sizeOf(context).width - 48,
                 decoration: BoxDecoration(
                   color: const Color(0x15FFFFFF),
                   image: DecorationImage(
@@ -524,7 +529,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
         } else {
           return Container(
             width: double.infinity,
-            height: 327.0,
+            height: MediaQuery.sizeOf(context).width - 48,
             decoration: BoxDecoration(
               color: const Color(0x15FFFFFF),
               image: DecorationImage(

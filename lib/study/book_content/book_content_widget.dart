@@ -1,12 +1,9 @@
 import '/backend/schema/structs/index.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'book_content_model.dart';
 export 'book_content_model.dart';
 
@@ -22,11 +19,8 @@ class BookContentWidget extends StatefulWidget {
   State<BookContentWidget> createState() => _BookContentWidgetState();
 }
 
-class _BookContentWidgetState extends State<BookContentWidget>
-    with TickerProviderStateMixin {
+class _BookContentWidgetState extends State<BookContentWidget> {
   late BookContentModel _model;
-
-  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -38,38 +32,6 @@ class _BookContentWidgetState extends State<BookContentWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => BookContentModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (animationsMap['markdownOnActionTriggerAnimation'] != null) {
-        animationsMap['markdownOnActionTriggerAnimation']!.controller
-          ..reset()
-          ..repeat();
-      }
-    });
-
-    animationsMap.addAll({
-      'markdownOnActionTriggerAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          TintEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 0.0.ms,
-            color: const Color(0xFF2F0A4C),
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-    });
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
   }
 
   @override
@@ -162,23 +124,12 @@ class _BookContentWidgetState extends State<BookContentWidget>
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Align(
-                          alignment: const AlignmentDirectional(-1.0, -1.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 24.0, 0.0, 0.0),
-                            child: MarkdownBody(
-                              data: valueOrDefault<String>(
-                                widget.content?.bookText,
-                                '0',
-                              ),
-                              selectable: false,
-                              onTapLink: (_, url, __) => launchURL(url!),
-                            ).animateOnActionTrigger(
-                              animationsMap[
-                                  'markdownOnActionTriggerAnimation']!,
-                            ),
+                        Html(
+                          data: valueOrDefault<String>(
+                            '<style> li {color: #2F0A4C;} li span {color: #2F0A4C;}  p {color: #2F0A4C;} body {color: #2F0A4C;} </style> <body>${widget.content?.bookText}</body>',
+                            '0',
                           ),
+                          onLinkTap: (url, _, __, ___) => launchURL(url!),
                         ),
                       ],
                     ),

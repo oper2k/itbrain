@@ -81,7 +81,7 @@ class _IsNotDownloadedWidgetState extends State<IsNotDownloadedWidget> {
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'cv88anl1' /* Медитация не загружена */,
+                          'cv88anl1' /* Аудио не загружены */,
                         ),
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -95,7 +95,7 @@ class _IsNotDownloadedWidgetState extends State<IsNotDownloadedWidget> {
                     ),
                     Text(
                       FFLocalizations.of(context).getText(
-                        'zbt927dh' /* Медитация не загружена! Произо... */,
+                        'zbt927dh' /* Произошла ошибка */,
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -133,7 +133,7 @@ class _IsNotDownloadedWidgetState extends State<IsNotDownloadedWidget> {
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
-                                'oje46arq' /* Хорошо */,
+                                'oje46arq' /* Закрыть */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium

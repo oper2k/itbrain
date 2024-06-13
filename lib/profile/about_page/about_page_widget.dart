@@ -211,34 +211,20 @@ class _AboutPageWidgetState extends State<AboutPageWidget> {
                     ),
                   ),
                 ),
-                InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    await launchURL('https://appfyl.com');
-                  },
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.0),
-                        child: Image.asset(
-                          'assets/images/LogoM.png',
-                          width: 116.0,
-                          height: 32.0,
-                          fit: BoxFit.contain,
-                        ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: Image.asset(
+                        'assets/images/LogoM.png',
+                        width: 116.0,
+                        height: 32.0,
+                        fit: BoxFit.contain,
                       ),
-                      Icon(
-                        Icons.chevron_right,
-                        color: FlutterFlowTheme.of(context).accent1,
-                        size: 24.0,
-                      ),
-                    ].divide(const SizedBox(width: 8.0)),
-                  ),
+                    ),
+                  ].divide(const SizedBox(width: 8.0)),
                 ),
                 Align(
                   alignment: const AlignmentDirectional(-1.0, 0.0),

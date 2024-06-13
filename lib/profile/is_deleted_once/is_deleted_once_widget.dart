@@ -81,7 +81,7 @@ class _IsDeletedOnceWidgetState extends State<IsDeletedOnceWidget> {
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          '7ugqefbh' /* Медитация удалена */,
+                          '7ugqefbh' /* Аудио удалено */,
                         ),
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -95,7 +95,7 @@ class _IsDeletedOnceWidgetState extends State<IsDeletedOnceWidget> {
                     ),
                     Text(
                       FFLocalizations.of(context).getText(
-                        'ihhr8q4z' /* Медитация успешно удалена */,
+                        'ihhr8q4z' /* Аудиозапись успешно удалена */,
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -133,7 +133,7 @@ class _IsDeletedOnceWidgetState extends State<IsDeletedOnceWidget> {
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
-                                'mg682744' /* Хорошо */,
+                                'mg682744' /* Закрыть */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium

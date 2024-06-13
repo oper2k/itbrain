@@ -10,6 +10,7 @@ import '/profile/is_not_downloaded/is_not_downloaded_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -67,6 +68,10 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
       alignment: const AlignmentDirectional(0.0, 1.0),
       child: Container(
         width: double.infinity,
+        height: MediaQuery.sizeOf(context).height * 0.5,
+        constraints: const BoxConstraints(
+          minHeight: 365.0,
+        ),
         decoration: BoxDecoration(
           color: const Color(0xFF370C59),
           borderRadius: const BorderRadius.only(
@@ -183,14 +188,16 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                 ].divide(const SizedBox(width: 16.0)),
               ),
             ),
+            const Spacer(flex: 3),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 32.0, 24.0, 0.0),
-              child: Text(
+              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+              child: AutoSizeText(
                 valueOrDefault<String>(
                   widget.meditationList?[FFAppState().playerIndex].title,
                   '0',
                 ),
                 textAlign: TextAlign.center,
+                maxLines: 2,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Evolventa',
                       fontSize: 20.0,
@@ -207,13 +214,14 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                     '')
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
-                child: Text(
+                child: AutoSizeText(
                   valueOrDefault<String>(
                     widget
                         .meditationList?[FFAppState().playerIndex].description,
                     '0',
                   ),
                   textAlign: TextAlign.center,
+                  maxLines: 2,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Evolventa',
                         fontSize: 15.0,
@@ -223,8 +231,9 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                       ),
                 ),
               ),
+            const Spacer(flex: 4),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 48.0, 24.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
               child: SizedBox(
                 height: 55.0,
                 child: Stack(
@@ -290,601 +299,606 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 38.0, 0.0, 64.0),
-              child: Container(
-                decoration: const BoxDecoration(),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 20.0,
-                      buttonSize: 48.0,
-                      icon: Icon(
-                        FFIcons.kunion23,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 24.0,
-                      ),
-                      onPressed: () async {
-                        await actions.seekAudio(
-                          'p1',
-                          FFAppState().positionMS - 15000,
+            const Spacer(flex: 2),
+            Container(
+              width: double.infinity,
+              constraints: const BoxConstraints(
+                maxWidth: 320.0,
+              ),
+              decoration: const BoxDecoration(),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 20.0,
+                    buttonSize: 48.0,
+                    icon: Icon(
+                      FFIcons.kunion23,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 24.0,
+                    ),
+                    onPressed: () async {
+                      await actions.seekAudio(
+                        'p1',
+                        FFAppState().positionMS - 15000,
+                      );
+                    },
+                  ),
+                  FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 20.0,
+                    buttonSize: 48.0,
+                    fillColor: Colors.transparent,
+                    icon: Icon(
+                      FFIcons.k5,
+                      color: FFAppState().playerIndex > 0
+                          ? FlutterFlowTheme.of(context).primaryText
+                          : FlutterFlowTheme.of(context).secondaryBackground,
+                      size: 24.0,
+                    ),
+                    onPressed: () async {
+                      if (FFAppState().playerIndex > 0) {
+                        FFAppState().positionMS = 0;
+                        FFAppState().playerIndex =
+                            FFAppState().playerIndex + -1;
+                        FFAppState().isAudioPlaying = true;
+                        await actions.createDataType(
+                          widget.meditationList?[FFAppState().playerIndex],
                         );
-                      },
-                    ),
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 20.0,
-                      buttonSize: 48.0,
-                      fillColor: Colors.transparent,
-                      icon: Icon(
-                        FFIcons.k5,
-                        color: FFAppState().playerIndex > 0
-                            ? FlutterFlowTheme.of(context).primaryText
-                            : FlutterFlowTheme.of(context).secondaryBackground,
-                        size: 24.0,
-                      ),
-                      onPressed: () async {
-                        if (FFAppState().playerIndex > 0) {
-                          FFAppState().positionMS = 0;
-                          FFAppState().playerIndex =
-                              FFAppState().playerIndex + -1;
-                          FFAppState().isAudioPlaying = true;
-                          await actions.createDataType(
-                            widget.meditationList?[FFAppState().playerIndex],
-                          );
-                          await actions.playMusic(
-                            'p1',
-                            widget.meditationList![FFAppState().playerIndex]
-                                .audioPath,
-                          );
+                        await actions.playMusic(
+                          'p1',
+                          widget.meditationList![FFAppState().playerIndex]
+                              .audioPath,
+                        );
 
-                          setState(() {});
-                          return;
-                        } else {
-                          return;
-                        }
-                      },
-                    ),
-                    SizedBox(
-                      width: 56.0,
-                      height: 56.0,
-                      child: Stack(
-                        children: [
-                          Builder(
-                            builder: (context) {
-                              if (FFAppState().isAudioPlaying) {
-                                return Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 48.0,
-                                    buttonSize: 64.0,
-                                    fillColor:
-                                        FlutterFlowTheme.of(context).accent1,
-                                    icon: Icon(
-                                      FFIcons.k4,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 24.0,
-                                    ),
-                                    onPressed: () async {
-                                      await actions.playOrPause(
-                                        'p1',
-                                      );
-                                      FFAppState().isAudioPlaying = false;
-                                      setState(() {});
-                                    },
+                        setState(() {});
+                        return;
+                      } else {
+                        return;
+                      }
+                    },
+                  ),
+                  SizedBox(
+                    width: 56.0,
+                    height: 56.0,
+                    child: Stack(
+                      children: [
+                        Builder(
+                          builder: (context) {
+                            if (FFAppState().isAudioPlaying) {
+                              return Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: FlutterFlowIconButton(
+                                  borderColor: Colors.transparent,
+                                  borderRadius: 48.0,
+                                  buttonSize: 64.0,
+                                  fillColor:
+                                      FlutterFlowTheme.of(context).accent1,
+                                  icon: Icon(
+                                    FFIcons.k4,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 24.0,
                                   ),
-                                );
-                              } else {
-                                return InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
+                                  onPressed: () async {
                                     await actions.playOrPause(
                                       'p1',
                                     );
-                                    FFAppState().isAudioPlaying = true;
+                                    FFAppState().isAudioPlaying = false;
                                     setState(() {});
                                   },
-                                  child: Container(
-                                    width: 64.0,
-                                    height: 64.0,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).accent1,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            2.0, 0.0, 0.0, 0.0),
-                                        child: FaIcon(
-                                          FontAwesomeIcons.play,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 24.0,
-                                        ),
+                                ),
+                              );
+                            } else {
+                              return InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await actions.playOrPause(
+                                    'p1',
+                                  );
+                                  FFAppState().isAudioPlaying = true;
+                                  setState(() {});
+                                },
+                                child: Container(
+                                  width: 64.0,
+                                  height: 64.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context).accent1,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          2.0, 0.0, 0.0, 0.0),
+                                      child: FaIcon(
+                                        FontAwesomeIcons.play,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        size: 24.0,
                                       ),
                                     ),
                                   ),
-                                );
-                              }
-                            },
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Builder(
+                    builder: (context) {
+                      if ((FFAppState().playerIndex <
+                              (widget.meditationList!.length - 1)) &&
+                          (!widget.meditationList![FFAppState().playerIndex + 1]
+                                  .isPaid ||
+                              (currentUserDocument?.purchasedMeditationsPacks
+                                          .toList() ??
+                                      [])
+                                  .contains(widget
+                                      .meditationList?[FFAppState().playerIndex]
+                                      .meditationCategory))) {
+                        return FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 20.0,
+                          buttonSize: 48.0,
+                          fillColor: Colors.transparent,
+                          icon: Icon(
+                            FFIcons.k3,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
                           ),
-                        ],
-                      ),
-                    ),
-                    Builder(
-                      builder: (context) {
-                        if ((FFAppState().playerIndex <
-                                (widget.meditationList!.length - 1)) &&
-                            (!widget
-                                    .meditationList![
-                                        FFAppState().playerIndex + 1]
-                                    .isPaid ||
-                                (currentUserDocument?.purchasedMeditationsPacks
-                                            .toList() ??
-                                        [])
-                                    .contains(widget
-                                        .meditationList?[
-                                            FFAppState().playerIndex]
-                                        .meditationCategory))) {
-                          return FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
-                            borderRadius: 20.0,
-                            buttonSize: 48.0,
-                            fillColor: Colors.transparent,
-                            icon: Icon(
-                              FFIcons.k3,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 24.0,
-                            ),
-                            onPressed: () async {
-                              FFAppState().positionMS = 0;
-                              FFAppState().playerIndex =
-                                  FFAppState().playerIndex + 1;
-                              FFAppState().isAudioPlaying = true;
-                              await actions.createDataType(
-                                widget
-                                    .meditationList?[FFAppState().playerIndex],
-                              );
-                              await actions.playMusic(
-                                'p1',
-                                widget.meditationList![FFAppState().playerIndex]
-                                    .audioPath,
-                              );
+                          onPressed: () async {
+                            FFAppState().positionMS = 0;
+                            FFAppState().playerIndex =
+                                FFAppState().playerIndex + 1;
+                            FFAppState().isAudioPlaying = true;
+                            await actions.createDataType(
+                              widget.meditationList?[FFAppState().playerIndex],
+                            );
+                            await actions.playMusic(
+                              'p1',
+                              widget.meditationList![FFAppState().playerIndex]
+                                  .audioPath,
+                            );
 
-                              setState(() {});
-                            },
-                          );
-                        } else {
-                          return FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
-                            borderRadius: 20.0,
-                            buttonSize: 48.0,
-                            fillColor: Colors.transparent,
-                            icon: Icon(
-                              FFIcons.k3,
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              size: 24.0,
-                            ),
-                            onPressed: () {
-                              print('NextBtn pressed ...');
-                            },
-                          );
-                        }
-                      },
-                    ),
-                    FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 20.0,
-                      buttonSize: 48.0,
-                      icon: Icon(
-                        FFIcons.kunion222,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 24.0,
-                      ),
-                      onPressed: () async {
-                        await actions.seekAudio(
-                          'p1',
-                          FFAppState().positionMS + 30000,
+                            setState(() {});
+                          },
                         );
-                      },
+                      } else {
+                        return FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 20.0,
+                          buttonSize: 48.0,
+                          fillColor: Colors.transparent,
+                          icon: Icon(
+                            FFIcons.k3,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            size: 24.0,
+                          ),
+                          onPressed: () {
+                            print('NextBtn pressed ...');
+                          },
+                        );
+                      }
+                    },
+                  ),
+                  FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 20.0,
+                    buttonSize: 48.0,
+                    icon: Icon(
+                      FFIcons.kunion222,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 24.0,
                     ),
-                  ].divide(const SizedBox(width: 24.0)),
-                ),
+                    onPressed: () async {
+                      await actions.seekAudio(
+                        'p1',
+                        FFAppState().positionMS + 30000,
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
+            const Spacer(flex: 6),
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 44.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Builder(
-                        builder: (context) => InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            _model.currentPageLink =
-                                await generateCurrentPageLink(
-                              context,
-                              title: widget
-                                  .meditationList?[FFAppState().playerIndex]
-                                  .title,
-                              imageUrl: widget
-                                  .meditationList?[FFAppState().playerIndex]
-                                  .image,
-                              description: widget
-                                  .meditationList?[FFAppState().playerIndex]
-                                  .description,
-                            );
+                  Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Builder(
+                          builder: (context) => InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              _model.currentPageLink =
+                                  await generateCurrentPageLink(
+                                context,
+                                title: widget
+                                    .meditationList?[FFAppState().playerIndex]
+                                    .title,
+                                imageUrl: widget
+                                    .meditationList?[FFAppState().playerIndex]
+                                    .image,
+                                description: widget
+                                    .meditationList?[FFAppState().playerIndex]
+                                    .description,
+                              );
 
-                            await Share.share(
-                              _model.currentPageLink,
-                              sharePositionOrigin:
-                                  getWidgetBoundingBox(context),
-                            );
-                          },
-                          child: Container(
-                            width: 32.0,
-                            height: 32.0,
-                            decoration: const BoxDecoration(),
-                            child: Icon(
-                              FFIcons.kshare2,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 32.0,
+                              await Share.share(
+                                _model.currentPageLink,
+                                sharePositionOrigin:
+                                    getWidgetBoundingBox(context),
+                              );
+                            },
+                            child: Container(
+                              width: 32.0,
+                              height: 32.0,
+                              decoration: const BoxDecoration(),
+                              child: Icon(
+                                FFIcons.kshare2,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 32.0,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Stack(
-                        children: [
-                          if (functions.findTrackById(
-                                  widget
-                                      .meditationList![FFAppState().playerIndex]
-                                      .reference
-                                      .id,
-                                  FFAppState().downloadingTracks.toList()) !=
-                              null)
-                            SizedBox(
-                              width: 32.0,
-                              height: 32.0,
-                              child: custom_widgets.CustomProgressBar(
-                                width: 32.0,
-                                height: 32.0,
-                                track: functions.findTrackById(
+                        Stack(
+                          children: [
+                            if (functions.findTrackById(
                                     widget
                                         .meditationList![
                                             FFAppState().playerIndex]
                                         .reference
                                         .id,
-                                    FFAppState().downloadingTracks.toList()),
-                              ),
-                            ),
-                          Builder(
-                            builder: (context) {
-                              if (functions.findTrackById(
+                                    FFAppState().downloadingTracks.toList()) !=
+                                null)
+                              SizedBox(
+                                width: 32.0,
+                                height: 32.0,
+                                child: custom_widgets.CustomProgressBar(
+                                  width: 32.0,
+                                  height: 32.0,
+                                  track: functions.findTrackById(
                                       widget
                                           .meditationList![
                                               FFAppState().playerIndex]
                                           .reference
                                           .id,
-                                      FFAppState().downloadedTracks.toList()) !=
-                                  null) {
-                                return InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    _model.isDeleted =
-                                        await actions.deleteFiles(
-                                      functions.findTrackById(
-                                          widget
-                                              .meditationList![
-                                                  FFAppState().playerIndex]
-                                              .reference
-                                              .id,
-                                          FFAppState()
-                                              .downloadedTracks
-                                              .toList()),
-                                    );
-                                    if (_model.isDeleted!) {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        enableDrag: false,
-                                        context: context,
-                                        builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: const IsDeletedOnceWidget(),
-                                          );
-                                        },
-                                      ).then((value) => safeSetState(() {}));
-                                    }
-
-                                    setState(() {});
-                                  },
-                                  child: Icon(
-                                    FFIcons.kcloudUpload,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 30.0,
-                                  ),
-                                );
-                              } else {
-                                return InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    if (!(functions.findTrackById(
+                                      FFAppState().downloadingTracks.toList()),
+                                ),
+                              ),
+                            Builder(
+                              builder: (context) {
+                                if (functions.findTrackById(
+                                        widget
+                                            .meditationList![
+                                                FFAppState().playerIndex]
+                                            .reference
+                                            .id,
+                                        FFAppState()
+                                            .downloadedTracks
+                                            .toList()) !=
+                                    null) {
+                                  return InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      _model.isDeleted =
+                                          await actions.deleteFiles(
+                                        functions.findTrackById(
                                             widget
                                                 .meditationList![
                                                     FFAppState().playerIndex]
                                                 .reference
                                                 .id,
                                             FFAppState()
-                                                .downloadingTracks
-                                                .toList()) !=
-                                        null)) {
-                                      _model.isDownload =
-                                          await actions.downloadUrl(
-                                        widget
-                                            .meditationList?[
-                                                FFAppState().playerIndex]
-                                            .reference
-                                            .id,
-                                        widget
-                                            .meditationList?[
-                                                FFAppState().playerIndex]
-                                            .audioPath,
-                                        widget
-                                            .meditationList?[
-                                                FFAppState().playerIndex]
-                                            .image,
+                                                .downloadedTracks
+                                                .toList()),
                                       );
-                                    }
-                                    if (_model.isDownload!) {
-                                      FFAppState()
-                                          .updateDownloadedTracksAtIndex(
-                                        valueOrDefault<int>(
-                                              FFAppState()
-                                                  .downloadedTracks
-                                                  .length,
-                                              1,
-                                            ) -
-                                            1,
-                                        (e) => e
-                                          ..name = widget
-                                              .meditationList?[
-                                                  FFAppState().playerIndex]
-                                              .title
-                                          ..description = widget
-                                              .meditationList?[
-                                                  FFAppState().playerIndex]
-                                              .description
-                                          ..audioPath = widget
-                                              .meditationList?[
-                                                  FFAppState().playerIndex]
-                                              .audioPath
-                                          ..isPaid = widget
-                                              .meditationList?[
-                                                  FFAppState().playerIndex]
-                                              .isPaid
-                                          ..duration = widget
-                                              .meditationList?[
-                                                  FFAppState().playerIndex]
-                                              .duration
-                                          ..type = widget
-                                              .meditationList?[
-                                                  FFAppState().playerIndex]
-                                              .type
-                                          ..nameEng = widget
-                                              .meditationList?[
-                                                  FFAppState().playerIndex]
-                                              .titleEng
-                                          ..descriptionName = widget
-                                              .meditationList?[
-                                                  FFAppState().playerIndex]
-                                              .descriptionEng
-                                          ..durationEng = widget
-                                              .meditationList?[
-                                                  FFAppState().playerIndex]
-                                              .durationEng,
-                                      );
-                                      setState(() {});
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        enableDrag: false,
-                                        context: context,
-                                        builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: const IsDownloadedOnceWidget(),
-                                          );
-                                        },
-                                      ).then((value) => safeSetState(() {}));
-                                    } else {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        enableDrag: false,
-                                        context: context,
-                                        builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: const IsNotDownloadedWidget(),
-                                          );
-                                        },
-                                      ).then((value) => safeSetState(() {}));
-                                    }
+                                      if (_model.isDeleted!) {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: const IsDeletedOnceWidget(),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      }
 
-                                    setState(() {});
-                                  },
+                                      setState(() {});
+                                    },
+                                    child: Icon(
+                                      FFIcons.kcloudUpload,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 30.0,
+                                    ),
+                                  );
+                                } else {
+                                  return InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      if (!(functions.findTrackById(
+                                              widget
+                                                  .meditationList![
+                                                      FFAppState().playerIndex]
+                                                  .reference
+                                                  .id,
+                                              FFAppState()
+                                                  .downloadingTracks
+                                                  .toList()) !=
+                                          null)) {
+                                        _model.isDownload =
+                                            await actions.downloadUrl(
+                                          widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .reference
+                                              .id,
+                                          widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .audioPath,
+                                          widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .image,
+                                        );
+                                      }
+                                      if (_model.isDownload!) {
+                                        FFAppState()
+                                            .updateDownloadedTracksAtIndex(
+                                          valueOrDefault<int>(
+                                                FFAppState()
+                                                    .downloadedTracks
+                                                    .length,
+                                                1,
+                                              ) -
+                                              1,
+                                          (e) => e
+                                            ..name = widget
+                                                .meditationList?[
+                                                    FFAppState().playerIndex]
+                                                .title
+                                            ..description = widget
+                                                .meditationList?[
+                                                    FFAppState().playerIndex]
+                                                .description
+                                            ..audioPath = widget
+                                                .meditationList?[
+                                                    FFAppState().playerIndex]
+                                                .audioPath
+                                            ..isPaid = widget
+                                                .meditationList?[
+                                                    FFAppState().playerIndex]
+                                                .isPaid
+                                            ..duration = widget
+                                                .meditationList?[
+                                                    FFAppState().playerIndex]
+                                                .duration
+                                            ..type = widget
+                                                .meditationList?[
+                                                    FFAppState().playerIndex]
+                                                .type
+                                            ..nameEng = widget
+                                                .meditationList?[
+                                                    FFAppState().playerIndex]
+                                                .titleEng
+                                            ..descriptionName = widget
+                                                .meditationList?[
+                                                    FFAppState().playerIndex]
+                                                .descriptionEng
+                                            ..durationEng = widget
+                                                .meditationList?[
+                                                    FFAppState().playerIndex]
+                                                .durationEng,
+                                        );
+                                        setState(() {});
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: const IsDownloadedOnceWidget(),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      } else {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          enableDrag: false,
+                                          context: context,
+                                          builder: (context) {
+                                            return Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: const IsNotDownloadedWidget(),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      }
+
+                                      setState(() {});
+                                    },
+                                    child: const Icon(
+                                      FFIcons.kshare3,
+                                      color: Colors.white,
+                                      size: 32.0,
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
+                          ],
+                        ),
+                        Builder(
+                          builder: (context) {
+                            if ((currentUserDocument?.meditationsWishList
+                                            .toList() ??
+                                        [])
+                                    .contains(widget
+                                        .meditationList?[
+                                            FFAppState().playerIndex]
+                                        .reference) ||
+                                _model.isLiked) {
+                              return InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await currentUserReference!.update({
+                                    ...mapToFirestore(
+                                      {
+                                        'meditationsWishList':
+                                            FieldValue.arrayRemove([
+                                          widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .reference
+                                        ]),
+                                      },
+                                    ),
+                                  });
+                                  _model.isLiked = false;
+                                  setState(() {});
+                                },
+                                child: Container(
+                                  width: 32.0,
+                                  height: 32.0,
+                                  decoration: const BoxDecoration(),
                                   child: const Icon(
-                                    FFIcons.kshare3,
+                                    FFIcons.kheart2,
                                     color: Colors.white,
                                     size: 32.0,
                                   ),
-                                );
-                              }
-                            },
-                          ),
-                        ],
-                      ),
-                      Builder(
-                        builder: (context) {
-                          if ((currentUserDocument?.meditationsWishList
-                                          .toList() ??
-                                      [])
-                                  .contains(widget
-                                      .meditationList?[FFAppState().playerIndex]
-                                      .reference) ||
-                              _model.isLiked) {
-                            return InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                await currentUserReference!.update({
-                                  ...mapToFirestore(
-                                    {
-                                      'meditationsWishList':
-                                          FieldValue.arrayRemove([
-                                        widget
-                                            .meditationList?[
-                                                FFAppState().playerIndex]
-                                            .reference
-                                      ]),
-                                    },
+                                ),
+                              );
+                            } else {
+                              return InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await currentUserReference!.update({
+                                    ...mapToFirestore(
+                                      {
+                                        'meditationsWishList':
+                                            FieldValue.arrayUnion([
+                                          widget
+                                              .meditationList?[
+                                                  FFAppState().playerIndex]
+                                              .reference
+                                        ]),
+                                      },
+                                    ),
+                                  });
+                                  _model.isLiked = true;
+                                  setState(() {});
+                                },
+                                child: Container(
+                                  width: 32.0,
+                                  height: 32.0,
+                                  decoration: const BoxDecoration(),
+                                  child: const Icon(
+                                    FFIcons.k8,
+                                    color: Colors.white,
+                                    size: 32.0,
                                   ),
-                                });
-                                _model.isLiked = false;
-                                setState(() {});
-                              },
-                              child: Container(
-                                width: 32.0,
-                                height: 32.0,
-                                decoration: const BoxDecoration(),
-                                child: const Icon(
-                                  FFIcons.kheart2,
-                                  color: Colors.white,
-                                  size: 32.0,
                                 ),
-                              ),
-                            );
-                          } else {
-                            return InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                await currentUserReference!.update({
-                                  ...mapToFirestore(
-                                    {
-                                      'meditationsWishList':
-                                          FieldValue.arrayUnion([
-                                        widget
-                                            .meditationList?[
-                                                FFAppState().playerIndex]
-                                            .reference
-                                      ]),
-                                    },
+                              );
+                            }
+                          },
+                        ),
+                        Builder(
+                          builder: (context) {
+                            if (FFAppState().repeatMode) {
+                              return InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  FFAppState().repeatMode = false;
+                                  await actions.setLoopMode(
+                                    'p1',
+                                  );
+                                },
+                                child: Container(
+                                  width: 32.0,
+                                  height: 32.0,
+                                  decoration: const BoxDecoration(),
+                                  child: Icon(
+                                    FFIcons.knotHeart45,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 32.0,
                                   ),
-                                });
-                                _model.isLiked = true;
-                                setState(() {});
-                              },
-                              child: Container(
-                                width: 32.0,
-                                height: 32.0,
-                                decoration: const BoxDecoration(),
-                                child: const Icon(
-                                  FFIcons.k8,
-                                  color: Colors.white,
-                                  size: 32.0,
                                 ),
-                              ),
-                            );
-                          }
-                        },
-                      ),
-                      Builder(
-                        builder: (context) {
-                          if (FFAppState().repeatMode) {
-                            return InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                FFAppState().repeatMode = false;
-                                await actions.setLoopMode(
-                                  'p1',
-                                );
-                              },
-                              child: Container(
-                                width: 32.0,
-                                height: 32.0,
-                                decoration: const BoxDecoration(),
-                                child: Icon(
-                                  FFIcons.knotHeart45,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 32.0,
+                              );
+                            } else {
+                              return InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  FFAppState().repeatMode = true;
+                                  await actions.setLoopMode(
+                                    'p1',
+                                  );
+                                },
+                                child: Container(
+                                  width: 32.0,
+                                  height: 32.0,
+                                  decoration: const BoxDecoration(),
+                                  child: const Icon(
+                                    FFIcons.krotationing,
+                                    color: Color(0xFFD9D9D9),
+                                    size: 32.0,
+                                  ),
                                 ),
-                              ),
-                            );
-                          } else {
-                            return InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                FFAppState().repeatMode = true;
-                                await actions.setLoopMode(
-                                  'p1',
-                                );
-                              },
-                              child: Container(
-                                width: 32.0,
-                                height: 32.0,
-                                decoration: const BoxDecoration(),
-                                child: const Icon(
-                                  FFIcons.krotationing,
-                                  color: Color(0xFFD9D9D9),
-                                  size: 32.0,
-                                ),
-                              ),
-                            );
-                          }
-                        },
-                      ),
-                    ].divide(const SizedBox(width: 48.0)),
+                              );
+                            }
+                          },
+                        ),
+                      ].divide(const SizedBox(width: 48.0)),
+                    ),
                   ),
                 ],
               ),

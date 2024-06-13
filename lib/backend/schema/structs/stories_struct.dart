@@ -25,25 +25,30 @@ class StoriesStruct extends FFFirebaseStruct {
   String? _image;
   String get image => _image ?? '';
   set image(String? val) => _image = val;
+
   bool hasImage() => _image != null;
 
   // "video" field.
   String? _video;
   String get video => _video ?? '';
   set video(String? val) => _video = val;
+
   bool hasVideo() => _video != null;
 
   // "time" field.
   int? _time;
   int get time => _time ?? 0;
   set time(int? val) => _time = val;
-  void incrementTime(int amount) => _time = time + amount;
+
+  void incrementTime(int amount) => time = time + amount;
+
   bool hasTime() => _time != null;
 
   // "imageEng" field.
   String? _imageEng;
   String get imageEng => _imageEng ?? '';
   set imageEng(String? val) => _imageEng = val;
+
   bool hasImageEng() => _imageEng != null;
 
   static StoriesStruct fromMap(Map<String, dynamic> data) => StoriesStruct(

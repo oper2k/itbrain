@@ -25,26 +25,32 @@ class CompletedLessonStruct extends FFFirebaseStruct {
   DocumentReference? _courseRef;
   DocumentReference? get courseRef => _courseRef;
   set courseRef(DocumentReference? val) => _courseRef = val;
+
   bool hasCourseRef() => _courseRef != null;
 
   // "level_Index" field.
   int? _levelIndex;
   int get levelIndex => _levelIndex ?? 0;
   set levelIndex(int? val) => _levelIndex = val;
-  void incrementLevelIndex(int amount) => _levelIndex = levelIndex + amount;
+
+  void incrementLevelIndex(int amount) => levelIndex = levelIndex + amount;
+
   bool hasLevelIndex() => _levelIndex != null;
 
   // "lesson_index" field.
   int? _lessonIndex;
   int get lessonIndex => _lessonIndex ?? 0;
   set lessonIndex(int? val) => _lessonIndex = val;
-  void incrementLessonIndex(int amount) => _lessonIndex = lessonIndex + amount;
+
+  void incrementLessonIndex(int amount) => lessonIndex = lessonIndex + amount;
+
   bool hasLessonIndex() => _lessonIndex != null;
 
   // "finished_date" field.
   DateTime? _finishedDate;
   DateTime? get finishedDate => _finishedDate;
   set finishedDate(DateTime? val) => _finishedDate = val;
+
   bool hasFinishedDate() => _finishedDate != null;
 
   static CompletedLessonStruct fromMap(Map<String, dynamic> data) =>

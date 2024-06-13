@@ -48,7 +48,6 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
         if (!widget.book!.isDownloadable) {
           return Container(
             width: double.infinity,
-            height: 255.0,
             decoration: const BoxDecoration(
               color: Colors.transparent,
             ),
@@ -60,24 +59,23 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                     fadeInDuration: const Duration(milliseconds: 500),
                     fadeOutDuration: const Duration(milliseconds: 500),
                     imageUrl: widget.book!.photoCover,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
+                    height: 161.0,
+                    fit: BoxFit.contain,
                   ),
                 ),
-                Align(
-                  alignment: const AlignmentDirectional(0.0, 1.0),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 42.0, 0.0, 0.0),
                   child: Container(
                     width: double.infinity,
-                    height: 211.0,
                     decoration: BoxDecoration(
                       color: const Color(0x1FFFFFFF),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 95.0, 16.0, 0.0),
                       child: Column(
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Align(
@@ -87,6 +85,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                 widget.book?.title,
                                 '0',
                               ),
+                              textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -125,7 +124,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 16.0, 16.0, 0.0),
+                                0.0, 16.0, 0.0, 20.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [

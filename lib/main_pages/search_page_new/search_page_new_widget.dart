@@ -489,7 +489,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                                           containerMeditationsRecord),
                                                                   ParamType
                                                                       .Document,
-                                                                  true,
+                                                                  isList: true,
                                                                 ),
                                                                 'medCategory':
                                                                     serializeParam(
@@ -632,7 +632,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                           _model
                                                               .simpleSearchResults,
                                                           ParamType.Document,
-                                                          true,
+                                                          isList: true,
                                                         ),
                                                         'medCategory':
                                                             serializeParam(
@@ -691,7 +691,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                         _model
                                                             .simpleSearchResults,
                                                         ParamType.Document,
-                                                        true,
+                                                        isList: true,
                                                       ),
                                                       'medCategory':
                                                           serializeParam(

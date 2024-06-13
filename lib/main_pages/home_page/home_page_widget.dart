@@ -432,7 +432,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       containerStoriesRecordList,
                                                                       ParamType
                                                                           .Document,
-                                                                      true,
+                                                                      isList:
+                                                                          true,
                                                                     ),
                                                                     'index':
                                                                         serializeParam(
@@ -566,7 +567,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                         containerStoriesRecordList,
                                                                         ParamType
                                                                             .Document,
-                                                                        true,
+                                                                        isList:
+                                                                            true,
                                                                       ),
                                                                       'index':
                                                                           serializeParam(

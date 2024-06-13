@@ -81,7 +81,7 @@ class _IsDownloadedAllWidgetState extends State<IsDownloadedAllWidget> {
                           const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'e3c7s2iw' /* Медитации загружены */,
+                          'e3c7s2iw' /* Аудио загружены */,
                         ),
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -95,7 +95,7 @@ class _IsDownloadedAllWidgetState extends State<IsDownloadedAllWidget> {
                     ),
                     Text(
                       FFLocalizations.of(context).getText(
-                        '636d8lxn' /* Все медитации успешно загружен... */,
+                        '636d8lxn' /* Аудио успешно загружены */,
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -133,7 +133,7 @@ class _IsDownloadedAllWidgetState extends State<IsDownloadedAllWidget> {
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
-                                'ywixy9f9' /* Хорошо */,
+                                'ywixy9f9' /* Закрыть */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium

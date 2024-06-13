@@ -21,12 +21,14 @@ class PurchasedCourseStruct extends FFFirebaseStruct {
   DocumentReference? _courseRef;
   DocumentReference? get courseRef => _courseRef;
   set courseRef(DocumentReference? val) => _courseRef = val;
+
   bool hasCourseRef() => _courseRef != null;
 
   // "purchased_date" field.
   DateTime? _purchasedDate;
   DateTime? get purchasedDate => _purchasedDate;
   set purchasedDate(DateTime? val) => _purchasedDate = val;
+
   bool hasPurchasedDate() => _purchasedDate != null;
 
   static PurchasedCourseStruct fromMap(Map<String, dynamic> data) =>

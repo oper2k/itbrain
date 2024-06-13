@@ -1069,46 +1069,46 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // isDownloadedAll
   {
     'e3c7s2iw': {
-      'ru': 'Медитации загружены',
-      'en': 'Meditations are loaded',
+      'ru': 'Аудио загружены',
+      'en': 'Audio loaded',
     },
     '636d8lxn': {
-      'ru': 'Все медитации успешно загружены!',
-      'en': 'All meditations have been successfully downloaded!',
+      'ru': 'Аудио успешно загружены',
+      'en': 'Audio successfully loaded',
     },
     'ywixy9f9': {
-      'ru': 'Хорошо',
-      'en': 'Fine',
+      'ru': 'Закрыть',
+      'en': 'Close',
     },
   },
   // isDownloadedOnce
   {
     'v05k2h0x': {
-      'ru': 'Медитация загружена',
-      'en': 'Meditation loaded',
+      'ru': 'Аудио загружено',
+      'en': 'Audio loaded',
     },
     'vgp08p6k': {
-      'ru': 'Медитация успешно загружена!',
-      'en': 'Meditation successfully loaded!',
+      'ru': 'Аудио успешно загружены',
+      'en': 'Audio successfully loaded!',
     },
     'uwbu1gpd': {
-      'ru': 'Хорошо',
-      'en': 'Fine',
+      'ru': 'Закрыть',
+      'en': 'Close',
     },
   },
   // isDeleted
   {
     'vs0509ee': {
-      'ru': 'Медитации удалены',
-      'en': 'Meditations removed',
+      'ru': 'Аудиозаписи удалены',
+      'en': 'Audio recordings deleted',
     },
     '8gtx9mft': {
-      'ru': 'Все медитации успешно удалены',
-      'en': 'All meditations have been successfully deleted',
+      'ru': 'Все аудиозаписи успешно удалены',
+      'en': 'All audio recordings were successfully deleted',
     },
     '1i4xluc2': {
-      'ru': 'Хорошо',
-      'en': 'Fine',
+      'ru': 'Закрыть',
+      'en': 'Close',
     },
   },
   // docExists
@@ -1129,31 +1129,31 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // isNotDownloaded
   {
     'cv88anl1': {
-      'ru': 'Медитация не загружена',
-      'en': 'Meditation not loaded',
+      'ru': 'Аудио не загружены',
+      'en': 'Audio not loaded',
     },
     'zbt927dh': {
-      'ru': 'Медитация не загружена! Произошла ошибка',
-      'en': 'Meditation is not loaded! An error has occurred',
+      'ru': 'Произошла ошибка',
+      'en': 'An error has occurred',
     },
     'oje46arq': {
-      'ru': 'Хорошо',
-      'en': 'Fine',
+      'ru': 'Закрыть',
+      'en': 'Close',
     },
   },
   // isDeletedOnce
   {
     '7ugqefbh': {
-      'ru': 'Медитация удалена',
-      'en': 'Meditation removed',
+      'ru': 'Аудио удалено',
+      'en': 'Audio removed',
     },
     'ihhr8q4z': {
-      'ru': 'Медитация успешно удалена',
-      'en': 'Meditation successfully deleted',
+      'ru': 'Аудиозапись успешно удалена',
+      'en': 'Audio recording successfully deleted',
     },
     'mg682744': {
-      'ru': 'Хорошо',
-      'en': 'Fine',
+      'ru': 'Закрыть',
+      'en': 'Close',
     },
   },
   // matchPass
@@ -1191,8 +1191,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // meditationPlayerInfo
   {
     'gt5fm4k8': {
-      'ru': 'Понятно!',
-      'en': 'Ok',
+      'ru': 'Закрыть',
+      'en': 'Close',
     },
   },
   // playerComp

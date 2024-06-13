@@ -139,77 +139,95 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 0.6,
                               decoration: const BoxDecoration(),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    valueOrDefault<String>(
-                                      FFLocalizations.of(context)
-                                          .getVariableText(
-                                        ruText: widget
-                                            .meditationCategories?.nameCategory,
-                                        enText: widget.meditationCategories
-                                            ?.nameCategoryEng,
-                                      ),
-                                      'audioMeditation',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Evolventa',
-                                          color:
-                                              widget.meditationCategories!.soon
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .secondaryText
-                                                  : FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                          fontSize: 17.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          useGoogleFonts: false,
-                                          lineHeight: 1.29,
-                                        ),
-                                  ),
-                                  if (widget.meditationCategories
-                                          ?.showAudioCount ??
-                                      true)
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 4.0, 0.0, 0.0),
-                                      child: Text(
-                                        '${valueOrDefault<String>(
-                                          widget.meditationCategories?.count
-                                              .toString(),
-                                          '0',
-                                        )}${valueOrDefault<String>(
-                                          FFLocalizations.of(context)
-                                              .getVariableText(
-                                            ruText: ' Аудиозаписей',
-                                            enText: ' audios',
-                                          ),
-                                          ' 0',
-                                        )}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Evolventa',
-                                              color: widget
-                                                      .meditationCategories!
-                                                      .soon
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .secondaryText
-                                                  : FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              fontSize: 15.0,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: false,
-                                              lineHeight: 1.2,
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 34.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            valueOrDefault<String>(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                ruText: widget
+                                                    .meditationCategories
+                                                    ?.nameCategory,
+                                                enText: widget
+                                                    .meditationCategories
+                                                    ?.nameCategoryEng,
+                                              ),
+                                              'audioMeditation',
                                             ),
-                                      ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Evolventa',
+                                                  color: widget
+                                                          .meditationCategories!
+                                                          .soon
+                                                      ? FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryText
+                                                      : FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  fontSize: 17.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                  lineHeight: 1.29,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                ],
+                                    if (widget.meditationCategories
+                                            ?.showAudioCount ??
+                                        true)
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 4.0, 0.0, 0.0),
+                                        child: Text(
+                                          '${valueOrDefault<String>(
+                                            widget.meditationCategories?.count
+                                                .toString(),
+                                            '0',
+                                          )}${valueOrDefault<String>(
+                                            FFLocalizations.of(context)
+                                                .getVariableText(
+                                              ruText: ' Аудиозаписей',
+                                              enText: ' audios',
+                                            ),
+                                            ' 0',
+                                          )}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Evolventa',
+                                                color: widget
+                                                        .meditationCategories!
+                                                        .soon
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                fontSize: 15.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: false,
+                                                lineHeight: 1.2,
+                                              ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -224,13 +242,20 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
               alignment: const AlignmentDirectional(1.0, 1.0),
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
-                child: CachedNetworkImage(
-                  fadeInDuration: const Duration(milliseconds: 500),
-                  fadeOutDuration: const Duration(milliseconds: 500),
-                  imageUrl: widget.meditationCategories!.categoryPhoto,
-                  width: 148.0,
-                  height: 148.0,
-                  fit: BoxFit.cover,
+                child: Container(
+                  width: MediaQuery.sizeOf(context).width * 0.35,
+                  height: MediaQuery.sizeOf(context).height * 0.35,
+                  constraints: const BoxConstraints(
+                    maxWidth: 148.0,
+                    maxHeight: 148.0,
+                  ),
+                  decoration: const BoxDecoration(),
+                  child: CachedNetworkImage(
+                    fadeInDuration: const Duration(milliseconds: 500),
+                    fadeOutDuration: const Duration(milliseconds: 500),
+                    imageUrl: widget.meditationCategories!.categoryPhoto,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
             ),

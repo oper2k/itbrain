@@ -11,6 +11,8 @@ import '/study/meditation_pack_info/meditation_pack_info_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -153,8 +155,11 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                           child: Stack(
                             alignment: const AlignmentDirectional(0.0, -1.0),
                             children: [
-                              Image.network(
-                                widget.meditationCategory!.cetegoryCover,
+                              CachedNetworkImage(
+                                fadeInDuration: const Duration(milliseconds: 500),
+                                fadeOutDuration: const Duration(milliseconds: 500),
+                                imageUrl:
+                                    widget.meditationCategory!.cetegoryCover,
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 fit: BoxFit.cover,
                               ),
@@ -600,7 +605,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                       child: Align(
                                         alignment:
                                             const AlignmentDirectional(-1.0, 0.0),
-                                        child: Text(
+                                        child: AutoSizeText(
                                           valueOrDefault<String>(
                                             FFLocalizations.of(context)
                                                 .getVariableText(
@@ -613,6 +618,13 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                           ).maybeHandleOverflow(
                                             maxChars: 170,
                                             replacement: '…',
+                                          ),
+                                          maxLines: valueOrDefault<int>(
+                                            MediaQuery.sizeOf(context).width <
+                                                    340.0
+                                                ? 4
+                                                : 10,
+                                            10,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -627,6 +639,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                 useGoogleFonts: false,
                                                 lineHeight: 1.29,
                                               ),
+                                          minFontSize: 14.0,
                                         ),
                                       ),
                                     ),
@@ -733,7 +746,17 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .accent1,
-                                                        fontSize: 17.0,
+                                                        fontSize:
+                                                            valueOrDefault<
+                                                                double>(
+                                                          (MediaQuery.sizeOf(context)
+                                                                          .width <
+                                                                      340.0
+                                                                  ? 14
+                                                                  : 17)
+                                                              .toDouble(),
+                                                          17.0,
+                                                        ),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -1257,7 +1280,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                               serializeParam(
                                                             containerMeditationsRecordList,
                                                             ParamType.Document,
-                                                            true,
+                                                            isList: true,
                                                           ),
                                                           'medCategory':
                                                               serializeParam(
@@ -1301,7 +1324,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                         'audio': serializeParam(
                                                           containerMeditationsRecordList,
                                                           ParamType.Document,
-                                                          true,
+                                                          isList: true,
                                                         ),
                                                         'medCategory':
                                                             serializeParam(

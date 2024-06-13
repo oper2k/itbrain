@@ -38,7 +38,6 @@ class _StudyCoverWidgetState extends State<StudyCoverWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 190.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(20.0),

@@ -25,24 +25,28 @@ class PurchasedLevelsStruct extends FFFirebaseStruct {
   DocumentReference? _courseRef;
   DocumentReference? get courseRef => _courseRef;
   set courseRef(DocumentReference? val) => _courseRef = val;
+
   bool hasCourseRef() => _courseRef != null;
 
   // "finished_date" field.
   DateTime? _finishedDate;
   DateTime? get finishedDate => _finishedDate;
   set finishedDate(DateTime? val) => _finishedDate = val;
+
   bool hasFinishedDate() => _finishedDate != null;
 
   // "opened_date" field.
   DateTime? _openedDate;
   DateTime? get openedDate => _openedDate;
   set openedDate(DateTime? val) => _openedDate = val;
+
   bool hasOpenedDate() => _openedDate != null;
 
   // "levelOfferId" field.
   String? _levelOfferId;
   String get levelOfferId => _levelOfferId ?? '';
   set levelOfferId(String? val) => _levelOfferId = val;
+
   bool hasLevelOfferId() => _levelOfferId != null;
 
   static PurchasedLevelsStruct fromMap(Map<String, dynamic> data) =>

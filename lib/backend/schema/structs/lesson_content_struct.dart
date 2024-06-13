@@ -57,121 +57,142 @@ class LessonContentStruct extends FFFirebaseStruct {
   String? _photo;
   String get photo => _photo ?? '';
   set photo(String? val) => _photo = val;
+
   bool hasPhoto() => _photo != null;
 
   // "showDivider" field.
   bool? _showDivider;
   bool get showDivider => _showDivider ?? false;
   set showDivider(bool? val) => _showDivider = val;
+
   bool hasShowDivider() => _showDivider != null;
 
   // "text" field.
   String? _text;
   String get text => _text ?? '';
   set text(String? val) => _text = val;
+
   bool hasText() => _text != null;
 
   // "audio" field.
   String? _audio;
   String get audio => _audio ?? '';
   set audio(String? val) => _audio = val;
+
   bool hasAudio() => _audio != null;
 
   // "audioTitle" field.
   String? _audioTitle;
   String get audioTitle => _audioTitle ?? '';
   set audioTitle(String? val) => _audioTitle = val;
+
   bool hasAudioTitle() => _audioTitle != null;
 
   // "audioDuration" field.
   String? _audioDuration;
   String get audioDuration => _audioDuration ?? '';
   set audioDuration(String? val) => _audioDuration = val;
+
   bool hasAudioDuration() => _audioDuration != null;
 
   // "title" field.
   String? _title;
   String get title => _title ?? '';
   set title(String? val) => _title = val;
+
   bool hasTitle() => _title != null;
 
   // "bookTitle" field.
   String? _bookTitle;
   String get bookTitle => _bookTitle ?? '';
   set bookTitle(String? val) => _bookTitle = val;
+
   bool hasBookTitle() => _bookTitle != null;
 
   // "bookText" field.
   String? _bookText;
   String get bookText => _bookText ?? '';
   set bookText(String? val) => _bookText = val;
+
   bool hasBookText() => _bookText != null;
 
   // "textAutorName" field.
   String? _textAutorName;
   String get textAutorName => _textAutorName ?? '';
   set textAutorName(String? val) => _textAutorName = val;
+
   bool hasTextAutorName() => _textAutorName != null;
 
   // "textAutorPhoto" field.
   String? _textAutorPhoto;
   String get textAutorPhoto => _textAutorPhoto ?? '';
   set textAutorPhoto(String? val) => _textAutorPhoto = val;
+
   bool hasTextAutorPhoto() => _textAutorPhoto != null;
 
   // "order" field.
   int? _order;
   int get order => _order ?? 0;
   set order(int? val) => _order = val;
-  void incrementOrder(int amount) => _order = order + amount;
+
+  void incrementOrder(int amount) => order = order + amount;
+
   bool hasOrder() => _order != null;
 
   // "textEng" field.
   String? _textEng;
   String get textEng => _textEng ?? '';
   set textEng(String? val) => _textEng = val;
+
   bool hasTextEng() => _textEng != null;
 
   // "audioDescription" field.
   String? _audioDescription;
   String get audioDescription => _audioDescription ?? '';
   set audioDescription(String? val) => _audioDescription = val;
+
   bool hasAudioDescription() => _audioDescription != null;
 
   // "createdByPhoto" field.
   String? _createdByPhoto;
   String get createdByPhoto => _createdByPhoto ?? '';
   set createdByPhoto(String? val) => _createdByPhoto = val;
+
   bool hasCreatedByPhoto() => _createdByPhoto != null;
 
   // "fileName" field.
   String? _fileName;
   String get fileName => _fileName ?? '';
   set fileName(String? val) => _fileName = val;
+
   bool hasFileName() => _fileName != null;
 
   // "fileDescription" field.
   String? _fileDescription;
   String get fileDescription => _fileDescription ?? '';
   set fileDescription(String? val) => _fileDescription = val;
+
   bool hasFileDescription() => _fileDescription != null;
 
   // "fileUrl" field.
   String? _fileUrl;
   String get fileUrl => _fileUrl ?? '';
   set fileUrl(String? val) => _fileUrl = val;
+
   bool hasFileUrl() => _fileUrl != null;
 
   // "lang" field.
   String? _lang;
   String get lang => _lang ?? '';
   set lang(String? val) => _lang = val;
+
   bool hasLang() => _lang != null;
 
   // "type" field.
   String? _type;
   String get type => _type ?? '';
   set type(String? val) => _type = val;
+
   bool hasType() => _type != null;
 
   static LessonContentStruct fromMap(Map<String, dynamic> data) =>

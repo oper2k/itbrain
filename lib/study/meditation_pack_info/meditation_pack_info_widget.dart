@@ -137,7 +137,7 @@ class _MeditationPackInfoWidgetState extends State<MeditationPackInfoWidget> {
                           alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'yegekz55' /* Закрыть */,
+                              'xaggtplq' /* Закрыть */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium

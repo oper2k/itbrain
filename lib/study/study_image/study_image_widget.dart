@@ -43,7 +43,6 @@ class _StudyImageWidgetState extends State<StudyImageWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 200.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(20.0),

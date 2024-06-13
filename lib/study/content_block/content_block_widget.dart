@@ -102,7 +102,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
                   'audio': serializeParam(
                     _model.meditations,
                     ParamType.Document,
-                    true,
+                    isList: true,
                   ),
                 }.withoutNulls,
                 extra: <String, dynamic>{

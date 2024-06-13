@@ -258,14 +258,12 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                               builder: (context) {
                                 final lessons =
                                     containerLessonsRecordList.toList();
-                                return ListView.separated(
+                                return ListView.builder(
                                   padding: EdgeInsets.zero,
                                   primary: false,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount: lessons.length,
-                                  separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 36.0),
                                   itemBuilder: (context, lessonsIndex) {
                                     final lessonsItem = lessons[lessonsIndex];
                                     return Visibility(
@@ -284,44 +282,49 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                                   .purchasedDate!,
                                               lessonsItem.order) &&
                                           (lessonsItem.mainAudio != ''),
-                                      child: AuthUserStreamWidget(
-                                        builder: (context) => Container(
-                                          decoration: const BoxDecoration(),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              _model.meditations = await actions
-                                                  .convertLessonsListToMeditationsList(
-                                                containerLessonsRecordList
-                                                    .toList(),
-                                              );
-                                              FFAppState().playerIndex =
-                                                  lessonsIndex;
-                                              setState(() {});
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 34.0),
+                                        child: AuthUserStreamWidget(
+                                          builder: (context) => Container(
+                                            decoration: const BoxDecoration(),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                _model.meditations = await actions
+                                                    .convertLessonsListToMeditationsList(
+                                                  containerLessonsRecordList
+                                                      .toList(),
+                                                );
+                                                FFAppState().playerIndex =
+                                                    lessonsIndex;
+                                                setState(() {});
 
-                                              context.pushNamed(
-                                                'playerPage',
-                                                queryParameters: {
-                                                  'audio': serializeParam(
-                                                    _model.meditations,
-                                                    ParamType.Document,
-                                                    true,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'audio': _model.meditations,
-                                                },
-                                              );
+                                                context.pushNamed(
+                                                  'playerPage',
+                                                  queryParameters: {
+                                                    'audio': serializeParam(
+                                                      _model.meditations,
+                                                      ParamType.Document,
+                                                      isList: true,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'audio': _model.meditations,
+                                                  },
+                                                );
 
-                                              setState(() {});
-                                            },
-                                            child: LessonAudioWidget(
-                                              key: Key(
-                                                  'Keyks7_${lessonsIndex}_of_${lessons.length}'),
-                                              lessons: lessonsItem,
+                                                setState(() {});
+                                              },
+                                              child: LessonAudioWidget(
+                                                key: Key(
+                                                    'Keyks7_${lessonsIndex}_of_${lessons.length}'),
+                                                lessons: lessonsItem,
+                                              ),
                                             ),
                                           ),
                                         ),
