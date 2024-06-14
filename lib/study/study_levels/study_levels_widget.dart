@@ -346,384 +346,385 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                             ),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 32.0, 20.0, 0.0),
-                                      child: Builder(
-                                        builder: (context) {
-                                          final levels =
-                                              containerLevelsRecordList
-                                                  .toList();
-                                          return SingleChildScrollView(
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: List.generate(
-                                                  levels.length, (levelsIndex) {
-                                                final levelsItem =
-                                                    levels[levelsIndex];
-                                                return InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    if ((currentUserDocument
-                                                                ?.purchasedLevels
-                                                                .toList() ??
-                                                            [])
-                                                        .contains(levelsItem
-                                                            .reference)) {
-                                                      context.pushNamed(
-                                                        'studyLevelInfo',
-                                                        queryParameters: {
-                                                          'study':
-                                                              serializeParam(
-                                                            widget.course,
-                                                            ParamType.Document,
-                                                          ),
-                                                          'levels':
-                                                              serializeParam(
-                                                            levelsItem,
-                                                            ParamType.Document,
-                                                          ),
-                                                          'currentLevelndex':
-                                                              serializeParam(
-                                                            levelsIndex,
-                                                            ParamType.int,
-                                                          ),
-                                                        }.withoutNulls,
-                                                        extra: <String,
-                                                            dynamic>{
-                                                          'study':
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 32.0, 20.0, 0.0),
+                                        child: Builder(
+                                          builder: (context) {
+                                            final levels =
+                                                containerLevelsRecordList
+                                                    .toList();
+                                            return SingleChildScrollView(
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children:
+                                                    List.generate(levels.length,
+                                                        (levelsIndex) {
+                                                  final levelsItem =
+                                                      levels[levelsIndex];
+                                                  return InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      if ((currentUserDocument
+                                                                  ?.purchasedLevels
+                                                                  .toList() ??
+                                                              [])
+                                                          .contains(levelsItem
+                                                              .reference)) {
+                                                        context.pushNamed(
+                                                          'studyLevelInfo',
+                                                          queryParameters: {
+                                                            'study':
+                                                                serializeParam(
                                                               widget.course,
-                                                          'levels': levelsItem,
-                                                        },
-                                                      );
-                                                    } else {
-                                                      _model.isPreviusPurchased =
-                                                          (currentUserDocument
-                                                                      ?.purchasedLevels
-                                                                      .toList() ??
-                                                                  [])
-                                                              .contains(containerLevelsRecordList[
-                                                                      valueOrDefault<
-                                                                          int>(
-                                                        (int index) {
-                                                          return index == 0
-                                                              ? 0
-                                                              : index - 1;
-                                                        }(levelsIndex),
-                                                        0,
-                                                      )]
-                                                                  .reference);
-                                                      _model.isPreviusCompleted =
-                                                          (currentUserDocument
-                                                                      ?.completedLevels
-                                                                      .toList() ??
-                                                                  [])
-                                                              .contains(containerLevelsRecordList[
-                                                                      valueOrDefault<
-                                                                          int>(
-                                                        (int index) {
-                                                          return index == 0
-                                                              ? 0
-                                                              : index - 1;
-                                                        }(levelsIndex),
-                                                        0,
-                                                      )]
-                                                                  .reference);
-                                                      _model.previusLevelTitle =
-                                                          containerLevelsRecordList[
-                                                                  valueOrDefault<
-                                                                      int>(
-                                                        (int index) {
-                                                          return index == 0
-                                                              ? 0
-                                                              : index - 1;
-                                                        }(levelsIndex),
-                                                        0,
-                                                      )]
-                                                              .title;
-                                                      setState(() {});
-                                                      await showModalBottomSheet(
-                                                        isScrollControlled:
-                                                            true,
-                                                        backgroundColor:
-                                                            Colors.transparent,
-                                                        enableDrag: false,
-                                                        context: context,
-                                                        builder: (context) {
-                                                          return GestureDetector(
-                                                            onTap: () => _model
-                                                                    .unfocusNode
-                                                                    .canRequestFocus
-                                                                ? FocusScope.of(
-                                                                        context)
-                                                                    .requestFocus(
-                                                                        _model
-                                                                            .unfocusNode)
-                                                                : FocusScope.of(
-                                                                        context)
-                                                                    .unfocus(),
-                                                            child: Padding(
-                                                              padding: MediaQuery
-                                                                  .viewInsetsOf(
-                                                                      context),
-                                                              child:
-                                                                  LevelNotAvaliableWidget(
-                                                                levelInfo:
-                                                                    levelsItem,
-                                                                showButton: () {
-                                                                  if (_model.isPreviusPurchased &&
-                                                                      !_model
-                                                                          .isPreviusCompleted) {
-                                                                    return false;
-                                                                  } else if (_model
-                                                                          .isPreviusPurchased &&
-                                                                      _model
-                                                                          .isPreviusCompleted &&
-                                                                      !(currentUserDocument?.purchasedLevels.toList() ??
-                                                                              [])
-                                                                          .contains(
-                                                                              levelsItem.reference)) {
-                                                                    return true;
-                                                                  } else {
-                                                                    return false;
-                                                                  }
-                                                                }(),
-                                                                url: !(currentUserDocument?.purchasedLevels.toList() ??
-                                                                            [])
-                                                                        .contains(containerLevelsRecordList[valueOrDefault<
-                                                                                int>(
-                                                                  (int index) {
-                                                                    return (index -
-                                                                                1) ==
-                                                                            -1
-                                                                        ? 0
-                                                                        : index -
-                                                                            1;
-                                                                  }(levelsIndex),
-                                                                  0,
-                                                                )]
-                                                                            .reference)
-                                                                    ? FFLocalizations.of(
-                                                                            context)
-                                                                        .getVariableText(
-                                                                        ruText: containerLevelsRecordList[valueOrDefault<int>(
-                                                                          (int
-                                                                              index) {
-                                                                            return index == 0
-                                                                                ? 0
-                                                                                : index - 1;
-                                                                          }(levelsIndex),
-                                                                          0,
-                                                                        )]
-                                                                            .getCourseUrl,
-                                                                        enText: containerLevelsRecordList[valueOrDefault<int>(
-                                                                          (int
-                                                                              index) {
-                                                                            return index == 0
-                                                                                ? 0
-                                                                                : index - 1;
-                                                                          }(levelsIndex),
-                                                                          0,
-                                                                        )]
-                                                                            .getCourseUrlEng,
-                                                                      )
-                                                                    : FFLocalizations.of(
-                                                                            context)
-                                                                        .getVariableText(
-                                                                        ruText:
-                                                                            levelsItem.getCourseUrl,
-                                                                        enText:
-                                                                            levelsItem.getCourseUrlEng,
-                                                                      ),
-                                                              ),
+                                                              ParamType
+                                                                  .Document,
                                                             ),
-                                                          );
-                                                        },
-                                                      ).then((value) =>
-                                                          safeSetState(() {}));
-                                                    }
-                                                  },
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Align(
-                                                        alignment:
-                                                            const AlignmentDirectional(
-                                                                -1.0, -1.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.min,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            if ((currentUserDocument
+                                                            'levels':
+                                                                serializeParam(
+                                                              levelsItem,
+                                                              ParamType
+                                                                  .Document,
+                                                            ),
+                                                            'currentLevelndex':
+                                                                serializeParam(
+                                                              levelsIndex,
+                                                              ParamType.int,
+                                                            ),
+                                                          }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            'study':
+                                                                widget.course,
+                                                            'levels':
+                                                                levelsItem,
+                                                          },
+                                                        );
+                                                      } else {
+                                                        _model.isPreviusPurchased =
+                                                            (currentUserDocument
                                                                         ?.purchasedLevels
                                                                         .toList() ??
                                                                     [])
-                                                                .contains(levelsItem
-                                                                    .reference))
-                                                              AuthUserStreamWidget(
-                                                                builder:
-                                                                    (context) =>
-                                                                        ProgressBarWidget(
-                                                                  key: Key(
-                                                                      'Key6bb_${levelsIndex}_of_${levels.length}'),
-                                                                ),
-                                                              ),
-                                                            if (!(currentUserDocument
-                                                                        ?.purchasedLevels
+                                                                .contains(containerLevelsRecordList[
+                                                                        valueOrDefault<
+                                                                            int>(
+                                                          (int index) {
+                                                            return index == 0
+                                                                ? 0
+                                                                : index - 1;
+                                                          }(levelsIndex),
+                                                          0,
+                                                        )]
+                                                                    .reference);
+                                                        _model.isPreviusCompleted =
+                                                            (currentUserDocument
+                                                                        ?.completedLevels
                                                                         .toList() ??
                                                                     [])
-                                                                .contains(levelsItem
-                                                                    .reference))
-                                                              AuthUserStreamWidget(
-                                                                builder:
-                                                                    (context) =>
-                                                                        Icon(
-                                                                  FFIcons
-                                                                      .klockLevels,
-                                                                  color: FlutterFlowTheme.of(
+                                                                .contains(containerLevelsRecordList[
+                                                                        valueOrDefault<
+                                                                            int>(
+                                                          (int index) {
+                                                            return index == 0
+                                                                ? 0
+                                                                : index - 1;
+                                                          }(levelsIndex),
+                                                          0,
+                                                        )]
+                                                                    .reference);
+                                                        _model.previusLevelTitle =
+                                                            containerLevelsRecordList[
+                                                                    valueOrDefault<
+                                                                        int>(
+                                                          (int index) {
+                                                            return index == 0
+                                                                ? 0
+                                                                : index - 1;
+                                                          }(levelsIndex),
+                                                          0,
+                                                        )]
+                                                                .title;
+                                                        setState(() {});
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
                                                                           context)
-                                                                      .secondaryText,
-                                                                  size: 24.0,
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    LevelNotAvaliableWidget(
+                                                                  levelInfo:
+                                                                      levelsItem,
+                                                                  showButton:
+                                                                      () {
+                                                                    if (_model.isPreviusPurchased &&
+                                                                        !_model
+                                                                            .isPreviusCompleted) {
+                                                                      return false;
+                                                                    } else if (_model
+                                                                            .isPreviusPurchased &&
+                                                                        _model
+                                                                            .isPreviusCompleted &&
+                                                                        !(currentUserDocument?.purchasedLevels.toList() ??
+                                                                                [])
+                                                                            .contains(levelsItem.reference)) {
+                                                                      return true;
+                                                                    } else {
+                                                                      return false;
+                                                                    }
+                                                                  }(),
+                                                                  url: !(currentUserDocument?.purchasedLevels.toList() ??
+                                                                              [])
+                                                                          .contains(containerLevelsRecordList[valueOrDefault<
+                                                                                  int>(
+                                                                    (int
+                                                                        index) {
+                                                                      return (index - 1) ==
+                                                                              -1
+                                                                          ? 0
+                                                                          : index -
+                                                                              1;
+                                                                    }(levelsIndex),
+                                                                    0,
+                                                                  )]
+                                                                              .reference)
+                                                                      ? FFLocalizations.of(
+                                                                              context)
+                                                                          .getVariableText(
+                                                                          ruText: containerLevelsRecordList[valueOrDefault<int>(
+                                                                            (int
+                                                                                index) {
+                                                                              return index == 0 ? 0 : index - 1;
+                                                                            }(levelsIndex),
+                                                                            0,
+                                                                          )]
+                                                                              .getCourseUrl,
+                                                                          enText: containerLevelsRecordList[valueOrDefault<int>(
+                                                                            (int
+                                                                                index) {
+                                                                              return index == 0 ? 0 : index - 1;
+                                                                            }(levelsIndex),
+                                                                            0,
+                                                                          )]
+                                                                              .getCourseUrlEng,
+                                                                        )
+                                                                      : FFLocalizations.of(
+                                                                              context)
+                                                                          .getVariableText(
+                                                                          ruText:
+                                                                              levelsItem.getCourseUrl,
+                                                                          enText:
+                                                                              levelsItem.getCourseUrlEng,
+                                                                        ),
                                                                 ),
                                                               ),
-                                                            if (levelsIndex !=
-                                                                valueOrDefault<
-                                                                    int>(
-                                                                  containerLevelsRecordList
-                                                                          .length -
-                                                                      1,
-                                                                  0,
-                                                                ))
-                                                              Container(
-                                                                width: 2.0,
-                                                                height: 54.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                ),
-                                                              ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Expanded(
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      12.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            safeSetState(
+                                                                () {}));
+                                                      }
+                                                    },
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Align(
+                                                          alignment:
+                                                              const AlignmentDirectional(
+                                                                  -1.0, -1.0),
                                                           child: Column(
                                                             mainAxisSize:
                                                                 MainAxisSize
                                                                     .min,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .start,
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
-                                                                    .start,
+                                                                    .center,
                                                             children: [
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    valueOrDefault<
-                                                                        String>(
-                                                                      '${FFLocalizations.of(context).getVariableText(
-                                                                        ruText:
-                                                                            'Уровень',
-                                                                        enText:
-                                                                            'Level',
-                                                                      )} ${valueOrDefault<String>(
-                                                                        levelsItem
-                                                                            .count,
-                                                                        '0',
-                                                                      )}',
-                                                                      '0',
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Evolventa',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryText,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
+                                                              if ((currentUserDocument
+                                                                          ?.purchasedLevels
+                                                                          .toList() ??
+                                                                      [])
+                                                                  .contains(
+                                                                      levelsItem
+                                                                          .reference))
+                                                                AuthUserStreamWidget(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          ProgressBarWidget(
+                                                                    key: Key(
+                                                                        'Key6bb_${levelsIndex}_of_${levels.length}'),
                                                                   ),
-                                                                ],
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    FFLocalizations.of(
+                                                                ),
+                                                              if (!(currentUserDocument
+                                                                          ?.purchasedLevels
+                                                                          .toList() ??
+                                                                      [])
+                                                                  .contains(
+                                                                      levelsItem
+                                                                          .reference))
+                                                                AuthUserStreamWidget(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          Icon(
+                                                                    FFIcons
+                                                                        .klockLevels,
+                                                                    color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .getVariableText(
-                                                                      ruText: levelsItem
-                                                                          .title,
-                                                                      enText: levelsItem
-                                                                          .titleEng,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Evolventa',
-                                                                          fontSize:
-                                                                              15.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
+                                                                        .secondaryText,
+                                                                    size: 24.0,
                                                                   ),
-                                                                ],
-                                                              ),
+                                                                ),
+                                                              if (levelsIndex !=
+                                                                  valueOrDefault<
+                                                                      int>(
+                                                                    containerLevelsRecordList
+                                                                            .length -
+                                                                        1,
+                                                                    0,
+                                                                  ))
+                                                                Container(
+                                                                  width: 2.0,
+                                                                  height: 54.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                  ),
+                                                                ),
                                                             ],
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              }),
-                                            ),
-                                          );
-                                        },
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        12.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          '${FFLocalizations.of(context).getVariableText(
+                                                                            ruText:
+                                                                                'Уровень',
+                                                                            enText:
+                                                                                'Level',
+                                                                          )} ${valueOrDefault<String>(
+                                                                            levelsItem.count,
+                                                                            '0',
+                                                                          )}',
+                                                                          '0',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Evolventa',
+                                                                              color: FlutterFlowTheme.of(context).secondaryText,
+                                                                              letterSpacing: 0.0,
+                                                                              useGoogleFonts: false,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Expanded(
+                                                                      child:
+                                                                          Text(
+                                                                        FFLocalizations.of(context)
+                                                                            .getVariableText(
+                                                                          ruText:
+                                                                              levelsItem.title,
+                                                                          enText:
+                                                                              levelsItem.titleEng,
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Evolventa',
+                                                                              fontSize: 15.0,
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FontWeight.bold,
+                                                                              useGoogleFonts: false,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                }).addToEnd(
+                                                        const SizedBox(height: 14.0)),
+                                              ),
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                   ],
