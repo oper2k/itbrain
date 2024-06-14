@@ -907,7 +907,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                   decoration: const BoxDecoration(),
                                   child: Visibility(
                                     visible:
-                                        containerShowAppleRecord?.isShow2 ??
+                                        containerShowAppleRecord?.isShow3 ??
                                             true,
                                     child: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(

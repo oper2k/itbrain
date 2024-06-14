@@ -14,13 +14,13 @@ class ShowAppleRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "isShow2" field.
-  bool? _isShow2;
-  bool get isShow2 => _isShow2 ?? false;
-  bool hasIsShow2() => _isShow2 != null;
+  // "isShow3" field.
+  bool? _isShow3;
+  bool get isShow3 => _isShow3 ?? false;
+  bool hasIsShow3() => _isShow3 != null;
 
   void _initializeFields() {
-    _isShow2 = snapshotData['isShow2'] as bool?;
+    _isShow3 = snapshotData['isShow3'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -58,11 +58,11 @@ class ShowAppleRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createShowAppleRecordData({
-  bool? isShow2,
+  bool? isShow3,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'isShow2': isShow2,
+      'isShow3': isShow3,
     }.withoutNulls,
   );
 
@@ -74,11 +74,11 @@ class ShowAppleRecordDocumentEquality implements Equality<ShowAppleRecord> {
 
   @override
   bool equals(ShowAppleRecord? e1, ShowAppleRecord? e2) {
-    return e1?.isShow2 == e2?.isShow2;
+    return e1?.isShow3 == e2?.isShow3;
   }
 
   @override
-  int hash(ShowAppleRecord? e) => const ListEquality().hash([e?.isShow2]);
+  int hash(ShowAppleRecord? e) => const ListEquality().hash([e?.isShow3]);
 
   @override
   bool isValidKey(Object? o) => o is ShowAppleRecord;

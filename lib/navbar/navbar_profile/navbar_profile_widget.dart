@@ -135,7 +135,7 @@ class _NavbarProfileWidgetState extends State<NavbarProfileWidget> {
                     return Container(
                       decoration: const BoxDecoration(),
                       child: Visibility(
-                        visible: containerShowAppleRecord?.isShow2 ?? true,
+                        visible: containerShowAppleRecord?.isShow3 ?? true,
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
