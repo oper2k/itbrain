@@ -113,7 +113,7 @@ class _NavbarHomeWidgetState extends State<NavbarHomeWidget> {
                     return Container(
                       decoration: const BoxDecoration(),
                       child: Visibility(
-                        visible: containerShowAppleRecord?.isShow3 ?? true,
+                        visible: containerShowAppleRecord?.isShow1 ?? true,
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,

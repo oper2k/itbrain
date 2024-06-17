@@ -720,7 +720,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                     ),
                                                   );
                                                 }).addToEnd(
-                                                        const SizedBox(height: 14.0)),
+                                                        const SizedBox(height: 24.0)),
                                               ),
                                             );
                                           },

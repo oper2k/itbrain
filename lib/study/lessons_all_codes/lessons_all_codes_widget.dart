@@ -233,7 +233,12 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 28.0, 0.0, 0.0),
                               child: Text(
-                                '${containerLessonsRecordList.length.toString()}${FFLocalizations.of(context).getVariableText(
+                                '${FFLocalizations.of(context).getVariableText(
+                                  ruText:
+                                      widget.courseInfo?.audioCount.toString(),
+                                  enText: widget.courseInfo?.audioCountEng
+                                      .toString(),
+                                )}${FFLocalizations.of(context).getVariableText(
                                   ruText: ' аудио',
                                   enText: ' audios ',
                                 )}',
@@ -253,13 +258,18 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 16.0, 0.0, 32.0),
+                                0.0, 16.0, 0.0, 0.0),
                             child: Builder(
                               builder: (context) {
                                 final lessons =
                                     containerLessonsRecordList.toList();
                                 return ListView.builder(
-                                  padding: EdgeInsets.zero,
+                                  padding: const EdgeInsets.fromLTRB(
+                                    0,
+                                    0,
+                                    0,
+                                    32.0,
+                                  ),
                                   primary: false,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,

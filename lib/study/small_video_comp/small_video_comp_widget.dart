@@ -57,43 +57,51 @@ class _SmallVideoCompWidgetState extends State<SmallVideoCompWidget> {
             fit: BoxFit.cover,
           ),
         ),
-        Align(
-          alignment: const AlignmentDirectional(-1.0, 0.0),
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
-            child: Text(
-              FFLocalizations.of(context).getVariableText(
-                ruText: widget.video?.title,
-                enText: widget.video?.titleEng,
-              ),
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Evolventa',
-                    fontSize: 13.0,
-                    letterSpacing: 0.0,
-                    fontWeight: FontWeight.bold,
-                    useGoogleFonts: false,
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 0.0, 0.0),
+                child: Text(
+                  FFLocalizations.of(context).getVariableText(
+                    ruText: widget.video?.title,
+                    enText: widget.video?.titleEng,
                   ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Evolventa',
+                        fontSize: 13.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.bold,
+                        useGoogleFonts: false,
+                      ),
+                ),
+              ),
             ),
-          ),
+          ],
         ),
-        Align(
-          alignment: const AlignmentDirectional(-1.0, 0.0),
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
-            child: Text(
-              FFLocalizations.of(context).getVariableText(
-                ruText: widget.video?.duration,
-                enText: widget.video?.durationEng,
-              ),
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Evolventa',
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                    fontSize: 13.0,
-                    letterSpacing: 0.0,
-                    useGoogleFonts: false,
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
+                child: Text(
+                  FFLocalizations.of(context).getVariableText(
+                    ruText: widget.video?.duration,
+                    enText: widget.video?.durationEng,
                   ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Evolventa',
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        fontSize: 13.0,
+                        letterSpacing: 0.0,
+                        useGoogleFonts: false,
+                      ),
+                ),
+              ),
             ),
-          ),
+          ],
         ),
       ],
     );

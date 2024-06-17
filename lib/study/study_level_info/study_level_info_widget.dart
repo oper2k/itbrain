@@ -256,7 +256,12 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                       .sortedList((e) => e.order)
                                       .toList();
                                   return ListView.separated(
-                                    padding: EdgeInsets.zero,
+                                    padding: const EdgeInsets.fromLTRB(
+                                      0,
+                                      0,
+                                      0,
+                                      32.0,
+                                    ),
                                     primary: false,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,

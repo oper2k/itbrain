@@ -834,15 +834,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           listViewIndex];
                                                   return Visibility(
                                                     visible: (!containerShowAppleRecord!
-                                                                .isShow3 &&
+                                                                .isShow1 &&
                                                             listViewMeditationCategoriesRecord
                                                                 .isPaid) ||
                                                         (!containerShowAppleRecord
-                                                                .isShow3 &&
+                                                                .isShow1 &&
                                                             !listViewMeditationCategoriesRecord
                                                                 .soon) ||
                                                         containerShowAppleRecord
-                                                            .isShow3,
+                                                            .isShow1,
                                                     child: InkWell(
                                                       splashColor:
                                                           Colors.transparent,
@@ -1018,106 +1018,104 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   ),
                                   Align(
                                     alignment: const AlignmentDirectional(-1.0, -1.0),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 0.0, 0.0),
-                                      child: StreamBuilder<List<VideosRecord>>(
-                                        stream: queryVideosRecord(
-                                          queryBuilder: (videosRecord) =>
-                                              videosRecord
-                                                  .where(
-                                                    'lang',
-                                                    isEqualTo:
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .languageCode,
-                                                  )
-                                                  .orderBy('order'),
-                                        ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiary,
-                                                  ),
+                                    child: StreamBuilder<List<VideosRecord>>(
+                                      stream: queryVideosRecord(
+                                        queryBuilder: (videosRecord) =>
+                                            videosRecord
+                                                .where(
+                                                  'lang',
+                                                  isEqualTo: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                )
+                                                .orderBy('order'),
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
                                                 ),
                                               ),
-                                            );
-                                          }
-                                          List<VideosRecord>
-                                              containerVideosRecordList =
-                                              snapshot.data!;
-                                          return Container(
-                                            width: double.infinity,
-                                            decoration: const BoxDecoration(
-                                              color: Colors.transparent,
-                                            ),
-                                            child: Builder(
-                                              builder: (context) {
-                                                final videos =
-                                                    containerVideosRecordList
-                                                        .toList();
-                                                return SingleChildScrollView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: List.generate(
-                                                        videos.length,
-                                                        (videosIndex) {
-                                                      final videosItem =
-                                                          videos[videosIndex];
-                                                      return InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          await launchURL(
-                                                              videosItem
-                                                                  .videoUrl);
-                                                        },
-                                                        child: Container(
-                                                          width: 160.0,
-                                                          decoration:
-                                                              const BoxDecoration(
-                                                            color: Colors
-                                                                .transparent,
-                                                          ),
-                                                          child:
-                                                              SmallVideoCompWidget(
-                                                            key: Key(
-                                                                'Key6i6_${videosIndex}_of_${videos.length}'),
-                                                            video: videosItem,
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }).divide(
-                                                        const SizedBox(width: 12.0)),
-                                                  ),
-                                                );
-                                              },
                                             ),
                                           );
-                                        },
-                                      ),
+                                        }
+                                        List<VideosRecord>
+                                            containerVideosRecordList =
+                                            snapshot.data!;
+                                        return Container(
+                                          width: double.infinity,
+                                          decoration: const BoxDecoration(
+                                            color: Colors.transparent,
+                                          ),
+                                          child: Builder(
+                                            builder: (context) {
+                                              final videos =
+                                                  containerVideosRecordList
+                                                      .toList();
+                                              return SingleChildScrollView(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: List.generate(
+                                                          videos.length,
+                                                          (videosIndex) {
+                                                    final videosItem =
+                                                        videos[videosIndex];
+                                                    return InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        await launchURL(
+                                                            videosItem
+                                                                .videoUrl);
+                                                      },
+                                                      child: Container(
+                                                        width: 160.0,
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                          color: Colors
+                                                              .transparent,
+                                                        ),
+                                                        child:
+                                                            SmallVideoCompWidget(
+                                                          key: Key(
+                                                              'Key6i6_${videosIndex}_of_${videos.length}'),
+                                                          video: videosItem,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  })
+                                                      .divide(
+                                                          const SizedBox(width: 12.0))
+                                                      .addToStart(
+                                                          const SizedBox(width: 20.0))
+                                                      .addToEnd(const SizedBox(
+                                                          width: 20.0)),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        );
+                                      },
                                     ),
                                   ),
                                   if (FFAppState().lastShowAffirmation != null)
@@ -1255,7 +1253,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             ).animateOnPageLoad(
                                 animationsMap['columnOnPageLoadAnimation']!),
                           ),
-                        ].addToStart(const SizedBox(height: 50.0)),
+                        ]
+                            .addToStart(const SizedBox(height: 50.0))
+                            .addToEnd(const SizedBox(height: 46.0)),
                       ),
                     ),
                   ).animateOnPageLoad(

@@ -175,7 +175,7 @@ class _AllVideosWidgetState extends State<AllVideosWidget> {
                     ),
                   ),
                 ),
-              ],
+              ].addToEnd(const SizedBox(height: 46.0)),
             ),
           ),
         ),

@@ -110,7 +110,7 @@ class _MeditationPackInfoWidgetState extends State<MeditationPackInfoWidget> {
                           const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: MarkdownBody(
                         data: widget.text!,
-                        selectable: true,
+                        selectable: false,
                         onTapLink: (_, url, __) => launchURL(url!),
                       ),
                     ),

@@ -1428,7 +1428,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                               }
                             },
                           ),
-                        ],
+                        ].addToEnd(const SizedBox(height: 32.0)),
                       ),
                     ),
                   ],

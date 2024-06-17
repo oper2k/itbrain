@@ -5,6 +5,7 @@ import 'package:collection/collection.dart';
 import '/backend/schema/util/firestore_util.dart';
 
 import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class StudyCategoriesRecord extends FirestoreRecord {
   StudyCategoriesRecord._(
@@ -94,6 +95,16 @@ class StudyCategoriesRecord extends FirestoreRecord {
   bool get showNotificationButton => _showNotificationButton ?? false;
   bool hasShowNotificationButton() => _showNotificationButton != null;
 
+  // "audioCount" field.
+  int? _audioCount;
+  int get audioCount => _audioCount ?? 0;
+  bool hasAudioCount() => _audioCount != null;
+
+  // "audioCountEng" field.
+  int? _audioCountEng;
+  int get audioCountEng => _audioCountEng ?? 0;
+  bool hasAudioCountEng() => _audioCountEng != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _description = snapshotData['description'] as String?;
@@ -111,6 +122,8 @@ class StudyCategoriesRecord extends FirestoreRecord {
     _courseText = snapshotData['course_text'] as String?;
     _courseTextEng = snapshotData['course_text_eng'] as String?;
     _showNotificationButton = snapshotData['showNotificationButton'] as bool?;
+    _audioCount = castToType<int>(snapshotData['audioCount']);
+    _audioCountEng = castToType<int>(snapshotData['audioCountEng']);
   }
 
   static CollectionReference get collection =>
@@ -164,6 +177,8 @@ Map<String, dynamic> createStudyCategoriesRecordData({
   String? courseText,
   String? courseTextEng,
   bool? showNotificationButton,
+  int? audioCount,
+  int? audioCountEng,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -183,6 +198,8 @@ Map<String, dynamic> createStudyCategoriesRecordData({
       'course_text': courseText,
       'course_text_eng': courseTextEng,
       'showNotificationButton': showNotificationButton,
+      'audioCount': audioCount,
+      'audioCountEng': audioCountEng,
     }.withoutNulls,
   );
 
@@ -210,7 +227,9 @@ class StudyCategoriesRecordDocumentEquality
         e1?.courseInfoImage == e2?.courseInfoImage &&
         e1?.courseText == e2?.courseText &&
         e1?.courseTextEng == e2?.courseTextEng &&
-        e1?.showNotificationButton == e2?.showNotificationButton;
+        e1?.showNotificationButton == e2?.showNotificationButton &&
+        e1?.audioCount == e2?.audioCount &&
+        e1?.audioCountEng == e2?.audioCountEng;
   }
 
   @override
@@ -230,7 +249,9 @@ class StudyCategoriesRecordDocumentEquality
         e?.courseInfoImage,
         e?.courseText,
         e?.courseTextEng,
-        e?.showNotificationButton
+        e?.showNotificationButton,
+        e?.audioCount,
+        e?.audioCountEng
       ]);
 
   @override

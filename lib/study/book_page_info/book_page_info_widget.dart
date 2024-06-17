@@ -2,8 +2,10 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'book_page_info_model.dart';
 export 'book_page_info_model.dart';
@@ -29,6 +31,11 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BookPageInfoModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.notCreateScreenshots();
+    });
   }
 
   @override
@@ -167,12 +174,12 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: MarkdownBody(
                       data: widget.pageInfo!.mainText,
-                      selectable: true,
+                      selectable: false,
                       onTapLink: (_, url, __) => launchURL(url!),
                     ),
                   ),
                 ),
-              ],
+              ].addToEnd(const SizedBox(height: 32.0)),
             ),
           ),
         ),

@@ -38,6 +38,7 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.lockOrientation();
+      await actions.notCreateScreenshots();
       if (!(currentUserDocument?.completeLessons.toList() ?? [])
           .contains(widget.lesson?.reference)) {
         if (widget.isLastLesson) {

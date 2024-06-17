@@ -134,7 +134,7 @@ class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
                         enText:
                             widget.playerInfo?[widget.index!].playerTextEng,
                       ),
-                      selectable: true,
+                      selectable: false,
                       onTapLink: (_, url, __) => launchURL(url!),
                     ).animateOnPageLoad(
                         animationsMap['markdownOnPageLoadAnimation']!),
