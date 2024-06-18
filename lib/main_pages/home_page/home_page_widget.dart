@@ -834,15 +834,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           listViewIndex];
                                                   return Visibility(
                                                     visible: (!containerShowAppleRecord!
-                                                                .isShow1 &&
+                                                                .isShow2 &&
                                                             listViewMeditationCategoriesRecord
                                                                 .isPaid) ||
                                                         (!containerShowAppleRecord
-                                                                .isShow1 &&
+                                                                .isShow2 &&
                                                             !listViewMeditationCategoriesRecord
                                                                 .soon) ||
                                                         containerShowAppleRecord
-                                                            .isShow1,
+                                                            .isShow2,
                                                     child: InkWell(
                                                       splashColor:
                                                           Colors.transparent,

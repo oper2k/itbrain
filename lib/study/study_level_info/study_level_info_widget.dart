@@ -40,7 +40,7 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.lockOrientation();
-      await actions.yesCreateScreenshots();
+      await actions.notCreateScreenshots();
       unawaited(
         () async {
           await actions.stopMusic(

@@ -35,7 +35,7 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await actions.yesCreateScreenshots();
+      await actions.notCreateScreenshots();
       await actions.lockOrientation();
       unawaited(
         () async {
