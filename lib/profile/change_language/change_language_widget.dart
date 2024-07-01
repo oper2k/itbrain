@@ -23,9 +23,14 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
     super.initState();
     _model = createModel(context, () => ChangeLanguageModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'changeLanguage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('CHANGE_LANGUAGE_changeLanguage_ON_INIT_S');
+      logFirebaseEvent('changeLanguage_custom_action');
       await actions.yesCreateScreenshots();
+      logFirebaseEvent('changeLanguage_custom_action');
       await actions.lockOrientation();
     });
   }
@@ -73,6 +78,9 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'CHANGE_LANGUAGE_Container_jsngafv8_ON_TA');
+                        logFirebaseEvent('Container_navigate_back');
                         context.safePop();
                       },
                       child: Container(
@@ -119,6 +127,9 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'CHANGE_LANGUAGE_Container_hicmkoer_ON_TA');
+                              logFirebaseEvent('Container_set_app_language');
                               setAppLanguage(context, 'en');
                             },
                             child: Container(
@@ -227,6 +238,9 @@ class _ChangeLanguageWidgetState extends State<ChangeLanguageWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'CHANGE_LANGUAGE_Container_sed5zs0l_ON_TA');
+                              logFirebaseEvent('Container_set_app_language');
                               setAppLanguage(context, 'ru');
                             },
                             child: Container(

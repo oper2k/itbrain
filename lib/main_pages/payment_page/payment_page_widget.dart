@@ -24,8 +24,11 @@ class _PaymentPageWidgetState extends State<PaymentPageWidget> {
     super.initState();
     _model = createModel(context, () => PaymentPageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'paymentPage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('PAYMENT_paymentPage_ON_INIT_STATE');
+      logFirebaseEvent('paymentPage_custom_action');
       await actions.yesCreateScreenshots();
     });
   }

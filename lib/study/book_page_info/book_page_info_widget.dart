@@ -32,8 +32,12 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
     super.initState();
     _model = createModel(context, () => BookPageInfoModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'bookPageInfo'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('BOOK_INFO_bookPageInfo_ON_INIT_STATE');
+      logFirebaseEvent('bookPageInfo_custom_action');
       await actions.notCreateScreenshots();
     });
   }
@@ -70,6 +74,9 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent('BOOK_INFO_Container_shbosqyg_ON_TAP');
+                        logFirebaseEvent('Container_navigate_to');
+
                         context.pushNamed('HomePage');
                       },
                       child: Container(
@@ -117,6 +124,8 @@ class _BookPageInfoWidgetState extends State<BookPageInfoWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent('BOOK_INFO_Image_2yaoitp8_ON_TAP');
+                      logFirebaseEvent('Image_expand_image');
                       await Navigator.push(
                         context,
                         PageTransition(

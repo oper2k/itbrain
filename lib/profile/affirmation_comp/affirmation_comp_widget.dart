@@ -37,6 +37,8 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('AFFIRMATION_affirmationComp_ON_INIT_STAT');
+      logFirebaseEvent('affirmationComp_update_app_state');
       FFAppState().LastAffirmationDate = dateTimeFormat(
         'd/M/y',
         getCurrentTimestamp,
@@ -95,6 +97,8 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
                       size: 22.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent('AFFIRMATION_close_sharp_ICN_ON_TAP');
+                      logFirebaseEvent('IconButton_bottom_sheet');
                       Navigator.pop(context);
                     },
                   ),
@@ -203,6 +207,9 @@ class _AffirmationCompWidgetState extends State<AffirmationCompWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'AFFIRMATION_Container_st430dr8_ON_TAP');
+                          logFirebaseEvent('Container_bottom_sheet');
                           Navigator.pop(context);
                         },
                         child: Container(

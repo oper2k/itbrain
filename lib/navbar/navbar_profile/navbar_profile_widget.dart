@@ -62,6 +62,9 @@ class _NavbarProfileWidgetState extends State<NavbarProfileWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent('NAVBAR_PROFILE_Column_79q7hfi9_ON_TAP');
+                    logFirebaseEvent('Column_navigate_to');
+
                     context.pushNamed(
                       'HomePage',
                       extra: <String, dynamic>{
@@ -135,13 +138,17 @@ class _NavbarProfileWidgetState extends State<NavbarProfileWidget> {
                     return Container(
                       decoration: const BoxDecoration(),
                       child: Visibility(
-                        visible: containerShowAppleRecord?.isShow2 ?? true,
+                        visible: containerShowAppleRecord?.isShow3 ?? true,
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'NAVBAR_PROFILE_Column_4kxa8w10_ON_TAP');
+                            logFirebaseEvent('Column_navigate_to');
+
                             context.pushNamed(
                               'studyPage',
                               extra: <String, dynamic>{

@@ -33,10 +33,16 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
     super.initState();
     _model = createModel(context, () => StudyInfoPageModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'studyInfoPage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('STUDY_INFO_studyInfoPage_ON_INIT_STATE');
+      logFirebaseEvent('studyInfoPage_custom_action');
       await actions.notCreateScreenshots();
+      logFirebaseEvent('studyInfoPage_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('studyInfoPage_custom_action');
       unawaited(
         () async {
           await actions.stopMusic(
@@ -108,6 +114,10 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'STUDY_INFO_Container_2zjw6jfs_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Container_navigate_back');
                                       context.safePop();
                                     },
                                     child: Container(
@@ -295,6 +305,11 @@ class _StudyInfoPageWidgetState extends State<StudyInfoPageWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'STUDY_INFO_Container_ccl7woj8_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Container_backend_call');
+
                                       await FfCustomPushNotificationsRecord
                                           .collection
                                           .doc()

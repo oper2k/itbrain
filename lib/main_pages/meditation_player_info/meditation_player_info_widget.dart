@@ -102,6 +102,9 @@ class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
                         size: 22.0,
                       ),
                       onPressed: () async {
+                        logFirebaseEvent(
+                            'MEDITATION_PLAYER_INFO_close_sharp_ICN_O');
+                        logFirebaseEvent('IconButton_bottom_sheet');
                         Navigator.pop(context);
                       },
                     ),
@@ -148,6 +151,9 @@ class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'MEDITATION_PLAYER_INFO_Container_r6lk6cz');
+                      logFirebaseEvent('Container_bottom_sheet');
                       Navigator.pop(context);
                     },
                     child: Container(

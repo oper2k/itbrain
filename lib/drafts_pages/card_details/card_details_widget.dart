@@ -25,6 +25,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
     super.initState();
     _model = createModel(context, () => CardDetailsModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'cardDetails'});
     _model.cardNumberTextController ??= TextEditingController();
     _model.cardNumberFocusNode ??= FocusNode();
     _model.cardNumberFocusNode!.addListener(() => setState(() {}));
@@ -79,6 +80,10 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'CARD_DETAILS_Container_lho4lhd1_ON_TAP');
+                        logFirebaseEvent('Container_navigate_to');
+
                         context.goNamed('onBoarding');
                       },
                       child: Container(
@@ -567,20 +572,26 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'CARD_DETAILS_Container_jwk65f39_ON_TAP');
                       if ((_model.cardNumberTextController.text != '') ||
                           functions.cardNumberCheck(
                               _model.cardNumberTextController.text)!) {
+                        logFirebaseEvent('Container_update_page_state');
                         _model.showCardNumberError = false;
                         setState(() {});
                         if (functions.cardDateEndCheck(
                             _model.dateEndTextController.text,
                             getCurrentTimestamp)) {
+                          logFirebaseEvent('Container_update_page_state');
                           _model.chowDateEndError = false;
                           setState(() {});
                           if (functions.cvvCheck(
                               int.tryParse(_model.cvcTextController.text))!) {
+                            logFirebaseEvent('Container_update_page_state');
                             _model.showCVVerror = false;
                             setState(() {});
+                            logFirebaseEvent('Container_bottom_sheet');
                             await showModalBottomSheet(
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
@@ -600,6 +611,7 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
                               },
                             ).then((value) => safeSetState(() {}));
                           } else {
+                            logFirebaseEvent('Container_update_page_state');
                             _model.showCVVerror = false;
                             setState(() {});
                             return;
@@ -607,11 +619,13 @@ class _CardDetailsWidgetState extends State<CardDetailsWidget> {
 
                           return;
                         } else {
+                          logFirebaseEvent('Container_update_page_state');
                           _model.chowDateEndError = true;
                           setState(() {});
                           return;
                         }
                       } else {
+                        logFirebaseEvent('Container_update_page_state');
                         _model.showCardNumberError = true;
                         setState(() {});
                         return;

@@ -37,10 +37,16 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
     super.initState();
     _model = createModel(context, () => StudyLevelInfoModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'studyLevelInfo'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('STUDY_LEVEL_INFO_studyLevelInfo_ON_INIT_');
+      logFirebaseEvent('studyLevelInfo_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('studyLevelInfo_custom_action');
       await actions.notCreateScreenshots();
+      logFirebaseEvent('studyLevelInfo_custom_action');
       unawaited(
         () async {
           await actions.stopMusic(
@@ -119,6 +125,9 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'STUDY_LEVEL_INFO_Container_5x8wtao1_ON_T');
+                              logFirebaseEvent('Container_navigate_back');
                               context.safePop();
                             },
                             child: Container(
@@ -291,6 +300,11 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              logFirebaseEvent(
+                                                  'STUDY_LEVEL_INFO_ConditionalBuilder_w3pe');
+                                              logFirebaseEvent(
+                                                  'ConditionalBuilder_navigate_to');
+
                                               context.pushNamed(
                                                 'contentPage',
                                                 queryParameters: {
@@ -522,11 +536,15 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'STUDY_LEVEL_INFO_Container_rfbwbbji_ON_T');
                                   if ((currentUserDocument?.purchasedLevels
                                               .toList() ??
                                           [])
                                       .contains(
                                           containerLevelsRecord?.reference)) {
+                                    logFirebaseEvent('Container_navigate_to');
+
                                     context.pushNamed(
                                       'studyLevelInfo',
                                       queryParameters: {
@@ -552,6 +570,7 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                       },
                                     );
                                   } else {
+                                    logFirebaseEvent('Container_launch_u_r_l');
                                     await launchURL(FFLocalizations.of(context)
                                         .getVariableText(
                                       ruText:

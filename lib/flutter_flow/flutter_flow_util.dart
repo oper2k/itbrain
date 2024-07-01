@@ -30,6 +30,7 @@ export 'package:cloud_firestore/cloud_firestore.dart'
 export 'package:page_transition/page_transition.dart';
 export 'custom_icons.dart' show FFIcons;
 export 'internationalization.dart' show FFLocalizations;
+export '/backend/firebase_analytics/analytics.dart';
 export 'nav/nav.dart';
 
 T valueOrDefault<T>(T? value, T defaultValue) =>
@@ -313,6 +314,14 @@ extension FFStringExt on String {
 
 extension ListFilterExt<T> on Iterable<T?> {
   List<T> get withoutNulls => where((s) => s != null).map((e) => e!).toList();
+}
+
+extension MapFilterExtensions<T> on Map<String, T?> {
+  Map<String, T> get withoutNulls => Map.fromEntries(
+        entries
+            .where((e) => e.value != null)
+            .map((e) => MapEntry(e.key, e.value as T)),
+      );
 }
 
 extension MapListContainsExt on List<dynamic> {

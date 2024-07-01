@@ -34,9 +34,13 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
     super.initState();
     _model = createModel(context, () => PlayerPageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'playerPage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('PLAYER_playerPage_ON_INIT_STATE');
+      logFirebaseEvent('playerPage_custom_action');
       await actions.notCreateScreenshots();
+      logFirebaseEvent('playerPage_custom_action');
       await actions.lockOrientation();
     });
   }

@@ -29,8 +29,12 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
     super.initState();
     _model = createModel(context, () => SearchPageNewModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'searchPageNew'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('SEARCH_NEW_searchPageNew_ON_INIT_STATE');
+      logFirebaseEvent('searchPageNew_custom_action');
       await actions.yesCreateScreenshots();
     });
 
@@ -81,6 +85,9 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'SEARCH_NEW_Container_kv1i7hew_ON_TAP');
+                        logFirebaseEvent('Container_navigate_back');
                         context.safePop();
                       },
                       child: Container(
@@ -161,8 +168,14 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                               '_model.textController',
                                               const Duration(milliseconds: 300),
                                               () async {
+                                                logFirebaseEvent(
+                                                    'SEARCH_NEW_TextField_faxzg2nk_ON_TEXTFIE');
+                                                logFirebaseEvent(
+                                                    'TextField_update_page_state');
                                                 _model.searchOk = true;
                                                 setState(() {});
+                                                logFirebaseEvent(
+                                                    'TextField_simple_search');
                                                 await queryMeditationsRecordOnce()
                                                     .then(
                                                       (records) => _model
@@ -268,6 +281,10 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        logFirebaseEvent(
+                                            'SEARCH_NEW_Image_0n1qwy1i_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Image_clear_text_fields_pin_codes');
                                         setState(() {
                                           _model.textController?.clear();
                                         });
@@ -339,6 +356,11 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'SEARCH_NEW_Container_z3ophh8x_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Container_backend_call');
+
                                       await currentUserReference!.update({
                                         ...mapToFirestore(
                                           {
@@ -477,8 +499,13 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                         highlightColor:
                                                             Colors.transparent,
                                                         onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'SEARCH_NEW_Container_ztdh5yn4_ON_TAP');
                                                           if (!meditationsMeditationCategoriesRecord
                                                               .soon) {
+                                                            logFirebaseEvent(
+                                                                'meditations_navigate_to');
+
                                                             context.pushNamed(
                                                               'playerPage',
                                                               queryParameters: {
@@ -599,6 +626,8 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              logFirebaseEvent(
+                                                  'SEARCH_NEW_Container_v7j949tt_ON_TAP');
                                               if (!meditationsMeditationCategoriesRecord
                                                   .soon) {
                                                 if (resultsItem.isPaid) {
@@ -608,8 +637,12 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                           [])
                                                       .contains(resultsItem
                                                           .meditationCategory)) {
+                                                    logFirebaseEvent(
+                                                        'meditations_update_app_state');
                                                     FFAppState().positionMS = 0;
                                                     setState(() {});
+                                                    logFirebaseEvent(
+                                                        'meditations_backend_call');
 
                                                     await currentUserReference!
                                                         .update({
@@ -624,6 +657,8 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                         },
                                                       ),
                                                     });
+                                                    logFirebaseEvent(
+                                                        'meditations_navigate_to');
 
                                                     context.pushNamed(
                                                       'playerPage',
@@ -650,6 +685,9 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
 
                                                     return;
                                                   } else {
+                                                    logFirebaseEvent(
+                                                        'meditations_navigate_to');
+
                                                     context.pushNamed(
                                                       'meditationInfo',
                                                       queryParameters: {
@@ -664,6 +702,9 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                             meditationsMeditationCategoriesRecord,
                                                       },
                                                     );
+
+                                                    logFirebaseEvent(
+                                                        'meditations_backend_call');
 
                                                     await currentUserReference!
                                                         .update({
@@ -681,8 +722,12 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                     return;
                                                   }
                                                 } else {
+                                                  logFirebaseEvent(
+                                                      'meditations_update_app_state');
                                                   FFAppState().positionMS = 0;
                                                   setState(() {});
+                                                  logFirebaseEvent(
+                                                      'meditations_navigate_to');
 
                                                   context.pushNamed(
                                                     'playerPage',
@@ -706,6 +751,9 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                           .simpleSearchResults,
                                                     },
                                                   );
+
+                                                  logFirebaseEvent(
+                                                      'meditations_backend_call');
 
                                                   await currentUserReference!
                                                       .update({

@@ -23,9 +23,13 @@ class _AboutPageWidgetState extends State<AboutPageWidget> {
     super.initState();
     _model = createModel(context, () => AboutPageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'aboutPage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('ABOUT_PAGE_PAGE_aboutPage_ON_INIT_STATE');
+      logFirebaseEvent('aboutPage_custom_action');
       await actions.yesCreateScreenshots();
+      logFirebaseEvent('aboutPage_custom_action');
       await actions.lockOrientation();
     });
   }
@@ -75,6 +79,8 @@ class _AboutPageWidgetState extends State<AboutPageWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent('ABOUT_Container_xgkvqqbj_ON_TAP');
+                          logFirebaseEvent('Container_navigate_back');
                           context.pop();
                         },
                         child: Container(
@@ -237,6 +243,9 @@ class _AboutPageWidgetState extends State<AboutPageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'ABOUT_PAGE_PAGE_Text_ig09xxii_ON_TAP');
+                        logFirebaseEvent('Text_launch_u_r_l');
                         await launchURL(
                             FFLocalizations.of(context).getVariableText(
                           ruText:
@@ -273,6 +282,9 @@ class _AboutPageWidgetState extends State<AboutPageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'ABOUT_PAGE_PAGE_Text_traji7f2_ON_TAP');
+                        logFirebaseEvent('Text_launch_u_r_l');
                         await launchURL(valueOrDefault<String>(
                           FFLocalizations.of(context).getVariableText(
                             ruText:

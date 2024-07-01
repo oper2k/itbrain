@@ -47,6 +47,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('PLAYER_playerComp_ON_INIT_STATE');
+      logFirebaseEvent('playerComp_custom_action');
       await actions.playOrPause(
         'p1',
       );
@@ -100,9 +102,12 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent('PLAYER_Container_dq637u8t_ON_TAP');
+                      logFirebaseEvent('Container_custom_action');
                       await actions.stopMusic(
                         'p1',
                       );
+                      logFirebaseEvent('Container_navigate_back');
                       context.safePop();
                     },
                     child: Container(
@@ -143,6 +148,9 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'PLAYER_COMP_COMP_Row_0nl1tyx1_ON_TAP');
+                        logFirebaseEvent('Row_bottom_sheet');
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
@@ -320,6 +328,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                       size: 24.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent('PLAYER_COMP_COMP_minus15sBtn_ON_TAP');
+                      logFirebaseEvent('minus15sBtn_custom_action');
                       await actions.seekAudio(
                         'p1',
                         FFAppState().positionMS - 15000,
@@ -339,19 +349,24 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                       size: 24.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent('PLAYER_COMP_COMP_PreviousBtn_ON_TAP');
                       if (FFAppState().playerIndex > 0) {
+                        logFirebaseEvent('PreviousBtn_update_app_state');
                         FFAppState().positionMS = 0;
                         FFAppState().playerIndex =
                             FFAppState().playerIndex + -1;
                         FFAppState().isAudioPlaying = true;
+                        logFirebaseEvent('PreviousBtn_custom_action');
                         await actions.createDataType(
                           widget.meditationList?[FFAppState().playerIndex],
                         );
+                        logFirebaseEvent('PreviousBtn_custom_action');
                         await actions.playMusic(
                           'p1',
                           widget.meditationList![FFAppState().playerIndex]
                               .audioPath,
                         );
+                        logFirebaseEvent('PreviousBtn_update_component_state');
 
                         setState(() {});
                         return;
@@ -383,9 +398,14 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
+                                    logFirebaseEvent(
+                                        'PLAYER_COMP_COMP_PauseBtn_ON_TAP');
+                                    logFirebaseEvent('PauseBtn_custom_action');
                                     await actions.playOrPause(
                                       'p1',
                                     );
+                                    logFirebaseEvent(
+                                        'PauseBtn_update_app_state');
                                     FFAppState().isAudioPlaying = false;
                                     setState(() {});
                                   },
@@ -398,9 +418,14 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'PLAYER_Container_mfe7htgn_ON_TAP');
+                                  logFirebaseEvent('Container_custom_action');
                                   await actions.playOrPause(
                                     'p1',
                                   );
+                                  logFirebaseEvent(
+                                      'Container_update_app_state');
                                   FFAppState().isAudioPlaying = true;
                                   setState(() {});
                                 },
@@ -455,18 +480,23 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                             size: 24.0,
                           ),
                           onPressed: () async {
+                            logFirebaseEvent('PLAYER_COMP_COMP_NextBtn_ON_TAP');
+                            logFirebaseEvent('NextBtn_update_app_state');
                             FFAppState().positionMS = 0;
                             FFAppState().playerIndex =
                                 FFAppState().playerIndex + 1;
                             FFAppState().isAudioPlaying = true;
+                            logFirebaseEvent('NextBtn_custom_action');
                             await actions.createDataType(
                               widget.meditationList?[FFAppState().playerIndex],
                             );
+                            logFirebaseEvent('NextBtn_custom_action');
                             await actions.playMusic(
                               'p1',
                               widget.meditationList![FFAppState().playerIndex]
                                   .audioPath,
                             );
+                            logFirebaseEvent('NextBtn_update_component_state');
 
                             setState(() {});
                           },
@@ -500,6 +530,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                       size: 24.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent('PLAYER_COMP_COMP_plus15sBtn_ON_TAP');
+                      logFirebaseEvent('plus15sBtn_custom_action');
                       await actions.seekAudio(
                         'p1',
                         FFAppState().positionMS + 30000,
@@ -528,6 +560,10 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'PLAYER_Container_9pfpszs0_ON_TAP');
+                              logFirebaseEvent(
+                                  'Container_generate_current_page_link');
                               _model.currentPageLink =
                                   await generateCurrentPageLink(
                                 context,
@@ -542,6 +578,7 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                     .description,
                               );
 
+                              logFirebaseEvent('Container_share');
                               await Share.share(
                                 _model.currentPageLink,
                                 sharePositionOrigin:
@@ -603,6 +640,10 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'PLAYER_COMP_COMP_RemoveTrackBtn_ON_TAP');
+                                      logFirebaseEvent(
+                                          'RemoveTrackBtn_custom_action');
                                       _model.isDeleted =
                                           await actions.deleteFiles(
                                         functions.findTrackById(
@@ -616,6 +657,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                                 .toList()),
                                       );
                                       if (_model.isDeleted!) {
+                                        logFirebaseEvent(
+                                            'RemoveTrackBtn_bottom_sheet');
                                         await showModalBottomSheet(
                                           isScrollControlled: true,
                                           backgroundColor: Colors.transparent,
@@ -647,6 +690,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'PLAYER_COMP_COMP_DonwloadTrackBtn_ON_TAP');
                                       if (!(functions.findTrackById(
                                               widget
                                                   .meditationList![
@@ -657,6 +702,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                                   .downloadingTracks
                                                   .toList()) !=
                                           null)) {
+                                        logFirebaseEvent(
+                                            'DonwloadTrackBtn_custom_action');
                                         _model.isDownload =
                                             await actions.downloadUrl(
                                           widget
@@ -675,6 +722,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                         );
                                       }
                                       if (_model.isDownload!) {
+                                        logFirebaseEvent(
+                                            'DonwloadTrackBtn_update_app_state');
                                         FFAppState()
                                             .updateDownloadedTracksAtIndex(
                                           valueOrDefault<int>(
@@ -723,6 +772,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                                 .durationEng,
                                         );
                                         setState(() {});
+                                        logFirebaseEvent(
+                                            'DonwloadTrackBtn_bottom_sheet');
                                         await showModalBottomSheet(
                                           isScrollControlled: true,
                                           backgroundColor: Colors.transparent,
@@ -737,6 +788,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                           },
                                         ).then((value) => safeSetState(() {}));
                                       } else {
+                                        logFirebaseEvent(
+                                            'DonwloadTrackBtn_bottom_sheet');
                                         await showModalBottomSheet(
                                           isScrollControlled: true,
                                           backgroundColor: Colors.transparent,
@@ -781,6 +834,10 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'PLAYER_Container_shpro36d_ON_TAP');
+                                  logFirebaseEvent('Container_backend_call');
+
                                   await currentUserReference!.update({
                                     ...mapToFirestore(
                                       {
@@ -794,6 +851,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                       },
                                     ),
                                   });
+                                  logFirebaseEvent(
+                                      'Container_update_component_state');
                                   _model.isLiked = false;
                                   setState(() {});
                                 },
@@ -815,6 +874,10 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'PLAYER_Container_017iooiv_ON_TAP');
+                                  logFirebaseEvent('Container_backend_call');
+
                                   await currentUserReference!.update({
                                     ...mapToFirestore(
                                       {
@@ -828,6 +891,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                       },
                                     ),
                                   });
+                                  logFirebaseEvent(
+                                      'Container_update_component_state');
                                   _model.isLiked = true;
                                   setState(() {});
                                 },
@@ -854,7 +919,12 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'PLAYER_Container_ga9ex1lr_ON_TAP');
+                                  logFirebaseEvent(
+                                      'Container_update_app_state');
                                   FFAppState().repeatMode = false;
+                                  logFirebaseEvent('Container_custom_action');
                                   await actions.setLoopMode(
                                     'p1',
                                   );
@@ -878,7 +948,12 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'PLAYER_Container_9y2pkt27_ON_TAP');
+                                  logFirebaseEvent(
+                                      'Container_update_app_state');
                                   FFAppState().repeatMode = true;
+                                  logFirebaseEvent('Container_custom_action');
                                   await actions.setLoopMode(
                                     'p1',
                                   );

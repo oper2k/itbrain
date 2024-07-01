@@ -30,8 +30,11 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
     super.initState();
     _model = createModel(context, () => BuyPackModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'buyPack'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('BUY_PACK_PAGE_buyPack_ON_INIT_STATE');
+      logFirebaseEvent('buyPack_custom_action');
       await actions.yesCreateScreenshots();
     });
   }
@@ -107,6 +110,9 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'BUY_PACK_PAGE_Container_qyf9vxga_ON_TAP');
+                            logFirebaseEvent('Container_navigate_back');
                             context.safePop();
                           },
                           child: Container(
@@ -301,6 +307,10 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'BUY_PACK_PAGE_Container_47fkbiwp_ON_TAP');
+                          logFirebaseEvent('Container_navigate_to');
+
                           context.pushNamed(
                             'paymentMethod',
                             queryParameters: {

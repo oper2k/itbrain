@@ -61,6 +61,10 @@ class _NavbarStudyWidgetState extends State<NavbarStudyWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent(
+                        'NAVBAR_STUDY_COMP_Column_ac8umw3i_ON_TAP');
+                    logFirebaseEvent('Column_navigate_to');
+
                     context.pushNamed(
                       'HomePage',
                       extra: <String, dynamic>{
@@ -139,6 +143,10 @@ class _NavbarStudyWidgetState extends State<NavbarStudyWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent(
+                        'NAVBAR_STUDY_COMP_Column_kv1x6h3k_ON_TAP');
+                    logFirebaseEvent('Column_navigate_to');
+
                     context.pushNamed(
                       'profileCabinet',
                       extra: <String, dynamic>{

@@ -28,7 +28,10 @@ class _CheckPurchasesWidgetState extends State<CheckPurchasesWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('CHECK_PURCHASES_checkPurchases_ON_INIT_S');
+      logFirebaseEvent('checkPurchases_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2000));
+      logFirebaseEvent('checkPurchases_bottom_sheet');
       Navigator.pop(context);
     });
   }

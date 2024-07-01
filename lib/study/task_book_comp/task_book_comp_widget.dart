@@ -105,6 +105,8 @@ class _TaskBookCompWidgetState extends State<TaskBookCompWidget> {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
+                logFirebaseEvent('TASK_BOOK_COMP_COMP_Row_wn3riq9q_ON_TAP');
+                logFirebaseEvent('Row_bottom_sheet');
                 await showModalBottomSheet(
                   isScrollControlled: true,
                   backgroundColor: Colors.transparent,

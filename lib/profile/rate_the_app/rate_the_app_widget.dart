@@ -67,6 +67,9 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                       size: 22.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'RATE_THE_APP_COMP_close_sharp_ICN_ON_TAP');
+                      logFirebaseEvent('IconButton_bottom_sheet');
                       Navigator.pop(context);
                     },
                   ),
@@ -115,6 +118,9 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'RATE_THE_APP_Container_g6c8gmye_ON_TAP');
+                        logFirebaseEvent('Container_custom_action');
                         await actions.launchReview(
                           FFAppConstants.appleId,
                           FFAppConstants.googleID,
@@ -171,6 +177,9 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'RATE_THE_APP_Container_q7l4272s_ON_TAP');
+                        logFirebaseEvent('Container_bottom_sheet');
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
@@ -241,6 +250,8 @@ class _RateTheAppWidgetState extends State<RateTheAppWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent('RATE_THE_APP_Container_64msdeuj_ON_TAP');
+                    logFirebaseEvent('Container_bottom_sheet');
                     Navigator.pop(context);
                   },
                   child: Container(

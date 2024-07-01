@@ -114,6 +114,9 @@ class _BookContentWidgetState extends State<BookContentWidget> {
                         size: 22.0,
                       ),
                       onPressed: () async {
+                        logFirebaseEvent(
+                            'BOOK_CONTENT_COMP_close_sharp_ICN_ON_TAP');
+                        logFirebaseEvent('IconButton_bottom_sheet');
                         Navigator.pop(context);
                       },
                     ),
@@ -129,7 +132,7 @@ class _BookContentWidgetState extends State<BookContentWidget> {
                             '<style> li {color: #2F0A4C;} li span {color: #2F0A4C;}  p {color: #2F0A4C;} body {color: #2F0A4C;} </style> <body>${widget.content?.bookText}</body>',
                             '0',
                           ),
-                          onLinkTap: (url, _, __, ___) => launchURL(url!),
+                          onLinkTap: (url, _, __) => launchURL(url!),
                         ),
                       ],
                     ),
@@ -143,6 +146,9 @@ class _BookContentWidgetState extends State<BookContentWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'BOOK_CONTENT_Container_0kgtj62w_ON_TAP');
+                      logFirebaseEvent('Container_bottom_sheet');
                       Navigator.pop(context);
                     },
                     child: Container(

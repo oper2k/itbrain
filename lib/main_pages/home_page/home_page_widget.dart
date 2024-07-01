@@ -42,17 +42,22 @@ class _HomePageWidgetState extends State<HomePageWidget>
     super.initState();
     _model = createModel(context, () => HomePageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'HomePage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('HOME_PAGE_PAGE_HomePage_ON_INIT_STATE');
       if (FFAppState().LastAffirmationDate !=
           dateTimeFormat(
             'd/M/y',
             getCurrentTimestamp,
             locale: FFLocalizations.of(context).languageCode,
           )) {
+        logFirebaseEvent('HomePage_custom_action');
         _model.affirmation = await actions.getRandomAffirmationReference();
+        logFirebaseEvent('HomePage_update_app_state');
         FFAppState().lastShowAffirmation = _model.affirmation?.reference;
         setState(() {});
+        logFirebaseEvent('HomePage_bottom_sheet');
         await showModalBottomSheet(
           isScrollControlled: true,
           backgroundColor: Colors.transparent,
@@ -76,15 +81,23 @@ class _HomePageWidgetState extends State<HomePageWidget>
         return;
       }
 
+      logFirebaseEvent('HomePage_wait__delay');
       await Future.delayed(const Duration(milliseconds: 1000));
+      logFirebaseEvent('HomePage_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('HomePage_custom_action');
       _model.isIOnline = await actions.checkInternetConnection();
       if (_model.isIOnline!) {
+        logFirebaseEvent('HomePage_clear_query_cache');
         FFAppState().clearListViewCacheCache();
+        logFirebaseEvent('HomePage_clear_query_cache');
         FFAppState().clearMeditationCategoryPageCache();
+        logFirebaseEvent('HomePage_clear_query_cache');
         FFAppState().clearBuyPackCacheCache();
+        logFirebaseEvent('HomePage_clear_query_cache');
         FFAppState().clearHistoryCacheCache();
       } else {
+        logFirebaseEvent('HomePage_update_app_state');
         FFAppState().isOffline = true;
         FFAppState().isAppLoaded = true;
         setState(() {});
@@ -253,6 +266,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'HOME_ConditionalBuilder_3m9wyqk5_ON_TAP');
+                                    logFirebaseEvent(
+                                        'ConditionalBuilder_navigate_to');
+
                                     context.pushNamed(
                                       'profileCabinet',
                                       extra: <String, dynamic>{
@@ -422,6 +440,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   Colors
                                                                       .transparent,
                                                               onTap: () async {
+                                                                logFirebaseEvent(
+                                                                    'HOME_PAGE_PAGE_Container_k2x1ihuo_ON_TAP');
+                                                                logFirebaseEvent(
+                                                                    'Container_navigate_to');
+
                                                                 context
                                                                     .pushNamed(
                                                                   'Stories',
@@ -557,6 +580,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                         .transparent,
                                                                 onTap:
                                                                     () async {
+                                                                  logFirebaseEvent(
+                                                                      'HOME_PAGE_PAGE_Container_elb3ydh5_ON_TAP');
+                                                                  logFirebaseEvent(
+                                                                      'Container_navigate_to');
+
                                                                   context
                                                                       .pushNamed(
                                                                     'Stories',
@@ -834,15 +862,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           listViewIndex];
                                                   return Visibility(
                                                     visible: (!containerShowAppleRecord!
-                                                                .isShow2 &&
+                                                                .isShow3 &&
                                                             listViewMeditationCategoriesRecord
                                                                 .isPaid) ||
                                                         (!containerShowAppleRecord
-                                                                .isShow2 &&
+                                                                .isShow3 &&
                                                             !listViewMeditationCategoriesRecord
                                                                 .soon) ||
                                                         containerShowAppleRecord
-                                                            .isShow2,
+                                                            .isShow3,
                                                     child: InkWell(
                                                       splashColor:
                                                           Colors.transparent,
@@ -853,6 +881,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'HOME_PAGE_PAGE_Container_r1ahgz02_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'meditationComp_navigate_to');
+
                                                         context.pushNamed(
                                                           'meditationInfo',
                                                           queryParameters: {
@@ -966,6 +999,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        logFirebaseEvent(
+                                            'HOME_PAGE_PAGE_Row_th9dms3d_ON_TAP');
+                                        logFirebaseEvent('Row_navigate_to');
+
                                         context.pushNamed('allVideos');
                                       },
                                       child: Row(
@@ -1084,6 +1121,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'HOME_PAGE_PAGE_Container_80l3bhhw_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Container_launch_u_r_l');
                                                         await launchURL(
                                                             videosItem
                                                                 .videoUrl);
@@ -1152,6 +1193,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              logFirebaseEvent(
+                                                  'HOME_PAGE_PAGE_Container_fx7x727k_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'Container_bottom_sheet');
                                               await showModalBottomSheet(
                                                 isScrollControlled: true,
                                                 backgroundColor:

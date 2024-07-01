@@ -65,6 +65,8 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
                       size: 22.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent('DAILY_ADVICE_close_sharp_ICN_ON_TAP');
+                      logFirebaseEvent('IconButton_bottom_sheet');
                       Navigator.pop(context);
                     },
                   ),
@@ -139,6 +141,9 @@ class _DailyAdviceCompWidgetState extends State<DailyAdviceCompWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'DAILY_ADVICE_Container_xeng604n_ON_TAP');
+                          logFirebaseEvent('Container_bottom_sheet');
                           Navigator.pop(context);
                         },
                         child: Container(

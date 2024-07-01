@@ -82,6 +82,9 @@ class _MeditationPackInfoWidgetState extends State<MeditationPackInfoWidget> {
                           size: 22.0,
                         ),
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'MEDITATION_PACK_INFO_close_sharp_ICN_ON_');
+                          logFirebaseEvent('IconButton_bottom_sheet');
                           Navigator.pop(context);
                         },
                       ),
@@ -124,6 +127,9 @@ class _MeditationPackInfoWidgetState extends State<MeditationPackInfoWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'MEDITATION_PACK_INFO_Container_ob9vi8ni_');
+                        logFirebaseEvent('Container_bottom_sheet');
                         Navigator.pop(context);
                       },
                       child: Container(

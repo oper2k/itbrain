@@ -40,9 +40,14 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
     super.initState();
     _model = createModel(context, () => ProfileCabinetModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'profileCabinet'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('PROFILE_CABINET_profileCabinet_ON_INIT_S');
+      logFirebaseEvent('profileCabinet_custom_action');
       await actions.yesCreateScreenshots();
+      logFirebaseEvent('profileCabinet_custom_action');
       await actions.lockOrientation();
     });
 
@@ -109,6 +114,10 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'PROFILE_CABINET_Container_g9haqbvh_ON_TA');
+                            logFirebaseEvent('Container_navigate_to');
+
                             context.pushNamed(
                               'HomePage',
                               extra: <String, dynamic>{
@@ -140,6 +149,9 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'PROFILE_CABINET_Container_a4h9yvat_ON_TA');
+                            logFirebaseEvent('Container_bottom_sheet');
                             await showModalBottomSheet(
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
@@ -279,6 +291,11 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
+                                                logFirebaseEvent(
+                                                    'PROFILE_CABINET_Container_jhl3yy0h_ON_TA');
+                                                logFirebaseEvent(
+                                                    'Container_navigate_to');
+
                                                 context
                                                     .pushNamed('editProfile');
                                               },
@@ -347,6 +364,11 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
+                                                logFirebaseEvent(
+                                                    'PROFILE_CABINET_Container_r2y5lsoo_ON_TA');
+                                                logFirebaseEvent(
+                                                    'Container_navigate_to');
+
                                                 context
                                                     .pushNamed('editProfile');
                                               },
@@ -453,6 +475,10 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'PROFILE_CABINET_PAGE_Row_gzqntcgs_ON_TAP');
+                                    logFirebaseEvent('Row_navigate_to');
+
                                     context.pushNamed('editProfile');
                                   },
                                   child: Row(
@@ -539,6 +565,10 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'PROFILE_CABINET_Container_el6nck9q_ON_TA');
+                                      logFirebaseEvent('Container_navigate_to');
+
                                       context.pushNamed('changeLanguage');
                                     },
                                     child: Container(
@@ -607,6 +637,9 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'PROFILE_CABINET_Container_iqpg6i5d_ON_TA');
+                                  logFirebaseEvent('Container_launch_u_r_l');
                                   await launchURL(FFLocalizations.of(context)
                                       .getVariableText(
                                     ruText:
@@ -673,6 +706,9 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'PROFILE_CABINET_Container_dln8tlea_ON_TA');
+                                  logFirebaseEvent('Container_bottom_sheet');
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
@@ -753,6 +789,10 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'PROFILE_CABINET_Container_7e2osajn_ON_TA');
+                                  logFirebaseEvent('Container_navigate_to');
+
                                   context.pushNamed('aboutPage');
                                 },
                                 child: Container(
@@ -816,10 +856,14 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'PROFILE_CABINET_PAGE_Debug_ON_TAP');
                                     if ((currentUserEmail ==
                                             'test@test.test') ||
                                         (currentUserEmail ==
                                             'alexsabinovcom@gmail.com')) {
+                                      logFirebaseEvent('Debug_navigate_to');
+
                                       context.pushNamed('DebugPage');
                                     } else {
                                       return;
@@ -907,7 +951,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                   decoration: const BoxDecoration(),
                                   child: Visibility(
                                     visible:
-                                        containerShowAppleRecord?.isShow2 ??
+                                        containerShowAppleRecord?.isShow3 ??
                                             true,
                                     child: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
@@ -918,7 +962,13 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'PROFILE_CABINET_Container_gpg67m6d_ON_TA');
+                                          logFirebaseEvent(
+                                              'Container_revenue_cat');
                                           await revenue_cat.restorePurchases();
+                                          logFirebaseEvent(
+                                              'Container_firestore_query');
                                           _model.orders =
                                               await queryOrdersRecordOnce(
                                             queryBuilder: (ordersRecord) =>
@@ -928,6 +978,8 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                             ),
                                           );
                                           if (_model.orders!.isNotEmpty) {
+                                            logFirebaseEvent(
+                                                'Container_firestore_query');
                                             _model.meditations =
                                                 await queryMeditationCategoriesRecordOnce(
                                               queryBuilder:
@@ -940,6 +992,8 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                                                       .purchasedProduct)
                                                                   .toList()),
                                             );
+                                            logFirebaseEvent(
+                                                'Container_backend_call');
 
                                             await currentUserReference!.update({
                                               ...mapToFirestore(
@@ -953,6 +1007,8 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                               ),
                                             });
                                           }
+                                          logFirebaseEvent(
+                                              'Container_bottom_sheet');
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,

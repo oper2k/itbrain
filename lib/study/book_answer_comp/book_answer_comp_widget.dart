@@ -135,6 +135,10 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'BOOK_ANSWER_Container_2fitin0c_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Container_launch_u_r_l');
                                       await launchURL(widget.book!.aboutUrl);
                                     },
                                     child: Container(
@@ -174,6 +178,10 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'BOOK_ANSWER_Container_d1qni5fu_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Container_firestore_query');
                                       _model.allPages =
                                           await queryBooksPagesRecordOnce(
                                         queryBuilder: (booksPagesRecord) =>
@@ -182,6 +190,7 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                           isEqualTo: widget.book?.reference,
                                         ),
                                       );
+                                      logFirebaseEvent('Container_navigate_to');
 
                                       context.pushNamed(
                                         'bookTimer',
@@ -345,6 +354,10 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'BOOK_ANSWER_Container_dtxry0nw_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Container_launch_u_r_l');
                                       await launchURL(
                                           widget.book!.downloadLink);
                                     },
@@ -407,6 +420,10 @@ class _BookAnswerCompWidgetState extends State<BookAnswerCompWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'BOOK_ANSWER_Container_yzpczonr_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Container_launch_u_r_l');
                                       await launchURL(widget.book!.listenLink);
                                     },
                                     child: Container(

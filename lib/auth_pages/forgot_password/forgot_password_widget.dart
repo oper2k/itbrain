@@ -31,9 +31,14 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
     super.initState();
     _model = createModel(context, () => ForgotPasswordModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'forgotPassword'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('FORGOT_PASSWORD_forgotPassword_ON_INIT_S');
+      logFirebaseEvent('forgotPassword_custom_action');
       await actions.yesCreateScreenshots();
+      logFirebaseEvent('forgotPassword_custom_action');
       await actions.lockOrientation();
     });
 
@@ -97,6 +102,9 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'FORGOT_PASSWORD_Container_u1z6xct2_ON_TA');
+                        logFirebaseEvent('Container_navigate_back');
                         context.pop();
                       },
                       child: Container(
@@ -315,9 +323,13 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'FORGOT_PASSWORD_Container_1goredmk_ON_TA');
                       if (_model.emailTextController.text != '') {
+                        logFirebaseEvent('Container_update_page_state');
                         _model.showEmailError = false;
                         setState(() {});
+                        logFirebaseEvent('Container_auth');
                         if (_model.emailTextController.text.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -334,6 +346,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                           email: _model.emailTextController.text,
                           context: context,
                         );
+                        logFirebaseEvent('Container_bottom_sheet');
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
@@ -355,6 +368,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                           },
                         ).then((value) => safeSetState(() {}));
                       } else {
+                        logFirebaseEvent('Container_update_page_state');
                         _model.showEmailError = true;
                         setState(() {});
                         return;

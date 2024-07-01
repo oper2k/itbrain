@@ -35,13 +35,19 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
     super.initState();
     _model = createModel(context, () => ContentPageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'contentPage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('CONTENT_contentPage_ON_INIT_STATE');
+      logFirebaseEvent('contentPage_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('contentPage_custom_action');
       await actions.notCreateScreenshots();
       if (!(currentUserDocument?.completeLessons.toList() ?? [])
           .contains(widget.lesson?.reference)) {
         if (widget.isLastLesson) {
+          logFirebaseEvent('contentPage_backend_call');
+
           await currentUserReference!.update({
             ...mapToFirestore(
               {
@@ -53,6 +59,8 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
             ),
           });
         } else {
+          logFirebaseEvent('contentPage_backend_call');
+
           await currentUserReference!.update({
             ...mapToFirestore(
               {
@@ -97,6 +105,8 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent('CONTENT_Container_aasixv5i_ON_TAP');
+                      logFirebaseEvent('Container_navigate_back');
                       context.safePop();
                     },
                     child: Container(

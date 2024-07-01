@@ -40,9 +40,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
     super.initState();
     _model = createModel(context, () => EditProfileModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'editProfile'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('EDIT_PROFILE_editProfile_ON_INIT_STATE');
+      logFirebaseEvent('editProfile_custom_action');
       await actions.yesCreateScreenshots();
+      logFirebaseEvent('editProfile_custom_action');
       await actions.lockOrientation();
     });
 
@@ -131,6 +135,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'EDIT_PROFILE_Container_4q36zwo2_ON_TAP');
+                                  logFirebaseEvent('Container_navigate_back');
                                   context.safePop();
                                 },
                                 child: Container(
@@ -154,6 +161,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'EDIT_PROFILE_Container_gayao3sc_ON_TAP');
+                                  logFirebaseEvent('Container_bottom_sheet');
                                   await showModalBottomSheet(
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
@@ -224,6 +234,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'EDIT_PROFILE_PAGE_Row_fsdekspl_ON_TAP');
+                              logFirebaseEvent('Row_upload_media_to_firebase');
                               final selectedMedia =
                                   await selectMediaWithSourceBottomSheet(
                                 context: context,
@@ -302,6 +315,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 }
                               }
 
+                              logFirebaseEvent('Row_update_app_state');
                               FFAppState().imageProfileBlurHash =
                                   _model.uploadedLocalFile.blurHash!;
                               setState(() {});
@@ -382,8 +396,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                 size: 12.0,
                                               ),
                                               onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'EDIT_PROFILE_PAGE_union_ICN_ON_TAP');
                                                 if (_model.uploadedFileUrl !=
                                                         '') {
+                                                  logFirebaseEvent(
+                                                      'IconButton_clear_uploaded_data');
                                                   setState(() {
                                                     _model.isDataUploading =
                                                         false;
@@ -395,6 +413,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                                   });
                                                 } else {
                                                   if (currentUserPhoto != '') {
+                                                    logFirebaseEvent(
+                                                        'IconButton_backend_call');
+
                                                     await currentUserReference!
                                                         .update({
                                                       ...mapToFirestore(
@@ -889,6 +910,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     if (!currentUserEmailVerified)
                                       FFButtonWidget(
                                         onPressed: () async {
+                                          logFirebaseEvent(
+                                              'EDIT_PROFILE_PAGE_ПОДТВЕРДИТЬ_BTN_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Button_navigate_to');
+
                                           context
                                               .pushNamed('confirmEmailProfile');
                                         },
@@ -973,6 +999,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'EDIT_PROFILE_Container_ffb6lw25_ON_TAP');
+                      logFirebaseEvent('Container_backend_call');
+
                       await currentUserReference!.update(createUsersRecordData(
                         displayName: _model.nameTextController.text != ''
                             ? _model.nameTextController.text
@@ -987,6 +1017,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                             ? _model.uploadedFileUrl
                             : currentUserPhoto,
                       ));
+                      logFirebaseEvent('Container_navigate_to');
 
                       context.goNamed('profileCabinet');
                     },

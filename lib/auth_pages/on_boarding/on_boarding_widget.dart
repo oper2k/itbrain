@@ -23,11 +23,17 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
     super.initState();
     _model = createModel(context, () => OnBoardingModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'onBoarding'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('ON_BOARDING_onBoarding_ON_INIT_STATE');
+      logFirebaseEvent('onBoarding_custom_action');
       await actions.yesCreateScreenshots();
+      logFirebaseEvent('onBoarding_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('onBoarding_set_dark_mode_settings');
       setDarkModeSetting(context, ThemeMode.dark);
+      logFirebaseEvent('onBoarding_set_app_language');
       setAppLanguage(context, FFLocalizations.of(context).languageCode);
     });
   }
@@ -159,6 +165,10 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'ON_BOARDING_Container_4r79vewq_ON_TAP');
+                                    logFirebaseEvent('Container_navigate_to');
+
                                     context.pushNamed('signUpPage');
                                   },
                                   child: Container(
@@ -206,6 +216,10 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'ON_BOARDING_Container_u4ley9bx_ON_TAP');
+                                  logFirebaseEvent('Container_navigate_to');
+
                                   context.pushNamed('signInPage');
                                 },
                                 child: Container(
@@ -259,6 +273,9 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'ON_BOARDING_Container_obz37rek_ON_TAP');
+                            logFirebaseEvent('Container_set_app_language');
                             setAppLanguage(context, 'en');
                           },
                           child: Container(
@@ -367,6 +384,9 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'ON_BOARDING_Container_vtysjthi_ON_TAP');
+                            logFirebaseEvent('Container_set_app_language');
                             setAppLanguage(context, 'ru');
                           },
                           child: Container(

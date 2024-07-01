@@ -68,6 +68,9 @@ class _DeleteAccountConfirmWidgetState
                       size: 22.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'DELETE_ACCOUNT_CONFIRM_close_sharp_ICN_O');
+                      logFirebaseEvent('IconButton_bottom_sheet');
                       Navigator.pop(context);
                     },
                   ),
@@ -138,10 +141,16 @@ class _DeleteAccountConfirmWidgetState
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'DELETE_ACCOUNT_CONFIRM_Container_mwuumec');
+                          logFirebaseEvent('Container_auth');
                           await authManager.deleteUser(context);
+                          logFirebaseEvent('Container_auth');
                           GoRouter.of(context).prepareAuthEvent();
                           await authManager.signOut();
                           GoRouter.of(context).clearRedirectLocation();
+
+                          logFirebaseEvent('Container_navigate_to');
 
                           context.goNamedAuth('onBoarding', context.mounted);
                         },
@@ -185,6 +194,9 @@ class _DeleteAccountConfirmWidgetState
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'DELETE_ACCOUNT_CONFIRM_Container_5yxjtoa');
+                          logFirebaseEvent('Container_bottom_sheet');
                           Navigator.pop(context);
                         },
                         child: Container(

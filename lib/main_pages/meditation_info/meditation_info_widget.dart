@@ -46,10 +46,16 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
     super.initState();
     _model = createModel(context, () => MeditationInfoModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'meditationInfo'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('MEDITATION_INFO_meditationInfo_ON_INIT_S');
+      logFirebaseEvent('meditationInfo_custom_action');
       await actions.notCreateScreenshots();
+      logFirebaseEvent('meditationInfo_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('meditationInfo_custom_action');
       unawaited(
         () async {
           await actions.stopMusic(
@@ -179,6 +185,10 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'MEDITATION_INFO_Container_8yqwlyga_ON_TA');
+                                          logFirebaseEvent(
+                                              'Container_navigate_back');
                                           context.safePop();
                                         },
                                         child: Container(
@@ -258,10 +268,14 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
+                                                      logFirebaseEvent(
+                                                          'MEDITATION_INFO_PAGE_RemoveAllBtn_ON_TAP');
                                                       while (_model
                                                               .iterationIndex <
                                                           containerMeditationsRecordList
                                                               .length) {
+                                                        logFirebaseEvent(
+                                                            'RemoveAllBtn_custom_action');
                                                         _model.isDeleted =
                                                             await actions
                                                                 .deleteFiles(
@@ -275,11 +289,15 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                                   .downloadedTracks
                                                                   .toList()),
                                                         );
+                                                        logFirebaseEvent(
+                                                            'RemoveAllBtn_update_page_state');
                                                         _model.iterationIndex =
                                                             _model.iterationIndex +
                                                                 1;
                                                         setState(() {});
                                                       }
+                                                      logFirebaseEvent(
+                                                          'RemoveAllBtn_bottom_sheet');
                                                       await showModalBottomSheet(
                                                         isScrollControlled:
                                                             true,
@@ -312,6 +330,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                       ).then((value) =>
                                                           safeSetState(() {}));
 
+                                                      logFirebaseEvent(
+                                                          'RemoveAllBtn_update_page_state');
                                                       _model.iterationIndex = 0;
                                                       setState(() {});
 
@@ -363,6 +383,10 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
+                                                      logFirebaseEvent(
+                                                          'MEDITATION_INFO_DownloadAllBtn_ON_TAP');
+                                                      logFirebaseEvent(
+                                                          'DownloadAllBtn_update_page_state');
                                                       _model.downloadProgress =
                                                           5;
                                                       setState(() {});
@@ -370,6 +394,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                               .iterationIndex <
                                                           containerMeditationsRecordList
                                                               .length) {
+                                                        logFirebaseEvent(
+                                                            'DownloadAllBtn_custom_action');
                                                         _model.isDownload =
                                                             await actions
                                                                 .downloadUrl(
@@ -389,6 +415,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                         );
                                                         if (_model
                                                             .isDownload!) {
+                                                          logFirebaseEvent(
+                                                              'DownloadAllBtn_update_app_state');
                                                           FFAppState()
                                                               .updateDownloadedTracksAtIndex(
                                                             valueOrDefault<int>(
@@ -456,6 +484,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                                       .durationEng,
                                                           );
                                                         }
+                                                        logFirebaseEvent(
+                                                            'DownloadAllBtn_update_page_state');
                                                         _model.iterationIndex =
                                                             _model.iterationIndex +
                                                                 1;
@@ -466,10 +496,14 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                                 .round();
                                                         setState(() {});
                                                       }
+                                                      logFirebaseEvent(
+                                                          'DownloadAllBtn_update_page_state');
                                                       _model.iterationIndex = 0;
                                                       _model.downloadProgress =
                                                           100;
                                                       setState(() {});
+                                                      logFirebaseEvent(
+                                                          'DownloadAllBtn_bottom_sheet');
                                                       await showModalBottomSheet(
                                                         isScrollControlled:
                                                             true,
@@ -626,6 +660,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                 : 10,
                                             10,
                                           ),
+                                          minFontSize: 14.0,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -639,7 +674,6 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                 useGoogleFonts: false,
                                                 lineHeight: 1.29,
                                               ),
-                                          minFontSize: 14.0,
                                         ),
                                       ),
                                     ),
@@ -658,6 +692,10 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'MEDITATION_INFO_Container_ypbu3s9h_ON_TA');
+                                          logFirebaseEvent(
+                                              'Container_bottom_sheet');
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,
@@ -807,6 +845,11 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
+                                                    logFirebaseEvent(
+                                                        'MEDITATION_INFO_soon_showNotify_notAdded');
+                                                    logFirebaseEvent(
+                                                        'soon_showNotify_notAdded_backend_call');
+
                                                     var ffCustomPushNotificationsRecordReference =
                                                         FfCustomPushNotificationsRecord
                                                             .collection
@@ -922,6 +965,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                                       '',
                                                                 ),
                                                                 ffCustomPushNotificationsRecordReference);
+                                                    logFirebaseEvent(
+                                                        'soon_showNotify_notAdded_backend_call');
 
                                                     await currentUserReference!
                                                         .update({
@@ -937,6 +982,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                         },
                                                       ),
                                                     });
+                                                    logFirebaseEvent(
+                                                        'soon_showNotify_notAdded_wait__delay');
                                                     await Future.delayed(
                                                         const Duration(
                                                             milliseconds: 500));
@@ -1057,6 +1104,10 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
+                                            logFirebaseEvent(
+                                                'MEDITATION_INFO_soon_notShowNotify_ON_TA');
+                                            logFirebaseEvent(
+                                                'soon_notShowNotify_launch_u_r_l');
                                             await launchURL(
                                                 FFLocalizations.of(context)
                                                     .getVariableText(
@@ -1134,6 +1185,10 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'MEDITATION_INFO_noSoon_notPurchased_ON_T');
+                                          logFirebaseEvent(
+                                              'noSoon_notPurchased_launch_u_r_l');
                                           await launchURL(
                                               FFLocalizations.of(context)
                                                   .getVariableText(
@@ -1254,6 +1309,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
+                                                  logFirebaseEvent(
+                                                      'MEDITATION_INFO_Container_bv2ljgco_ON_TA');
                                                   if (meditationsItem.isPaid) {
                                                     if ((currentUserDocument
                                                                 ?.purchasedMeditationsPacks
@@ -1261,6 +1318,8 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                             [])
                                                         .contains(meditationsItem
                                                             .meditationCategory)) {
+                                                      logFirebaseEvent(
+                                                          'meditations_update_app_state');
                                                       FFAppState().positionMS =
                                                           0;
                                                       FFAppState().playerIndex =
@@ -1269,9 +1328,13 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                         0,
                                                       );
                                                       setState(() {});
+                                                      logFirebaseEvent(
+                                                          'meditations_custom_action');
                                                       await actions.stopMusic(
                                                         'p1',
                                                       );
+                                                      logFirebaseEvent(
+                                                          'meditations_navigate_to');
 
                                                       context.pushNamed(
                                                         'playerPage',
@@ -1310,13 +1373,19 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                                       return;
                                                     }
                                                   } else {
+                                                    logFirebaseEvent(
+                                                        'meditations_update_app_state');
                                                     FFAppState().positionMS = 0;
                                                     FFAppState().playerIndex =
                                                         meditationsIndex;
                                                     setState(() {});
+                                                    logFirebaseEvent(
+                                                        'meditations_custom_action');
                                                     await actions.stopMusic(
                                                       'p1',
                                                     );
+                                                    logFirebaseEvent(
+                                                        'meditations_navigate_to');
 
                                                     context.pushNamed(
                                                       'playerPage',
@@ -1402,6 +1471,11 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
+                                                logFirebaseEvent(
+                                                    'MEDITATION_INFO_Container_jq7f49e4_ON_TA');
+                                                logFirebaseEvent(
+                                                    'meditationsOffline_navigate_to');
+
                                                 context.pushNamed(
                                                   'offlinePlayerPage',
                                                   queryParameters: {

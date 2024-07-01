@@ -30,8 +30,11 @@ class _AffirmationWidgetState extends State<AffirmationWidget> {
     super.initState();
     _model = createModel(context, () => AffirmationModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Affirmation'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('AFFIRMATION_Affirmation_ON_INIT_STATE');
+      logFirebaseEvent('Affirmation_update_app_state');
       FFAppState().lastDateShowAffirmation = getCurrentTimestamp;
       FFAppState().lastShowAffirmation = widget.currentAffirmation?.reference;
       setState(() {});

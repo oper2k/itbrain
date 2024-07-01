@@ -273,7 +273,7 @@ class FFAppState extends ChangeNotifier {
 
   void updateCurrentOfflineSongStruct(
       Function(MeditationAudioStruct) updateFn) {
-    updateFn(currentOfflineSong);
+    updateFn(_currentOfflineSong);
   }
 
   bool _isAppLoaded = false;

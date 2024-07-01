@@ -65,6 +65,9 @@ class _PassCheckWidgetState extends State<PassCheckWidget> {
                       size: 22.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'PASS_CHECK_COMP_close_sharp_ICN_ON_TAP');
+                      logFirebaseEvent('IconButton_bottom_sheet');
                       Navigator.pop(context);
                     },
                   ),
@@ -117,6 +120,9 @@ class _PassCheckWidgetState extends State<PassCheckWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'PASS_CHECK_Container_6afz2iuo_ON_TAP');
+                          logFirebaseEvent('Container_bottom_sheet');
                           Navigator.pop(context);
                         },
                         child: Container(

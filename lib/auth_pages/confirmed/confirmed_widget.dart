@@ -131,6 +131,9 @@ class _ConfirmedWidgetState extends State<ConfirmedWidget> {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
+                logFirebaseEvent('CONFIRMED_COMP_Container_owj6xejo_ON_TAP');
+                logFirebaseEvent('Container_navigate_to');
+
                 context.pushNamed('signInPage');
               },
               child: Container(

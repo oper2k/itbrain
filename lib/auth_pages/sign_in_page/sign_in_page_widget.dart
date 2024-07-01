@@ -31,9 +31,13 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
     super.initState();
     _model = createModel(context, () => SignInPageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'signInPage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('SIGN_IN_signInPage_ON_INIT_STATE');
+      logFirebaseEvent('signInPage_custom_action');
       await actions.yesCreateScreenshots();
+      logFirebaseEvent('signInPage_custom_action');
       await actions.lockOrientation();
     });
 
@@ -100,6 +104,9 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent('SIGN_IN_Container_6pm9f68g_ON_TAP');
+                        logFirebaseEvent('Container_navigate_to');
+
                         context.goNamed('onBoarding');
                       },
                       child: Container(
@@ -118,6 +125,9 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
+                        logFirebaseEvent('SIGN_IN_НЕТ_АККАУНТА?_BTN_ON_TAP');
+                        logFirebaseEvent('Button_navigate_to');
+
                         context.pushNamed('signUpPage');
                       },
                       text: FFLocalizations.of(context).getText(
@@ -449,6 +459,9 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
+                        logFirebaseEvent('SIGN_IN_ЗАБЫЛИ_ПАРОЛЬ?_BTN_ON_TAP');
+                        logFirebaseEvent('Button_navigate_to');
+
                         context.pushNamed('forgotPassword');
                       },
                       text: FFLocalizations.of(context).getText(
@@ -491,14 +504,18 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent('SIGN_IN_Container_ej2qdhlh_ON_TAP');
                       if (_model.emailTextController.text != '') {
+                        logFirebaseEvent('Container_update_page_state');
                         _model.showEmailError = false;
                         setState(() {});
                         if ((_model.passwordTextController.text != '') &&
                             functions.passCheck(
                                 _model.passwordTextController.text)!) {
+                          logFirebaseEvent('Container_update_page_state');
                           _model.showPassError = false;
                           setState(() {});
+                          logFirebaseEvent('Container_auth');
                           GoRouter.of(context).prepareAuthEvent();
 
                           final user = await authManager.signInWithEmail(
@@ -510,8 +527,11 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                             return;
                           }
 
+                          logFirebaseEvent('Container_navigate_to');
+
                           context.pushNamedAuth('HomePage', context.mounted);
                         } else {
+                          logFirebaseEvent('Container_update_page_state');
                           _model.showPassError = true;
                           setState(() {});
                           return;
@@ -519,6 +539,7 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
 
                         return;
                       } else {
+                        logFirebaseEvent('Container_update_page_state');
                         _model.showEmailError = true;
                         setState(() {});
                         return;

@@ -3,9 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
-import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class LessonContentStruct extends FFFirebaseStruct {
@@ -30,6 +28,7 @@ class LessonContentStruct extends FFFirebaseStruct {
     String? fileUrl,
     String? lang,
     String? type,
+    String? authorText,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _photo = photo,
         _showDivider = showDivider,
@@ -51,6 +50,7 @@ class LessonContentStruct extends FFFirebaseStruct {
         _fileUrl = fileUrl,
         _lang = lang,
         _type = type,
+        _authorText = authorText,
         super(firestoreUtilData);
 
   // "photo" field.
@@ -195,6 +195,13 @@ class LessonContentStruct extends FFFirebaseStruct {
 
   bool hasType() => _type != null;
 
+  // "authorText" field.
+  String? _authorText;
+  String get authorText => _authorText ?? '';
+  set authorText(String? val) => _authorText = val;
+
+  bool hasAuthorText() => _authorText != null;
+
   static LessonContentStruct fromMap(Map<String, dynamic> data) =>
       LessonContentStruct(
         photo: data['photo'] as String?,
@@ -217,6 +224,7 @@ class LessonContentStruct extends FFFirebaseStruct {
         fileUrl: data['fileUrl'] as String?,
         lang: data['lang'] as String?,
         type: data['type'] as String?,
+        authorText: data['authorText'] as String?,
       );
 
   static LessonContentStruct? maybeFromMap(dynamic data) => data is Map
@@ -244,6 +252,7 @@ class LessonContentStruct extends FFFirebaseStruct {
         'fileUrl': _fileUrl,
         'lang': _lang,
         'type': _type,
+        'authorText': _authorText,
       }.withoutNulls;
 
   @override
@@ -326,6 +335,10 @@ class LessonContentStruct extends FFFirebaseStruct {
         ),
         'type': serializeParam(
           _type,
+          ParamType.String,
+        ),
+        'authorText': serializeParam(
+          _authorText,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -432,6 +445,11 @@ class LessonContentStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        authorText: deserializeParam(
+          data['authorText'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -459,7 +477,8 @@ class LessonContentStruct extends FFFirebaseStruct {
         fileDescription == other.fileDescription &&
         fileUrl == other.fileUrl &&
         lang == other.lang &&
-        type == other.type;
+        type == other.type &&
+        authorText == other.authorText;
   }
 
   @override
@@ -483,7 +502,8 @@ class LessonContentStruct extends FFFirebaseStruct {
         fileDescription,
         fileUrl,
         lang,
-        type
+        type,
+        authorText
       ]);
 }
 
@@ -508,6 +528,7 @@ LessonContentStruct createLessonContentStruct({
   String? fileUrl,
   String? lang,
   String? type,
+  String? authorText,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -534,6 +555,7 @@ LessonContentStruct createLessonContentStruct({
       fileUrl: fileUrl,
       lang: lang,
       type: type,
+      authorText: authorText,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

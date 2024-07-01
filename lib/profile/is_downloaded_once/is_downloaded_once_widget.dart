@@ -65,6 +65,9 @@ class _IsDownloadedOnceWidgetState extends State<IsDownloadedOnceWidget> {
                       size: 22.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'IS_DOWNLOADED_ONCE_close_sharp_ICN_ON_TA');
+                      logFirebaseEvent('IconButton_bottom_sheet');
                       Navigator.pop(context);
                     },
                   ),
@@ -117,6 +120,9 @@ class _IsDownloadedOnceWidgetState extends State<IsDownloadedOnceWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'IS_DOWNLOADED_ONCE_Container_ageysj4k_ON');
+                          logFirebaseEvent('Container_bottom_sheet');
                           Navigator.pop(context);
                         },
                         child: Container(

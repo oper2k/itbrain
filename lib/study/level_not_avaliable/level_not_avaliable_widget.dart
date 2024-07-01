@@ -82,6 +82,9 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
                         size: 22.0,
                       ),
                       onPressed: () async {
+                        logFirebaseEvent(
+                            'LEVEL_NOT_AVALIABLE_close_sharp_ICN_ON_T');
+                        logFirebaseEvent('IconButton_bottom_sheet');
                         Navigator.pop(context);
                       },
                     ),
@@ -169,7 +172,11 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'LEVEL_NOT_AVALIABLE_Container_my3z4300_O');
+                            logFirebaseEvent('Container_launch_u_r_l');
                             await launchURL(widget.url!);
+                            logFirebaseEvent('Container_bottom_sheet');
                             Navigator.pop(context);
                           },
                           child: Container(
@@ -214,6 +221,9 @@ class _LevelNotAvaliableWidgetState extends State<LevelNotAvaliableWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'LEVEL_NOT_AVALIABLE_Container_tnv4o7zo_O');
+                            logFirebaseEvent('Container_bottom_sheet');
                             Navigator.pop(context);
                           },
                           child: Container(

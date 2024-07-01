@@ -65,6 +65,9 @@ class _IsDeletedOnceWidgetState extends State<IsDeletedOnceWidget> {
                       size: 22.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'IS_DELETED_ONCE_close_sharp_ICN_ON_TAP');
+                      logFirebaseEvent('IconButton_bottom_sheet');
                       Navigator.pop(context);
                     },
                   ),
@@ -117,6 +120,9 @@ class _IsDeletedOnceWidgetState extends State<IsDeletedOnceWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'IS_DELETED_ONCE_Container_8ihxm4g5_ON_TA');
+                          logFirebaseEvent('Container_bottom_sheet');
                           Navigator.pop(context);
                         },
                         child: Container(

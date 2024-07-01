@@ -34,8 +34,11 @@ class _StoriesWidgetState extends State<StoriesWidget> {
     super.initState();
     _model = createModel(context, () => StoriesModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Stories'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('STORIES_PAGE_Stories_ON_INIT_STATE');
+      logFirebaseEvent('Stories_custom_action');
       await actions.yesCreateScreenshots();
     });
   }
@@ -78,6 +81,9 @@ class _StoriesWidgetState extends State<StoriesWidget> {
               image:
                   'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/d-m-t-meditation-y84ym0/assets/kel0crxujwhz/Background.png',
               onUserChanged: () async {
+                logFirebaseEvent('STORIES_PAGE_Container_900jtiic_CALLBACK');
+                logFirebaseEvent('Story_backend_call');
+
                 await currentUserReference!.update({
                   ...mapToFirestore(
                     {

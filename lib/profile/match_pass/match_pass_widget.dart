@@ -65,6 +65,9 @@ class _MatchPassWidgetState extends State<MatchPassWidget> {
                       size: 22.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'MATCH_PASS_COMP_close_sharp_ICN_ON_TAP');
+                      logFirebaseEvent('IconButton_bottom_sheet');
                       Navigator.pop(context);
                     },
                   ),
@@ -117,6 +120,9 @@ class _MatchPassWidgetState extends State<MatchPassWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'MATCH_PASS_Container_ji453ll3_ON_TAP');
+                          logFirebaseEvent('Container_bottom_sheet');
                           Navigator.pop(context);
                         },
                         child: Container(

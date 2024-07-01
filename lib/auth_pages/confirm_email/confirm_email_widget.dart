@@ -28,20 +28,31 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
     super.initState();
     _model = createModel(context, () => ConfirmEmailModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'confirmEmail'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('CONFIRM_EMAIL_confirmEmail_ON_INIT_STATE');
       await authManager.refreshUser();
+      logFirebaseEvent('confirmEmail_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('confirmEmail_auth');
       await authManager.sendEmailVerification();
+      logFirebaseEvent('confirmEmail_timer');
       _model.timerController.onStartTimer();
+      logFirebaseEvent('confirmEmail_start_periodic_action');
       _model.instantTimer = InstantTimer.periodic(
         duration: const Duration(milliseconds: 1000),
         callback: (timer) async {
           if (currentUserEmailVerified) {
+            logFirebaseEvent('confirmEmail_update_page_state');
             _model.emailVerified = true;
             setState(() {});
+            logFirebaseEvent('confirmEmail_stop_periodic_action');
             _model.instantTimer?.cancel();
             if (currentUserEmailVerified) {
+              logFirebaseEvent('confirmEmail_navigate_to');
+
               context.pushNamed(
                 'signUpPage',
                 queryParameters: {
@@ -57,6 +68,7 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
               return;
             }
           } else {
+            logFirebaseEvent('confirmEmail_update_page_state');
             _model.emailVerified = false;
             setState(() {});
             return;
@@ -112,6 +124,9 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'CONFIRM_EMAIL_Container_ghuo66d9_ON_TAP');
+                        logFirebaseEvent('Container_navigate_back');
                         context.pop();
                       },
                       child: Container(
@@ -130,6 +145,9 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
+                        logFirebaseEvent(
+                            'CONFIRM_EMAIL_НАПИСАТЬ_В_ПОДДЕРЖКУ_BTN_O');
+                        logFirebaseEvent('Button_launch_u_r_l');
                         await launchURL(
                             FFLocalizations.of(context).getVariableText(
                           ruText: 'https://gold-platform.ru/cms/system/contact',
@@ -256,6 +274,9 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                                   if (shouldUpdate) setState(() {});
                                 },
                                 onEnded: () async {
+                                  logFirebaseEvent(
+                                      'CONFIRM_EMAIL_Timer_fnl03kiq_ON_TIMER_EN');
+                                  logFirebaseEvent('Timer_update_page_state');
                                   _model.showNewCode = true;
                                   setState(() {});
                                 },
@@ -278,9 +299,14 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                         } else {
                           return FFButtonWidget(
                             onPressed: () async {
+                              logFirebaseEvent(
+                                  'CONFIRM_EMAIL_ОТПРАВИТЬ_КОД_ЕЩЕ_РАЗ_BTN_');
+                              logFirebaseEvent('Button_auth');
                               await authManager.sendEmailVerification();
+                              logFirebaseEvent('Button_update_page_state');
                               _model.showNewCode = false;
                               setState(() {});
+                              logFirebaseEvent('Button_timer');
                               _model.timerController.onResetTimer();
                             },
                             text: FFLocalizations.of(context).getText(
@@ -341,6 +367,9 @@ class _ConfirmEmailWidgetState extends State<ConfirmEmailWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent('CONFIRM_EMAIL_Container_c33hgclt_ON_TAP');
+                    logFirebaseEvent('Container_navigate_to');
+
                     context.pushNamed(
                       'signUpPage',
                       queryParameters: {

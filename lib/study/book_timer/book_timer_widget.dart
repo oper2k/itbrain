@@ -33,16 +33,23 @@ class _BookTimerWidgetState extends State<BookTimerWidget> {
     super.initState();
     _model = createModel(context, () => BookTimerModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'bookTimer'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('BOOK_TIMER_PAGE_bookTimer_ON_INIT_STATE');
+      logFirebaseEvent('bookTimer_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('bookTimer_start_periodic_action');
       _model.instantTimer = InstantTimer.periodic(
         duration: const Duration(milliseconds: 10),
         callback: (timer) async {
+          logFirebaseEvent('bookTimer_update_page_state');
           _model.progress = _model.progress + 0.01;
           setState(() {});
           if (_model.progress >= 1.0) {
+            logFirebaseEvent('bookTimer_stop_periodic_action');
             _model.instantTimer?.cancel();
+            logFirebaseEvent('bookTimer_navigate_to');
 
             context.pushNamed(
               'bookPageInfo',
@@ -128,6 +135,9 @@ class _BookTimerWidgetState extends State<BookTimerWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'BOOK_TIMER_Container_jkgi69zy_ON_TAP');
+                              logFirebaseEvent('Container_navigate_back');
                               context.safePop();
                             },
                             child: Container(

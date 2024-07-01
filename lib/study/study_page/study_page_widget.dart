@@ -31,9 +31,13 @@ class _StudyPageWidgetState extends State<StudyPageWidget>
     super.initState();
     _model = createModel(context, () => StudyPageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'studyPage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('STUDY_PAGE_PAGE_studyPage_ON_INIT_STATE');
+      logFirebaseEvent('studyPage_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('studyPage_custom_action');
       await actions.yesCreateScreenshots();
     });
 

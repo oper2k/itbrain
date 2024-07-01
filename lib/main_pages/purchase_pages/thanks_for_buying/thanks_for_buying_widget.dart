@@ -101,6 +101,9 @@ class _ThanksForBuyingWidgetState extends State<ThanksForBuyingWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
+                  logFirebaseEvent('THANKS_FOR_BUYING_Container_c1ym1rkq_ON_');
+                  logFirebaseEvent('Container_navigate_to');
+
                   context.goNamed(
                     'HomePage',
                     extra: <String, dynamic>{

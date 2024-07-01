@@ -34,10 +34,15 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
     super.initState();
     _model = createModel(context, () => StudyLevelsModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'studyLevels'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('STUDY_LEVELS_studyLevels_ON_INIT_STATE');
+      logFirebaseEvent('studyLevels_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('studyLevels_custom_action');
       await actions.notCreateScreenshots();
+      logFirebaseEvent('studyLevels_custom_action');
       unawaited(
         () async {
           await actions.stopMusic(
@@ -170,6 +175,10 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                         highlightColor:
                                                             Colors.transparent,
                                                         onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'STUDY_LEVELS_Container_c7ir69ei_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Container_navigate_back');
                                                           context.safePop();
                                                         },
                                                         child: Container(
@@ -377,12 +386,17 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
+                                                      logFirebaseEvent(
+                                                          'STUDY_LEVELS_PAGE_Row_1zfsx812_ON_TAP');
                                                       if ((currentUserDocument
                                                                   ?.purchasedLevels
                                                                   .toList() ??
                                                               [])
                                                           .contains(levelsItem
                                                               .reference)) {
+                                                        logFirebaseEvent(
+                                                            'Row_navigate_to');
+
                                                         context.pushNamed(
                                                           'studyLevelInfo',
                                                           queryParameters: {
@@ -413,6 +427,8 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                           },
                                                         );
                                                       } else {
+                                                        logFirebaseEvent(
+                                                            'Row_update_page_state');
                                                         _model.isPreviusPurchased =
                                                             (currentUserDocument
                                                                         ?.purchasedLevels
@@ -458,6 +474,8 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                         )]
                                                                 .title;
                                                         setState(() {});
+                                                        logFirebaseEvent(
+                                                            'Row_bottom_sheet');
                                                         await showModalBottomSheet(
                                                           isScrollControlled:
                                                               true,
@@ -742,6 +760,10 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'STUDY_LEVELS_Container_0k54ny8h_ON_TAP');
+                              logFirebaseEvent('Container_navigate_to');
+
                               context.pushNamed(
                                 'lessonsAllCodes',
                                 queryParameters: {

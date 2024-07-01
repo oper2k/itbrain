@@ -36,20 +36,27 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('BOOK_INFO_TIMER_bookInfoTimer_ON_INIT_ST');
+      logFirebaseEvent('bookInfoTimer_start_periodic_action');
       _model.instantTimer = InstantTimer.periodic(
         duration: const Duration(milliseconds: 100),
         callback: (timer) async {
+          logFirebaseEvent('bookInfoTimer_update_component_state');
           _model.progress = _model.progress + 0.1;
           setState(() {});
           if (_model.progress >= 1.0) {
+            logFirebaseEvent('bookInfoTimer_stop_periodic_action');
             _model.instantTimer?.cancel();
+            logFirebaseEvent('bookInfoTimer_bottom_sheet');
             Navigator.pop(context);
+            logFirebaseEvent('bookInfoTimer_firestore_query');
             _model.allPages = await queryBooksPagesRecordOnce(
               queryBuilder: (booksPagesRecord) => booksPagesRecord.where(
                 'book',
                 isEqualTo: widget.book?.reference,
               ),
             );
+            logFirebaseEvent('bookInfoTimer_navigate_to');
 
             context.pushNamed(
               'bookPageInfo',
@@ -115,6 +122,9 @@ class _BookInfoTimerWidgetState extends State<BookInfoTimerWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'BOOK_INFO_TIMER_Container_vnl223ij_ON_TA');
+                      logFirebaseEvent('Container_bottom_sheet');
                       Navigator.pop(context);
                     },
                     child: Container(

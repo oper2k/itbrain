@@ -117,6 +117,9 @@ class _ContentTextWidgetState extends State<ContentTextWidget> {
                       size: 22.0,
                     ),
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'CONTENT_TEXT_COMP_close_sharp_ICN_ON_TAP');
+                      logFirebaseEvent('IconButton_bottom_sheet');
                       Navigator.pop(context);
                     },
                   ),
@@ -133,7 +136,7 @@ class _ContentTextWidgetState extends State<ContentTextWidget> {
                         alignment: const AlignmentDirectional(-1.0, -1.0),
                         child: Text(
                           valueOrDefault<String>(
-                            widget.content?.text,
+                            widget.content?.authorText,
                             '0',
                           ),
                           style:
@@ -158,6 +161,8 @@ class _ContentTextWidgetState extends State<ContentTextWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent('CONTENT_TEXT_Container_2is1xju8_ON_TAP');
+                    logFirebaseEvent('Container_bottom_sheet');
                     Navigator.pop(context);
                   },
                   child: Container(

@@ -35,12 +35,18 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
     super.initState();
     _model = createModel(context, () => OfflinePlayerPageModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'offlinePlayerPage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('OFFLINE_PLAYER_offlinePlayerPage_ON_INIT');
+      logFirebaseEvent('offlinePlayerPage_custom_action');
       await actions.playOrPause(
         'p1',
       );
+      logFirebaseEvent('offlinePlayerPage_custom_action');
       await actions.notCreateScreenshots();
+      logFirebaseEvent('offlinePlayerPage_update_app_state');
       FFAppState().positionMS = 0;
       setState(() {});
     });
@@ -127,6 +133,10 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'OFFLINE_PLAYER_Container_pff8lb9s_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Container_navigate_back');
                                       context.pop();
                                     },
                                     child: Container(
@@ -329,6 +339,10 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
+                                      logFirebaseEvent(
+                                          'OFFLINE_PLAYER_minus15sBtn_ON_TAP');
+                                      logFirebaseEvent(
+                                          'minus15sBtn_custom_action');
                                       await actions.seekAudio(
                                         'p1',
                                         FFAppState().positionMS - 15000,
@@ -347,6 +361,11 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
+                                      logFirebaseEvent(
+                                          'OFFLINE_PLAYER_PreviousBtn_ON_TAP');
+                                      logFirebaseEvent(
+                                          'PreviousBtn_navigate_to');
+
                                       context.goNamed(
                                         'offlinePlayerPage',
                                         queryParameters: {
@@ -392,9 +411,15 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                                   size: 24.0,
                                                 ),
                                                 onPressed: () async {
+                                                  logFirebaseEvent(
+                                                      'OFFLINE_PLAYER_PAGE_PAGE_PauseBtn_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'PauseBtn_custom_action');
                                                   await actions.playOrPause(
                                                     'p1',
                                                   );
+                                                  logFirebaseEvent(
+                                                      'PauseBtn_update_app_state');
                                                   FFAppState().isAudioPlaying =
                                                       false;
                                                   setState(() {});
@@ -408,9 +433,15 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
+                                                  logFirebaseEvent(
+                                                      'OFFLINE_PLAYER_Container_fya4e3jm_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Container_custom_action');
                                                   await actions.playOrPause(
                                                     'p1',
                                                   );
+                                                  logFirebaseEvent(
+                                                      'Container_update_app_state');
                                                   FFAppState().isAudioPlaying =
                                                       true;
                                                   setState(() {});
@@ -466,6 +497,10 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
+                                      logFirebaseEvent(
+                                          'OFFLINE_PLAYER_PAGE_PAGE_NextBtn_ON_TAP');
+                                      logFirebaseEvent('NextBtn_navigate_to');
+
                                       context.goNamed(
                                         'offlinePlayerPage',
                                         queryParameters: {
@@ -499,6 +534,10 @@ class _OfflinePlayerPageWidgetState extends State<OfflinePlayerPageWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
+                                      logFirebaseEvent(
+                                          'OFFLINE_PLAYER_plus15sBtn_ON_TAP');
+                                      logFirebaseEvent(
+                                          'plus15sBtn_custom_action');
                                       await actions.seekAudio(
                                         'p1',
                                         FFAppState().positionMS + 30000,

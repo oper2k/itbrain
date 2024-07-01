@@ -30,19 +30,28 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
     super.initState();
     _model = createModel(context, () => TestQueryCacheModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'testQueryCache'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('TEST_QUERY_CACHE_testQueryCache_ON_INIT_');
       if (FFAppState().isAppLoaded) {
         return;
       }
 
+      logFirebaseEvent('testQueryCache_custom_action');
       _model.isIOnline = await actions.checkInternetConnection();
       if (_model.isIOnline!) {
+        logFirebaseEvent('testQueryCache_clear_query_cache');
         FFAppState().clearListViewCacheCache();
+        logFirebaseEvent('testQueryCache_clear_query_cache');
         FFAppState().clearMeditationCategoryPageCache();
+        logFirebaseEvent('testQueryCache_clear_query_cache');
         FFAppState().clearBuyPackCacheCache();
+        logFirebaseEvent('testQueryCache_clear_query_cache');
         FFAppState().clearHistoryCacheCache();
       } else {
+        logFirebaseEvent('testQueryCache_update_app_state');
         FFAppState().isOffline = true;
         FFAppState().isAppLoaded = true;
         setState(() {});

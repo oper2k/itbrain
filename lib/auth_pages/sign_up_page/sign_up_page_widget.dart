@@ -47,9 +47,13 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
     super.initState();
     _model = createModel(context, () => SignUpPageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'signUpPage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('SIGN_UP_signUpPage_ON_INIT_STATE');
+      logFirebaseEvent('signUpPage_custom_action');
       await actions.yesCreateScreenshots();
+      logFirebaseEvent('signUpPage_custom_action');
       await actions.lockOrientation();
     });
 
@@ -152,6 +156,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'SIGN_UP_Container_6mndtcov_ON_TAP');
+                                    logFirebaseEvent('Container_navigate_to');
+
                                     context.goNamed('onBoarding');
                                   },
                                   child: Container(
@@ -172,6 +180,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                 ),
                                 FFButtonWidget(
                                   onPressed: () async {
+                                    logFirebaseEvent(
+                                        'SIGN_UP_ЕСТЬ_АККАУНТ?_BTN_ON_TAP');
+                                    logFirebaseEvent('Button_navigate_to');
+
                                     context.pushNamed('signInPage');
                                   },
                                   text: FFLocalizations.of(context).getText(
@@ -704,14 +716,20 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                logFirebaseEvent(
+                                    'SIGN_UP_Container_5md1tp5k_ON_TAP');
                                 var shouldSetState = false;
                                 if (_model.emailTextController.text != '') {
+                                  logFirebaseEvent(
+                                      'Container_update_page_state');
                                   _model.showEmailError = false;
                                   setState(() {});
                                   if ((_model.passwordTextController.text !=
                                               '') &&
                                       functions.passCheck(_model
                                           .passwordTextController.text)!) {
+                                    logFirebaseEvent(
+                                        'Container_update_page_state');
                                     _model.showPassError = false;
                                     setState(() {});
                                     if ((_model.confirmPassTextController
@@ -719,13 +737,19 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                 '') &&
                                         functions.passCheck(_model
                                             .confirmPassTextController.text)!) {
+                                      logFirebaseEvent(
+                                          'Container_update_page_state');
                                       _model.showConfirmPassError = false;
                                       setState(() {});
                                       if (_model.passwordTextController.text ==
                                           _model
                                               .confirmPassTextController.text) {
+                                        logFirebaseEvent(
+                                            'Container_update_page_state');
                                         _model.showMatchError = false;
                                         setState(() {});
+                                        logFirebaseEvent(
+                                            'Container_firestore_query');
                                         _model.users =
                                             await queryUsersRecordCount(
                                           queryBuilder: (usersRecord) =>
@@ -738,8 +762,12 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         );
                                         shouldSetState = true;
                                         if (_model.users! > 0) {
+                                          logFirebaseEvent(
+                                              'Container_update_page_state');
                                           _model.showDocExistsError = true;
                                           setState(() {});
+                                          logFirebaseEvent(
+                                              'Container_bottom_sheet');
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,
@@ -768,8 +796,11 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           if (shouldSetState) setState(() {});
                                           return;
                                         } else {
+                                          logFirebaseEvent(
+                                              'Container_update_page_state');
                                           _model.showDocExistsError = false;
                                           setState(() {});
+                                          logFirebaseEvent('Container_auth');
                                           GoRouter.of(context)
                                               .prepareAuthEvent();
                                           if (_model.passwordTextController
@@ -811,6 +842,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                     .surnameTextController.text,
                                               ));
 
+                                          logFirebaseEvent(
+                                              'Container_navigate_to');
+
                                           context.pushNamedAuth(
                                               'confirmEmail', context.mounted);
 
@@ -818,24 +852,32 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                           return;
                                         }
                                       } else {
+                                        logFirebaseEvent(
+                                            'Container_update_page_state');
                                         _model.showMatchError = true;
                                         setState(() {});
                                         if (shouldSetState) setState(() {});
                                         return;
                                       }
                                     } else {
+                                      logFirebaseEvent(
+                                          'Container_update_page_state');
                                       _model.showConfirmPassError = true;
                                       setState(() {});
                                       if (shouldSetState) setState(() {});
                                       return;
                                     }
                                   } else {
+                                    logFirebaseEvent(
+                                        'Container_update_page_state');
                                     _model.showPassError = true;
                                     setState(() {});
                                     if (shouldSetState) setState(() {});
                                     return;
                                   }
                                 } else {
+                                  logFirebaseEvent(
+                                      'Container_update_page_state');
                                   _model.showEmailError = true;
                                   setState(() {});
                                   if (shouldSetState) setState(() {});
@@ -904,6 +946,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'SIGN_UP_Container_zddreiel_ON_TAP');
+                                    logFirebaseEvent('Container_page_view');
                                     await _model.pageViewController
                                         ?.previousPage(
                                       duration: const Duration(milliseconds: 300),
@@ -1449,16 +1494,26 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                logFirebaseEvent(
+                                    'SIGN_UP_Container_xpqvq6ah_ON_TAP');
                                 if (_model.nameTextController.text != '') {
+                                  logFirebaseEvent(
+                                      'Container_update_page_state');
                                   _model.showNameError = false;
                                   setState(() {});
                                   if (_model.surnameTextController.text != '') {
+                                    logFirebaseEvent(
+                                        'Container_update_page_state');
                                     _model.showSurnameError = false;
                                     setState(() {});
                                     if (_model.phoneNumberTextController.text !=
                                             '') {
+                                      logFirebaseEvent(
+                                          'Container_update_page_state');
                                       _model.showPhoneError = false;
                                       setState(() {});
+                                      logFirebaseEvent(
+                                          'Container_backend_call');
 
                                       await currentUserReference!
                                           .update(createUsersRecordData(
@@ -1470,22 +1525,29 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                         phoneNumber: _model
                                             .phoneNumberTextController.text,
                                       ));
+                                      logFirebaseEvent('Container_page_view');
                                       await _model.pageViewController?.nextPage(
                                         duration: const Duration(milliseconds: 300),
                                         curve: Curves.ease,
                                       );
                                       return;
                                     } else {
+                                      logFirebaseEvent(
+                                          'Container_update_page_state');
                                       _model.showPhoneError = true;
                                       setState(() {});
                                       return;
                                     }
                                   } else {
+                                    logFirebaseEvent(
+                                        'Container_update_page_state');
                                     _model.showSurnameError = true;
                                     setState(() {});
                                     return;
                                   }
                                 } else {
+                                  logFirebaseEvent(
+                                      'Container_update_page_state');
                                   _model.showNameError = true;
                                   setState(() {});
                                   return;
@@ -1557,6 +1619,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'SIGN_UP_Container_gkikhtlh_ON_TAP');
+                                      logFirebaseEvent('Container_page_view');
                                       await _model.pageViewController
                                           ?.previousPage(
                                         duration: const Duration(milliseconds: 300),
@@ -1686,8 +1751,12 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                     0.0, 0.0),
                                                 child: FFButtonWidget(
                                                   onPressed: () async {
+                                                    logFirebaseEvent(
+                                                        'SIGN_UP_PAGE_PAGE__BTN_ON_TAP');
                                                     if (await getPermissionStatus(
                                                         photoLibraryPermission)) {
+                                                      logFirebaseEvent(
+                                                          'Button_upload_media_to_firebase');
                                                       final selectedMedia =
                                                           await selectMediaWithSourceBottomSheet(
                                                         context: context,
@@ -1808,6 +1877,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                         }
                                                       }
 
+                                                      logFirebaseEvent(
+                                                          'Button_update_app_state');
                                                       FFAppState()
                                                               .imageProfileBlurHash =
                                                           _model
@@ -1815,6 +1886,8 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                               .blurHash!;
                                                       setState(() {});
                                                     } else {
+                                                      logFirebaseEvent(
+                                                          'Button_request_permissions');
                                                       await requestPermission(
                                                           photoLibraryPermission);
                                                     }
@@ -1913,6 +1986,10 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                                           size: 12.0,
                                                         ),
                                                         onPressed: () async {
+                                                          logFirebaseEvent(
+                                                              'SIGN_UP_PAGE_PAGE_union_ICN_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'IconButton_clear_uploaded_data');
                                                           setState(() {
                                                             _model.isDataUploading =
                                                                 false;
@@ -1965,10 +2042,15 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                           const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 12.0),
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'SIGN_UP_PAGE_PAGE_ПРОПУСТИТЬ_BTN_ON_TAP');
+                          logFirebaseEvent('Button_backend_call');
+
                           await currentUserReference!
                               .update(createUsersRecordData(
                             photoUrl: _model.uploadedFileUrl,
                           ));
+                          logFirebaseEvent('Button_navigate_to');
 
                           context.goNamed('HomePage');
                         },
@@ -2009,10 +2091,14 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent('SIGN_UP_Container_2yeea6ez_ON_TAP');
+                          logFirebaseEvent('Container_backend_call');
+
                           await currentUserReference!
                               .update(createUsersRecordData(
                             photoUrl: _model.uploadedFileUrl,
                           ));
+                          logFirebaseEvent('Container_navigate_to');
 
                           context.goNamed('HomePage');
                         },

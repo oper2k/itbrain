@@ -79,6 +79,8 @@ class _SoonWidgetState extends State<SoonWidget> {
                         size: 22.0,
                       ),
                       onPressed: () async {
+                        logFirebaseEvent('SOON_COMP_close_sharp_ICN_ON_TAP');
+                        logFirebaseEvent('IconButton_bottom_sheet');
                         Navigator.pop(context);
                       },
                     ),
@@ -132,6 +134,8 @@ class _SoonWidgetState extends State<SoonWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent('SOON_COMP_Container_vpj86vn1_ON_TAP');
+                      logFirebaseEvent('Container_bottom_sheet');
                       Navigator.pop(context);
                     },
                     child: Container(

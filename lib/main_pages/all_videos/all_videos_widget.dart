@@ -25,9 +25,13 @@ class _AllVideosWidgetState extends State<AllVideosWidget> {
     super.initState();
     _model = createModel(context, () => AllVideosModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'allVideos'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('ALL_VIDEOS_PAGE_allVideos_ON_INIT_STATE');
+      logFirebaseEvent('allVideos_custom_action');
       await actions.notCreateScreenshots();
+      logFirebaseEvent('allVideos_custom_action');
       await actions.lockOrientation();
     });
   }
@@ -75,6 +79,9 @@ class _AllVideosWidgetState extends State<AllVideosWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'ALL_VIDEOS_Container_8akb78cz_ON_TAP');
+                        logFirebaseEvent('Container_navigate_back');
                         context.safePop();
                       },
                       child: Container(
@@ -158,6 +165,9 @@ class _AllVideosWidgetState extends State<AllVideosWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                logFirebaseEvent(
+                                    'ALL_VIDEOS_Container_ma2v5kl7_ON_TAP');
+                                logFirebaseEvent('Container_launch_u_r_l');
                                 await launchURL(listViewVideosRecord.videoUrl);
                               },
                               child: Container(

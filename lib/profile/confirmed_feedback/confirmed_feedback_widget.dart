@@ -29,7 +29,10 @@ class _ConfirmedFeedbackWidgetState extends State<ConfirmedFeedbackWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('CONFIRMED_FEEDBACK_confirmedFeedback_ON_');
+      logFirebaseEvent('confirmedFeedback_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2000));
+      logFirebaseEvent('confirmedFeedback_bottom_sheet');
       Navigator.pop(context);
     });
   }

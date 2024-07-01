@@ -3,6 +3,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/study/content_text/content_text_widget.dart';
 import '/study/created_by/created_by_widget.dart';
 import '/study/divider/divider_widget.dart';
 import '/study/study_audio/study_audio_widget.dart';
@@ -90,11 +91,15 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
+              logFirebaseEvent('CONTENT_BLOCK_Container_3dqxw1cm_ON_TAP');
+              logFirebaseEvent('studyAudio_custom_action');
               _model.meditations = await actions.convertLessonToMeditation(
                 widget.level!,
               );
+              logFirebaseEvent('studyAudio_update_app_state');
               FFAppState().playerIndex = 0;
               setState(() {});
+              logFirebaseEvent('studyAudio_navigate_to');
 
               context.pushNamed(
                 'playerPage',
@@ -123,35 +128,59 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
             ),
           );
         } else if (widget.level?.type == 'button') {
-          return Container(
-            width: double.infinity,
-            height: 52.0,
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [
-                  Color(0xFF9747FF),
-                  Color(0xFFF1618E),
-                  Color(0xFFFE710B)
-                ],
-                stops: [0.0, 0.4, 1.0],
-                begin: AlignmentDirectional(1.0, 0.34),
-                end: AlignmentDirectional(-1.0, -0.34),
-              ),
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-            child: Align(
-              alignment: const AlignmentDirectional(0.0, 0.0),
-              child: Text(
-                FFLocalizations.of(context).getText(
-                  'oxsl9hph' /* Посмотреть ответы (коды) */,
-                ),
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Evolventa',
-                      fontSize: 15.0,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w500,
-                      useGoogleFonts: false,
+          return InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              logFirebaseEvent('CONTENT_BLOCK_Container_wbe9m6k7_ON_TAP');
+              logFirebaseEvent('Container_bottom_sheet');
+              await showModalBottomSheet(
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                enableDrag: false,
+                context: context,
+                builder: (context) {
+                  return Padding(
+                    padding: MediaQuery.viewInsetsOf(context),
+                    child: ContentTextWidget(
+                      content: widget.level!,
                     ),
+                  );
+                },
+              ).then((value) => safeSetState(() {}));
+            },
+            child: Container(
+              width: double.infinity,
+              height: 52.0,
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [
+                    Color(0xFF9747FF),
+                    Color(0xFFF1618E),
+                    Color(0xFFFE710B)
+                  ],
+                  stops: [0.0, 0.4, 1.0],
+                  begin: AlignmentDirectional(1.0, 0.34),
+                  end: AlignmentDirectional(-1.0, -0.34),
+                ),
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: Align(
+                alignment: const AlignmentDirectional(0.0, 0.0),
+                child: Text(
+                  FFLocalizations.of(context).getText(
+                    'oxsl9hph' /* Посмотреть ответы (коды) */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Evolventa',
+                        fontSize: 15.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.w500,
+                        useGoogleFonts: false,
+                      ),
+                ),
               ),
             ),
           );
@@ -240,6 +269,8 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
+              logFirebaseEvent('CONTENT_BLOCK_Container_fqe1lv0f_ON_TAP');
+              logFirebaseEvent('studyFile_launch_u_r_l');
               await launchURL(widget.level!.fileUrl);
             },
             child: wrapWithModel(

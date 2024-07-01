@@ -122,6 +122,10 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'STUDY_COMP_COMP_Stack_d5lck5o3_ON_TAP');
+                        logFirebaseEvent('Stack_navigate_to');
+
                         context.pushNamed(
                           'studyInfoPage',
                           queryParameters: {
@@ -468,6 +472,10 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'STUDY_Container_mk19knhn_ON_TAP');
+                                  logFirebaseEvent('Container_navigate_to');
+
                                   context.pushNamed(
                                     'studyLevels',
                                     queryParameters: {
@@ -612,6 +620,9 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                logFirebaseEvent(
+                                    'STUDY_Container_wk6botf6_ON_TAP');
+                                logFirebaseEvent('Container_launch_u_r_l');
                                 await launchURL(
                                     FFLocalizations.of(context).getVariableText(
                                   ruText: widget.course?.courseUrl,

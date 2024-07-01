@@ -27,6 +27,8 @@ class _DebugPageWidgetState extends State<DebugPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DebugPageModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'DebugPage'});
   }
 
   @override
@@ -59,6 +61,8 @@ class _DebugPageWidgetState extends State<DebugPageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
+              logFirebaseEvent('DEBUG_arrow_back_rounded_ICN_ON_TAP');
+              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),

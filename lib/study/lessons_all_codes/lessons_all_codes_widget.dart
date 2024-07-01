@@ -34,10 +34,16 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
     super.initState();
     _model = createModel(context, () => LessonsAllCodesModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'lessonsAllCodes'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('LESSONS_ALL_CODES_lessonsAllCodes_ON_INI');
+      logFirebaseEvent('lessonsAllCodes_custom_action');
       await actions.notCreateScreenshots();
+      logFirebaseEvent('lessonsAllCodes_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('lessonsAllCodes_custom_action');
       unawaited(
         () async {
           await actions.stopMusic(
@@ -138,6 +144,10 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'LESSONS_ALL_CODES_Container_mu8wt39w_ON_');
+                                          logFirebaseEvent(
+                                              'Container_navigate_back');
                                           context.safePop();
                                         },
                                         child: Container(
@@ -305,14 +315,22 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
+                                                logFirebaseEvent(
+                                                    'LESSONS_ALL_CODES_Container_ks7mtlei_ON_');
+                                                logFirebaseEvent(
+                                                    'lessonAudio_custom_action');
                                                 _model.meditations = await actions
                                                     .convertLessonsListToMeditationsList(
                                                   containerLessonsRecordList
                                                       .toList(),
                                                 );
+                                                logFirebaseEvent(
+                                                    'lessonAudio_update_app_state');
                                                 FFAppState().playerIndex =
                                                     lessonsIndex;
                                                 setState(() {});
+                                                logFirebaseEvent(
+                                                    'lessonAudio_navigate_to');
 
                                                 context.pushNamed(
                                                   'playerPage',

@@ -29,22 +29,34 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
     super.initState();
     _model = createModel(context, () => ConfirmEmailProfileModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'confirmEmailProfile'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('CONFIRM_EMAIL_PROFILE_confirmEmailProfil');
       await authManager.refreshUser();
+      logFirebaseEvent('confirmEmailProfile_custom_action');
       await actions.lockOrientation();
+      logFirebaseEvent('confirmEmailProfile_timer');
       _model.timerController.onStartTimer();
+      logFirebaseEvent('confirmEmailProfile_auth');
       await authManager.sendEmailVerification();
+      logFirebaseEvent('confirmEmailProfile_start_periodic_actio');
       _model.instantTimer = InstantTimer.periodic(
         duration: const Duration(milliseconds: 300),
         callback: (timer) async {
           if (currentUserEmailVerified) {
+            logFirebaseEvent('confirmEmailProfile_update_page_state');
             _model.emailVerified = true;
             setState(() {});
+            logFirebaseEvent('confirmEmailProfile_stop_periodic_action');
             _model.instantTimer?.cancel();
             if (currentUserEmailVerified) {
+              logFirebaseEvent('confirmEmailProfile_navigate_to');
+
               context.goNamed('editProfile');
 
+              logFirebaseEvent('confirmEmailProfile_show_snack_bar');
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(
@@ -61,6 +73,7 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
               );
             }
           } else {
+            logFirebaseEvent('confirmEmailProfile_update_page_state');
             _model.emailVerified = false;
             setState(() {});
             return;
@@ -116,6 +129,9 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'CONFIRM_EMAIL_PROFILE_Container_t3xlp0wv');
+                        logFirebaseEvent('Container_navigate_back');
                         context.pop();
                       },
                       child: Container(
@@ -134,6 +150,9 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
+                        logFirebaseEvent(
+                            'CONFIRM_EMAIL_PROFILE_НАПИСАТЬ_В_ПОДДЕРЖ');
+                        logFirebaseEvent('Button_launch_u_r_l');
                         await launchURL(
                             FFLocalizations.of(context).getVariableText(
                           ruText: 'https://gold-platform.ru/cms/system/contact',
@@ -260,6 +279,9 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
                                   if (shouldUpdate) setState(() {});
                                 },
                                 onEnded: () async {
+                                  logFirebaseEvent(
+                                      'CONFIRM_EMAIL_PROFILE_Timer_sov0gcv9_ON_');
+                                  logFirebaseEvent('Timer_update_page_state');
                                   _model.showNewCode = true;
                                   setState(() {});
                                 },
@@ -282,11 +304,17 @@ class _ConfirmEmailProfileWidgetState extends State<ConfirmEmailProfileWidget> {
                         } else {
                           return FFButtonWidget(
                             onPressed: () async {
+                              logFirebaseEvent(
+                                  'CONFIRM_EMAIL_PROFILE_ОТПРАВИТЬ_КОД_ЕЩЕ_');
+                              logFirebaseEvent('Button_auth');
                               await authManager.sendEmailVerification();
+                              logFirebaseEvent('Button_update_page_state');
                               _model.showNewCode = false;
                               setState(() {});
+                              logFirebaseEvent('Button_timer');
                               _model.timerController.onResetTimer();
 
+                              logFirebaseEvent('Button_timer');
                               _model.timerController.onStartTimer();
                             },
                             text: FFLocalizations.of(context).getText(

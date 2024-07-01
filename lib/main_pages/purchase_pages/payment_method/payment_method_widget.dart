@@ -32,8 +32,12 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
     super.initState();
     _model = createModel(context, () => PaymentMethodModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'paymentMethod'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('PAYMENT_METHOD_paymentMethod_ON_INIT_STA');
+      logFirebaseEvent('paymentMethod_custom_action');
       await actions.yesCreateScreenshots();
     });
   }
@@ -81,6 +85,9 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'PAYMENT_METHOD_Container_u211lry3_ON_TAP');
+                        logFirebaseEvent('Container_navigate_back');
                         context.pop();
                       },
                       child: Container(
@@ -128,6 +135,9 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'PAYMENT_METHOD_Container_rvv95kyu_ON_TAP');
+                      logFirebaseEvent('Container_update_page_state');
                       _model.buySite = true;
                       _model.buyApp = false;
                       setState(() {});
@@ -206,6 +216,9 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'PAYMENT_METHOD_Container_brlgz2vz_ON_TAP');
+                      logFirebaseEvent('Container_update_page_state');
                       _model.buySite = false;
                       _model.buyApp = true;
                       setState(() {});
@@ -329,13 +342,17 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'PAYMENT_METHOD_Container_6w3j9p3v_ON_TAP');
                       if (_model.buySite) {
+                        logFirebaseEvent('Container_launch_u_r_l');
                         await launchURL(
                             FFLocalizations.of(context).getVariableText(
                           ruText: widget.category?.getCourseUrl,
                           enText: widget.category?.getCourseUrlEng,
                         ));
                       } else {
+                        logFirebaseEvent('Container_show_snack_bar');
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
@@ -350,9 +367,12 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                                 FlutterFlowTheme.of(context).thirdBackground,
                           ),
                         );
+                        logFirebaseEvent('Container_revenue_cat');
                         _model.revenuePurchase = await revenue_cat
                             .purchasePackage(widget.category!.revenueCatId);
                         if (_model.revenuePurchase!) {
+                          logFirebaseEvent('Container_backend_call');
+
                           await currentUserReference!.update({
                             ...mapToFirestore(
                               {
@@ -362,6 +382,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                               },
                             ),
                           });
+                          logFirebaseEvent('Container_bottom_sheet');
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
@@ -381,6 +402,7 @@ class _PaymentMethodWidgetState extends State<PaymentMethodWidget> {
                             },
                           ).then((value) => safeSetState(() {}));
                         } else {
+                          logFirebaseEvent('Container_show_snack_bar');
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
