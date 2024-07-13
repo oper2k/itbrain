@@ -14,6 +14,7 @@ class FFIcons {
   static const String _dmtLockFamily = 'DmtLock';
   static const String _dmtAddonsFamily = 'DmtAddons';
   static const String _dmtDocFamily = 'DmtDoc';
+  static const String _thisIsPlayyyyyyFamily = 'ThisIsPlayyyyyy';
 
   // DMTIcons
   static const IconData kedit1 = IconData(0xe900, fontFamily: _dMTIconsFamily);
@@ -105,4 +106,8 @@ class FFIcons {
 
   // dmtDoc
   static const IconData kdocument = IconData(0xe900, fontFamily: _dmtDocFamily);
+
+  // thisIsPlayyyyyy
+  static const IconData kplayyy =
+      IconData(0xe900, fontFamily: _thisIsPlayyyyyyFamily);
 }

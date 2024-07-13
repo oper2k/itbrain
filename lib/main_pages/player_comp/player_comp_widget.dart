@@ -216,9 +216,11 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                     ),
               ),
             ),
-            if (widget.meditationList?[FFAppState().playerIndex].description !=
+            if (widget.meditationList?[FFAppState().playerIndex]
+                        .description !=
                     null &&
-                widget.meditationList?[FFAppState().playerIndex].description !=
+                widget.meditationList?[FFAppState().playerIndex]
+                        .description !=
                     '')
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
@@ -461,7 +463,8 @@ class _PlayerCompWidgetState extends State<PlayerCompWidget> {
                     builder: (context) {
                       if ((FFAppState().playerIndex <
                               (widget.meditationList!.length - 1)) &&
-                          (!widget.meditationList![FFAppState().playerIndex + 1]
+                          (!widget
+                                  .meditationList![FFAppState().playerIndex + 1]
                                   .isPaid ||
                               (currentUserDocument?.purchasedMeditationsPacks
                                           .toList() ??

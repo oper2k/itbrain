@@ -19,3 +19,4 @@ export 'convert_lesson_to_meditation.dart' show convertLessonToMeditation;
 export 'get_random_affirmation_reference.dart'
     show getRandomAffirmationReference;
 export 'lock_orientation.dart' show lockOrientation;
+export 'just_audio_background.dart' show justAudioBackground;

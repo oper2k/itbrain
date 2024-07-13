@@ -53,7 +53,9 @@ class _MeditationsOfflineWidgetState extends State<MeditationsOfflineWidget> {
           children: [
             Builder(
               builder: (context) {
-                if (FFAppState().downloadedTracks[widget.indexInList!].isPaid ==
+                if (FFAppState()
+                        .downloadedTracks[widget.indexInList!]
+                        .isPaid ==
                     false) {
                   return Container(
                     width: 48.0,

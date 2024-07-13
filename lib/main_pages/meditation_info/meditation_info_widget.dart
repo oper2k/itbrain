@@ -133,6 +133,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
             }
             List<MeditationsRecord> containerMeditationsRecordList =
                 snapshot.data!;
+
             return Container(
               width: double.infinity,
               height: double.infinity,
@@ -1285,6 +1286,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                       final meditations =
                                           containerMeditationsRecordList
                                               .toList();
+
                                       return ListView.separated(
                                         padding: EdgeInsets.zero,
                                         primary: false,
@@ -1446,6 +1448,7 @@ class _MeditationInfoWidgetState extends State<MeditationInfoWidget>
                                               widget.meditationCategory
                                                   ?.reference)
                                           .toList();
+
                                       return ListView.separated(
                                         padding: const EdgeInsets.fromLTRB(
                                           0,

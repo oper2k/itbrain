@@ -411,6 +411,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                         .toList() ??
                                                     [])
                                                 .toList();
+
                                         return ListView.separated(
                                           padding: EdgeInsets.zero,
                                           shrinkWrap: true,
@@ -451,8 +452,10 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                     ),
                                                   );
                                                 }
+
                                                 final containerMeditationsRecord =
                                                     snapshot.data!;
+
                                                 return Container(
                                                   decoration: BoxDecoration(
                                                     color: Colors.transparent,
@@ -487,8 +490,10 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                                           ),
                                                         );
                                                       }
+
                                                       final meditationsMeditationCategoriesRecord =
                                                           snapshot.data!;
+
                                                       return InkWell(
                                                         splashColor:
                                                             Colors.transparent,
@@ -578,6 +583,7 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                               builder: (context) {
                                 final results =
                                     _model.simpleSearchResults.toList();
+
                                 return ListView.separated(
                                   padding: EdgeInsets.zero,
                                   shrinkWrap: true,
@@ -618,8 +624,10 @@ class _SearchPageNewWidgetState extends State<SearchPageNewWidget> {
                                               ),
                                             );
                                           }
+
                                           final meditationsMeditationCategoriesRecord =
                                               snapshot.data!;
+
                                           return InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,

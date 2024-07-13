@@ -94,6 +94,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
               );
             }
             List<LevelsRecord> containerLevelsRecordList = snapshot.data!;
+
             return Container(
               width: double.infinity,
               height: double.infinity,
@@ -128,6 +129,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                     );
                   }
                   List<LessonsRecord> lessonsLessonsRecordList = snapshot.data!;
+
                   return Container(
                     decoration: const BoxDecoration(),
                     child: Column(
@@ -364,6 +366,7 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                             final levels =
                                                 containerLevelsRecordList
                                                     .toList();
+
                                             return SingleChildScrollView(
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,

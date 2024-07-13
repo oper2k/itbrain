@@ -82,6 +82,7 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
             }
             List<MeditationsRecord> containerMeditationsRecordList =
                 snapshot.data!;
+
             return Container(
               width: double.infinity,
               height: double.infinity,
@@ -215,6 +216,7 @@ class _BuyPackWidgetState extends State<BuyPackWidget> {
                             builder: (context) {
                               final meditations =
                                   containerMeditationsRecordList.toList();
+
                               return ListView.separated(
                                 padding: EdgeInsets.zero,
                                 primary: false,

@@ -1440,7 +1440,9 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget> {
                                               required isFocused,
                                               maxLength}) =>
                                           null,
-                                      keyboardType: TextInputType.phone,
+                                      keyboardType:
+                                          const TextInputType.numberWithOptions(
+                                              signed: true, decimal: true),
                                       cursorColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       validator: _model

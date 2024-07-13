@@ -99,6 +99,7 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
               );
             }
             List<LessonsRecord> containerLessonsRecordList = snapshot.data!;
+
             return Container(
               width: double.infinity,
               height: double.infinity,
@@ -244,8 +245,8 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                                   0.0, 28.0, 0.0, 0.0),
                               child: Text(
                                 '${FFLocalizations.of(context).getVariableText(
-                                  ruText:
-                                      widget.courseInfo?.audioCount.toString(),
+                                  ruText: widget.courseInfo?.audioCount
+                                      .toString(),
                                   enText: widget.courseInfo?.audioCountEng
                                       .toString(),
                                 )}${FFLocalizations.of(context).getVariableText(
@@ -273,6 +274,7 @@ class _LessonsAllCodesWidgetState extends State<LessonsAllCodesWidget> {
                               builder: (context) {
                                 final lessons =
                                     containerLessonsRecordList.toList();
+
                                 return ListView.builder(
                                   padding: const EdgeInsets.fromLTRB(
                                     0,

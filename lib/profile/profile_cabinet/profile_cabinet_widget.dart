@@ -551,6 +551,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                   List<AffirmationRecord>
                                       containerAffirmationRecordList =
                                       snapshot.data!;
+
                                   // Return an empty Container when the item does not exist.
                                   if (snapshot.data!.isEmpty) {
                                     return Container();
@@ -943,6 +944,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                 List<ShowAppleRecord>
                                     containerShowAppleRecordList =
                                     snapshot.data!;
+
                                 final containerShowAppleRecord =
                                     containerShowAppleRecordList.isNotEmpty
                                         ? containerShowAppleRecordList.first

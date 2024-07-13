@@ -193,6 +193,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   }
                   List<StoriesRecord> containerStoriesRecordList =
                       snapshot.data!;
+
                   return Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: MediaQuery.sizeOf(context).height * 1.0,
@@ -399,6 +400,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           final stories =
                                               containerStoriesRecordList
                                                   .toList();
+
                                           return SingleChildScrollView(
                                             scrollDirection: Axis.horizontal,
                                             child: Row(
@@ -469,6 +471,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                       dynamic>{
                                                                     'stories':
                                                                         containerStoriesRecordList,
+                                                                    kTransitionInfoKey:
+                                                                        const TransitionInfo(
+                                                                      hasTransition:
+                                                                          true,
+                                                                      transitionType:
+                                                                          PageTransitionType
+                                                                              .bottomToTop,
+                                                                    ),
                                                                   },
                                                                 );
                                                               },
@@ -609,6 +619,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                         dynamic>{
                                                                       'stories':
                                                                           containerStoriesRecordList,
+                                                                      kTransitionInfoKey:
+                                                                          const TransitionInfo(
+                                                                        hasTransition:
+                                                                            true,
+                                                                        transitionType:
+                                                                            PageTransitionType.bottomToTop,
+                                                                      ),
                                                                     },
                                                                   );
                                                                 },
@@ -794,6 +811,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       List<ShowAppleRecord>
                                           containerShowAppleRecordList =
                                           snapshot.data!;
+
                                       final containerShowAppleRecord =
                                           containerShowAppleRecordList
                                                   .isNotEmpty
@@ -840,6 +858,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               List<MeditationCategoriesRecord>
                                                   listViewMeditationCategoriesRecordList =
                                                   snapshot.data!;
+
                                               if (listViewMeditationCategoriesRecordList
                                                   .isEmpty) {
                                                 return const SizedBox(
@@ -966,6 +985,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         List<BookInfoRecord>
                                             listViewBookInfoRecordList =
                                             snapshot.data!;
+
                                         return ListView.separated(
                                           padding: EdgeInsets.zero,
                                           primary: false,
@@ -1088,6 +1108,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         List<VideosRecord>
                                             containerVideosRecordList =
                                             snapshot.data!;
+
                                         return Container(
                                           width: double.infinity,
                                           decoration: const BoxDecoration(
@@ -1098,6 +1119,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               final videos =
                                                   containerVideosRecordList
                                                       .toList();
+
                                               return SingleChildScrollView(
                                                 scrollDirection:
                                                     Axis.horizontal,
@@ -1185,8 +1207,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               ),
                                             );
                                           }
+
                                           final containerAffirmationRecord =
                                               snapshot.data!;
+
                                           return InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,

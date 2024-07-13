@@ -80,6 +80,11 @@ class LessonsRecord extends FirestoreRecord {
   DateTime? get openDate => _openDate;
   bool hasOpenDate() => _openDate != null;
 
+  // "image" field.
+  String? _image;
+  String get image => _image ?? '';
+  bool hasImage() => _image != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _count = castToType<int>(snapshotData['count']);
@@ -97,6 +102,7 @@ class LessonsRecord extends FirestoreRecord {
     _audioDuration = snapshotData['audioDuration'] as String?;
     _audioDescription = snapshotData['audioDescription'] as String?;
     _openDate = snapshotData['open_date'] as DateTime?;
+    _image = snapshotData['image'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -146,6 +152,7 @@ Map<String, dynamic> createLessonsRecordData({
   String? audioDuration,
   String? audioDescription,
   DateTime? openDate,
+  String? image,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -161,6 +168,7 @@ Map<String, dynamic> createLessonsRecordData({
       'audioDuration': audioDuration,
       'audioDescription': audioDescription,
       'open_date': openDate,
+      'image': image,
     }.withoutNulls,
   );
 
@@ -185,7 +193,8 @@ class LessonsRecordDocumentEquality implements Equality<LessonsRecord> {
         e1?.audioTitle == e2?.audioTitle &&
         e1?.audioDuration == e2?.audioDuration &&
         e1?.audioDescription == e2?.audioDescription &&
-        e1?.openDate == e2?.openDate;
+        e1?.openDate == e2?.openDate &&
+        e1?.image == e2?.image;
   }
 
   @override
@@ -202,7 +211,8 @@ class LessonsRecordDocumentEquality implements Equality<LessonsRecord> {
         e?.audioTitle,
         e?.audioDuration,
         e?.audioDescription,
-        e?.openDate
+        e?.openDate,
+        e?.image
       ]);
 
   @override

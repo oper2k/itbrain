@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'on_boarding_model.dart';
 export 'on_boarding_model.dart';
 
@@ -147,18 +148,75 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 20.0, 46.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 12.0),
+                      Align(
+                        alignment: const AlignmentDirectional(0.0, 1.0),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 20.0, 46.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'ON_BOARDING_Container_4r79vewq_ON_TAP');
+                                      logFirebaseEvent('Container_navigate_to');
+
+                                      context.pushNamed('signUpPage');
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 52.0,
+                                      decoration: BoxDecoration(
+                                        gradient: const LinearGradient(
+                                          colors: [
+                                            Color(0xFF9747FF),
+                                            Color(0xFFF1618E),
+                                            Color(0xFFFE710B)
+                                          ],
+                                          stops: [0.0, 0.4, 1.0],
+                                          begin:
+                                              AlignmentDirectional(1.0, 0.34),
+                                          end:
+                                              AlignmentDirectional(-1.0, -0.34),
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'kwp7xmkk' /* Зарегистрироваться */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Evolventa',
+                                                fontSize: 17.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                useGoogleFonts: false,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -166,32 +224,24 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     logFirebaseEvent(
-                                        'ON_BOARDING_Container_4r79vewq_ON_TAP');
+                                        'ON_BOARDING_Container_u4ley9bx_ON_TAP');
                                     logFirebaseEvent('Container_navigate_to');
 
-                                    context.pushNamed('signUpPage');
+                                    context.pushNamed('signInPage');
                                   },
                                   child: Container(
                                     width: double.infinity,
                                     height: 52.0,
                                     decoration: BoxDecoration(
-                                      gradient: const LinearGradient(
-                                        colors: [
-                                          Color(0xFF9747FF),
-                                          Color(0xFFF1618E),
-                                          Color(0xFFFE710B)
-                                        ],
-                                        stops: [0.0, 0.4, 1.0],
-                                        begin: AlignmentDirectional(1.0, 0.34),
-                                        end: AlignmentDirectional(-1.0, -0.34),
-                                      ),
+                                      color: FlutterFlowTheme.of(context)
+                                          .buttonColor,
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Align(
                                       alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'kwp7xmkk' /* Зарегистрироваться */,
+                                          'usof6ixi' /* Войти */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -207,50 +257,100 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                   ),
                                 ),
                               ),
-                            ),
-                            Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  logFirebaseEvent(
-                                      'ON_BOARDING_Container_u4ley9bx_ON_TAP');
-                                  logFirebaseEvent('Container_navigate_to');
-
-                                  context.pushNamed('signInPage');
-                                },
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 52.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .buttonColor,
-                                    borderRadius: BorderRadius.circular(12.0),
-                                  ),
-                                  child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'usof6ixi' /* Войти */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Evolventa',
-                                            fontSize: 17.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            useGoogleFonts: false,
+                              if (responsiveVisibility(
+                                context: context,
+                                phone: false,
+                                tablet: false,
+                                tabletLandscape: false,
+                              ))
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    if (isAndroid)
+                                      Expanded(
+                                        child: Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 12.0, 0.0, 0.0),
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 52.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .buttonColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                              child: Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: FaIcon(
+                                                  FontAwesomeIcons.google,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                            ),
                                           ),
+                                        ),
+                                      ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 12.0, 0.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'ON_BOARDING_Container_ns3os5rl_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'Container_navigate_to');
+
+                                              context.pushNamed('signInPage');
+                                            },
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 52.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .buttonColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                              child: Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: FaIcon(
+                                                  FontAwesomeIcons.apple,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                  ].divide(const SizedBox(width: 12.0)),
                                 ),
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],

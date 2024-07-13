@@ -299,3 +299,8 @@ int viewedAndAllLessons(
   }
   return count;
 }
+
+String? audioPathToString(String? audioPath) {
+  // make audioPath to string
+  return audioPath;
+}

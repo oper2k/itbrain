@@ -167,6 +167,7 @@ class _TestQueryCacheWidgetState extends State<TestQueryCacheWidget>
                         List<MeditationCategoriesRecord>
                             columnMeditationCategoriesRecordList =
                             snapshot.data!;
+
                         return Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.stretch,

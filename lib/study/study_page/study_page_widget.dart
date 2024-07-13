@@ -94,6 +94,7 @@ class _StudyPageWidgetState extends State<StudyPageWidget>
                 }
                 List<StudyCategoriesRecord> containerStudyCategoriesRecordList =
                     snapshot.data!;
+
                 return Container(
                   decoration: const BoxDecoration(),
                   child: Padding(
@@ -148,6 +149,7 @@ class _StudyPageWidgetState extends State<StudyPageWidget>
                                   final containerVar =
                                       containerStudyCategoriesRecordList
                                           .toList();
+
                                   return ListView.separated(
                                     padding: const EdgeInsets.fromLTRB(
                                       0,

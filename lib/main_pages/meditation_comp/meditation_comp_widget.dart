@@ -75,8 +75,8 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                           ?.purchasedMeditationsPacks
                                           .toList() ??
                                       [])
-                                  .contains(
-                                      widget.meditationCategories?.reference)) {
+                                  .contains(widget
+                                      .meditationCategories?.reference)) {
                                 return FlutterFlowTheme.of(context).accent1;
                               } else if (widget.meditationCategories!.free) {
                                 return FlutterFlowTheme.of(context).accent1;
@@ -117,8 +117,8 @@ class _MeditationCompWidgetState extends State<MeditationCompWidget> {
                                           ?.purchasedMeditationsPacks
                                           .toList() ??
                                       [])
-                                  .contains(
-                                      widget.meditationCategories?.reference)) {
+                                  .contains(widget
+                                      .meditationCategories?.reference)) {
                                 return FlutterFlowTheme.of(context).accent1;
                               } else if (widget.meditationCategories!.free) {
                                 return FlutterFlowTheme.of(context).accent1;

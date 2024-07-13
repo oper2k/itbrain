@@ -115,7 +115,8 @@ class _MeditationPlayerInfoWidgetState extends State<MeditationPlayerInfoWidget>
                   child: Text(
                     FFLocalizations.of(context).getVariableText(
                       ruText: widget.playerInfo?[widget.index!].playerTitle,
-                      enText: widget.playerInfo?[widget.index!].playerTitleEng,
+                      enText:
+                          widget.playerInfo?[widget.index!].playerTitleEng,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Evolventa',

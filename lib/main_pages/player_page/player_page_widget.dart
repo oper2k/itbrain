@@ -1,10 +1,11 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/main_pages/player_comp/player_comp_widget.dart';
+import '/main_pages/player_comp_new/player_comp_new_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
 import 'player_page_model.dart';
 export 'player_page_model.dart';
 
@@ -54,42 +55,34 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.transparent,
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: Image.asset(
-                'assets/images/Background.png',
-              ).image,
-            ),
-          ),
+          decoration: const BoxDecoration(),
           child: Stack(
             children: [
-              Image.asset(
-                'assets/images/image_28.webp',
+              CachedNetworkImage(
+                fadeInDuration: const Duration(milliseconds: 500),
+                fadeOutDuration: const Duration(milliseconds: 500),
+                imageUrl: widget.audio![FFAppState().playerIndex].imageCover,
                 width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 0.6,
+                height: MediaQuery.sizeOf(context).height * 0.55,
                 fit: BoxFit.cover,
               ),
-              Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
-                child: wrapWithModel(
-                  model: _model.playerCompModel,
-                  updateCallback: () => setState(() {}),
-                  updateOnChange: true,
-                  child: PlayerCompWidget(
-                    meditationList: widget.audio!,
-                  ),
+              wrapWithModel(
+                model: _model.playerCompNewModel,
+                updateCallback: () => setState(() {}),
+                updateOnChange: true,
+                child: PlayerCompNewWidget(
+                  meditationList: widget.audio!,
                 ),
               ),
             ],

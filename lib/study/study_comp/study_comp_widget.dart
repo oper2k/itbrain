@@ -259,6 +259,7 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                 );
               }
               List<LessonsRecord> containerLessonsRecordList = snapshot.data!;
+
               return Container(
                 width: double.infinity,
                 height: MediaQuery.sizeOf(context).width - 48,

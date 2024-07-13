@@ -101,6 +101,7 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
               );
             }
             List<LessonsRecord> containerLessonsRecordList = snapshot.data!;
+
             return Container(
               width: double.infinity,
               height: double.infinity,
@@ -197,7 +198,8 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                                                         .levels
                                                                         ?.reference) &&
                                                                 (e.course ==
-                                                                    widget.study
+                                                                    widget
+                                                                        .study
                                                                         ?.reference))
                                                             .toList()
                                                             .length
@@ -264,6 +266,7 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                   final lessons = containerLessonsRecordList
                                       .sortedList((e) => e.order)
                                       .toList();
+
                                   return ListView.separated(
                                     padding: const EdgeInsets.fromLTRB(
                                       0,
@@ -511,6 +514,7 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                       }
                       List<LevelsRecord> containerLevelsRecordList =
                           snapshot.data!;
+
                       // Return an empty Container when the item does not exist.
                       if (snapshot.data!.isEmpty) {
                         return Container();

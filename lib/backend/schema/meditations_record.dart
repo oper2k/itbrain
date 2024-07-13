@@ -125,6 +125,11 @@ class MeditationsRecord extends FirestoreRecord {
   String get lang => _lang ?? '';
   bool hasLang() => _lang != null;
 
+  // "imageCover" field.
+  String? _imageCover;
+  String get imageCover => _imageCover ?? '';
+  bool hasImageCover() => _imageCover != null;
+
   void _initializeFields() {
     _meditationCategory =
         snapshotData['meditationCategory'] as DocumentReference?;
@@ -149,6 +154,7 @@ class MeditationsRecord extends FirestoreRecord {
     _playerTextEng = snapshotData['playerTextEng'] as String?;
     _audioPathEng = snapshotData['AudioPathEng'] as String?;
     _lang = snapshotData['lang'] as String?;
+    _imageCover = snapshotData['imageCover'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -208,6 +214,7 @@ Map<String, dynamic> createMeditationsRecordData({
   String? playerTextEng,
   String? audioPathEng,
   String? lang,
+  String? imageCover,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -233,6 +240,7 @@ Map<String, dynamic> createMeditationsRecordData({
       'playerTextEng': playerTextEng,
       'AudioPathEng': audioPathEng,
       'lang': lang,
+      'imageCover': imageCover,
     }.withoutNulls,
   );
 
@@ -265,7 +273,8 @@ class MeditationsRecordDocumentEquality implements Equality<MeditationsRecord> {
         e1?.playerText == e2?.playerText &&
         e1?.playerTextEng == e2?.playerTextEng &&
         e1?.audioPathEng == e2?.audioPathEng &&
-        e1?.lang == e2?.lang;
+        e1?.lang == e2?.lang &&
+        e1?.imageCover == e2?.imageCover;
   }
 
   @override
@@ -291,7 +300,8 @@ class MeditationsRecordDocumentEquality implements Equality<MeditationsRecord> {
         e?.playerText,
         e?.playerTextEng,
         e?.audioPathEng,
-        e?.lang
+        e?.lang,
+        e?.imageCover
       ]);
 
   @override

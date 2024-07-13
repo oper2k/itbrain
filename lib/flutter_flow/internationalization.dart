@@ -1380,6 +1380,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Close',
     },
   },
+  // playerCompNew
+  {
+    '35qod6zb': {
+      'ru': 'Описание',
+      'en': '',
+    },
+  },
   // Miscellaneous
   {
     '9dizm1py': {
@@ -1409,6 +1416,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Разрешите присылать вам уведомления о новых событиях и медитациях в приложении.',
       'en':
           'Allow to send you notifications about new events and meditations in the application.',
+    },
+    'bxtoejsb': {
+      'ru': '',
+      'en': '',
+    },
+    'kxkloj0d': {
+      'ru': '',
+      'en': '',
+    },
+    '3e7ttn1z': {
+      'ru': '',
+      'en': '',
     },
     'gehtb41l': {
       'ru': 'Ошибка: [error]',
