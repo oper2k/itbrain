@@ -1429,6 +1429,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': '',
       'en': '',
     },
+    '0j7r6j2d': {
+      'ru':
+          'Нам необходим доступ к микрофону, чтобы отправлять голосовые сообщения в чат поддержки.',
+      'en': '',
+    },
     'gehtb41l': {
       'ru': 'Ошибка: [error]',
       'en': 'Error: [error]',
