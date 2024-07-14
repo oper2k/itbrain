@@ -72,7 +72,13 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
               CachedNetworkImage(
                 fadeInDuration: const Duration(milliseconds: 500),
                 fadeOutDuration: const Duration(milliseconds: 500),
-                imageUrl: widget.audio![FFAppState().playerIndex].imageCover,
+                imageUrl: widget
+                                .audio?[FFAppState().playerIndex].imageCover !=
+                            null &&
+                        widget.audio?[FFAppState().playerIndex].imageCover !=
+                            ''
+                    ? widget.audio![FFAppState().playerIndex].imageCover
+                    : 'https://firebasestorage.googleapis.com/v0/b/dmt-meditations.appspot.com/o/image%2028.webp?alt=media&token=50b8606a-2bea-4b46-989b-9024ec4d2858',
                 width: double.infinity,
                 height: MediaQuery.sizeOf(context).height * 0.55,
                 fit: BoxFit.cover,
