@@ -304,3 +304,8 @@ String? audioPathToString(String? audioPath) {
   // make audioPath to string
   return audioPath;
 }
+
+DateTime? returnNexDayDate(DateTime dateTimeCurrent) {
+  return DateTime(dateTimeCurrent.day + 1, dateTimeCurrent.month,
+      dateTimeCurrent.year, 10, 0, 0, 0, 0);
+}

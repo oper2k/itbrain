@@ -13,8 +13,12 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Custom Action - getRandomAffirmationReference] action in HomePage widget.
-  AffirmationRecord? affirmation;
+  // Stores action output result for [Firestore Query - Query a collection] action in HomePage widget.
+  List<AffirmationRecord>? affirmationRandomRef;
+  // Stores action output result for [Backend Call - Read Document] action in HomePage widget.
+  AffirmationRecord? affirmationRandom;
+  // Stores action output result for [Backend Call - Read Document] action in HomePage widget.
+  AffirmationRecord? affirmationShow;
   // Stores action output result for [Custom Action - checkInternetConnection] action in HomePage widget.
   bool? isIOnline;
   // Models for meditationComp dynamic component.

@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -11,6 +12,7 @@ import '/study/book_answer_comp/book_answer_comp_widget.dart';
 import '/study/small_video_comp/small_video_comp_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -46,36 +48,70 @@ class _HomePageWidgetState extends State<HomePageWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('HOME_PAGE_PAGE_HomePage_ON_INIT_STATE');
-      if (FFAppState().LastAffirmationDate !=
-          dateTimeFormat(
-            'd/M/y',
-            getCurrentTimestamp,
-            locale: FFLocalizations.of(context).languageCode,
-          )) {
-        logFirebaseEvent('HomePage_custom_action');
-        _model.affirmation = await actions.getRandomAffirmationReference();
+      if (FFAppState().lastPushDate! <= getCurrentTimestamp) {
         logFirebaseEvent('HomePage_update_app_state');
-        FFAppState().lastShowAffirmation = _model.affirmation?.reference;
+        FFAppState().affirmationReference =
+            FFAppState().scheduleAffirmationReference;
         setState(() {});
-        logFirebaseEvent('HomePage_bottom_sheet');
-        await showModalBottomSheet(
-          isScrollControlled: true,
-          backgroundColor: Colors.transparent,
-          context: context,
-          builder: (context) {
-            return GestureDetector(
-              onTap: () => _model.unfocusNode.canRequestFocus
-                  ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                  : FocusScope.of(context).unfocus(),
-              child: Padding(
-                padding: MediaQuery.viewInsetsOf(context),
-                child: AffirmationCompWidget(
-                  affirmation: _model.affirmation!,
+        logFirebaseEvent('HomePage_firestore_query');
+        _model.affirmationRandomRef = await queryAffirmationRecordOnce();
+        logFirebaseEvent('HomePage_update_app_state');
+        FFAppState().scheduleAffirmationReference = _model
+            .affirmationRandomRef?[random_data.randomInteger(
+                0, _model.affirmationRandomRef!.length - 1)]
+            .reference;
+        setState(() {});
+        logFirebaseEvent('HomePage_backend_call');
+        _model.affirmationRandom = await AffirmationRecord.getDocumentOnce(
+            FFAppState().scheduleAffirmationReference!);
+        logFirebaseEvent('HomePage_trigger_push_notification');
+        triggerPushNotification(
+          notificationTitle: FFLocalizations.of(context).getVariableText(
+            ruText: _model.affirmationRandom?.affirmationTitle,
+            enText: _model.affirmationRandom?.affirmationTitleEng,
+          ),
+          notificationText: FFLocalizations.of(context).getVariableText(
+            ruText: _model.affirmationRandom?.affirmationSubTitle,
+            enText: _model.affirmationRandom?.affirmationSubTitleEng,
+          ),
+          scheduledTime: functions.returnNexDayDate(getCurrentTimestamp)!,
+          userRefs: [currentUserReference!],
+          initialPageName: 'HomePage',
+          parameterData: {},
+        );
+        logFirebaseEvent('HomePage_update_app_state');
+        FFAppState().lastPushDate =
+            functions.returnNexDayDate(getCurrentTimestamp);
+        setState(() {});
+        if (FFAppState().LastAffirmationDate !=
+            dateTimeFormat(
+              'd/M/y',
+              getCurrentTimestamp,
+              locale: FFLocalizations.of(context).languageCode,
+            )) {
+          logFirebaseEvent('HomePage_backend_call');
+          _model.affirmationShow = await AffirmationRecord.getDocumentOnce(
+              FFAppState().affirmationReference!);
+          logFirebaseEvent('HomePage_bottom_sheet');
+          await showModalBottomSheet(
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            context: context,
+            builder: (context) {
+              return GestureDetector(
+                onTap: () => _model.unfocusNode.canRequestFocus
+                    ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                    : FocusScope.of(context).unfocus(),
+                child: Padding(
+                  padding: MediaQuery.viewInsetsOf(context),
+                  child: AffirmationCompWidget(
+                    affirmation: _model.affirmationShow!,
+                  ),
                 ),
-              ),
-            );
-          },
-        ).then((value) => safeSetState(() {}));
+              );
+            },
+          ).then((value) => safeSetState(() {}));
+        }
       }
       if (FFAppState().isAppLoaded) {
         return;

@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom widgets
+
 //Обязательно добавить в пермишенны андроида FOREGROUND_SERVICE_MEDIA_PLAYBACK, WAKE_LOCK и FOREGROUND_SERVICE прям в фф (и того 3 штуки)!
 //Обязательно добавить в ФФ в мейн экшен justAudioBackground (есть в тим виджетах) в инициализацию!
 // инфо что еще куда добавиь тут https://pub.dev/packages/just_audio_background
@@ -24,8 +26,8 @@ import 'dart:math';
 import 'package:just_audio/just_audio.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
-class NewPlayer extends StatefulWidget {
-  const NewPlayer({
+class NewPlayerCopy extends StatefulWidget {
+  const NewPlayerCopy({
     Key? key,
     this.url,
     this.ksecBack,
@@ -75,10 +77,10 @@ class NewPlayer extends StatefulWidget {
   final void Function() forwardAction;
 
   @override
-  _NewPlayerState createState() => _NewPlayerState();
+  _NewPlayerCopyState createState() => _NewPlayerCopyState();
 }
 
-class _NewPlayerState extends State<NewPlayer> {
+class _NewPlayerCopyState extends State<NewPlayerCopy> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   late AudioPlayer audioPlayer;
   late AudioPlayer defaultAudioPlayer;
@@ -290,7 +292,7 @@ class _NewPlayerState extends State<NewPlayer> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(48, 0, 48, 23),
+                padding: const EdgeInsetsDirectional.fromSTEB(20, 0, 20, 23),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -324,16 +326,18 @@ class _NewPlayerState extends State<NewPlayer> {
                       width: 50,
                       child: GestureDetector(
                         onTap: () {
+                          audioPlayer.stop();
+                          audioPlayer.dispose();
                           widget.backAction();
-                          setState(() {
-                            audioPlayer.seek(
-                              Duration(
-                                seconds: position.inSeconds - 10 < 0
-                                    ? 0
-                                    : position.inSeconds - 10,
-                              ),
-                            );
-                          });
+                          // setState(() {
+                          //   audioPlayer.seek(
+                          //     Duration(
+                          //       seconds: position.inSeconds - 10 < 0
+                          //           ? 0
+                          //           : position.inSeconds - 10,
+                          //     ),
+                          //   );
+                          // });
                         },
                         child: Align(
                             alignment: Alignment.centerLeft,
@@ -353,9 +357,13 @@ class _NewPlayerState extends State<NewPlayer> {
                         if (processingState == ProcessingState.loading ||
                             processingState == ProcessingState.buffering) {
                           return Container(
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).accent1,
+                              shape: BoxShape.circle,
+                            ),
                             alignment: AlignmentDirectional.center,
-                            width: widget.playSize,
-                            height: widget.playSize,
+                            width: widget.playSize! + 20,
+                            height: widget.playSize! + 20,
                             child: Align(
                                 alignment: Alignment.center,
                                 child: widget.kplay),
@@ -370,8 +378,12 @@ class _NewPlayerState extends State<NewPlayer> {
                               audioPlayer.play();
                             },
                             child: Container(
-                              width: widget.playSize,
-                              height: widget.playSize,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).accent1,
+                                shape: BoxShape.circle,
+                              ),
+                              width: widget.playSize! + 20,
+                              height: widget.playSize! + 20,
                               alignment: AlignmentDirectional.center,
                               child: Align(
                                   alignment: Alignment.center,
@@ -383,8 +395,12 @@ class _NewPlayerState extends State<NewPlayer> {
                           return GestureDetector(
                             onTap: audioPlayer.pause,
                             child: Container(
-                              width: widget.playSize,
-                              height: widget.playSize,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).accent1,
+                                shape: BoxShape.circle,
+                              ),
+                              width: widget.playSize! + 20,
+                              height: widget.playSize! + 20,
                               alignment: AlignmentDirectional.center,
                               child: Align(
                                   alignment: Alignment.center,
@@ -395,8 +411,12 @@ class _NewPlayerState extends State<NewPlayer> {
                           return GestureDetector(
                             onTap: audioPlayer.play,
                             child: Container(
-                              width: widget.playSize,
-                              height: widget.playSize,
+                              width: widget.playSize! + 20,
+                              height: widget.playSize! + 20,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).accent1,
+                                shape: BoxShape.circle,
+                              ),
                               alignment: AlignmentDirectional.center,
                               child: Align(
                                   alignment: Alignment.center,
@@ -410,16 +430,18 @@ class _NewPlayerState extends State<NewPlayer> {
                       width: 50,
                       child: GestureDetector(
                         onTap: () {
+                          audioPlayer.stop();
+                          audioPlayer.dispose();
                           widget.forwardAction();
-                          setState(() {
-                            audioPlayer.seek(
-                              Duration(
-                                seconds: position.inSeconds + 10 < 0
-                                    ? 0
-                                    : position.inSeconds + 10,
-                              ),
-                            );
-                          });
+                          // setState(() {
+                          //   audioPlayer.seek(
+                          //     Duration(
+                          //       seconds: position.inSeconds + 10 < 0
+                          //           ? 0
+                          //           : position.inSeconds + 10,
+                          //     ),
+                          //   );
+                          // });
                         },
                         child: Align(
                             alignment: Alignment.centerRight,

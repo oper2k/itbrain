@@ -72,6 +72,21 @@ class FFAppState extends ChangeNotifier {
       _LastAffirmationDate =
           prefs.getString('ff_LastAffirmationDate') ?? _LastAffirmationDate;
     });
+    _safeInit(() {
+      _lastPushDate = prefs.containsKey('ff_lastPushDate')
+          ? DateTime.fromMillisecondsSinceEpoch(
+              prefs.getInt('ff_lastPushDate')!)
+          : _lastPushDate;
+    });
+    _safeInit(() {
+      _scheduleAffirmationReference =
+          prefs.getString('ff_scheduleAffirmationReference')?.ref ??
+              _scheduleAffirmationReference;
+    });
+    _safeInit(() {
+      _affirmationReference = prefs.getString('ff_affirmationReference')?.ref ??
+          _affirmationReference;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -307,6 +322,36 @@ class FFAppState extends ChangeNotifier {
   int get playerIndex => _playerIndex;
   set playerIndex(int value) {
     _playerIndex = value;
+  }
+
+  DateTime? _lastPushDate = DateTime.fromMillisecondsSinceEpoch(1719848640000);
+  DateTime? get lastPushDate => _lastPushDate;
+  set lastPushDate(DateTime? value) {
+    _lastPushDate = value;
+    value != null
+        ? prefs.setInt('ff_lastPushDate', value.millisecondsSinceEpoch)
+        : prefs.remove('ff_lastPushDate');
+  }
+
+  DocumentReference? _scheduleAffirmationReference =
+      FirebaseFirestore.instance.doc('/affirmation/zRfFqoRQWenyHCGl8eFK');
+  DocumentReference? get scheduleAffirmationReference =>
+      _scheduleAffirmationReference;
+  set scheduleAffirmationReference(DocumentReference? value) {
+    _scheduleAffirmationReference = value;
+    value != null
+        ? prefs.setString('ff_scheduleAffirmationReference', value.path)
+        : prefs.remove('ff_scheduleAffirmationReference');
+  }
+
+  DocumentReference? _affirmationReference =
+      FirebaseFirestore.instance.doc('/affirmation/zRfFqoRQWenyHCGl8eFK');
+  DocumentReference? get affirmationReference => _affirmationReference;
+  set affirmationReference(DocumentReference? value) {
+    _affirmationReference = value;
+    value != null
+        ? prefs.setString('ff_affirmationReference', value.path)
+        : prefs.remove('ff_affirmationReference');
   }
 
   final _meditationCategoryPageManager =

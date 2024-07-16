@@ -238,59 +238,134 @@ class _PlayerCompNewWidgetState extends State<PlayerCompNewWidget> {
               child: Container(
                 width: double.infinity,
                 decoration: const BoxDecoration(),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 149.0,
-                  child: custom_widgets.NewPlayer(
-                    width: double.infinity,
-                    height: 149.0,
-                    url: functions.audioPathToString(widget
-                        .meditationList?[FFAppState().playerIndex].audioPath),
-                    ksecBack: Icon(
-                      FFIcons.k5,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 24.0,
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      height: 158.0,
+                      child: custom_widgets.NewPlayerCopy(
+                        width: double.infinity,
+                        height: 158.0,
+                        url: functions.audioPathToString(widget
+                            .meditationList?[FFAppState().playerIndex]
+                            .audioPath),
+                        ksecBack: Icon(
+                          FFIcons.k5,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 24.0,
+                        ),
+                        ksecForward: Icon(
+                          FFIcons.k3,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 24.0,
+                        ),
+                        kplay: Icon(
+                          FFIcons.kplayyy,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 36.0,
+                        ),
+                        kpause: Icon(
+                          FFIcons.k4,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 24.0,
+                        ),
+                        kRepeatOn: Icon(
+                          FFIcons.knotHeart45,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 32.0,
+                        ),
+                        kRepeatOff: Icon(
+                          FFIcons.krotationing,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 32.0,
+                        ),
+                        primaryColor: FlutterFlowTheme.of(context).primaryText,
+                        secondaryColor: const Color(0x67471F66),
+                        notificationImagePath: widget
+                            .meditationList![FFAppState().playerIndex].image,
+                        notificationTitle: widget
+                            .meditationList![FFAppState().playerIndex].title,
+                        notificationAlbum: widget
+                            .meditationList![FFAppState().playerIndex].title,
+                        bufferingColor:
+                            FlutterFlowTheme.of(context).buttonColor,
+                        showRepeatButton: true,
+                        showSpeedButton: true,
+                        playSize: 36.0,
+                        playAction: () async {},
+                        oneMinuteAction: () async {},
+                        backAction: () async {
+                          logFirebaseEvent(
+                              'PLAYER_NEW_Container_e6o0m3cf_CALLBACK');
+                          if (FFAppState().playerIndex > 0) {
+                            logFirebaseEvent('NewPlayerCopy_update_app_state');
+                            FFAppState().positionMS = 0;
+                            FFAppState().playerIndex =
+                                FFAppState().playerIndex + -1;
+                            FFAppState().isAudioPlaying = true;
+                            setState(() {});
+                            logFirebaseEvent('NewPlayerCopy_navigate_to');
+                            if (Navigator.of(context).canPop()) {
+                              context.pop();
+                            }
+                            context.pushNamed(
+                              'playerPage',
+                              queryParameters: {
+                                'audio': serializeParam(
+                                  widget.meditationList,
+                                  ParamType.Document,
+                                  isList: true,
+                                ),
+                              }.withoutNulls,
+                              extra: <String, dynamic>{
+                                'audio': widget.meditationList,
+                                kTransitionInfoKey: const TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.fade,
+                                  duration: Duration(milliseconds: 0),
+                                ),
+                              },
+                            );
+
+                            return;
+                          } else {
+                            return;
+                          }
+                        },
+                        forwardAction: () async {
+                          logFirebaseEvent(
+                              'PLAYER_NEW_Container_e6o0m3cf_CALLBACK');
+                          logFirebaseEvent('NewPlayerCopy_update_app_state');
+                          FFAppState().positionMS = 0;
+                          FFAppState().playerIndex =
+                              FFAppState().playerIndex + 1;
+                          FFAppState().isAudioPlaying = true;
+                          logFirebaseEvent('NewPlayerCopy_navigate_to');
+                          if (Navigator.of(context).canPop()) {
+                            context.pop();
+                          }
+                          context.pushNamed(
+                            'playerPage',
+                            queryParameters: {
+                              'audio': serializeParam(
+                                widget.meditationList,
+                                ParamType.Document,
+                                isList: true,
+                              ),
+                            }.withoutNulls,
+                            extra: <String, dynamic>{
+                              'audio': widget.meditationList,
+                              kTransitionInfoKey: const TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 0),
+                              ),
+                            },
+                          );
+                        },
+                      ),
                     ),
-                    ksecForward: Icon(
-                      FFIcons.k3,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 24.0,
-                    ),
-                    kplay: Icon(
-                      FFIcons.kplayyy,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 36.0,
-                    ),
-                    kpause: Icon(
-                      FFIcons.k4,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 24.0,
-                    ),
-                    kRepeatOn: Icon(
-                      FFIcons.knotHeart45,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 32.0,
-                    ),
-                    kRepeatOff: Icon(
-                      FFIcons.krotationing,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 32.0,
-                    ),
-                    primaryColor: FlutterFlowTheme.of(context).primaryText,
-                    secondaryColor: const Color(0x67471F66),
-                    notificationImagePath:
-                        widget.meditationList![FFAppState().playerIndex].image,
-                    notificationTitle:
-                        widget.meditationList![FFAppState().playerIndex].title,
-                    notificationAlbum:
-                        widget.meditationList![FFAppState().playerIndex].title,
-                    bufferingColor: FlutterFlowTheme.of(context).buttonColor,
-                    showRepeatButton: true,
-                    showSpeedButton: true,
-                    playSize: 36.0,
-                    playAction: () async {},
-                    oneMinuteAction: () async {},
-                  ),
+                  ],
                 ),
               ),
             ),
