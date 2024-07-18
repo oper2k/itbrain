@@ -390,6 +390,28 @@ class _PlayerCompNewWidgetState extends State<PlayerCompNewWidget> {
                             onTap: () async {
                               logFirebaseEvent(
                                   'PLAYER_NEW_Container_jpvbrxb1_ON_TAP');
+                              logFirebaseEvent('Container_show_snack_bar');
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    FFLocalizations.of(context).getVariableText(
+                                      ruText: 'Формируем ссылку, подождите',
+                                      enText:
+                                          'We are generating a link, please wait',
+                                    ),
+                                    style: TextStyle(
+                                      fontFamily: 'Evolventa',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 15.0,
+                                    ),
+                                  ),
+                                  duration: const Duration(milliseconds: 2000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).buttonColor,
+                                ),
+                              );
                               logFirebaseEvent(
                                   'Container_generate_current_page_link');
                               _model.currentPageLink =
@@ -417,10 +439,14 @@ class _PlayerCompNewWidgetState extends State<PlayerCompNewWidget> {
                               width: 32.0,
                               height: 32.0,
                               decoration: const BoxDecoration(),
-                              child: Icon(
-                                FFIcons.kshare2,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 32.0,
+                              child: Align(
+                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                child: Icon(
+                                  FFIcons.kshare2,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 32.0,
+                                ),
                               ),
                             ),
                           ),

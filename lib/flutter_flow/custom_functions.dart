@@ -306,6 +306,8 @@ String? audioPathToString(String? audioPath) {
 }
 
 DateTime? returnNexDayDate(DateTime dateTimeCurrent) {
-  return DateTime(dateTimeCurrent.day + 1, dateTimeCurrent.month,
-      dateTimeCurrent.year, 10, 0, 0, 0, 0);
+  DateTime nextDay = dateTimeCurrent.add(Duration(days: 1));
+
+  // Возвращаем новый объект DateTime с установкой времени на 10:00:00
+  return DateTime(nextDay.year, nextDay.month, nextDay.day, 10, 0, 0, 0, 0);
 }

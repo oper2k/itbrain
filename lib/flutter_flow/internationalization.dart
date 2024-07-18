@@ -1384,7 +1384,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '35qod6zb': {
       'ru': 'Описание',
-      'en': '',
+      'en': 'Description',
     },
   },
   // Miscellaneous
