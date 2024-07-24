@@ -29,6 +29,9 @@ class LessonContentStruct extends FFFirebaseStruct {
     String? lang,
     String? type,
     String? authorText,
+    bool? showHtml,
+    bool? showHTMLBook,
+    bool? showHTMLBookContent,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _photo = photo,
         _showDivider = showDivider,
@@ -51,6 +54,9 @@ class LessonContentStruct extends FFFirebaseStruct {
         _lang = lang,
         _type = type,
         _authorText = authorText,
+        _showHtml = showHtml,
+        _showHTMLBook = showHTMLBook,
+        _showHTMLBookContent = showHTMLBookContent,
         super(firestoreUtilData);
 
   // "photo" field.
@@ -202,6 +208,27 @@ class LessonContentStruct extends FFFirebaseStruct {
 
   bool hasAuthorText() => _authorText != null;
 
+  // "showHtml" field.
+  bool? _showHtml;
+  bool get showHtml => _showHtml ?? false;
+  set showHtml(bool? val) => _showHtml = val;
+
+  bool hasShowHtml() => _showHtml != null;
+
+  // "showHTMLBook" field.
+  bool? _showHTMLBook;
+  bool get showHTMLBook => _showHTMLBook ?? false;
+  set showHTMLBook(bool? val) => _showHTMLBook = val;
+
+  bool hasShowHTMLBook() => _showHTMLBook != null;
+
+  // "showHTMLBookContent" field.
+  bool? _showHTMLBookContent;
+  bool get showHTMLBookContent => _showHTMLBookContent ?? false;
+  set showHTMLBookContent(bool? val) => _showHTMLBookContent = val;
+
+  bool hasShowHTMLBookContent() => _showHTMLBookContent != null;
+
   static LessonContentStruct fromMap(Map<String, dynamic> data) =>
       LessonContentStruct(
         photo: data['photo'] as String?,
@@ -225,6 +252,9 @@ class LessonContentStruct extends FFFirebaseStruct {
         lang: data['lang'] as String?,
         type: data['type'] as String?,
         authorText: data['authorText'] as String?,
+        showHtml: data['showHtml'] as bool?,
+        showHTMLBook: data['showHTMLBook'] as bool?,
+        showHTMLBookContent: data['showHTMLBookContent'] as bool?,
       );
 
   static LessonContentStruct? maybeFromMap(dynamic data) => data is Map
@@ -253,6 +283,9 @@ class LessonContentStruct extends FFFirebaseStruct {
         'lang': _lang,
         'type': _type,
         'authorText': _authorText,
+        'showHtml': _showHtml,
+        'showHTMLBook': _showHTMLBook,
+        'showHTMLBookContent': _showHTMLBookContent,
       }.withoutNulls;
 
   @override
@@ -340,6 +373,18 @@ class LessonContentStruct extends FFFirebaseStruct {
         'authorText': serializeParam(
           _authorText,
           ParamType.String,
+        ),
+        'showHtml': serializeParam(
+          _showHtml,
+          ParamType.bool,
+        ),
+        'showHTMLBook': serializeParam(
+          _showHTMLBook,
+          ParamType.bool,
+        ),
+        'showHTMLBookContent': serializeParam(
+          _showHTMLBookContent,
+          ParamType.bool,
         ),
       }.withoutNulls;
 
@@ -450,6 +495,21 @@ class LessonContentStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        showHtml: deserializeParam(
+          data['showHtml'],
+          ParamType.bool,
+          false,
+        ),
+        showHTMLBook: deserializeParam(
+          data['showHTMLBook'],
+          ParamType.bool,
+          false,
+        ),
+        showHTMLBookContent: deserializeParam(
+          data['showHTMLBookContent'],
+          ParamType.bool,
+          false,
+        ),
       );
 
   @override
@@ -478,7 +538,10 @@ class LessonContentStruct extends FFFirebaseStruct {
         fileUrl == other.fileUrl &&
         lang == other.lang &&
         type == other.type &&
-        authorText == other.authorText;
+        authorText == other.authorText &&
+        showHtml == other.showHtml &&
+        showHTMLBook == other.showHTMLBook &&
+        showHTMLBookContent == other.showHTMLBookContent;
   }
 
   @override
@@ -503,7 +566,10 @@ class LessonContentStruct extends FFFirebaseStruct {
         fileUrl,
         lang,
         type,
-        authorText
+        authorText,
+        showHtml,
+        showHTMLBook,
+        showHTMLBookContent
       ]);
 }
 
@@ -529,6 +595,9 @@ LessonContentStruct createLessonContentStruct({
   String? lang,
   String? type,
   String? authorText,
+  bool? showHtml,
+  bool? showHTMLBook,
+  bool? showHTMLBookContent,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -556,6 +625,9 @@ LessonContentStruct createLessonContentStruct({
       lang: lang,
       type: type,
       authorText: authorText,
+      showHtml: showHtml,
+      showHTMLBook: showHTMLBook,
+      showHTMLBookContent: showHTMLBookContent,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

@@ -13,6 +13,7 @@ import '/study/task_book_comp/task_book_comp_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'content_block_model.dart';
 export 'content_block_model.dart';
@@ -166,6 +167,9 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
                   end: AlignmentDirectional(-1.0, -0.34),
                 ),
                 borderRadius: BorderRadius.circular(12.0),
+                border: Border.all(
+                  color: Colors.white,
+                ),
               ),
               child: Align(
                 alignment: const AlignmentDirectional(0.0, 0.0),
@@ -185,11 +189,26 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
             ),
           );
         } else if (widget.level?.type == 'text') {
-          return MarkdownBody(
-            data: widget.level!.text,
-            selectable: false,
-            onTapLink: (_, url, __) => launchURL(url!),
-          ).animateOnPageLoad(animationsMap['markdownOnPageLoadAnimation']!);
+          return Builder(
+            builder: (context) {
+              if (!widget.level!.showHtml) {
+                return MarkdownBody(
+                  data: widget.level!.text,
+                  selectable: false,
+                  onTapLink: (_, url, __) => launchURL(url!),
+                ).animateOnPageLoad(
+                    animationsMap['markdownOnPageLoadAnimation']!);
+              } else {
+                return Html(
+                  data: valueOrDefault<String>(
+                    '<style> li {color: #FFFFFF;} li span {color: #FFFFFF;}  p {color: #FFFFFF;} body {color:#FFFFFF;} </style> <body>${widget.level?.text}</body>',
+                    '0',
+                  ),
+                  onLinkTap: (url, _, __) => launchURL(url!),
+                );
+              }
+            },
+          );
         } else if (widget.level?.type == 'createdBy') {
           return wrapWithModel(
             model: _model.createdByModel,
@@ -254,6 +273,7 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
             child: TaskBookCompWidget(
               title: widget.level!.bookTitle,
               description: widget.level!.bookText,
+              htmlView: widget.level!.showHTMLBook,
             ),
           );
         } else if (widget.level?.showDivider ?? false) {

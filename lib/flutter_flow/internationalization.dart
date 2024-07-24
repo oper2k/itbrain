@@ -806,9 +806,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Вы подписались на уведомления',
       'en': 'You have subscribed to notifications',
     },
-    '58i4w14h': {
+    '4r5zif6e': {
       'ru': 'Home',
-      'en': 'Home',
+      'en': '',
     },
   },
   // studyLevels
@@ -1422,10 +1422,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'kxkloj0d': {
-      'ru': '',
-      'en': '',
-    },
-    '3e7ttn1z': {
       'ru': '',
       'en': '',
     },

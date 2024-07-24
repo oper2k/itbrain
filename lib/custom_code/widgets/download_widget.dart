@@ -11,6 +11,10 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import 'index.dart'; // Imports other custom widgets
+
 //Работает в паре с виджетом NewPlayer. Качает аудио в кеш. Айди медитации - линк на медитацию
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
@@ -35,6 +39,7 @@ class DownloadWidget extends StatefulWidget {
   final Color? colorPrimary;
   final void Function() finishDownload;
   final Color? colorSecondary;
+
   @override
   State<DownloadWidget> createState() => _DownloadWidgetState();
 }
@@ -44,24 +49,24 @@ class _DownloadWidgetState extends State<DownloadWidget> {
   Stream<FileResponse>? fileStream;
 
   Future<bool> getLocalUrlIfExist() async {
+    if (widget.url == null) return false;
     FileInfo? file = await DefaultCacheManager().getFileFromCache(widget.url!);
     return file != null;
   }
 
   @override
   Widget build(BuildContext context) {
+    if (widget.url == null) {
+      return widget.downloadOff;
+    }
+
     return FutureBuilder<bool>(
       future: getLocalUrlIfExist(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return widget.downloadOff!;
+          return widget.downloadOff;
         } else if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasError) {
-            return widget.downloadOff!;
-          } else if (snapshot.hasData) {
-            if (snapshot.data!) {
-              return widget.downloadOn!;
-            }
+          if (snapshot.hasError || !snapshot.hasData || !snapshot.data!) {
             return GestureDetector(
               onTap: () {
                 if (downloadState == DownloadState.downloaded ||
@@ -78,10 +83,15 @@ class _DownloadWidgetState extends State<DownloadWidget> {
                   : _buildStream(),
             );
           } else {
-            return widget.downloadOff!;
+            return GestureDetector(
+              onTap: () async {
+                await _removeFile();
+              },
+              child: widget.downloadOn,
+            );
           }
         } else {
-          return widget.downloadOff!;
+          return widget.downloadOff;
         }
       },
     );
@@ -91,7 +101,7 @@ class _DownloadWidgetState extends State<DownloadWidget> {
     return StreamBuilder<FileResponse>(
       stream: fileStream,
       builder: (context, snapshot) {
-        Widget? body;
+        Widget body;
         var loading = !snapshot.hasData || snapshot.data is DownloadProgress;
         if (snapshot.hasError) {
           fileStream = null;
@@ -107,7 +117,7 @@ class _DownloadWidgetState extends State<DownloadWidget> {
                     .asBroadcastStream();
               });
             },
-            child: _buildStream(),
+            child: widget.downloadOff,
           );
         } else if (loading) {
           body = SizedBox(
@@ -116,31 +126,44 @@ class _DownloadWidgetState extends State<DownloadWidget> {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                widget.downloadOff!,
+                widget.downloadOff,
                 CircularProgressIndicator(
-                    backgroundColor: widget.colorSecondary ??
-                        const Color.fromARGB(255, 255, 0, 0).withOpacity(0.2),
-                    color: widget.colorPrimary ??
-                        const Color.fromARGB(255, 255, 0, 0),
-                    value: snapshot.data != null
-                        ? (snapshot.data as DownloadProgress).progress
-                        : 0),
+                  backgroundColor: widget.colorSecondary ??
+                      const Color.fromARGB(255, 255, 0, 0).withOpacity(0.2),
+                  color: widget.colorPrimary ??
+                      const Color.fromARGB(255, 255, 0, 0),
+                  value: snapshot.data != null
+                      ? (snapshot.data as DownloadProgress).progress
+                      : 0,
+                ),
               ],
             ),
           );
         } else {
           fileStream = null;
           downloadState = DownloadState.downloaded;
-          body = widget.downloadOn;
+
+          body = GestureDetector(
+            onTap: () async {
+              await _removeFile();
+            },
+            child: widget.downloadOn,
+          );
           widget.finishDownload();
         }
-        return body!;
+        return body;
       },
     );
+  }
+
+  Future<void> _removeFile() async {
+    if (widget.url != null) {
+      await DefaultCacheManager().removeFile(widget.url!);
+      setState(() {
+        downloadState = DownloadState.inactive;
+      });
+    }
   }
 }
 
 enum DownloadState { inactive, inprogress, downloaded }
-
-// Set your widget name, define your parameter, and then add the
-// boilerplate code using the green button on the right!

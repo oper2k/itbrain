@@ -917,15 +917,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           listViewIndex];
                                                   return Visibility(
                                                     visible: (!containerShowAppleRecord!
-                                                                .isShow1 &&
+                                                                .isShow2 &&
                                                             listViewMeditationCategoriesRecord
                                                                 .isPaid) ||
                                                         (!containerShowAppleRecord
-                                                                .isShow1 &&
+                                                                .isShow2 &&
                                                             !listViewMeditationCategoriesRecord
                                                                 .soon) ||
                                                         containerShowAppleRecord
-                                                            .isShow1,
+                                                            .isShow2,
                                                     child: InkWell(
                                                       splashColor:
                                                           Colors.transparent,
@@ -1217,13 +1217,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       },
                                     ),
                                   ),
-                                  if (FFAppState().lastShowAffirmation != null)
+                                  if (FFAppState().affirmationReference != null)
                                     Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 24.0, 20.0, 0.0),
                                       child: StreamBuilder<AffirmationRecord>(
                                         stream: AffirmationRecord.getDocument(
-                                            FFAppState().lastShowAffirmation!),
+                                            FFAppState().affirmationReference!),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
                                           if (!snapshot.hasData) {

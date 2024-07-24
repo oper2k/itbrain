@@ -154,7 +154,7 @@ class _ContentPageWidgetState extends State<ContentPageWidget> {
                                   e.lang ==
                                   FFLocalizations.of(context).languageCode)
                               .toList()
-                              .sortedList((e) => e.order)
+                              .sortedList(keyOf: (e) => e.order, desc: false)
                               .toList() ??
                           [];
 

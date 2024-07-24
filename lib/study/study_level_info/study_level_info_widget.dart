@@ -264,7 +264,8 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                               child: Builder(
                                 builder: (context) {
                                   final lessons = containerLessonsRecordList
-                                      .sortedList((e) => e.order)
+                                      .sortedList(
+                                          keyOf: (e) => e.order, desc: false)
                                       .toList();
 
                                   return ListView.separated(

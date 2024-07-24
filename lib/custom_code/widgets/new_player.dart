@@ -219,8 +219,12 @@ class _NewPlayerState extends State<NewPlayer> {
           final duration = positionData?.duration ?? Duration.zero;
           final maxDuration = duration.inMilliseconds.toDouble();
           final position = positionData?.position ?? Duration.zero;
-          var posSec = position.toString().substring(2, 7);
-          var durSec = duration.toString().substring(2, 7);
+          var posSec = position.inHours > 0
+              ? position.toString().split('.').first.padLeft(8, "0")
+              : position.toString().substring(2, 7);
+          var durSec = duration.inHours > 0
+              ? duration.toString().split('.').first.padLeft(8, "0")
+              : duration.toString().substring(2, 7);
           final bufferedPosition =
               positionData?.bufferedPosition ?? Duration.zero;
           return Column(
