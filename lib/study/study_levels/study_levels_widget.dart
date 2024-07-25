@@ -610,6 +610,10 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                                           ProgressBarWidget(
                                                                     key: Key(
                                                                         'Key6bb_${levelsIndex}_of_${levels.length}'),
+                                                                    levels:
+                                                                        levelsItem,
+                                                                    course: widget
+                                                                        .course!,
                                                                   ),
                                                                 ),
                                                               if (!(currentUserDocument

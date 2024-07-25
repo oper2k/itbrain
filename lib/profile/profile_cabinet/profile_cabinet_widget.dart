@@ -551,7 +551,6 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                   List<AffirmationRecord>
                                       containerAffirmationRecordList =
                                       snapshot.data!;
-
                                   // Return an empty Container when the item does not exist.
                                   if (snapshot.data!.isEmpty) {
                                     return Container();
@@ -560,6 +559,7 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                       containerAffirmationRecordList.isNotEmpty
                                           ? containerAffirmationRecordList.first
                                           : null;
+
                                   return InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -944,11 +944,11 @@ class _ProfileCabinetWidgetState extends State<ProfileCabinetWidget>
                                 List<ShowAppleRecord>
                                     containerShowAppleRecordList =
                                     snapshot.data!;
-
                                 final containerShowAppleRecord =
                                     containerShowAppleRecordList.isNotEmpty
                                         ? containerShowAppleRecordList.first
                                         : null;
+
                                 return Container(
                                   decoration: const BoxDecoration(),
                                   child: Visibility(

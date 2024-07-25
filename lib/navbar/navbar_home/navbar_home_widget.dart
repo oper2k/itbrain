@@ -106,11 +106,11 @@ class _NavbarHomeWidgetState extends State<NavbarHomeWidget> {
                     }
                     List<ShowAppleRecord> containerShowAppleRecordList =
                         snapshot.data!;
-
                     final containerShowAppleRecord =
                         containerShowAppleRecordList.isNotEmpty
                             ? containerShowAppleRecordList.first
                             : null;
+
                     return Container(
                       decoration: const BoxDecoration(),
                       child: Visibility(

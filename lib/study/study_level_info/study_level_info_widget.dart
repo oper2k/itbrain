@@ -184,12 +184,29 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                               )} ${valueOrDefault<String>(
                                                 formatNumber(
                                                   functions.progress(
-                                                      (currentUserDocument
-                                                                  ?.completeLessons
-                                                                  .toList() ??
-                                                              [])
-                                                          .length
-                                                          .toDouble(),
+                                                      valueOrDefault<double>(
+                                                        containerLessonsRecordList
+                                                            .where((e) =>
+                                                                (e
+                                                                        .level ==
+                                                                    widget
+                                                                        .levels
+                                                                        ?.reference) &&
+                                                                (e.course ==
+                                                                    widget
+                                                                        .study
+                                                                        ?.reference) &&
+                                                                (currentUserDocument
+                                                                            ?.completeLessons
+                                                                            .toList() ??
+                                                                        [])
+                                                                    .contains(e
+                                                                        .reference))
+                                                            .toList()
+                                                            .length
+                                                            .toDouble(),
+                                                        0.0,
+                                                      ),
                                                       valueOrDefault<double>(
                                                         containerLessonsRecordList
                                                             .where((e) =>
@@ -515,7 +532,6 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                       }
                       List<LevelsRecord> containerLevelsRecordList =
                           snapshot.data!;
-
                       // Return an empty Container when the item does not exist.
                       if (snapshot.data!.isEmpty) {
                         return Container();
@@ -524,6 +540,7 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                           containerLevelsRecordList.isNotEmpty
                               ? containerLevelsRecordList.first
                               : null;
+
                       return Container(
                         decoration: const BoxDecoration(),
                         child: Visibility(

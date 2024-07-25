@@ -847,13 +847,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       List<ShowAppleRecord>
                                           containerShowAppleRecordList =
                                           snapshot.data!;
-
                                       final containerShowAppleRecord =
                                           containerShowAppleRecordList
                                                   .isNotEmpty
                                               ? containerShowAppleRecordList
                                                   .first
                                               : null;
+
                                       return Container(
                                         decoration: const BoxDecoration(),
                                         child: Padding(
@@ -894,7 +894,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                               List<MeditationCategoriesRecord>
                                                   listViewMeditationCategoriesRecordList =
                                                   snapshot.data!;
-
                                               if (listViewMeditationCategoriesRecordList
                                                   .isEmpty) {
                                                 return const SizedBox(
@@ -902,6 +901,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   child: OfflineModeWidget(),
                                                 );
                                               }
+
                                               return ListView.builder(
                                                 padding: EdgeInsets.zero,
                                                 primary: false,
