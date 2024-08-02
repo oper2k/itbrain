@@ -12,11 +12,17 @@ class StoriesStruct extends FFFirebaseStruct {
     String? video,
     int? time,
     String? imageEng,
+    String? link1,
+    String? link2,
+    String? link3,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _image = image,
         _video = video,
         _time = time,
         _imageEng = imageEng,
+        _link1 = link1,
+        _link2 = link2,
+        _link3 = link3,
         super(firestoreUtilData);
 
   // "image" field.
@@ -49,11 +55,35 @@ class StoriesStruct extends FFFirebaseStruct {
 
   bool hasImageEng() => _imageEng != null;
 
+  // "link1" field.
+  String? _link1;
+  String get link1 => _link1 ?? '';
+  set link1(String? val) => _link1 = val;
+
+  bool hasLink1() => _link1 != null;
+
+  // "link2" field.
+  String? _link2;
+  String get link2 => _link2 ?? '';
+  set link2(String? val) => _link2 = val;
+
+  bool hasLink2() => _link2 != null;
+
+  // "link3" field.
+  String? _link3;
+  String get link3 => _link3 ?? '';
+  set link3(String? val) => _link3 = val;
+
+  bool hasLink3() => _link3 != null;
+
   static StoriesStruct fromMap(Map<String, dynamic> data) => StoriesStruct(
         image: data['image'] as String?,
         video: data['video'] as String?,
         time: castToType<int>(data['time']),
         imageEng: data['imageEng'] as String?,
+        link1: data['link1'] as String?,
+        link2: data['link2'] as String?,
+        link3: data['link3'] as String?,
       );
 
   static StoriesStruct? maybeFromMap(dynamic data) =>
@@ -64,6 +94,9 @@ class StoriesStruct extends FFFirebaseStruct {
         'video': _video,
         'time': _time,
         'imageEng': _imageEng,
+        'link1': _link1,
+        'link2': _link2,
+        'link3': _link3,
       }.withoutNulls;
 
   @override
@@ -82,6 +115,18 @@ class StoriesStruct extends FFFirebaseStruct {
         ),
         'imageEng': serializeParam(
           _imageEng,
+          ParamType.String,
+        ),
+        'link1': serializeParam(
+          _link1,
+          ParamType.String,
+        ),
+        'link2': serializeParam(
+          _link2,
+          ParamType.String,
+        ),
+        'link3': serializeParam(
+          _link3,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -108,6 +153,21 @@ class StoriesStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        link1: deserializeParam(
+          data['link1'],
+          ParamType.String,
+          false,
+        ),
+        link2: deserializeParam(
+          data['link2'],
+          ParamType.String,
+          false,
+        ),
+        link3: deserializeParam(
+          data['link3'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -119,11 +179,15 @@ class StoriesStruct extends FFFirebaseStruct {
         image == other.image &&
         video == other.video &&
         time == other.time &&
-        imageEng == other.imageEng;
+        imageEng == other.imageEng &&
+        link1 == other.link1 &&
+        link2 == other.link2 &&
+        link3 == other.link3;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([image, video, time, imageEng]);
+  int get hashCode => const ListEquality()
+      .hash([image, video, time, imageEng, link1, link2, link3]);
 }
 
 StoriesStruct createStoriesStruct({
@@ -131,6 +195,9 @@ StoriesStruct createStoriesStruct({
   String? video,
   int? time,
   String? imageEng,
+  String? link1,
+  String? link2,
+  String? link3,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -141,6 +208,9 @@ StoriesStruct createStoriesStruct({
       video: video,
       time: time,
       imageEng: imageEng,
+      link1: link1,
+      link2: link2,
+      link3: link3,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

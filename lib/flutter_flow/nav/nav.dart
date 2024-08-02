@@ -422,6 +422,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.Document,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'doNotUse',
+          path: '/doNotUse',
+          builder: (context, params) => DoNotUseWidget(
+            storyDataType: params.getParam(
+              'storyDataType',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: StoriesStruct.fromSerializableMap,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

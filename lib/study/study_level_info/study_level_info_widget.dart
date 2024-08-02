@@ -391,7 +391,12 @@ class _StudyLevelInfoWidgetState extends State<StudyLevelInfoWidget> {
                                                         children: [
                                                           Expanded(
                                                             child: Text(
-                                                              lessonsItem.title,
+                                                              lessonsItem.title
+                                                                  .maybeHandleOverflow(
+                                                                maxChars: 30,
+                                                                replacement:
+                                                                    '…',
+                                                              ),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium

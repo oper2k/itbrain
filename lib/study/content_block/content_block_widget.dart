@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -11,6 +12,7 @@ import '/study/study_file/study_file_widget.dart';
 import '/study/study_image/study_image_widget.dart';
 import '/study/task_book_comp/task_book_comp_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -167,9 +169,6 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
                   end: AlignmentDirectional(-1.0, -0.34),
                 ),
                 borderRadius: BorderRadius.circular(12.0),
-                border: Border.all(
-                  color: Colors.white,
-                ),
               ),
               child: Align(
                 alignment: const AlignmentDirectional(0.0, 0.0),
@@ -236,16 +235,20 @@ class _ContentBlockWidgetState extends State<ContentBlockWidget>
           return Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Container(
-                width: 40.0,
-                height: 40.0,
-                clipBehavior: Clip.antiAlias,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                ),
-                child: Image.network(
-                  widget.level!.textAutorPhoto,
-                  fit: BoxFit.cover,
+              AuthUserStreamWidget(
+                builder: (context) => Container(
+                  width: 40.0,
+                  height: 40.0,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: CachedNetworkImage(
+                    fadeInDuration: const Duration(milliseconds: 500),
+                    fadeOutDuration: const Duration(milliseconds: 500),
+                    imageUrl: currentUserPhoto,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               Expanded(

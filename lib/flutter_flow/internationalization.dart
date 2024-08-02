@@ -806,9 +806,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Вы подписались на уведомления',
       'en': 'You have subscribed to notifications',
     },
-    '4r5zif6e': {
+    '58i4w14h': {
       'ru': 'Home',
-      'en': '',
+      'en': 'Home',
     },
   },
   // studyLevels
@@ -881,6 +881,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ru': 'Подбираем твою страницу на сегодня',
       'en':
           'We\'re selecting a page for contemplation and receiving the answer',
+    },
+    'ctd01cm1': {
+      'ru': 'Home',
+      'en': 'Home',
+    },
+  },
+  // doNotUse
+  {
+    'vtwtzyr4': {
+      'ru': 'Купить книгу',
+      'en': '',
+    },
+    'aifeem5a': {
+      'ru': 'Сайт автора',
+      'en': '',
+    },
+    'p2ypvg00': {
+      'ru': 'Купить книгу',
+      'en': '',
     },
     'ctd01cm1': {
       'ru': 'Home',
@@ -1422,6 +1441,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'kxkloj0d': {
+      'ru': '',
+      'en': '',
+    },
+    '3e7ttn1z': {
       'ru': '',
       'en': '',
     },
