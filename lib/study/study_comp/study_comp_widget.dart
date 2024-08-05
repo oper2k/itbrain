@@ -380,11 +380,18 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                         '${valueOrDefault<String>(
                                           formatNumber(
                                             functions.progress(
-                                                (currentUserDocument
-                                                            ?.completeLessons
-                                                            .toList() ??
-                                                        [])
-                                                    .length
+                                                functions
+                                                    .viewedAndAllLessons(
+                                                        (currentUserDocument
+                                                                    ?.completeLessons
+                                                                    .toList() ??
+                                                                [])
+                                                            .map((e) => e.id)
+                                                            .toList(),
+                                                        containerLessonsRecordList
+                                                            .map((e) =>
+                                                                e.reference.id)
+                                                            .toList())
                                                     .toDouble(),
                                                 valueOrDefault<double>(
                                                   containerLessonsRecordList
@@ -430,15 +437,19 @@ class _StudyCompWidgetState extends State<StudyCompWidget> {
                                     child: LinearPercentIndicator(
                                       percent: valueOrDefault<double>(
                                         functions.progressFull(
-                                            valueOrDefault<double>(
-                                              (currentUserDocument
-                                                          ?.completeLessons
-                                                          .toList() ??
-                                                      [])
-                                                  .length
-                                                  .toDouble(),
-                                              0.0,
-                                            ),
+                                            functions
+                                                .viewedAndAllLessons(
+                                                    (currentUserDocument
+                                                                ?.completeLessons
+                                                                .toList() ??
+                                                            [])
+                                                        .map((e) => e.id)
+                                                        .toList(),
+                                                    containerLessonsRecordList
+                                                        .map((e) =>
+                                                            e.reference.id)
+                                                        .toList())
+                                                .toDouble(),
                                             valueOrDefault<double>(
                                               containerLessonsRecordList
                                                   .where((e) =>

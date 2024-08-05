@@ -218,11 +218,18 @@ class _StudyLevelsWidgetState extends State<StudyLevelsWidget> {
                                                       )} ${valueOrDefault<String>(
                                                         formatNumber(
                                                           functions.progress(
-                                                              (currentUserDocument
-                                                                          ?.completeLessons
-                                                                          .toList() ??
-                                                                      [])
-                                                                  .length
+                                                              functions
+                                                                  .viewedAndAllLessons(
+                                                                      (currentUserDocument?.completeLessons.toList() ??
+                                                                              [])
+                                                                          .map((e) => e
+                                                                              .id)
+                                                                          .toList(),
+                                                                      lessonsLessonsRecordList
+                                                                          .map((e) => e
+                                                                              .reference
+                                                                              .id)
+                                                                          .toList())
                                                                   .toDouble(),
                                                               valueOrDefault<
                                                                   double>(
